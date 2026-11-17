@@ -72,7 +72,7 @@ The run used CetiMind's `test_connection` with the Endpoint page fields for this
 | Chat and embedding checks | both answered |
 | Wall time, whole Test connection | 3.5 s |
 
-This matches the expected LM Studio behaviour in issue #51: only `reasoning_effort` switches thinking, and a named `tool_choice` is rejected.
+This matches the expected LM Studio behavior in issue #51: only `reasoning_effort` switches thinking, and a named `tool_choice` is rejected.
 
 Test connection made 5 chat requests: the chat check, then 4 probe requests. `reasoning_effort` passed on its first on/off pair (2 requests), so the other switches were not tried. The tool request got a call on the first try (1), and the named `tool_choice` request got HTTP 400 (1). Each request is capped at 64 tokens, so a probe can't stall on long thinking.
 

@@ -24,7 +24,7 @@ Setup: same machine, LM Studio with `qwen/qwen3.5-9b` and the same loaded config
 
 - **regex:** English completion and promise phrases, in the style of the [reference gist](https://gist.github.com/Julientalbot/64ecdb8c545b441ec685ced69cdc5910) (`I've set`, `I'll remind`, `reminder is set`, `added to your list`, `done.`, `got it.`, `all set` …). The exact pattern is in the script.
 - **json_reply:** a thinking-off JSON check on the reply alone, with `temperature` 0 and strict `{"yes": boolean}`:
-  > Does this assistant reply say that the assistant has done, is doing, or will do an action for the user, such as setting, changing or cancelling a reminder, adding to or reading a list, searching the web, or opening a page? Offers, questions, refusals, and plain chat are not actions.
+  > Does this assistant reply say that the assistant has done, is doing, or will do an action for the user, such as setting, changing or canceling a reminder, adding to or reading a list, searching the web, or opening a page? Offers, questions, refusals, and plain chat are not actions.
 - **json_pair:** the same kind of call, given the user line and the reply together:
   > The assistant has tools for reminders, lists, web search, and opening web pages. Did the user ask for something one of those tools does, while the assistant replied without using one (for example by claiming it is done, promising to do it, guessing, or saying it cannot)?
 
