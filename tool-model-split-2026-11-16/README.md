@@ -111,7 +111,7 @@ With all 3 repeats of session 2 (69 turns per setup), the tool lines with a tool
 
 - **The split missed the fewest tool calls,** and keeps the chat model's voice: qwen's replies are warm, and nemotron alone is terse ("Godot 4.6 was recently released.").
 - **The split's one real miss** was a cancel that listed the jobs and then searched the web.
-- **The split costs about 1 s more on tool turns** than qwen alone, and nothing on plain chat. That holds only with GPU memory headroom; see [gpu-memory-model-switch-2026-11-16](../gpu-memory-model-switch-2026-11-16/README.md).
+- **The split costs about 1 s more on tool turns** than qwen alone, and nothing on plain chat. That holds only with GPU memory headroom; see [gpu-memory-model-switch-2026-11-16](../setup-notes/gpu-memory-model-switch-2026-11-16/README.md).
 - **qwen alone claims tool calls it never made.** On "Set a timer for 5 minutes" it replied that the timer was set, with no `schedule_create` call. It also answered "Wake me up at 7 tomorrow." with a web search.
 - **nemotron alone** once returned an empty reply (`EmptyReplyError`) on a turn with no tool call. At the time, nothing retried that case on one model.
 - **Tool calls need thinking.** With thinking off, the intent check still named the right tool every time, but the model replied in text instead of calling it.

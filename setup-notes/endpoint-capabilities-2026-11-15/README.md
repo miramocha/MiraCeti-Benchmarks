@@ -86,4 +86,4 @@ Test connection made 5 chat requests: the chat check, then 4 probe requests. `re
 ## See also
 
 - [thinking-switch-2026-11-15](../thinking-switch-2026-11-15/README.md): the earlier experiment that found `reasoning_effort` is the only field that switches Qwen3.5 thinking in LM Studio. This probe checks for that switch.
-- [forced-tool-choice-2026-11-15](../forced-tool-choice-2026-11-15/README.md): the earlier experiment behind the named `tool_choice` HTTP 400 result, with `required` tested as well.
+- [forced-tool-choice-2026-11-15](../../forced-tool-choice-2026-11-15/README.md): the earlier experiment behind the named `tool_choice` HTTP 400 result, with `required` tested as well.

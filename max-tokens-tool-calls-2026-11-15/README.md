@@ -11,7 +11,7 @@ On a real turn, with conversation history and memories in the prompt, does the c
 ## Setup
 
 - **Date:** 2026-11-15, late evening local time.
-- **Machine and server:** the same PC and LM Studio setup as the [thinking and tool-call series](../thinking-switch-2026-11-15/README.md): one RTX 4070 (12 GB), LM Studio with `qwen/qwen3.5-9b` (GGUF `Q4_K_M`, 8192 context loaded), and `nomic-embed-text-v1.5` for embeddings. Load settings beyond the context length were not recorded for this run.
+- **Machine and server:** the same PC and LM Studio setup as the [thinking and tool-call series](../setup-notes/thinking-switch-2026-11-15/README.md): one RTX 4070 (12 GB), LM Studio with `qwen/qwen3.5-9b` (GGUF `Q4_K_M`, 8192 context loaded), and `nomic-embed-text-v1.5` for embeddings. Load settings beyond the context length were not recorded for this run.
 - **CetiMind:** branch `feat/59-safety-net` at `7c96523` (the CetiMind #59 background safety net, on top of the CetiMind #58 known-miss retry). Thinking is `auto`: a turn thinks when the intent router picks a tool, and `reasoning_effort` `"low"` switches it on.
 - **Turn path:** CetiMind's own `reply_turn` with the `IntentRouter`, the four schedule tools (`current_time`, `schedule_create`, `schedule_list`, `schedule_cancel`), memory recall, and the #58 retry. The background check from CetiMind #59 then ran on turns the router sent to "no tool".
 - **Client:** `LlmClient` built in the script, with `max_tokens` set from an environment variable. Everything else in the turn is the app's code.

@@ -23,7 +23,7 @@ The same data is in CetiMind #79 as experiments 16 and 17.
 
 ## Method
 
-- **Intent check timing,** `bench.py switch` from [tool-model-split-2026-11-16](../tool-model-split-2026-11-16/README.md):
+- **Intent check timing,** `bench.py switch` from [tool-model-split-2026-11-16](../../tool-model-split-2026-11-16/README.md):
   - CetiMind's intent check (`IntentRouter.decide`) on nemotron, for "Remind me to drink water in 20 minutes." with 6 tools, n = 10.
   - **after_nemotron:** run right after a short nemotron chat call ("Say one short friendly sentence.", thinking off).
   - **after_qwen:** run right after the same call on qwen.

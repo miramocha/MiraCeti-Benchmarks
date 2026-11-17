@@ -43,14 +43,14 @@ Shared by the whole series (CetiMind #51, private repo):
 Twelve experiments on one day, behind CetiMind's per-turn thinking and tool routing design:
 
 1. [thinking-switch](../thinking-switch-2026-11-15/README.md): which request field turns thinking on
-2. [kev-reasoning-check](../kev-reasoning-check-2026-11-15/README.md): Kev 0.8B as a "needs reasoning" check
-3. [schedule-tool-calls](../schedule-tool-calls-2026-11-15/README.md): schedule tool calls with and without thinking
-4. [thinking-off-steps](../thinking-off-steps-2026-11-15/README.md): intent check and argument extraction with thinking off
+2. [kev-reasoning-check](../../kev-reasoning-check-2026-11-15/README.md): Kev 0.8B as a "needs reasoning" check
+3. [schedule-tool-calls](../../schedule-tool-calls-2026-11-15/README.md): schedule tool calls with and without thinking
+4. [thinking-off-steps](../../thinking-off-steps-2026-11-15/README.md): intent check and argument extraction with thinking off
 5. [thinking-cap-fields](../thinking-cap-fields-2026-11-15/README.md): can a request field cap thinking
-6. [tool-call-examples](../tool-call-examples-2026-11-15/README.md): example tool calls, and asking for brief thinking
-7. [tool-turn-router](../tool-turn-router-2026-11-15/README.md): which router finds tool turns, English and Japanese
-8. [generic-tool-picker](../generic-tool-picker-2026-11-15/README.md): stub tools next to the schedule tools
-9. [hidden-tool-calls](../hidden-tool-calls-2026-11-15/README.md): are thinking-on misses hidden in the reasoning
-10. [missed-tool-check](../missed-tool-check-2026-11-15/README.md): which check catches a reply that skipped a tool
-11. [prompt-cache-layout](../prompt-cache-layout-2026-11-15/README.md): prompt caching by layout and tool set
-12. [forced-tool-choice](../forced-tool-choice-2026-11-15/README.md): forcing the chosen tool with thinking off
+6. [tool-call-examples](../../tool-call-examples-2026-11-15/README.md): example tool calls, and asking for brief thinking
+7. [tool-turn-router](../../tool-turn-router-2026-11-15/README.md): which router finds tool turns, English and Japanese
+8. [generic-tool-picker](../../generic-tool-picker-2026-11-15/README.md): stub tools next to the schedule tools
+9. [hidden-tool-calls](../../hidden-tool-calls-2026-11-15/README.md): are thinking-on misses hidden in the reasoning
+10. [missed-tool-check](../../missed-tool-check-2026-11-15/README.md): which check catches a reply that skipped a tool
+11. [prompt-cache-layout](../../prompt-cache-layout-2026-11-15/README.md): prompt caching by layout and tool set
+12. [forced-tool-choice](../../forced-tool-choice-2026-11-15/README.md): forcing the chosen tool with thinking off
