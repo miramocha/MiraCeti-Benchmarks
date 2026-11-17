@@ -16,6 +16,11 @@ A one-off look at where CetiMind's reply time goes, taken from the timing lines 
 | Reply without thinking | 8 | 1.1 s | 2.3 s |
 | Intent check (router) | 34 | 0.6 s | |
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="charts/latency-dark.svg">
+  <img alt="Median time per step. Reply with thinking (30): Median 11.6 s; Reply without thinking (8): Median 1.1 s; Intent check (34): Median 0.6 s." src="charts/latency-light.svg" width="680">
+</picture>
+
 - 20 of the 34 routed turns logged `no tool call on a routed turn, retrying`. The router picked a tool, the tool model answered without calling it, and the turn ran again with thinking on.
 - The miss check (net) fired on 2 turns. Its retry took a median of 13.6 s.
 

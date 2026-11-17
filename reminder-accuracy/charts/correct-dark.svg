@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="300" viewBox="0 0 680 300" role="img" aria-labelledby="t d" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<title id="t">What still works, before and after the fixes</title>
+<desc id="d">Live reminders recalled: Before the fixes (7fcacca) 21/24, After (main 141ac18) 20/24; Specific question right: Before the fixes (7fcacca) 13/15, After (main 141ac18) 12/13; Life facts kept: Before the fixes (7fcacca) 9/12, After (main 141ac18) 9/12.</desc>
+<rect width="680" height="300" rx="8" fill="#1a1a19"/>
+<text x="20" y="35" font-size="15" font-weight="600" fill="#f0efec">What still works, before and after the fixes</text>
+<text x="20" y="55" font-size="12" fill="#c3c2b7">Run 2026-11-17-1105, quick tier, 3 reps. Higher is better.</text>
+<rect x="20" y="67" width="10" height="10" rx="2" fill="#3987e5"/>
+<text x="35" y="76" font-size="12" fill="#c3c2b7">Before the fixes (7fcacca)</text>
+<rect x="226.6" y="67" width="10" height="10" rx="2" fill="#d95926"/>
+<text x="241.6" y="76" font-size="12" fill="#c3c2b7">After (main 141ac18)</text>
+<line x1="187.8" y1="84" x2="187.8" y2="234" stroke="#2c2c2a"/>
+<text x="187.8" y="250" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">0%</text>
+<line x1="288.4" y1="84" x2="288.4" y2="234" stroke="#2c2c2a"/>
+<text x="288.4" y="250" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">25%</text>
+<line x1="388.9" y1="84" x2="388.9" y2="234" stroke="#2c2c2a"/>
+<text x="388.9" y="250" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">50%</text>
+<line x1="489.5" y1="84" x2="489.5" y2="234" stroke="#2c2c2a"/>
+<text x="489.5" y="250" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">75%</text>
+<line x1="590.0" y1="84" x2="590.0" y2="234" stroke="#2c2c2a"/>
+<text x="590.0" y="250" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">100%</text>
+<line x1="187.79999999999998" y1="84" x2="187.79999999999998" y2="234" stroke="#383835"/>
+<text x="177.79999999999998" y="113.0" font-size="12" text-anchor="end" fill="#f0efec">Live reminders recalled</text>
+<path d="M187.8,92.0 H535.7 Q539.7,92.0 539.7,96.0 V104.0 Q539.7,108.0 535.7,108.0 H187.8 Z" fill="#3987e5"/>
+<line x1="465.3" y1="100.0" x2="572.5" y2="100.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="465.3" y1="96.0" x2="465.3" y2="104.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="572.5" y1="96.0" x2="572.5" y2="104.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="578.5" y="104.0" font-size="12" fill="#c3c2b7">21/24</text>
+<path d="M187.8,110.0 H519.0 Q523.0,110.0 523.0,114.0 V122.0 Q523.0,126.0 519.0,126.0 H187.8 Z" fill="#d95926"/>
+<line x1="445.8" y1="118.0" x2="563.1" y2="118.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="445.8" y1="114.0" x2="445.8" y2="122.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="563.1" y1="114.0" x2="563.1" y2="122.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="569.1" y="122.0" font-size="12" fill="#c3c2b7">20/24</text>
+<text x="177.79999999999998" y="163.0" font-size="12" text-anchor="end" fill="#f0efec">Specific question right</text>
+<path d="M187.8,142.0 H532.4 Q536.4,142.0 536.4,146.0 V154.0 Q536.4,158.0 532.4,158.0 H187.8 Z" fill="#3987e5"/>
+<line x1="437.6" y1="150.0" x2="575.0" y2="150.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="437.6" y1="146.0" x2="437.6" y2="154.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="575.0" y1="146.0" x2="575.0" y2="154.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="581.0" y="154.0" font-size="12" fill="#c3c2b7">13/15</text>
+<path d="M187.8,160.0 H555.1 Q559.1,160.0 559.1,164.0 V172.0 Q559.1,176.0 555.1,176.0 H187.8 Z" fill="#d95926"/>
+<line x1="456.0" y1="168.0" x2="584.5" y2="168.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="456.0" y1="164.0" x2="456.0" y2="172.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="584.5" y1="164.0" x2="584.5" y2="172.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="590.5" y="172.0" font-size="12" fill="#c3c2b7">12/13</text>
+<text x="177.79999999999998" y="213.0" font-size="12" text-anchor="end" fill="#f0efec">Life facts kept</text>
+<path d="M187.8,192.0 H485.5 Q489.5,192.0 489.5,196.0 V204.0 Q489.5,208.0 485.5,208.0 H187.8 Z" fill="#3987e5"/>
+<line x1="375.9" y1="200.0" x2="554.2" y2="200.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="375.9" y1="196.0" x2="375.9" y2="204.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="554.2" y1="196.0" x2="554.2" y2="204.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="560.2" y="204.0" font-size="12" fill="#c3c2b7">9/12</text>
+<path d="M187.8,210.0 H485.5 Q489.5,210.0 489.5,214.0 V222.0 Q489.5,226.0 485.5,226.0 H187.8 Z" fill="#d95926"/>
+<line x1="375.9" y1="218.0" x2="554.2" y2="218.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="375.9" y1="214.0" x2="375.9" y2="222.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="554.2" y1="214.0" x2="554.2" y2="222.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="560.2" y="222.0" font-size="12" fill="#c3c2b7">9/12</text>
+<text x="20" y="272" font-size="11" fill="#898781">Whiskers: 95% Wilson interval.</text>
+</svg>

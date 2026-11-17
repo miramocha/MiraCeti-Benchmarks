@@ -36,6 +36,16 @@ Setup: same machine, LM Studio with `qwen/qwen3.5-9b` and the same loaded config
 | json_reply | 14/21 | 0/20 | 8/23 | 0/20 | 473 ms |
 | json_pair | **19/21** | 9/20 | **22/23** | 4/20 | 463 ms |
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="charts/caught-dark.svg">
+  <img alt="Skipped tool turns caught. regex: English (21) 10/21, Japanese (23) 0/23; json_reply: English (21) 14/21, Japanese (23) 8/23; json_pair: English (21) 19/21, Japanese (23) 22/23." src="charts/caught-light.svg" width="680">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="charts/false-fires-dark.svg">
+  <img alt="False fires on replies that were fine. regex: English (20) 1/20, Japanese (20) 0/20; json_reply: English (20) 0/20, Japanese (20) 0/20; json_pair: English (20) 9/20, Japanese (20) 4/20." src="charts/false-fires-light.svg" width="680">
+</picture>
+
 **Reading:**
 
 - **regex is unusable.**

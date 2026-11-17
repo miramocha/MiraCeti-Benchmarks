@@ -79,6 +79,16 @@ The `qwen` and `nemotron` rows come from `session-1.jsonl`. The `split`, `qwen_o
 
 With all 3 repeats of session 2 (69 turns per setup), the tool lines with a tool called were: split 43/45, qwen_off 18/45, split_tooloff 7/45.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="charts/called-dark.svg">
+  <img alt="Tool lines with the needed tool called. split: Called 29/30; qwen: Called 28/30; nemotron: Called 27/30; qwen_off: Called 11/30; split_tooloff: Called 5/30." src="charts/called-light.svg" width="680">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="charts/time-dark.svg">
+  <img alt="Median turn time. split: Median 3.2 s; qwen: Median 3.8 s; nemotron: Median 3.3 s; qwen_off: Median 1.4 s; split_tooloff: Median 1.4 s." src="charts/time-light.svg" width="680">
+</picture>
+
 ### Per line (right out of 2)
 
 | Line | Expected | split | qwen | nemotron | qwen_off | split_tooloff |

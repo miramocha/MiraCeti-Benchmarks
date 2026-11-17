@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="300" viewBox="0 0 680 300" role="img" aria-labelledby="t d" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<title id="t">Skipped tool turns caught</title>
+<desc id="d">regex: English (21) 10/21, Japanese (23) 0/23; json_reply: English (21) 14/21, Japanese (23) 8/23; json_pair: English (21) 19/21, Japanese (23) 22/23.</desc>
+<rect width="680" height="300" rx="8" fill="#1a1a19"/>
+<text x="20" y="35" font-size="15" font-weight="600" fill="#f0efec">Skipped tool turns caught</text>
+<text x="20" y="55" font-size="12" fill="#c3c2b7">Replies that should have called a tool. Higher is better.</text>
+<rect x="20" y="67" width="10" height="10" rx="2" fill="#3987e5"/>
+<text x="35" y="76" font-size="12" fill="#c3c2b7">English (21)</text>
+<rect x="134.2" y="67" width="10" height="10" rx="2" fill="#d95926"/>
+<text x="149.2" y="76" font-size="12" fill="#c3c2b7">Japanese (23)</text>
+<line x1="102.0" y1="84" x2="102.0" y2="234" stroke="#2c2c2a"/>
+<text x="102.0" y="250" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">0%</text>
+<line x1="224.0" y1="84" x2="224.0" y2="234" stroke="#2c2c2a"/>
+<text x="224.0" y="250" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">25%</text>
+<line x1="346.0" y1="84" x2="346.0" y2="234" stroke="#2c2c2a"/>
+<text x="346.0" y="250" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">50%</text>
+<line x1="468.0" y1="84" x2="468.0" y2="234" stroke="#2c2c2a"/>
+<text x="468.0" y="250" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">75%</text>
+<line x1="590.0" y1="84" x2="590.0" y2="234" stroke="#2c2c2a"/>
+<text x="590.0" y="250" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">100%</text>
+<line x1="102.0" y1="84" x2="102.0" y2="234" stroke="#383835"/>
+<text x="92.0" y="113.0" font-size="12" text-anchor="end" fill="#f0efec">regex</text>
+<path d="M102.0,92.0 H330.4 Q334.4,92.0 334.4,96.0 V104.0 Q334.4,108.0 330.4,108.0 H102.0 Z" fill="#3987e5"/>
+<line x1="240.3" y1="100.0" x2="432.0" y2="100.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="240.3" y1="96.0" x2="240.3" y2="104.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="432.0" y1="96.0" x2="432.0" y2="104.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="438.0" y="104.0" font-size="12" fill="#c3c2b7">10/21</text>
+
+<line x1="102.0" y1="118.0" x2="171.8" y2="118.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="102.0" y1="114.0" x2="102.0" y2="122.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="171.8" y1="114.0" x2="171.8" y2="122.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="177.8" y="122.0" font-size="12" fill="#c3c2b7">0/23</text>
+<text x="92.0" y="163.0" font-size="12" text-anchor="end" fill="#f0efec">json_reply</text>
+<path d="M102.0,142.0 H423.3 Q427.3,142.0 427.3,146.0 V154.0 Q427.3,158.0 423.3,158.0 H102.0 Z" fill="#3987e5"/>
+<line x1="323.4" y1="150.0" x2="506.1" y2="150.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="323.4" y1="146.0" x2="323.4" y2="154.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="506.1" y1="146.0" x2="506.1" y2="154.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="512.1" y="154.0" font-size="12" fill="#c3c2b7">14/21</text>
+<path d="M102.0,160.0 H267.7 Q271.7,160.0 271.7,164.0 V172.0 Q271.7,176.0 267.7,176.0 H102.0 Z" fill="#d95926"/>
+<line x1="193.8" y1="168.0" x2="370.9" y2="168.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="193.8" y1="164.0" x2="193.8" y2="172.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="370.9" y1="164.0" x2="370.9" y2="172.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="376.9" y="172.0" font-size="12" fill="#c3c2b7">8/23</text>
+<text x="92.0" y="213.0" font-size="12" text-anchor="end" fill="#f0efec">json_pair</text>
+<path d="M102.0,192.0 H539.5 Q543.5,192.0 543.5,196.0 V204.0 Q543.5,208.0 539.5,208.0 H102.0 Z" fill="#3987e5"/>
+<line x1="448.9" y1="200.0" x2="577.1" y2="200.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="448.9" y1="196.0" x2="448.9" y2="204.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="577.1" y1="196.0" x2="577.1" y2="204.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="583.1" y="204.0" font-size="12" fill="#c3c2b7">19/21</text>
+<path d="M102.0,210.0 H564.8 Q568.8,210.0 568.8,214.0 V222.0 Q568.8,226.0 564.8,226.0 H102.0 Z" fill="#d95926"/>
+<line x1="487.6" y1="218.0" x2="586.2" y2="218.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="487.6" y1="214.0" x2="487.6" y2="222.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="586.2" y1="214.0" x2="586.2" y2="222.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="592.2" y="222.0" font-size="12" fill="#c3c2b7">22/23</text>
+<text x="20" y="272" font-size="11" fill="#898781">Whiskers: 95% Wilson interval.</text>
+</svg>

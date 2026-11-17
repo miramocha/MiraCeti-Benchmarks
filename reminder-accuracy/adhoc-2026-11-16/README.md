@@ -8,6 +8,28 @@ The runs used a copy of real CetiMind memory, so no reply text is published here
 
 Learn stored each reminder request as an `event` memory, such as "asked to be reminded to check the dishwasher". Recall then ranked those events high on any reminder question, long after the job was gone. The summary fold prompt ("keep names and plans") also kept reminders. Nothing in the prompt said which jobs still existed, and canceling a job on the Schedule page left no trace in the chat.
 
+```mermaid
+flowchart TD
+  ask["User asks: remind me to check the dishwasher"] --> learn["Learn step"]
+  ask --> history[("Recent chat history")]
+  learn --> event[("Event memory: asked to be reminded")]
+  history --> fold["Summary fold"] --> summary[("Summary")]
+  ended["Job canceled on the Schedule page, or already ran"] -. "no trace" .-> prompt
+  event --> prompt["Reply prompt"]
+  history --> prompt
+  summary --> prompt
+  prompt --> reply["Reply still treats the reminder as pending"]
+```
+
+Each path was closed by one of the two fixes:
+
+| Path | Fix |
+| --- | --- |
+| Learn stores the request as an event | PR 81: learn skips reminder, timer, and alarm requests |
+| Summary keeps it as a plan | PR 81: the fold leaves reminders to the schedule |
+| Prompt never says which jobs exist | PR 81: a turn with schedule tools lists the open jobs |
+| Chat history still holds "I'll remind you" | PR 82: a cancel writes a note, and the prompt lists reminders that ran or were canceled |
+
 ## Setup
 
 - Chat model `qwen3.5-4b`, tool model `nvidia/nemotron-3-nano-4b`, on the same LM Studio endpoint. Settings `chat_thinking` and `tool_thinking` were `auto`.
@@ -29,6 +51,11 @@ A fresh copy of the cleaned real memory for each run. Nine lines, 3 runs each. S
 | "Adopted a cat named Mochi" stored | 3/3 as a fact | 3/3 as an event |
 | "I wake up at 8am every day" stored | 0/3 (matches an existing fact) | 0/3 (same) |
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="charts/leak-dark.svg">
+  <img alt="Reminder requests stored as memory. Before (7fcacca): Stored 9/18; After #81: Stored 0/18." src="charts/leak-light.svg" width="680">
+</picture>
+
 The Mochi line moving from fact to event is a kind shift worth watching. The reminder accuracy benchmark tracks it as `kind_correct`.
 
 ## Reply
@@ -40,6 +67,11 @@ A copy of the real memory taken before stale events were cleaned up, so the old 
 | Before (`7fcacca`) | 12/12 |
 | After #81 | about 6/12 |
 | After #82, with the cancel note #82 would have written | about 1/12 |
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="charts/stale-dark.svg">
+  <img alt="Replies that treat an ended reminder as pending. Before (7fcacca): Stale replies 12/12; After #81: Stale replies about 6/12; After #82: Stale replies about 1/12." src="charts/stale-light.svg" width="680">
+</picture>
 
 The one clear miss after #82 came from an old lock-the-door event that was still in this copy. It had already been deleted from the live memory.
 

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="242" viewBox="0 0 680 242" role="img" aria-labelledby="t d" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<title id="t">Median time per step</title>
+<desc id="d">Reply with thinking (30): Median 11.6 s; Reply without thinking (8): Median 1.1 s; Intent check (34): Median 0.6 s.</desc>
+<rect width="680" height="242" rx="8" fill="#fcfcfb"/>
+<text x="20" y="35" font-size="15" font-weight="600" fill="#0b0b0b">Median time per step</text>
+<text x="20" y="55" font-size="12" fill="#52514e">CetiMind app log, 2026-11-17. qwen3.5-4b chat, nemotron-3-nano-4b tools.</text>
+<line x1="207.6" y1="68" x2="207.6" y2="176" stroke="#e1e0d9"/>
+<text x="207.6" y="192" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">0 s</text>
+<line x1="303.2" y1="68" x2="303.2" y2="176" stroke="#e1e0d9"/>
+<text x="303.2" y="192" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">3 s</text>
+<line x1="398.8" y1="68" x2="398.8" y2="176" stroke="#e1e0d9"/>
+<text x="398.8" y="192" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">6 s</text>
+<line x1="494.4" y1="68" x2="494.4" y2="176" stroke="#e1e0d9"/>
+<text x="494.4" y="192" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">9 s</text>
+<line x1="590.0" y1="68" x2="590.0" y2="176" stroke="#e1e0d9"/>
+<text x="590.0" y="192" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">12 s</text>
+<line x1="207.6" y1="68" x2="207.6" y2="176" stroke="#c3c2b7"/>
+<text x="197.6" y="90.0" font-size="12" text-anchor="end" fill="#0b0b0b">Reply with thinking (30)</text>
+<path d="M207.6,76.0 H573.3 Q577.3,76.0 577.3,80.0 V92.0 Q577.3,96.0 573.3,96.0 H207.6 Z" fill="#2a78d6"/>
+<text x="583.3" y="90.0" font-size="12" fill="#52514e">11.6 s</text>
+<text x="197.6" y="126.0" font-size="12" text-anchor="end" fill="#0b0b0b">Reply without thinking (8)</text>
+<path d="M207.6,112.0 H238.7 Q242.7,112.0 242.7,116.0 V128.0 Q242.7,132.0 238.7,132.0 H207.6 Z" fill="#2a78d6"/>
+<text x="248.7" y="126.0" font-size="12" fill="#52514e">1.1 s</text>
+<text x="197.6" y="162.0" font-size="12" text-anchor="end" fill="#0b0b0b">Intent check (34)</text>
+<path d="M207.6,148.0 H222.7 Q226.7,148.0 226.7,152.0 V164.0 Q226.7,168.0 222.7,168.0 H207.6 Z" fill="#2a78d6"/>
+<text x="232.7" y="162.0" font-size="12" fill="#52514e">0.6 s</text>
+<text x="20" y="214" font-size="11" fill="#898781">Number of turns in brackets. 20 of 34 routed turns also retried with thinking on.</text>
+</svg>

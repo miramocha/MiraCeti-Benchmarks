@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="278" viewBox="0 0 680 278" role="img" aria-labelledby="t d" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<title id="t">Reminder requests that got a schedule_create call</title>
+<desc id="d">A: thinking off: Called 0/18; B: thinking on: Called 15/18; C: off + prompt rule: Called 0/18; E: intent check, then C: Called 0/18.</desc>
+<rect width="680" height="278" rx="8" fill="#1a1a19"/>
+<text x="20" y="35" font-size="15" font-weight="600" fill="#f0efec">Reminder requests that got a schedule_create call</text>
+<text x="20" y="55" font-size="12" fill="#c3c2b7">qwen3.5-9b, 6 request lines x 3 runs per variant. Higher is better.</text>
+<line x1="187.8" y1="68" x2="187.8" y2="212" stroke="#2c2c2a"/>
+<text x="187.8" y="228" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">0%</text>
+<line x1="288.4" y1="68" x2="288.4" y2="212" stroke="#2c2c2a"/>
+<text x="288.4" y="228" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">25%</text>
+<line x1="388.9" y1="68" x2="388.9" y2="212" stroke="#2c2c2a"/>
+<text x="388.9" y="228" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">50%</text>
+<line x1="489.5" y1="68" x2="489.5" y2="212" stroke="#2c2c2a"/>
+<text x="489.5" y="228" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">75%</text>
+<line x1="590.0" y1="68" x2="590.0" y2="212" stroke="#2c2c2a"/>
+<text x="590.0" y="228" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">100%</text>
+<line x1="187.79999999999998" y1="68" x2="187.79999999999998" y2="212" stroke="#383835"/>
+<text x="177.79999999999998" y="90.0" font-size="12" text-anchor="end" fill="#f0efec">A: thinking off</text>
+
+<line x1="187.8" y1="86.0" x2="258.5" y2="86.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="187.8" y1="82.0" x2="187.8" y2="90.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="258.5" y1="82.0" x2="258.5" y2="90.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="264.5" y="90.0" font-size="12" fill="#c3c2b7">0/18</text>
+<text x="177.79999999999998" y="126.0" font-size="12" text-anchor="end" fill="#f0efec">B: thinking on</text>
+<path d="M187.8,112.0 H519.0 Q523.0,112.0 523.0,116.0 V128.0 Q523.0,132.0 519.0,132.0 H187.8 Z" fill="#3987e5"/>
+<line x1="432.2" y1="122.0" x2="566.5" y2="122.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="432.2" y1="118.0" x2="432.2" y2="126.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="566.5" y1="118.0" x2="566.5" y2="126.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="572.5" y="126.0" font-size="12" fill="#c3c2b7">15/18</text>
+<text x="177.79999999999998" y="162.0" font-size="12" text-anchor="end" fill="#f0efec">C: off + prompt rule</text>
+
+<line x1="187.8" y1="158.0" x2="258.5" y2="158.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="187.8" y1="154.0" x2="187.8" y2="162.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="258.5" y1="154.0" x2="258.5" y2="162.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="264.5" y="162.0" font-size="12" fill="#c3c2b7">0/18</text>
+<text x="177.79999999999998" y="198.0" font-size="12" text-anchor="end" fill="#f0efec">E: intent check, then C</text>
+
+<line x1="187.8" y1="194.0" x2="258.5" y2="194.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="187.8" y1="190.0" x2="187.8" y2="198.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="258.5" y1="190.0" x2="258.5" y2="198.0" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="264.5" y="198.0" font-size="12" fill="#c3c2b7">0/18</text>
+<text x="20" y="250" font-size="11" fill="#898781">Whiskers: 95% Wilson interval.</text>
+</svg>

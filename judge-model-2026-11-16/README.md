@@ -59,6 +59,11 @@ The same data is in CetiMind #79 as experiment 15.
 | qwen3.5-4b | 36/36 | 6/9 | 1.0 s | 1.9 s |
 | nvidia/nemotron-3-nano-4b | 30/36 | 0/9 | 1.0 s | 2.4 s |
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="charts/judge-dark.svg">
+  <img alt="Learn-step judge accuracy. Fact extraction: qwen3.5-4b 36/36, nemotron-3-nano-4b 30/36; Fact updates: qwen3.5-4b 6/9, nemotron-3-nano-4b 0/9." src="charts/judge-light.svg" width="680">
+</picture>
+
 | Case | qwen3.5-4b | nemotron |
 | --- | --- | --- |
 | extract: I love ramen, especially tonkotsu. | 3/3 | 3/3 |

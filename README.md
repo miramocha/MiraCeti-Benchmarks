@@ -43,5 +43,6 @@ How the local model server behaves. These do not measure the apps; they explain 
 
 - Name the directory `<topic>-<yyyy-mm-dd>`. A repeatable benchmark has no date; its runs inside it do. A note on server or model settings goes in `setup-notes/`.
 - Put the question, setup (models, load settings, code version), method, and results in its `README.md`. Add data files beside it.
+- Add a chart where a comparison is easier to see than to read: add it to `tools/make_charts.py` and embed it next to the results table. [tools/README.md](tools/README.md) has the steps.
 - This repo is public. Do not add real user chat text, memory, or app settings. For a run on real data, publish the method and counts only.
 - Add one row to the matching table above.

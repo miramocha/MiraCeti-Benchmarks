@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="432" viewBox="0 0 680 432" role="img" aria-labelledby="t d" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<title id="t">Router errors on English lines</title>
+<desc id="d">rules: Misses (tool turn said no) 4, False alarms (plain line said yes) 8; json: Misses (tool turn said no) 0, False alarms (plain line said yes) 4; kev: Misses (tool turn said no) 4, False alarms (plain line said yes) 9; embed_desc: Misses (tool turn said no) 1, False alarms (plain line said yes) 14; embed_pos: Misses (tool turn said no) 8, False alarms (plain line said yes) 10; embed_margin: Misses (tool turn said no) 6, False alarms (plain line said yes) 8.</desc>
+<rect width="680" height="432" rx="8" fill="#1a1a19"/>
+<text x="20" y="35" font-size="15" font-weight="600" fill="#f0efec">Router errors on English lines</text>
+<text x="20" y="55" font-size="12" fill="#c3c2b7">Count of lines. Lower is better.</text>
+<rect x="20" y="67" width="10" height="10" rx="2" fill="#3987e5"/>
+<text x="35" y="76" font-size="12" fill="#c3c2b7">Misses (tool turn said no)</text>
+<rect x="226.6" y="67" width="10" height="10" rx="2" fill="#d95926"/>
+<text x="241.6" y="76" font-size="12" fill="#c3c2b7">False alarms (plain line said yes)</text>
+<line x1="115.2" y1="84" x2="115.2" y2="384" stroke="#2c2c2a"/>
+<text x="115.2" y="400" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">0</text>
+<line x1="233.9" y1="84" x2="233.9" y2="384" stroke="#2c2c2a"/>
+<text x="233.9" y="400" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">4</text>
+<line x1="352.6" y1="84" x2="352.6" y2="384" stroke="#2c2c2a"/>
+<text x="352.6" y="400" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">8</text>
+<line x1="471.3" y1="84" x2="471.3" y2="384" stroke="#2c2c2a"/>
+<text x="471.3" y="400" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">12</text>
+<line x1="590.0" y1="84" x2="590.0" y2="384" stroke="#2c2c2a"/>
+<text x="590.0" y="400" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">16</text>
+<line x1="115.19999999999999" y1="84" x2="115.19999999999999" y2="384" stroke="#383835"/>
+<text x="105.19999999999999" y="113.0" font-size="12" text-anchor="end" fill="#f0efec">rules</text>
+<path d="M115.2,92.0 H229.9 Q233.9,92.0 233.9,96.0 V104.0 Q233.9,108.0 229.9,108.0 H115.2 Z" fill="#3987e5"/>
+<text x="239.9" y="104.0" font-size="12" fill="#c3c2b7">4</text>
+<path d="M115.2,110.0 H348.6 Q352.6,110.0 352.6,114.0 V122.0 Q352.6,126.0 348.6,126.0 H115.2 Z" fill="#d95926"/>
+<text x="358.6" y="122.0" font-size="12" fill="#c3c2b7">8</text>
+<text x="105.19999999999999" y="163.0" font-size="12" text-anchor="end" fill="#f0efec">json</text>
+
+<text x="121.2" y="154.0" font-size="12" fill="#c3c2b7">0</text>
+<path d="M115.2,160.0 H229.9 Q233.9,160.0 233.9,164.0 V172.0 Q233.9,176.0 229.9,176.0 H115.2 Z" fill="#d95926"/>
+<text x="239.9" y="172.0" font-size="12" fill="#c3c2b7">4</text>
+<text x="105.19999999999999" y="213.0" font-size="12" text-anchor="end" fill="#f0efec">kev</text>
+<path d="M115.2,192.0 H229.9 Q233.9,192.0 233.9,196.0 V204.0 Q233.9,208.0 229.9,208.0 H115.2 Z" fill="#3987e5"/>
+<text x="239.9" y="204.0" font-size="12" fill="#c3c2b7">4</text>
+<path d="M115.2,210.0 H378.3 Q382.3,210.0 382.3,214.0 V222.0 Q382.3,226.0 378.3,226.0 H115.2 Z" fill="#d95926"/>
+<text x="388.3" y="222.0" font-size="12" fill="#c3c2b7">9</text>
+<text x="105.19999999999999" y="263.0" font-size="12" text-anchor="end" fill="#f0efec">embed_desc</text>
+<path d="M115.2,242.0 H140.9 Q144.9,242.0 144.9,246.0 V254.0 Q144.9,258.0 140.9,258.0 H115.2 Z" fill="#3987e5"/>
+<text x="150.9" y="254.0" font-size="12" fill="#c3c2b7">1</text>
+<path d="M115.2,260.0 H526.6 Q530.6,260.0 530.6,264.0 V272.0 Q530.6,276.0 526.6,276.0 H115.2 Z" fill="#d95926"/>
+<text x="536.6" y="272.0" font-size="12" fill="#c3c2b7">14</text>
+<text x="105.19999999999999" y="313.0" font-size="12" text-anchor="end" fill="#f0efec">embed_pos</text>
+<path d="M115.2,292.0 H348.6 Q352.6,292.0 352.6,296.0 V304.0 Q352.6,308.0 348.6,308.0 H115.2 Z" fill="#3987e5"/>
+<text x="358.6" y="304.0" font-size="12" fill="#c3c2b7">8</text>
+<path d="M115.2,310.0 H407.9 Q411.9,310.0 411.9,314.0 V322.0 Q411.9,326.0 407.9,326.0 H115.2 Z" fill="#d95926"/>
+<text x="417.9" y="322.0" font-size="12" fill="#c3c2b7">10</text>
+<text x="105.19999999999999" y="363.0" font-size="12" text-anchor="end" fill="#f0efec">embed_margin</text>
+<path d="M115.2,342.0 H289.2 Q293.2,342.0 293.2,346.0 V354.0 Q293.2,358.0 289.2,358.0 H115.2 Z" fill="#3987e5"/>
+<text x="299.2" y="354.0" font-size="12" fill="#c3c2b7">6</text>
+<path d="M115.2,360.0 H348.6 Q352.6,360.0 352.6,364.0 V372.0 Q352.6,376.0 348.6,376.0 H115.2 Z" fill="#d95926"/>
+<text x="358.6" y="372.0" font-size="12" fill="#c3c2b7">8</text>
+</svg>

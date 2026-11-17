@@ -20,6 +20,11 @@ Experiment 3 of 12 in a one-day series on Qwen3.5-9B thinking and tool calls in 
   > Tools: when the user asks to be reminded, pinged, or told something later, or to schedule anything, call schedule_create in this reply. Never say a reminder is set unless you called schedule_create.
 - **E:** first a thinking-off JSON intent check (`temperature` 0, `max_tokens` 50, strict schema `{"schedule": boolean}`, prompt: `Does this message ask to be reminded, pinged, or told something later, or to schedule, list, or cancel a scheduled job? Message: "<line>"`). If the check said yes, then C.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="charts/calls-dark.svg">
+  <img alt="Reminder requests that got a schedule_create call. A: thinking off: Called 0/18; B: thinking on: Called 15/18; C: off + prompt rule: Called 0/18; E: intent check, then C: Called 0/18." src="charts/calls-light.svg" width="680">
+</picture>
+
 **Raw output** (the script printed at most 4 misses per variant):
 
 ```

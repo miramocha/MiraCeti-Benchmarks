@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="242" viewBox="0 0 680 242" role="img" aria-labelledby="t d" font-family='system-ui, -apple-system, "Segoe UI", sans-serif'>
+<title id="t">Replies that treat an ended reminder as pending</title>
+<desc id="d">Before (7fcacca): Stale replies 12/12; After #81: Stale replies about 6/12; After #82: Stale replies about 1/12.</desc>
+<rect width="680" height="242" rx="8" fill="#fcfcfb"/>
+<text x="20" y="35" font-size="15" font-weight="600" fill="#0b0b0b">Replies that treat an ended reminder as pending</text>
+<text x="20" y="55" font-size="12" fill="#52514e">Copy of real memory, 3 questions x 4 runs. Lower is better.</text>
+<line x1="141.6" y1="68" x2="141.6" y2="176" stroke="#e1e0d9"/>
+<text x="141.6" y="192" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">0%</text>
+<line x1="253.7" y1="68" x2="253.7" y2="176" stroke="#e1e0d9"/>
+<text x="253.7" y="192" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">25%</text>
+<line x1="365.8" y1="68" x2="365.8" y2="176" stroke="#e1e0d9"/>
+<text x="365.8" y="192" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">50%</text>
+<line x1="477.9" y1="68" x2="477.9" y2="176" stroke="#e1e0d9"/>
+<text x="477.9" y="192" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">75%</text>
+<line x1="590.0" y1="68" x2="590.0" y2="176" stroke="#e1e0d9"/>
+<text x="590.0" y="192" font-size="11" text-anchor="middle" fill="#898781" style="font-variant-numeric: tabular-nums">100%</text>
+<line x1="141.6" y1="68" x2="141.6" y2="176" stroke="#c3c2b7"/>
+<text x="131.6" y="90.0" font-size="12" text-anchor="end" fill="#0b0b0b">Before (7fcacca)</text>
+<path d="M141.6,76.0 H586.0 Q590.0,76.0 590.0,80.0 V92.0 Q590.0,96.0 586.0,96.0 H141.6 Z" fill="#2a78d6"/>
+<line x1="481.3" y1="86.0" x2="590.0" y2="86.0" stroke="#52514e" stroke-width="1.5"/>
+<line x1="481.3" y1="82.0" x2="481.3" y2="90.0" stroke="#52514e" stroke-width="1.5"/>
+<line x1="590.0" y1="82.0" x2="590.0" y2="90.0" stroke="#52514e" stroke-width="1.5"/>
+<text x="596.0" y="90.0" font-size="12" fill="#52514e">12/12</text>
+<text x="131.6" y="126.0" font-size="12" text-anchor="end" fill="#0b0b0b">After #81</text>
+<path d="M141.6,112.0 H361.8 Q365.8,112.0 365.8,116.0 V128.0 Q365.8,132.0 361.8,132.0 H141.6 Z" fill="#2a78d6"/>
+<text x="371.8" y="126.0" font-size="12" fill="#52514e">about 6/12</text>
+<text x="131.6" y="162.0" font-size="12" text-anchor="end" fill="#0b0b0b">After #82</text>
+<path d="M141.6,148.0 H175.0 Q179.0,148.0 179.0,152.0 V164.0 Q179.0,168.0 175.0,168.0 H141.6 Z" fill="#2a78d6"/>
+<text x="185.0" y="162.0" font-size="12" fill="#52514e">about 1/12</text>
+<text x="20" y="214" font-size="11" fill="#898781">Counts after #81 and #82 were read by hand, so no intervals are drawn.</text>
+</svg>

@@ -40,6 +40,11 @@ A miss is a tool turn the router said no to. A false alarm is a normal line it s
 | embed_margin | 6 (cut 0.039) | 8 | 8/10 | 8 (cut -0.004) | 10 | about 60 ms |
 | embed_local | n/a | n/a | n/a | 7 (cut 0.061) | 8 | about 60 ms |
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="charts/english-dark.svg">
+  <img alt="Router errors on English lines. rules: Misses (tool turn said no) 4, False alarms (plain line said yes) 8; json: Misses (tool turn said no) 0, False alarms (plain line said yes) 4; kev: Misses (tool turn said no) 4, False alarms (plain line said yes) 9; embed_desc: Misses (tool turn said no) 1, False alarms (plain line said yes) 14; embed_pos: Misses (tool turn said no) 8, False alarms (plain line said yes) 10; embed_margin: Misses (tool turn said no) 6, False alarms (plain line said yes) 8." src="charts/english-light.svg" width="680">
+</picture>
+
 **Two-stage (English):** the second check runs only on lines the rules matched. 34 of 60 lines went to it.
 
 | Second check | Misses | False alarms |

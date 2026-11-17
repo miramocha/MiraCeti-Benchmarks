@@ -125,6 +125,16 @@ The full table, the raw replies, and the graded replies are in [quick-2026-11-17
 
 Same tier, reps, refs, chat model, and tool model. The judge is `qwen/qwen3.5-9b` with thinking off. The loaded 4B had a llama.cpp reasoning budget of 512 tokens and the wrap-up line `reasoning budget exhausted. Let's answer now.` Its context length was 6144. The earlier run does not record that load setting.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="charts/errors-dark.svg">
+  <img alt="Reminder errors, before and after the fixes. Stale replies: Before the fixes (7fcacca) 2/30, After (main 141ac18) 1/28; Reminder requests stored: Before the fixes (7fcacca) 6/12, After (main 141ac18) 0/12." src="charts/errors-light.svg" width="680">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="charts/correct-dark.svg">
+  <img alt="What still works, before and after the fixes. Live reminders recalled: Before the fixes (7fcacca) 21/24, After (main 141ac18) 20/24; Specific question right: Before the fixes (7fcacca) 13/15, After (main 141ac18) 12/13; Life facts kept: Before the fixes (7fcacca) 9/12, After (main 141ac18) 9/12." src="charts/correct-light.svg" width="680">
+</picture>
+
 | Metric | `7fcacca` | `main` |
 | --- | --- | --- |
 | stale_reply | 7% (2/30) | 4% (1/28) |
