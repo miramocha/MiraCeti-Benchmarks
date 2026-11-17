@@ -36,7 +36,7 @@ How the local model server behaves. These do not measure the apps; they explain 
 | --- | --- | --- |
 | 2026-11-15 | [Thinking switch](setup-notes/thinking-switch-2026-11-15/README.md) | Which request field turns Qwen3.5-9B thinking on in LM Studio. Only `reasoning_effort`; the level barely matters. |
 | 2026-11-15 | [Thinking cap fields](setup-notes/thinking-cap-fields-2026-11-15/README.md) | Whether any request field caps thinking length in LM Studio. None of six did. |
-| 2026-11-15 | [Endpoint capabilities](setup-notes/endpoint-capabilities-2026-11-15/README.md) | Whether CetiMind's startup probe finds the thinking switch, tool support, and named `tool_choice` behaviour on LM Studio with `qwen/qwen3.5-9b`. |
+| 2026-11-15 | [Endpoint capabilities](setup-notes/endpoint-capabilities-2026-11-15/README.md) | Whether CetiMind's startup probe finds the thinking switch, tool support, and named `tool_choice` behavior on LM Studio with `qwen/qwen3.5-9b`. |
 | 2026-11-16 | [GPU memory and model switching](setup-notes/gpu-memory-model-switch-2026-11-16/README.md) | Why alternating two models on a 12 GB GPU cost about 1 s per switch (memory spill), and what K/V `q8_0` plus context 6144 freed. |
 
 ## Adding an experiment

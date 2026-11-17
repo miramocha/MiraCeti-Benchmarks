@@ -73,7 +73,7 @@ REGEX = re.compile(
     r"done[.!,]|got it[.!,]|all set|set up for you)"
 )
 CLAIM_Q = ("Does this assistant reply say that the assistant has done, is doing, or will do an action for the user, "
-           "such as setting, changing or cancelling a reminder, adding to or reading a list, searching the web, or opening a page? "
+           "such as setting, changing or canceling a reminder, adding to or reading a list, searching the web, or opening a page? "
            "Offers, questions, refusals, and plain chat are not actions.")
 PAIR_Q = ("The assistant has tools for reminders, lists, web search, and opening web pages. "
           "Did the user ask for something one of those tools does, while the assistant replied without using one "
