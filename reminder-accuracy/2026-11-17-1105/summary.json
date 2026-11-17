@@ -1,0 +1,124 @@
+{
+ "7fcacca": {
+  "sha": "7fcacca",
+  "stale_reply": [
+   2,
+   30
+  ],
+  "stale_pair": [
+   2,
+   24
+  ],
+  "live_recall": [
+   21,
+   24
+  ],
+  "specific_correct": [
+   13,
+   15
+  ],
+  "unprompted": [
+   0,
+   0
+  ],
+  "judge_failed": [
+   0,
+   30
+  ],
+  "request_leak": [
+   6,
+   12
+  ],
+  "life_keep": [
+   9,
+   12
+  ],
+  "kind_correct": [
+   9,
+   9
+  ],
+  "by_scenario": {
+   "ui_cancel": [
+    1,
+    6
+   ],
+   "fired": [
+    0,
+    6
+   ],
+   "active": [
+    0,
+    6
+   ],
+   "mixed": [
+    1,
+    6
+   ],
+   "recreated": [
+    0,
+    6
+   ]
+  }
+ },
+ "main": {
+  "sha": "141ac18",
+  "stale_reply": [
+   1,
+   28
+  ],
+  "stale_pair": [
+   1,
+   20
+  ],
+  "live_recall": [
+   20,
+   24
+  ],
+  "specific_correct": [
+   12,
+   13
+  ],
+  "unprompted": [
+   0,
+   0
+  ],
+  "judge_failed": [
+   2,
+   30
+  ],
+  "request_leak": [
+   0,
+   12
+  ],
+  "life_keep": [
+   9,
+   12
+  ],
+  "kind_correct": [
+   9,
+   9
+  ],
+  "by_scenario": {
+   "ui_cancel": [
+    1,
+    6
+   ],
+   "fired": [
+    0,
+    6
+   ],
+   "active": [
+    0,
+    6
+   ],
+   "mixed": [
+    0,
+    4
+   ],
+   "recreated": [
+    0,
+    6
+   ]
+  }
+ }
+}

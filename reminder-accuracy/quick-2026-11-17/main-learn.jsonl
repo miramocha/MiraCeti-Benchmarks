@@ -1,0 +1,24 @@
+{"line": "remind me to check the dishwasher in 10 minutes", "expect": "none", "rep": 0, "added": [], "error": ""}
+{"line": "remind me to check the dishwasher in 10 minutes", "expect": "none", "rep": 1, "added": [], "error": ""}
+{"line": "remind me to check the dishwasher in 10 minutes", "expect": "none", "rep": 2, "added": [], "error": ""}
+{"line": "please remind me to call mom tomorrow at noon", "expect": "none", "rep": 0, "added": [], "error": ""}
+{"line": "please remind me to call mom tomorrow at noon", "expect": "none", "rep": 1, "added": [], "error": ""}
+{"line": "please remind me to call mom tomorrow at noon", "expect": "none", "rep": 2, "added": [], "error": ""}
+{"line": "wake me up at 6 tomorrow", "expect": "none", "rep": 0, "added": [], "error": ""}
+{"line": "wake me up at 6 tomorrow", "expect": "none", "rep": 1, "added": [], "error": ""}
+{"line": "wake me up at 6 tomorrow", "expect": "none", "rep": 2, "added": [], "error": ""}
+{"line": "cancel the dishwasher reminder", "expect": "none", "rep": 0, "added": [], "error": ""}
+{"line": "cancel the dishwasher reminder", "expect": "none", "rep": 1, "added": [], "error": ""}
+{"line": "cancel the dishwasher reminder", "expect": "none", "rep": 2, "added": [], "error": ""}
+{"line": "I finished the big quest in Elin yesterday", "expect": "event", "rep": 0, "added": [], "error": ""}
+{"line": "I finished the big quest in Elin yesterday", "expect": "event", "rep": 1, "added": [], "error": ""}
+{"line": "I finished the big quest in Elin yesterday", "expect": "event", "rep": 2, "added": [], "error": ""}
+{"line": "I have a cat named Mochi", "expect": "fact", "rep": 0, "added": [["fact", "Mira has a cat named Mochi."]], "error": ""}
+{"line": "I have a cat named Mochi", "expect": "fact", "rep": 1, "added": [["fact", "Mira has a cat named Mochi."]], "error": ""}
+{"line": "I have a cat named Mochi", "expect": "fact", "rep": 2, "added": [["fact", "Mira has a cat named Mochi."]], "error": ""}
+{"line": "I always use a kitchen timer when I bake bread", "expect": "fact", "rep": 0, "added": [["fact", "Mira uses a kitchen timer when she bakes bread."]], "error": ""}
+{"line": "I always use a kitchen timer when I bake bread", "expect": "fact", "rep": 1, "added": [["fact", "Mira uses a kitchen timer when she bakes bread."]], "error": ""}
+{"line": "I always use a kitchen timer when I bake bread", "expect": "fact", "rep": 2, "added": [["fact", "Mira uses a kitchen timer when she bakes bread."]], "error": ""}
+{"line": "I'm allergic to peanuts", "expect": "fact", "rep": 0, "added": [["fact", "Mira is allergic to peanuts."]], "error": ""}
+{"line": "I'm allergic to peanuts", "expect": "fact", "rep": 1, "added": [["fact", "Mira is allergic to peanuts."]], "error": ""}
+{"line": "I'm allergic to peanuts", "expect": "fact", "rep": 2, "added": [["fact", "Mira is allergic to peanuts."]], "error": ""}
