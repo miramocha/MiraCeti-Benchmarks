@@ -103,6 +103,10 @@ The judge is steady on the stale call. Its misses are on live reminders: it mark
 
 ## Runs
 
+### `adhoc-2026-11-16`
+
+The check run while fixing the bug, before this benchmark existed. It used a copy of real memory instead of these scenarios, so it publishes method and counts only. Reminder requests stored as memory fell from 9/18 to 0/18, and replies that treat an ended reminder as pending fell from 12/12 to about 1/12 across the two fixes. See [adhoc-2026-11-16](adhoc-2026-11-16/README.md).
+
 ### `quick-2026-11-17`
 
 3 reps, quick tier. Chat model `qwen3.5-4b`. Tool model `nvidia/nemotron-3-nano-4b`. Judge `qwen/qwen3.5-9b`. The report does not record the judge's thinking mode. Refs are `7fcacca` (before the reminder fixes) and `main` at `141ac18`.

@@ -8,7 +8,7 @@ Benchmarks and experiments for the MiraCeti apps. One directory per experiment, 
 
 | Benchmark | App | What it measures |
 | --- | --- | --- |
-| [Reminder accuracy](reminder-accuracy/README.md) | CetiMind | Whether a reply matches the real schedule, and whether a reminder request is stored as memory. |
+| [Reminder accuracy](reminder-accuracy/README.md) | CetiMind | Whether a reply matches the real schedule, and whether a reminder request is stored as memory. Includes the ad-hoc before/after check from the fix. |
 
 ### One-off experiments, by date
 
@@ -32,7 +32,6 @@ Benchmarks and experiments for the MiraCeti apps. One directory per experiment, 
 | 2026-11-16 | [Tool model split](tool-model-split-2026-11-16/README.md) | CetiMind | One model vs a separate tool model (`qwen3.5-4b` chat, `nemotron-3-nano-4b` tools), and tool calls with thinking off: needed tools called, stray calls, and turn time over 23 lines. |
 | 2026-11-16 | [Judge model](judge-model-2026-11-16/README.md) | CetiMind | `qwen3.5-4b` vs `nemotron-3-nano-4b` as the learn-step judge: fact extraction and fact updates on hand-written lines. |
 | 2026-11-16 | [GPU memory and model switching](gpu-memory-model-switch-2026-11-16/README.md) | CetiMind | Why alternating two models on a 12 GB GPU cost about 1 s per switch (memory spill), and what K/V `q8_0` plus context 6144 freed. |
-| 2026-11-16 | [Stale reminder fix](stale-reminder-fix-2026-11-16/README.md) | CetiMind | Before and after counts for the stale-reminder fixes, run on a copy of real memory. Counts only. |
 | 2026-11-17 | [Turn latency](turn-latency-2026-11-17/README.md) | CetiMind | Where reply time goes, from the app log: thinking turns, the router, and tool-call retries. |
 
 ## Adding an experiment
