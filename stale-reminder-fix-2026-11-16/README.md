@@ -1,6 +1,6 @@
 # Stale reminder fix: before and after
 
-A one-off check, run while fixing CetiMind's stale-reminder bug: after a reminder was canceled, replies sometimes still brought it up. It came before the [reminder accuracy](../reminder-accuracy/methodology.md) benchmark, which replaces it.
+A one-off check, run while fixing CetiMind's stale-reminder bug: after a reminder was canceled, replies sometimes still brought it up. It came before the [reminder accuracy](../reminder-accuracy/README.md) benchmark, which replaces it.
 
 The runs used a copy of real CetiMind memory, so no reply text is published here. Only the method and the counts are.
 

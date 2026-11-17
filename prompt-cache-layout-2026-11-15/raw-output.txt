@@ -1,0 +1,89 @@
+E_stable_with_intent_call  r0 t0 ttft   401 ms  prompt 1754  tools 8  intent 382 ms
+E_stable_with_intent_call  r0 t1 ttft   199 ms  prompt 1819  tools 8  intent 176 ms
+E_stable_with_intent_call  r0 t2 ttft   211 ms  prompt 1881  tools 8  intent 232 ms
+E_stable_with_intent_call  r0 t3 ttft   221 ms  prompt 1951  tools 8  intent 189 ms
+E_stable_with_intent_call  r0 t4 ttft   229 ms  prompt 2021  tools 8  intent 176 ms
+E_stable_with_intent_call  r0 t5 ttft   194 ms  prompt 2089  tools 8  intent 172 ms
+E_stable_with_intent_call  r0 t6 ttft   217 ms  prompt 2149  tools 8  intent 166 ms
+E_stable_with_intent_call  r0 t7 ttft   210 ms  prompt 2221  tools 8  intent 180 ms
+A_today                    r0 t0 ttft   267 ms  prompt 1750  tools 8
+A_today                    r0 t1 ttft   269 ms  prompt 1818  tools 8
+A_today                    r0 t2 ttft   284 ms  prompt 1878  tools 8
+A_today                    r0 t3 ttft   351 ms  prompt 1946  tools 8
+A_today                    r0 t4 ttft   316 ms  prompt 2022  tools 8
+A_today                    r0 t5 ttft   326 ms  prompt 2079  tools 8
+A_today                    r0 t6 ttft   350 ms  prompt 2151  tools 8
+A_today                    r0 t7 ttft   489 ms  prompt 2216  tools 8
+D_stable_no_tools          r0 t0 ttft   505 ms  prompt 818  tools 0
+D_stable_no_tools          r0 t1 ttft   252 ms  prompt 876  tools 0
+D_stable_no_tools          r0 t2 ttft   177 ms  prompt 947  tools 0
+D_stable_no_tools          r0 t3 ttft   243 ms  prompt 1010  tools 0
+D_stable_no_tools          r0 t4 ttft   207 ms  prompt 1084  tools 0
+D_stable_no_tools          r0 t5 ttft   196 ms  prompt 1143  tools 0
+D_stable_no_tools          r0 t6 ttft   194 ms  prompt 1211  tools 0
+D_stable_no_tools          r0 t7 ttft   190 ms  prompt 1281  tools 0
+B_stable                   r0 t0 ttft   334 ms  prompt 1761  tools 8
+B_stable                   r0 t1 ttft   192 ms  prompt 1818  tools 8
+B_stable                   r0 t2 ttft   206 ms  prompt 1882  tools 8
+B_stable                   r0 t3 ttft   185 ms  prompt 1956  tools 8
+B_stable                   r0 t4 ttft   181 ms  prompt 2020  tools 8
+B_stable                   r0 t5 ttft   192 ms  prompt 2093  tools 8
+B_stable                   r0 t6 ttft   181 ms  prompt 2152  tools 8
+B_stable                   r0 t7 ttft   196 ms  prompt 2225  tools 8
+C_stable_toolsets          r0 t0 ttft   307 ms  prompt 810  tools 0
+C_stable_toolsets          r0 t1 ttft   385 ms  prompt 1824  tools 8
+C_stable_toolsets          r0 t2 ttft   543 ms  prompt 1553  tools 3
+C_stable_toolsets          r0 t3 ttft   226 ms  prompt 1018  tools 0
+C_stable_toolsets          r0 t4 ttft   526 ms  prompt 1345  tools 1
+C_stable_toolsets          r0 t5 ttft   282 ms  prompt 2093  tools 8
+C_stable_toolsets          r0 t6 ttft   555 ms  prompt 1490  tools 1
+C_stable_toolsets          r0 t7 ttft   340 ms  prompt 1269  tools 0
+B_stable                   r1 t0 ttft   298 ms  prompt 1759  tools 8
+B_stable                   r1 t1 ttft   174 ms  prompt 1820  tools 8
+B_stable                   r1 t2 ttft   174 ms  prompt 1892  tools 8
+B_stable                   r1 t3 ttft   159 ms  prompt 1949  tools 8
+B_stable                   r1 t4 ttft   181 ms  prompt 2031  tools 8
+B_stable                   r1 t5 ttft   174 ms  prompt 2090  tools 8
+B_stable                   r1 t6 ttft   175 ms  prompt 2160  tools 8
+B_stable                   r1 t7 ttft   173 ms  prompt 2217  tools 8
+A_today                    r1 t0 ttft   276 ms  prompt 1753  tools 8
+A_today                    r1 t1 ttft   297 ms  prompt 1818  tools 8
+A_today                    r1 t2 ttft   293 ms  prompt 1882  tools 8
+A_today                    r1 t3 ttft   307 ms  prompt 1948  tools 8
+A_today                    r1 t4 ttft   345 ms  prompt 2025  tools 8
+A_today                    r1 t5 ttft   350 ms  prompt 2079  tools 8
+A_today                    r1 t6 ttft   358 ms  prompt 2152  tools 8
+A_today                    r1 t7 ttft   365 ms  prompt 2216  tools 8
+D_stable_no_tools          r1 t0 ttft   246 ms  prompt 816  tools 0
+D_stable_no_tools          r1 t1 ttft   168 ms  prompt 872  tools 0
+D_stable_no_tools          r1 t2 ttft   160 ms  prompt 944  tools 0
+D_stable_no_tools          r1 t3 ttft   161 ms  prompt 1014  tools 0
+D_stable_no_tools          r1 t4 ttft   176 ms  prompt 1079  tools 0
+D_stable_no_tools          r1 t5 ttft   162 ms  prompt 1143  tools 0
+D_stable_no_tools          r1 t6 ttft   186 ms  prompt 1212  tools 0
+D_stable_no_tools          r1 t7 ttft   168 ms  prompt 1276  tools 0
+C_stable_toolsets          r1 t0 ttft   233 ms  prompt 810  tools 0
+C_stable_toolsets          r1 t1 ttft   369 ms  prompt 1825  tools 8
+C_stable_toolsets          r1 t2 ttft   302 ms  prompt 1547  tools 3
+C_stable_toolsets          r1 t3 ttft   258 ms  prompt 1018  tools 0
+C_stable_toolsets          r1 t4 ttft   340 ms  prompt 1348  tools 1
+C_stable_toolsets          r1 t5 ttft   272 ms  prompt 2091  tools 8
+C_stable_toolsets          r1 t6 ttft   354 ms  prompt 1491  tools 1
+C_stable_toolsets          r1 t7 ttft   248 ms  prompt 1272  tools 0
+E_stable_with_intent_call  r1 t0 ttft   316 ms  prompt 1754  tools 8  intent 215 ms
+E_stable_with_intent_call  r1 t1 ttft   211 ms  prompt 1817  tools 8  intent 200 ms
+E_stable_with_intent_call  r1 t2 ttft   215 ms  prompt 1886  tools 8  intent 234 ms
+E_stable_with_intent_call  r1 t3 ttft   216 ms  prompt 1955  tools 8  intent 219 ms
+E_stable_with_intent_call  r1 t4 ttft   210 ms  prompt 2024  tools 8  intent 179 ms
+E_stable_with_intent_call  r1 t5 ttft   189 ms  prompt 2081  tools 8  intent 179 ms
+E_stable_with_intent_call  r1 t6 ttft   235 ms  prompt 2159  tools 8  intent 167 ms
+E_stable_with_intent_call  r1 t7 ttft   207 ms  prompt 2223  tools 8  intent 202 ms
+
+variant                    | median ttft, turns 2-8 | mean
+E_stable_with_intent_call  |   211 ms | 212 ms
+A_today                    |   345 ms | 336 ms
+D_stable_no_tools          |   186 ms | 189 ms
+B_stable                   |   181 ms | 182 ms
+C_stable_toolsets          |   340 ms | 357 ms
+
+[exited with code 0]

@@ -1,0 +1,4 @@
+{"condition": "card nearly full, context 8192, no K/V quantization", "before": "after_nemotron", "route_ms": [371, 318, 291, 346, 299, 274, 349, 506, 334, 293]}
+{"condition": "card nearly full, context 8192, no K/V quantization", "before": "after_qwen", "route_ms": [1344, 1242, 1345, 1181, 1368, 1945, 1371, 1300, 1121, 919]}
+{"condition": "after K/V q8_0 and context 6144", "before": "after_nemotron", "route_ms": [321, 289, 325, 302, 329, 280, 337, 346, 329, 335]}
+{"condition": "after K/V q8_0 and context 6144", "before": "after_qwen", "route_ms": [252, 284, 318, 253, 249, 237, 231, 246, 225, 298]}

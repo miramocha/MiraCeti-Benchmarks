@@ -1,0 +1,110 @@
+{"part": "gate", "lang": "en", "case": 0, "line": "I love ramen, especially tonkotsu.", "label": true, "cand": "kev", "repeat": 0, "p": 0.3808, "pred": false, "ms": 1151}
+{"part": "gate", "lang": "en", "case": 1, "line": "My sister Aiko lives in Osaka.", "label": true, "cand": "kev", "repeat": 0, "p": 0.1734, "pred": false, "ms": 1260}
+{"part": "gate", "lang": "en", "case": 2, "line": "I work as a game developer at a small indie studio.", "label": true, "cand": "kev", "repeat": 0, "p": 0.2758, "pred": false, "ms": 1128}
+{"part": "gate", "lang": "en", "case": 3, "line": "I'm allergic to peanuts.", "label": true, "cand": "kev", "repeat": 0, "p": 0.2864, "pred": false, "ms": 1151}
+{"part": "gate", "lang": "en", "case": 4, "line": "My cat's name is Mochi and she's 3 years old.", "label": true, "cand": "kev", "repeat": 0, "p": 0.4658, "pred": false, "ms": 1226}
+{"part": "gate", "lang": "en", "case": 5, "line": "I don't like horror movies.", "label": true, "cand": "kev", "repeat": 0, "p": 0.2538, "pred": false, "ms": 1058}
+{"part": "gate", "lang": "en", "case": 6, "line": "I just finished my first marathon yesterday!", "label": true, "cand": "kev", "repeat": 0, "p": 0.523, "pred": true, "ms": 1083}
+{"part": "gate", "lang": "en", "case": 7, "line": "I'm moving to Kyoto next month.", "label": true, "cand": "kev", "repeat": 0, "p": 0.2897, "pred": false, "ms": 1148}
+{"part": "gate", "lang": "en", "case": 8, "line": "Remember that my mom's birthday is May 3rd.", "label": true, "cand": "kev", "repeat": 0, "p": 0.3726, "pred": false, "ms": 1245}
+{"part": "gate", "lang": "en", "case": 9, "line": "I've been learning Korean for two years now.", "label": true, "cand": "kev", "repeat": 0, "p": 0.3071, "pred": false, "ms": 1273}
+{"part": "gate", "lang": "en", "case": 10, "line": "My main editor is Neovim, I can't stand VS Code.", "label": true, "cand": "kev", "repeat": 0, "p": 0.3183, "pred": false, "ms": 1346}
+{"part": "gate", "lang": "en", "case": 11, "line": "I went to the dentist this morning and got a filling.", "label": true, "cand": "kev", "repeat": 0, "p": 0.2578, "pred": false, "ms": 1128}
+{"part": "gate", "lang": "en", "case": 12, "line": "Honestly I'm vegetarian, so no meat for me.", "label": true, "cand": "kev", "repeat": 0, "p": 0.3372, "pred": false, "ms": 1064}
+{"part": "gate", "lang": "en", "case": 13, "line": "My partner's name is Sam.", "label": true, "cand": "kev", "repeat": 0, "p": 0.2865, "pred": false, "ms": 1121}
+{"part": "gate", "lang": "en", "case": 14, "line": "lol yeah I only drink oat milk", "label": true, "cand": "kev", "repeat": 0, "p": 0.2624, "pred": false, "ms": 1074}
+{"part": "gate", "lang": "en", "case": 15, "line": "lol that's so funny", "label": false, "cand": "kev", "repeat": 0, "p": 0.2623, "pred": false, "ms": 1128}
+{"part": "gate", "lang": "en", "case": 16, "line": "good night!", "label": false, "cand": "kev", "repeat": 0, "p": 0.2157, "pred": false, "ms": 977}
+{"part": "gate", "lang": "en", "case": 17, "line": "What time is it?", "label": false, "cand": "kev", "repeat": 0, "p": 0.2257, "pred": false, "ms": 1070}
+{"part": "gate", "lang": "en", "case": 18, "line": "Can you remind me to drink water in 20 minutes?", "label": false, "cand": "kev", "repeat": 0, "p": 0.4272, "pred": false, "ms": 1089}
+{"part": "gate", "lang": "en", "case": 19, "line": "How are you feeling today?", "label": false, "cand": "kev", "repeat": 0, "p": 0.3836, "pred": false, "ms": 1100}
+{"part": "gate", "lang": "en", "case": 20, "line": "Do you like ramen?", "label": false, "cand": "kev", "repeat": 0, "p": 0.579, "pred": true, "ms": 1132}
+{"part": "gate", "lang": "en", "case": 21, "line": "ok", "label": false, "cand": "kev", "repeat": 0, "p": 0.2272, "pred": false, "ms": 1293}
+{"part": "gate", "lang": "en", "case": 22, "line": "Tell me a joke.", "label": false, "cand": "kev", "repeat": 0, "p": 0.1202, "pred": false, "ms": 1235}
+{"part": "gate", "lang": "en", "case": 23, "line": "haha nice", "label": false, "cand": "kev", "repeat": 0, "p": 0.3032, "pred": false, "ms": 1466}
+{"part": "gate", "lang": "en", "case": 24, "line": "What's the weather in Tokyo?", "label": false, "cand": "kev", "repeat": 0, "p": 0.3201, "pred": false, "ms": 1287}
+{"part": "gate", "lang": "en", "case": 25, "line": "Thanks, that helps.", "label": false, "cand": "kev", "repeat": 0, "p": 0.2173, "pred": false, "ms": 1086}
+{"part": "gate", "lang": "en", "case": 26, "line": "Hmm, I'm not sure.", "label": false, "cand": "kev", "repeat": 0, "p": 0.11, "pred": false, "ms": 1078}
+{"part": "gate", "lang": "en", "case": 27, "line": "Search the web for Godot 4.6 news.", "label": false, "cand": "kev", "repeat": 0, "p": 0.2137, "pred": false, "ms": 1086}
+{"part": "gate", "lang": "en", "case": 28, "line": "What did I tell you about my sister?", "label": false, "cand": "kev", "repeat": 0, "p": 0.3832, "pred": false, "ms": 1044}
+{"part": "gate", "lang": "en", "case": 29, "line": "wait what", "label": false, "cand": "kev", "repeat": 0, "p": 0.2095, "pred": false, "ms": 1192}
+{"part": "gate", "lang": "ja", "case": 0, "line": "ラーメンが大好き、特に豚骨。", "label": true, "cand": "kev", "repeat": 0, "p": 0.592, "pred": true, "ms": 1086}
+{"part": "gate", "lang": "ja", "case": 1, "line": "妹のアイコは大阪に住んでる。", "label": true, "cand": "kev", "repeat": 0, "p": 0.2671, "pred": false, "ms": 1131}
+{"part": "gate", "lang": "ja", "case": 2, "line": "小さなインディースタジオでゲーム開発者として働いてる。", "label": true, "cand": "kev", "repeat": 0, "p": 0.2832, "pred": false, "ms": 1065}
+{"part": "gate", "lang": "ja", "case": 3, "line": "ピーナッツアレルギーなんだ。", "label": true, "cand": "kev", "repeat": 0, "p": 0.37, "pred": false, "ms": 1196}
+{"part": "gate", "lang": "ja", "case": 4, "line": "猫の名前はモチで、3歳だよ。", "label": true, "cand": "kev", "repeat": 0, "p": 0.2731, "pred": false, "ms": 1232}
+{"part": "gate", "lang": "ja", "case": 5, "line": "ホラー映画は苦手。", "label": true, "cand": "kev", "repeat": 0, "p": 0.2299, "pred": false, "ms": 1075}
+{"part": "gate", "lang": "ja", "case": 6, "line": "昨日初めてフルマラソンを完走した！", "label": true, "cand": "kev", "repeat": 0, "p": 0.5422, "pred": true, "ms": 1325}
+{"part": "gate", "lang": "ja", "case": 7, "line": "来月京都に引っ越すんだ。", "label": true, "cand": "kev", "repeat": 0, "p": 0.3331, "pred": false, "ms": 1147}
+{"part": "gate", "lang": "ja", "case": 8, "line": "母の誕生日は5月3日だって覚えておいて。", "label": true, "cand": "kev", "repeat": 0, "p": 0.5519, "pred": true, "ms": 1403}
+{"part": "gate", "lang": "ja", "case": 9, "line": "韓国語を勉強して2年になる。", "label": true, "cand": "kev", "repeat": 0, "p": 0.2759, "pred": false, "ms": 1191}
+{"part": "gate", "lang": "ja", "case": 10, "line": "エディタはNeovim派で、VS Codeは無理。", "label": true, "cand": "kev", "repeat": 0, "p": 0.3899, "pred": false, "ms": 1146}
+{"part": "gate", "lang": "ja", "case": 11, "line": "今朝歯医者に行って詰め物をした。", "label": true, "cand": "kev", "repeat": 0, "p": 0.2434, "pred": false, "ms": 1071}
+{"part": "gate", "lang": "ja", "case": 12, "line": "実はベジタリアンだから肉は食べない。", "label": true, "cand": "kev", "repeat": 0, "p": 0.4509, "pred": false, "ms": 1081}
+{"part": "gate", "lang": "ja", "case": 13, "line": "パートナーの名前はサムです。", "label": true, "cand": "kev", "repeat": 0, "p": 0.3234, "pred": false, "ms": 1179}
+{"part": "gate", "lang": "ja", "case": 14, "line": "笑 オーツミルクしか飲まないんだよね", "label": true, "cand": "kev", "repeat": 0, "p": 0.3313, "pred": false, "ms": 1072}
+{"part": "gate", "lang": "ja", "case": 15, "line": "草", "label": false, "cand": "kev", "repeat": 0, "p": 0.2551, "pred": false, "ms": 1053}
+{"part": "gate", "lang": "ja", "case": 16, "line": "おやすみ！", "label": false, "cand": "kev", "repeat": 0, "p": 0.2659, "pred": false, "ms": 1051}
+{"part": "gate", "lang": "ja", "case": 17, "line": "今何時？", "label": false, "cand": "kev", "repeat": 0, "p": 0.2083, "pred": false, "ms": 1254}
+{"part": "gate", "lang": "ja", "case": 18, "line": "20分後に水を飲むようにリマインドして。", "label": false, "cand": "kev", "repeat": 0, "p": 0.2692, "pred": false, "ms": 1184}
+{"part": "gate", "lang": "ja", "case": 19, "line": "今日の気分はどう？", "label": false, "cand": "kev", "repeat": 0, "p": 0.2905, "pred": false, "ms": 1017}
+{"part": "gate", "lang": "ja", "case": 20, "line": "ラーメン好き？", "label": false, "cand": "kev", "repeat": 0, "p": 0.5144, "pred": true, "ms": 1140}
+{"part": "gate", "lang": "ja", "case": 21, "line": "うん", "label": false, "cand": "kev", "repeat": 0, "p": 0.2678, "pred": false, "ms": 1061}
+{"part": "gate", "lang": "ja", "case": 22, "line": "何か面白い話して。", "label": false, "cand": "kev", "repeat": 0, "p": 0.2832, "pred": false, "ms": 1093}
+{"part": "gate", "lang": "ja", "case": 23, "line": "いいね笑", "label": false, "cand": "kev", "repeat": 0, "p": 0.3119, "pred": false, "ms": 1272}
+{"part": "gate", "lang": "ja", "case": 24, "line": "東京の天気は？", "label": false, "cand": "kev", "repeat": 0, "p": 0.2185, "pred": false, "ms": 1665}
+{"part": "gate", "lang": "ja", "case": 25, "line": "ありがとう、助かる。", "label": false, "cand": "kev", "repeat": 0, "p": 0.2905, "pred": false, "ms": 1493}
+{"part": "gate", "lang": "ja", "case": 26, "line": "うーん、どうだろう。", "label": false, "cand": "kev", "repeat": 0, "p": 0.1674, "pred": false, "ms": 1078}
+{"part": "gate", "lang": "ja", "case": 27, "line": "Godot 4.6のニュースを検索して。", "label": false, "cand": "kev", "repeat": 0, "p": 0.2796, "pred": false, "ms": 1293}
+{"part": "gate", "lang": "ja", "case": 28, "line": "妹について何て言ったっけ？", "label": false, "cand": "kev", "repeat": 0, "p": 0.3351, "pred": false, "ms": 1238}
+{"part": "gate", "lang": "ja", "case": 29, "line": "え、なに？", "label": false, "cand": "kev", "repeat": 0, "p": 0.2051, "pred": false, "ms": 1203}
+{"part": "dedupe", "lang": "en", "case": 0, "stored": "User loves ramen.", "new": "User really loves ramen.", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.5122, "probabilities": {"same": 0.6748, "update": 0.2153, "different": 0.1099}}, "ms": 1160}
+{"part": "dedupe", "lang": "en", "case": 1, "stored": "User's cat is named Mochi.", "new": "User has a cat called Mochi.", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.646, "probabilities": {"same": 0.764, "update": 0.1407, "different": 0.0953}}, "ms": 1273}
+{"part": "dedupe", "lang": "en", "case": 2, "stored": "User works as a game developer.", "new": "User develops games for a living.", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.278, "probabilities": {"same": 0.5187, "update": 0.3589, "different": 0.1224}}, "ms": 1131}
+{"part": "dedupe", "lang": "en", "case": 3, "stored": "User is allergic to peanuts.", "new": "User has a peanut allergy.", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.6412, "probabilities": {"same": 0.7608, "update": 0.154, "different": 0.0852}}, "ms": 1177}
+{"part": "dedupe", "lang": "en", "case": 4, "stored": "User's sister Aiko lives in Osaka.", "new": "User's sister Aiko is based in Osaka.", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.5241, "probabilities": {"same": 0.6827, "update": 0.2169, "different": 0.1004}}, "ms": 1463}
+{"part": "dedupe", "lang": "en", "case": 5, "stored": "User's favorite color is blue.", "new": "User's favorite color is now green.", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.6247, "probabilities": {"same": 0.1193, "update": 0.7498, "different": 0.1309}}, "ms": 1222}
+{"part": "dedupe", "lang": "en", "case": 6, "stored": "User lives in Tokyo.", "new": "User moved to Kyoto last month.", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.5498, "probabilities": {"same": 0.1185, "update": 0.6999, "different": 0.1817}}, "ms": 1393}
+{"part": "dedupe", "lang": "en", "case": 7, "stored": "User's cat Mochi is 3 years old.", "new": "User's cat Mochi just turned 4.", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.3105, "probabilities": {"same": 0.3261, "update": 0.5403, "different": 0.1336}}, "ms": 1537}
+{"part": "dedupe", "lang": "en", "case": 8, "stored": "User uses VS Code.", "new": "User switched from VS Code to Neovim.", "label": "update", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.2582, "probabilities": {"same": 0.1075, "update": 0.3871, "different": 0.5054}}, "ms": 1219}
+{"part": "dedupe", "lang": "en", "case": 9, "stored": "User is learning Korean.", "new": "User has stopped learning Korean.", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.2743, "probabilities": {"same": 0.1987, "update": 0.5162, "different": 0.2851}}, "ms": 1841}
+{"part": "dedupe", "lang": "en", "case": 10, "stored": "User loves ramen.", "new": "User dislikes sushi.", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.1516, "probabilities": {"same": 0.2173, "update": 0.3482, "different": 0.4344}}, "ms": 2799}
+{"part": "dedupe", "lang": "en", "case": 11, "stored": "User's sister Aiko lives in Osaka.", "new": "User's brother Ken lives in Sapporo.", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.1783, "probabilities": {"same": 0.205, "update": 0.3428, "different": 0.4522}}, "ms": 2423}
+{"part": "dedupe", "lang": "en", "case": 12, "stored": "User works as a game developer.", "new": "User plays guitar on weekends.", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.1599, "probabilities": {"same": 0.2024, "update": 0.3577, "different": 0.4399}}, "ms": 2034}
+{"part": "dedupe", "lang": "en", "case": 13, "stored": "User's favorite color is blue.", "new": "User's favorite season is autumn.", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.2397, "probabilities": {"same": 0.2031, "update": 0.3038, "different": 0.4931}}, "ms": 2226}
+{"part": "dedupe", "lang": "en", "case": 14, "stored": "User is allergic to peanuts.", "new": "User is allergic to cats.", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.2181, "probabilities": {"same": 0.2675, "update": 0.2537, "different": 0.4788}}, "ms": 1890}
+{"part": "dedupe", "lang": "ja", "case": 0, "stored": "ユーザーはラーメンが大好き。", "new": "ユーザーはラーメンがとても好き。", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.6242, "probabilities": {"same": 0.7495, "update": 0.1515, "different": 0.099}}, "ms": 1056}
+{"part": "dedupe", "lang": "ja", "case": 1, "stored": "ユーザーの猫の名前はモチ。", "new": "ユーザーはモチという猫を飼っている。", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.5927, "probabilities": {"same": 0.7285, "update": 0.1593, "different": 0.1123}}, "ms": 2234}
+{"part": "dedupe", "lang": "ja", "case": 2, "stored": "ユーザーはゲーム開発者として働いている。", "new": "ユーザーの仕事はゲーム開発。", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.4417, "probabilities": {"same": 0.6278, "update": 0.2656, "different": 0.1066}}, "ms": 2774}
+{"part": "dedupe", "lang": "ja", "case": 3, "stored": "ユーザーはピーナッツアレルギー。", "new": "ユーザーはピーナッツにアレルギーがある。", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.6305, "probabilities": {"same": 0.7537, "update": 0.1515, "different": 0.0948}}, "ms": 1049}
+{"part": "dedupe", "lang": "ja", "case": 4, "stored": "ユーザーの妹アイコは大阪に住んでいる。", "new": "ユーザーの妹アイコの住まいは大阪。", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.4545, "probabilities": {"same": 0.6364, "update": 0.2444, "different": 0.1192}}, "ms": 913}
+{"part": "dedupe", "lang": "ja", "case": 5, "stored": "ユーザーの好きな色は青。", "new": "ユーザーの好きな色は今は緑。", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.6393, "probabilities": {"same": 0.1219, "update": 0.7595, "different": 0.1186}}, "ms": 998}
+{"part": "dedupe", "lang": "ja", "case": 6, "stored": "ユーザーは東京に住んでいる。", "new": "ユーザーは先月京都に引っ越した。", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.5005, "probabilities": {"same": 0.123, "update": 0.667, "different": 0.21}}, "ms": 939}
+{"part": "dedupe", "lang": "ja", "case": 7, "stored": "ユーザーの猫モチは3歳。", "new": "ユーザーの猫モチは4歳になった。", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.4655, "probabilities": {"same": 0.2357, "update": 0.6437, "different": 0.1206}}, "ms": 911}
+{"part": "dedupe", "lang": "ja", "case": 8, "stored": "ユーザーはVS Codeを使っている。", "new": "ユーザーはVS CodeからNeovimに乗り換えた。", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.3338, "probabilities": {"same": 0.1376, "update": 0.5559, "different": 0.3066}}, "ms": 1037}
+{"part": "dedupe", "lang": "ja", "case": 9, "stored": "ユーザーは韓国語を勉強している。", "new": "ユーザーは韓国語の勉強をやめた。", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.5859, "probabilities": {"same": 0.1308, "update": 0.7239, "different": 0.1453}}, "ms": 866}
+{"part": "dedupe", "lang": "ja", "case": 10, "stored": "ユーザーはラーメンが大好き。", "new": "ユーザーは寿司が苦手。", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.1212, "probabilities": {"same": 0.1924, "update": 0.3935, "different": 0.4141}}, "ms": 1003}
+{"part": "dedupe", "lang": "ja", "case": 11, "stored": "ユーザーの妹アイコは大阪に住んでいる。", "new": "ユーザーの兄ケンは札幌に住んでいる。", "label": "different", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.1407, "probabilities": {"same": 0.1696, "update": 0.4271, "different": 0.4033}}, "ms": 1152}
+{"part": "dedupe", "lang": "ja", "case": 12, "stored": "ユーザーはゲーム開発者として働いている。", "new": "ユーザーは週末にギターを弾く。", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.124, "probabilities": {"same": 0.2183, "update": 0.3657, "different": 0.416}}, "ms": 873}
+{"part": "dedupe", "lang": "ja", "case": 13, "stored": "ユーザーの好きな色は青。", "new": "ユーザーの好きな季節は秋。", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.1954, "probabilities": {"same": 0.2063, "update": 0.3301, "different": 0.4636}}, "ms": 907}
+{"part": "dedupe", "lang": "ja", "case": 14, "stored": "ユーザーはピーナッツアレルギー。", "new": "ユーザーは猫アレルギー。", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.2579, "probabilities": {"same": 0.2088, "update": 0.2859, "different": 0.5053}}, "ms": 869}
+{"part": "ttft", "during": "idle", "repeat": 0, "ttft_ms": 102}
+{"part": "ttft", "during": "idle", "repeat": 1, "ttft_ms": 86}
+{"part": "ttft", "during": "idle", "repeat": 2, "ttft_ms": 92}
+{"part": "ttft", "during": "idle", "repeat": 3, "ttft_ms": 64}
+{"part": "ttft", "during": "idle", "repeat": 4, "ttft_ms": 79}
+{"part": "ttft", "during": "idle", "repeat": 5, "ttft_ms": 79}
+{"part": "ttft", "during": "idle", "repeat": 6, "ttft_ms": 68}
+{"part": "ttft", "during": "idle", "repeat": 7, "ttft_ms": 70}
+{"part": "ttft", "during": "idle", "repeat": 8, "ttft_ms": 92}
+{"part": "ttft", "during": "idle", "repeat": 9, "ttft_ms": 72}
+{"part": "ttft", "during": "kev", "repeat": 0, "ttft_ms": 115}
+{"part": "ttft", "during": "kev", "repeat": 1, "ttft_ms": 108}
+{"part": "ttft", "during": "kev", "repeat": 2, "ttft_ms": 105}
+{"part": "ttft", "during": "kev", "repeat": 3, "ttft_ms": 113}
+{"part": "ttft", "during": "kev", "repeat": 4, "ttft_ms": 86}
+{"part": "ttft", "during": "kev", "repeat": 5, "ttft_ms": 103}
+{"part": "ttft", "during": "kev", "repeat": 6, "ttft_ms": 117}
+{"part": "ttft", "during": "kev", "repeat": 7, "ttft_ms": 105}
+{"part": "ttft", "during": "kev", "repeat": 8, "ttft_ms": 110}
+{"part": "ttft", "during": "kev", "repeat": 9, "ttft_ms": 104}

@@ -1,0 +1,5 @@
+# Agent instructions and editor state stay local.
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+.cursor/

@@ -1,0 +1,78 @@
+persona: Persona | reps: 3
+   ok    64201ms r=0 'remind me to drink water in 20 minutes' -> {"prompt":"Tell User to drink some water.","in_seconds":1200}
+   MISS    985ms r=0 'remind me to drink water in 20 minutes' -> "Alright Senpai, I'll set a reminder for you to chug some water in twen"
+   MISS    697ms r=0 'remind me to drink water in 20 minutes' -> "I'll keep an eye on that for you, Senpai. But be warned, if I see you "
+   MISS    797ms r=0 'can you remind me at 9pm to call mom' -> "Alright, Senpai, I've got that set for 9 PM. But don't think I'm going"
+   MISS    645ms r=0 'can you remind me at 9pm to call mom' -> "Sure, Senpai. I'll set it up for 9 PM. But don't let the reminder keep"
+   MISS    513ms r=0 'can you remind me at 9pm to call mom' -> "Sure, senpai. I'll set that up for you. Just don't forget to actually "
+   MISS    707ms r=0 'every day at 8am tell me to stretch' -> "Fine, senpai, I’ll make sure you don't forget to stretch. Just don't e"
+   MISS   1023ms r=0 'every day at 8am tell me to stretch' -> "Senpai, I'll set a reminder for you to stretch every day at 8 AM. Don'"
+   MISS    824ms r=0 'every day at 8am tell me to stretch' -> "Got it, senpai. I'll make sure you don't skip your morning stretches. "
+   MISS    667ms r=0 'ping me in an hour about the laundry' -> "Senpai, I'll be here waiting for you to finish with your projects. Jus"
+   MISS    640ms r=0 'ping me in an hour about the laundry' -> "Senpai, sure thing. I'll remind you to grab those clothes later. Just "
+   MISS    562ms r=0 'ping me in an hour about the laundry' -> "Fine, senpai, I'll go set a reminder for you. Just don't expect me to "
+   MISS    757ms r=0 'set a reminder for tomorrow 3pm, dentist' -> "Senpai, I've got the reminder set for your 3 PM dentist appointment to"
+   MISS    889ms r=0 'set a reminder for tomorrow 3pm, dentist' -> "You want me to set a reminder for senpai's dental appointment at 3 p.m"
+   MISS    494ms r=0 'set a reminder for tomorrow 3pm, dentist' -> "Senpai, I've set the reminder for tomorrow at 3 PM. Don't forget to ge"
+   MISS    596ms r=0 'hey in 10 min tell me to check the oven' -> "Got it, senpai. I'll make sure you check the oven in ten minutes. Don'"
+   MISS    644ms r=0 'hey in 10 min tell me to check the oven' -> "I'll set a reminder for you to check the oven in ten minutes. But hey,"
+   MISS    850ms r=0 'hey in 10 min tell me to check the oven' -> "Alright, senpai, I've got it noted. In ten minutes, I'll remind you to"
+9b-off: 1/18 scheduled, avg 4250 ms, median reasoning 0, false calls 0/6, errors 0
+
+   MISS    526ms r=0 'remind me to drink water in 20 minutes' -> 'Done. In twenty minutes I’ll remind senpai to chug some water so you d'
+   MISS    603ms r=0 'remind me to drink water in 20 minutes' -> 'Got it. In 20 minutes I’ll remind senpai to drink some water. Don’t fo'
+   MISS    688ms r=0 'remind me to drink water in 20 minutes' -> 'Got it, senpai. I’ll remind you to drink water in 20 minutes. Just don'
+   MISS    411ms r=0 'can you remind me at 9pm to call mom' -> 'Got it. I’ll remind you to call Mom at 9 PM every day.'
+   MISS    620ms r=0 'can you remind me at 9pm to call mom' -> 'Sure thing, senpai. I’ll set a reminder for 9 PM tonight to call Mom. '
+   MISS    834ms r=0 'can you remind me at 9pm to call mom' -> "I don't know what time it is where you are right now, so if I set this"
+   MISS    647ms r=0 'every day at 8am tell me to stretch' -> "Alright senpai, I've got you covered for stretching every day at 8 a.m"
+   MISS    583ms r=0 'every day at 8am tell me to stretch' -> 'Got it. Every morning at 8:00, I’ll remind you to stretch. Don’t slack'
+   MISS    523ms r=0 'every day at 8am tell me to stretch' -> "Got it. Every day at 8 AM, I’ll remind you to stretch. Don't forget to"
+   MISS    530ms r=0 'ping me in an hour about the laundry' -> "Got it. I’ll ping you about the laundry in an hour. Don't get too comf"
+   MISS    660ms r=0 'ping me in an hour about the laundry' -> "Got it. I'll ping you about the laundry in an hour. Don't think I'm go"
+   MISS    298ms r=0 'ping me in an hour about the laundry' -> "Got it. I'll ping you about the laundry in an hour."
+   MISS    545ms r=0 'set a reminder for tomorrow 3pm, dentist' -> 'Got it. I’ll remind you about the dentist tomorrow at 3 PM. Try not to'
+   MISS    532ms r=0 'set a reminder for tomorrow 3pm, dentist' -> 'Got it. I’ll remind you about your dentist appointment tomorrow at 3 P'
+   MISS    531ms r=0 'set a reminder for tomorrow 3pm, dentist' -> 'Got it. Tomorrow at 3 PM I’ll remind you about the dentist. Just don’t'
+   MISS    445ms r=0 'hey in 10 min tell me to check the oven' -> "Got it. I'll remind you to check the oven in 10 minutes, senpai."
+   MISS    435ms r=0 'hey in 10 min tell me to check the oven' -> "Got it, senpai. I'll make sure you check the oven in ten minutes befor"
+   MISS    394ms r=0 'hey in 10 min tell me to check the oven' -> 'Got it, senpai. In 10 minutes I’ll remind you to check the oven.'
+9b-off-fewshot: 0/18 scheduled, avg 545 ms, median reasoning 0, false calls 0/6, errors 0
+
+   ok     2725ms r=106 'remind me to drink water in 20 minutes' -> {"prompt":"Remind senpai to drink water now.","in_seconds":1200}
+   ok     3929ms r=188 'remind me to drink water in 20 minutes' -> {"prompt":"Tell senpai to drink water","in_seconds":1200}
+   ok     3364ms r=147 'remind me to drink water in 20 minutes' -> {"prompt":"Remind senpai to drink water","in_seconds":1200}
+   ok     5388ms r=252 'can you remind me at 9pm to call mom' -> {"prompt":"Remind senpai to call her mom now","at":"2026-11-15T21:00"}
+   ok     4176ms r=176 'can you remind me at 9pm to call mom' -> {"prompt":"Remind senpai to call mom at 9pm tonight","at":"2026-11-15T21:00"}
+   ok     8091ms r=361 'can you remind me at 9pm to call mom' -> {"prompt":"Remind User to call her mom","at":"2026-11-15T21:00"}
+   ok     2984ms r=108 'every day at 8am tell me to stretch' -> {"prompt":"Tell senpai to stretch right now","daily_at":"08:00"}
+   ok     3229ms r=126 'every day at 8am tell me to stretch' -> {"prompt":"Tell senpai to stretch","daily_at":"08:00"}
+   ok     4493ms r=190 'every day at 8am tell me to stretch' -> {"prompt":"Tell senpai to stretch","daily_at":"08:00"}
+   ok    10141ms r=493 'ping me in an hour about the laundry' -> {"prompt":"Tell User about the laundry","in_seconds":3600}
+   ok     2401ms r=81 'ping me in an hour about the laundry' -> {"prompt":"Ping senpai in an hour about the laundry","in_seconds":3600}
+   ok     2967ms r=123 'ping me in an hour about the laundry' -> {"prompt":"Tell senpai about the laundry","in_seconds":3600}
+   ok     8028ms r=380 'set a reminder for tomorrow 3pm, dentist' -> {"prompt":"Tell senpai she has a dentist appointment tomorrow at 3pm","at":"2026-11-16T15:00"}
+   ok     3625ms r=145 'set a reminder for tomorrow 3pm, dentist' -> {"prompt":"Senpai, you have a dentist appointment at 3pm tomorrow. Don't forget it!","daily_at":"15:00"}
+   ok     5069ms r=219 'set a reminder for tomorrow 3pm, dentist' -> {"prompt":"Remind senpai to keep her dentist appointment tomorrow at 3pm","at":"2026-11-16T15:00"}
+   ok     2963ms r=109 'hey in 10 min tell me to check the oven' -> {"prompt":"Tell the user to check the oven","in_seconds":600}
+   ok     2616ms r=96 'hey in 10 min tell me to check the oven' -> {"prompt":"Tell senpai to check the oven","in_seconds":600}
+   ok     3004ms r=119 'hey in 10 min tell me to check the oven' -> {"prompt":"Tell User to check the oven.","in_seconds":600}
+9b-think: 18/18 scheduled, avg 4400 ms, median reasoning 147, false calls 0/6, errors 0
+
+   ok    31718ms r=1669 'remind me to drink water in 20 minutes' -> {"prompt":"Tell senpai to drink water","in_seconds":1200}
+   MISS  72497ms r=3993 'remind me to drink water in 20 minutes' -> ''
+   ok    27734ms r=1460 'remind me to drink water in 20 minutes' -> {"prompt":"Tell senpai to drink water","in_seconds":1200}
+   ok     3563ms r=136 'can you remind me at 9pm to call mom' -> {"prompt":"Call your mom now","at":"2026-11-15T21:00"}
+   ok    15920ms r=783 'can you remind me at 9pm to call mom' -> {"prompt":"Remind senpai to call mom","daily_at":"21:00","times":1}
+   ok     5114ms r=239 'can you remind me at 9pm to call mom' -> {"prompt":"Remind senpai to call her mom","at":"2026-11-15T21:00"}
+   MISS  54457ms r=1076 'every day at 8am tell me to stretch' -> ''
+   ok    11228ms r=561 'every day at 8am tell me to stretch' -> {"prompt":"Tell senpai to stretch","daily_at":"08:00"}
+   ok    18214ms r=997 'every day at 8am tell me to stretch' -> {"prompt":"Tell User to stretch","daily_at":"08:00","weekdays":[]}
+   ok    18100ms r=935 'ping me in an hour about the laundry' -> {"prompt":"Senpai, remember to do your laundry.","in_seconds":3600}
+   ok    32753ms r=1795 'ping me in an hour about the laundry' -> {"prompt":"Tell User to do laundry at seven-fifty-one","in_seconds":3600}
+   ok    22537ms r=1084 'ping me in an hour about the laundry' -> {"prompt":"Remind User to handle the laundry","in_seconds":3600}
+   MISS  68501ms r=3920 'set a reminder for tomorrow 3pm, dentist' -> ''
+   ok    34141ms r=1993 'set a reminder for tomorrow 3pm, dentist' -> {"prompt":"Tell senpai it's time for the dentist appointment","at":"2026-11-16T15:00"}
+   MISS  63088ms r=3949 'set a reminder for tomorrow 3pm, dentist' -> ''
+
+[killed]

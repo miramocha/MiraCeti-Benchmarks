@@ -1,0 +1,420 @@
+{"part": "gate", "lang": "en", "case": 0, "line": "I love ramen, especially tonkotsu.", "label": true, "cand": "kev", "repeat": 0, "p": 0.3803, "pred": false, "ms": 438}
+{"part": "gate", "lang": "en", "case": 0, "line": "I love ramen, especially tonkotsu.", "label": true, "cand": "kev", "repeat": 1, "p": 0.3803, "pred": false, "ms": 151}
+{"part": "gate", "lang": "en", "case": 0, "line": "I love ramen, especially tonkotsu.", "label": true, "cand": "qwen", "pred": true, "ms": 1571}
+{"part": "gate", "lang": "en", "case": 0, "line": "I love ramen, especially tonkotsu.", "label": true, "cand": "nemotron", "pred": true, "ms": 1250}
+{"part": "gate", "lang": "en", "case": 0, "line": "I love ramen, especially tonkotsu.", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User loves ramen, especially tonkotsu."], "ms": 5042}
+{"part": "gate", "lang": "en", "case": 1, "line": "My sister Aiko lives in Osaka.", "label": true, "cand": "kev", "repeat": 0, "p": 0.1725, "pred": false, "ms": 670}
+{"part": "gate", "lang": "en", "case": 1, "line": "My sister Aiko lives in Osaka.", "label": true, "cand": "kev", "repeat": 1, "p": 0.1725, "pred": false, "ms": 29}
+{"part": "gate", "lang": "en", "case": 1, "line": "My sister Aiko lives in Osaka.", "label": true, "cand": "qwen", "pred": true, "ms": 525}
+{"part": "gate", "lang": "en", "case": 1, "line": "My sister Aiko lives in Osaka.", "label": true, "cand": "nemotron", "pred": true, "ms": 917}
+{"part": "gate", "lang": "en", "case": 1, "line": "My sister Aiko lives in Osaka.", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User's sister named Aiko lives in Osaka."], "ms": 1958}
+{"part": "gate", "lang": "en", "case": 2, "line": "I work as a game developer at a small indie studio.", "label": true, "cand": "kev", "repeat": 0, "p": 0.2717, "pred": false, "ms": 1393}
+{"part": "gate", "lang": "en", "case": 2, "line": "I work as a game developer at a small indie studio.", "label": true, "cand": "kev", "repeat": 1, "p": 0.2717, "pred": false, "ms": 190}
+{"part": "gate", "lang": "en", "case": 2, "line": "I work as a game developer at a small indie studio.", "label": true, "cand": "qwen", "pred": true, "ms": 781}
+{"part": "gate", "lang": "en", "case": 2, "line": "I work as a game developer at a small indie studio.", "label": true, "cand": "nemotron", "pred": false, "ms": 887}
+{"part": "gate", "lang": "en", "case": 2, "line": "I work as a game developer at a small indie studio.", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User works as a game developer."], "ms": 975}
+{"part": "gate", "lang": "en", "case": 3, "line": "I'm allergic to peanuts.", "label": true, "cand": "kev", "repeat": 0, "p": 0.2829, "pred": false, "ms": 612}
+{"part": "gate", "lang": "en", "case": 3, "line": "I'm allergic to peanuts.", "label": true, "cand": "kev", "repeat": 1, "p": 0.2829, "pred": false, "ms": 26}
+{"part": "gate", "lang": "en", "case": 3, "line": "I'm allergic to peanuts.", "label": true, "cand": "qwen", "pred": true, "ms": 1289}
+{"part": "gate", "lang": "en", "case": 3, "line": "I'm allergic to peanuts.", "label": true, "cand": "nemotron", "pred": true, "ms": 1641}
+{"part": "gate", "lang": "en", "case": 3, "line": "I'm allergic to peanuts.", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User has an allergy to peanuts."], "ms": 2193}
+{"part": "gate", "lang": "en", "case": 4, "line": "My cat's name is Mochi and she's 3 years old.", "label": true, "cand": "kev", "repeat": 0, "p": 0.4692, "pred": false, "ms": 1152}
+{"part": "gate", "lang": "en", "case": 4, "line": "My cat's name is Mochi and she's 3 years old.", "label": true, "cand": "kev", "repeat": 1, "p": 0.4692, "pred": false, "ms": 222}
+{"part": "gate", "lang": "en", "case": 4, "line": "My cat's name is Mochi and she's 3 years old.", "label": true, "cand": "qwen", "pred": true, "ms": 1648}
+{"part": "gate", "lang": "en", "case": 4, "line": "My cat's name is Mochi and she's 3 years old.", "label": true, "cand": "nemotron", "pred": true, "ms": 925}
+{"part": "gate", "lang": "en", "case": 4, "line": "My cat's name is Mochi and she's 3 years old.", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User has a cat named Mochi who is three years old."], "ms": 2903}
+{"part": "gate", "lang": "en", "case": 5, "line": "I don't like horror movies.", "label": true, "cand": "kev", "repeat": 0, "p": 0.2586, "pred": false, "ms": 609}
+{"part": "gate", "lang": "en", "case": 5, "line": "I don't like horror movies.", "label": true, "cand": "kev", "repeat": 1, "p": 0.2586, "pred": false, "ms": 289}
+{"part": "gate", "lang": "en", "case": 5, "line": "I don't like horror movies.", "label": true, "cand": "qwen", "pred": true, "ms": 2384}
+{"part": "gate", "lang": "en", "case": 5, "line": "I don't like horror movies.", "label": true, "cand": "nemotron", "pred": false, "ms": 815}
+{"part": "gate", "lang": "en", "case": 5, "line": "I don't like horror movies.", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User dislikes horror movies."], "ms": 7093}
+{"part": "gate", "lang": "en", "case": 6, "line": "I just finished my first marathon yesterday!", "label": true, "cand": "kev", "repeat": 0, "p": 0.517, "pred": true, "ms": 664}
+{"part": "gate", "lang": "en", "case": 6, "line": "I just finished my first marathon yesterday!", "label": true, "cand": "kev", "repeat": 1, "p": 0.517, "pred": true, "ms": 28}
+{"part": "gate", "lang": "en", "case": 6, "line": "I just finished my first marathon yesterday!", "label": true, "cand": "qwen", "pred": true, "ms": 898}
+{"part": "gate", "lang": "en", "case": 6, "line": "I just finished my first marathon yesterday!", "label": true, "cand": "nemotron", "pred": true, "ms": 1597}
+{"part": "gate", "lang": "en", "case": 6, "line": "I just finished my first marathon yesterday!", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User ran a marathon"], "ms": 18561}
+{"part": "gate", "lang": "en", "case": 7, "line": "I'm moving to Kyoto next month.", "label": true, "cand": "kev", "repeat": 0, "p": 0.2911, "pred": false, "ms": 198}
+{"part": "gate", "lang": "en", "case": 7, "line": "I'm moving to Kyoto next month.", "label": true, "cand": "kev", "repeat": 1, "p": 0.2911, "pred": false, "ms": 28}
+{"part": "gate", "lang": "en", "case": 7, "line": "I'm moving to Kyoto next month.", "label": true, "cand": "qwen", "pred": true, "ms": 1504}
+{"part": "gate", "lang": "en", "case": 7, "line": "I'm moving to Kyoto next month.", "label": true, "cand": "nemotron", "pred": true, "ms": 1076}
+{"part": "gate", "lang": "en", "case": 7, "line": "I'm moving to Kyoto next month.", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User is moving to Kyoto."], "ms": 11550}
+{"part": "gate", "lang": "en", "case": 8, "line": "Remember that my mom's birthday is May 3rd.", "label": true, "cand": "kev", "repeat": 0, "p": 0.3809, "pred": false, "ms": 941}
+{"part": "gate", "lang": "en", "case": 8, "line": "Remember that my mom's birthday is May 3rd.", "label": true, "cand": "kev", "repeat": 1, "p": 0.3809, "pred": false, "ms": 162}
+{"part": "gate", "lang": "en", "case": 8, "line": "Remember that my mom's birthday is May 3rd.", "label": true, "cand": "qwen", "pred": true, "ms": 5606}
+{"part": "gate", "lang": "en", "case": 8, "line": "Remember that my mom's birthday is May 3rd.", "label": true, "cand": "nemotron", "pred": true, "ms": 1294}
+{"part": "gate", "lang": "en", "case": 8, "line": "Remember that my mom's birthday is May 3rd.", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User's mom's birthday is on May 3rd.", "User has a mom."], "ms": 5604}
+{"part": "gate", "lang": "en", "case": 9, "line": "I've been learning Korean for two years now.", "label": true, "cand": "kev", "repeat": 0, "p": 0.3052, "pred": false, "ms": 697}
+{"part": "gate", "lang": "en", "case": 9, "line": "I've been learning Korean for two years now.", "label": true, "cand": "kev", "repeat": 1, "p": 0.3052, "pred": false, "ms": 25}
+{"part": "gate", "lang": "en", "case": 9, "line": "I've been learning Korean for two years now.", "label": true, "cand": "qwen", "pred": true, "ms": 3503}
+{"part": "gate", "lang": "en", "case": 9, "line": "I've been learning Korean for two years now.", "label": true, "cand": "nemotron", "pred": true, "ms": 741}
+{"part": "gate", "lang": "en", "case": 9, "line": "I've been learning Korean for two years now.", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User has been learning Korean for two years."], "ms": 5480}
+{"part": "gate", "lang": "en", "case": 10, "line": "My main editor is Neovim, I can't stand VS Code.", "label": true, "cand": "kev", "repeat": 0, "p": 0.323, "pred": false, "ms": 525}
+{"part": "gate", "lang": "en", "case": 10, "line": "My main editor is Neovim, I can't stand VS Code.", "label": true, "cand": "kev", "repeat": 1, "p": 0.323, "pred": false, "ms": 26}
+{"part": "gate", "lang": "en", "case": 10, "line": "My main editor is Neovim, I can't stand VS Code.", "label": true, "cand": "qwen", "pred": true, "ms": 4610}
+{"part": "gate", "lang": "en", "case": 10, "line": "My main editor is Neovim, I can't stand VS Code.", "label": true, "cand": "nemotron", "pred": true, "ms": 888}
+{"part": "gate", "lang": "en", "case": 10, "line": "My main editor is Neovim, I can't stand VS Code.", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User dislikes VS Code.", "User's main editor is Neovim."], "ms": 5994}
+{"part": "gate", "lang": "en", "case": 11, "line": "I went to the dentist this morning and got a filling.", "label": true, "cand": "kev", "repeat": 0, "p": 0.2563, "pred": false, "ms": 622}
+{"part": "gate", "lang": "en", "case": 11, "line": "I went to the dentist this morning and got a filling.", "label": true, "cand": "kev", "repeat": 1, "p": 0.2563, "pred": false, "ms": 91}
+{"part": "gate", "lang": "en", "case": 11, "line": "I went to the dentist this morning and got a filling.", "label": true, "cand": "qwen", "pred": false, "ms": 1548}
+{"part": "gate", "lang": "en", "case": 11, "line": "I went to the dentist this morning and got a filling.", "label": true, "cand": "nemotron", "pred": true, "ms": 758}
+{"part": "gate", "lang": "en", "case": 11, "line": "I went to the dentist this morning and got a filling.", "label": true, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 2181}
+{"part": "gate", "lang": "en", "case": 12, "line": "Honestly I'm vegetarian, so no meat for me.", "label": true, "cand": "kev", "repeat": 0, "p": 0.3369, "pred": false, "ms": 482}
+{"part": "gate", "lang": "en", "case": 12, "line": "Honestly I'm vegetarian, so no meat for me.", "label": true, "cand": "kev", "repeat": 1, "p": 0.3369, "pred": false, "ms": 18}
+{"part": "gate", "lang": "en", "case": 12, "line": "Honestly I'm vegetarian, so no meat for me.", "label": true, "cand": "qwen", "pred": true, "ms": 550}
+{"part": "gate", "lang": "en", "case": 12, "line": "Honestly I'm vegetarian, so no meat for me.", "label": true, "cand": "nemotron", "pred": true, "ms": 865}
+{"part": "gate", "lang": "en", "case": 12, "line": "Honestly I'm vegetarian, so no meat for me.", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User is vegetarian."], "ms": 2704}
+{"part": "gate", "lang": "en", "case": 13, "line": "My partner's name is Sam.", "label": true, "cand": "kev", "repeat": 0, "p": 0.2874, "pred": false, "ms": 589}
+{"part": "gate", "lang": "en", "case": 13, "line": "My partner's name is Sam.", "label": true, "cand": "kev", "repeat": 1, "p": 0.2874, "pred": false, "ms": 91}
+{"part": "gate", "lang": "en", "case": 13, "line": "My partner's name is Sam.", "label": true, "cand": "qwen", "pred": true, "ms": 2336}
+{"part": "gate", "lang": "en", "case": 13, "line": "My partner's name is Sam.", "label": true, "cand": "nemotron", "pred": true, "ms": 850}
+{"part": "gate", "lang": "en", "case": 13, "line": "My partner's name is Sam.", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User has a partner named Sam."], "ms": 8143}
+{"part": "gate", "lang": "en", "case": 14, "line": "lol yeah I only drink oat milk", "label": true, "cand": "kev", "repeat": 0, "p": 0.262, "pred": false, "ms": 486}
+{"part": "gate", "lang": "en", "case": 14, "line": "lol yeah I only drink oat milk", "label": true, "cand": "kev", "repeat": 1, "p": 0.262, "pred": false, "ms": 224}
+{"part": "gate", "lang": "en", "case": 14, "line": "lol yeah I only drink oat milk", "label": true, "cand": "qwen", "pred": true, "ms": 1865}
+{"part": "gate", "lang": "en", "case": 14, "line": "lol yeah I only drink oat milk", "label": true, "cand": "nemotron", "pred": false, "ms": 773}
+{"part": "gate", "lang": "en", "case": 14, "line": "lol yeah I only drink oat milk", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User drinks oat milk."], "ms": 3238}
+{"part": "gate", "lang": "en", "case": 15, "line": "lol that's so funny", "label": false, "cand": "kev", "repeat": 0, "p": 0.2664, "pred": false, "ms": 503}
+{"part": "gate", "lang": "en", "case": 15, "line": "lol that's so funny", "label": false, "cand": "kev", "repeat": 1, "p": 0.2664, "pred": false, "ms": 383}
+{"part": "gate", "lang": "en", "case": 15, "line": "lol that's so funny", "label": false, "cand": "qwen", "pred": false, "ms": 2454}
+{"part": "gate", "lang": "en", "case": 15, "line": "lol that's so funny", "label": false, "cand": "nemotron", "pred": false, "ms": 949}
+{"part": "gate", "lang": "en", "case": 15, "line": "lol that's so funny", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 7876}
+{"part": "gate", "lang": "en", "case": 16, "line": "good night!", "label": false, "cand": "kev", "repeat": 0, "p": 0.2191, "pred": false, "ms": 544}
+{"part": "gate", "lang": "en", "case": 16, "line": "good night!", "label": false, "cand": "kev", "repeat": 1, "p": 0.2191, "pred": false, "ms": 25}
+{"part": "gate", "lang": "en", "case": 16, "line": "good night!", "label": false, "cand": "qwen", "pred": false, "ms": 2022}
+{"part": "gate", "lang": "en", "case": 16, "line": "good night!", "label": false, "cand": "nemotron", "pred": false, "ms": 750}
+{"part": "gate", "lang": "en", "case": 16, "line": "good night!", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 1643}
+{"part": "gate", "lang": "en", "case": 17, "line": "What time is it?", "label": false, "cand": "kev", "repeat": 0, "p": 0.2248, "pred": false, "ms": 452}
+{"part": "gate", "lang": "en", "case": 17, "line": "What time is it?", "label": false, "cand": "kev", "repeat": 1, "p": 0.2248, "pred": false, "ms": 23}
+{"part": "gate", "lang": "en", "case": 17, "line": "What time is it?", "label": false, "cand": "qwen", "pred": false, "ms": 1385}
+{"part": "gate", "lang": "en", "case": 17, "line": "What time is it?", "label": false, "cand": "nemotron", "pred": false, "ms": 913}
+{"part": "gate", "lang": "en", "case": 17, "line": "What time is it?", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 4716}
+{"part": "gate", "lang": "en", "case": 18, "line": "Can you remind me to drink water in 20 minutes?", "label": false, "cand": "kev", "repeat": 0, "p": 0.4288, "pred": false, "ms": 595}
+{"part": "gate", "lang": "en", "case": 18, "line": "Can you remind me to drink water in 20 minutes?", "label": false, "cand": "kev", "repeat": 1, "p": 0.4288, "pred": false, "ms": 25}
+{"part": "gate", "lang": "en", "case": 18, "line": "Can you remind me to drink water in 20 minutes?", "label": false, "cand": "qwen", "pred": false, "ms": 595}
+{"part": "gate", "lang": "en", "case": 18, "line": "Can you remind me to drink water in 20 minutes?", "label": false, "cand": "nemotron", "pred": true, "ms": 1170}
+{"part": "gate", "lang": "en", "case": 18, "line": "Can you remind me to drink water in 20 minutes?", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 1577}
+{"part": "gate", "lang": "en", "case": 19, "line": "How are you feeling today?", "label": false, "cand": "kev", "repeat": 0, "p": 0.3866, "pred": false, "ms": 653}
+{"part": "gate", "lang": "en", "case": 19, "line": "How are you feeling today?", "label": false, "cand": "kev", "repeat": 1, "p": 0.3866, "pred": false, "ms": 31}
+{"part": "gate", "lang": "en", "case": 19, "line": "How are you feeling today?", "label": false, "cand": "qwen", "pred": false, "ms": 538}
+{"part": "gate", "lang": "en", "case": 19, "line": "How are you feeling today?", "label": false, "cand": "nemotron", "pred": false, "ms": 810}
+{"part": "gate", "lang": "en", "case": 19, "line": "How are you feeling today?", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 1137}
+{"part": "gate", "lang": "en", "case": 20, "line": "Do you like ramen?", "label": false, "cand": "kev", "repeat": 0, "p": 0.5802, "pred": true, "ms": 578}
+{"part": "gate", "lang": "en", "case": 20, "line": "Do you like ramen?", "label": false, "cand": "kev", "repeat": 1, "p": 0.5802, "pred": true, "ms": 45}
+{"part": "gate", "lang": "en", "case": 20, "line": "Do you like ramen?", "label": false, "cand": "qwen", "pred": false, "ms": 539}
+{"part": "gate", "lang": "en", "case": 20, "line": "Do you like ramen?", "label": false, "cand": "nemotron", "pred": false, "ms": 684}
+{"part": "gate", "lang": "en", "case": 20, "line": "Do you like ramen?", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 848}
+{"part": "gate", "lang": "en", "case": 21, "line": "ok", "label": false, "cand": "kev", "repeat": 0, "p": 0.2309, "pred": false, "ms": 639}
+{"part": "gate", "lang": "en", "case": 21, "line": "ok", "label": false, "cand": "kev", "repeat": 1, "p": 0.2309, "pred": false, "ms": 106}
+{"part": "gate", "lang": "en", "case": 21, "line": "ok", "label": false, "cand": "qwen", "pred": false, "ms": 607}
+{"part": "gate", "lang": "en", "case": 21, "line": "ok", "label": false, "cand": "nemotron", "pred": false, "ms": 683}
+{"part": "gate", "lang": "en", "case": 21, "line": "ok", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 809}
+{"part": "gate", "lang": "en", "case": 22, "line": "Tell me a joke.", "label": false, "cand": "kev", "repeat": 0, "p": 0.1178, "pred": false, "ms": 479}
+{"part": "gate", "lang": "en", "case": 22, "line": "Tell me a joke.", "label": false, "cand": "kev", "repeat": 1, "p": 0.1178, "pred": false, "ms": 81}
+{"part": "gate", "lang": "en", "case": 22, "line": "Tell me a joke.", "label": false, "cand": "qwen", "pred": false, "ms": 505}
+{"part": "gate", "lang": "en", "case": 22, "line": "Tell me a joke.", "label": false, "cand": "nemotron", "pred": false, "ms": 722}
+{"part": "gate", "lang": "en", "case": 22, "line": "Tell me a joke.", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 805}
+{"part": "gate", "lang": "en", "case": 23, "line": "haha nice", "label": false, "cand": "kev", "repeat": 0, "p": 0.3028, "pred": false, "ms": 359}
+{"part": "gate", "lang": "en", "case": 23, "line": "haha nice", "label": false, "cand": "kev", "repeat": 1, "p": 0.3028, "pred": false, "ms": 39}
+{"part": "gate", "lang": "en", "case": 23, "line": "haha nice", "label": false, "cand": "qwen", "pred": false, "ms": 517}
+{"part": "gate", "lang": "en", "case": 23, "line": "haha nice", "label": false, "cand": "nemotron", "pred": false, "ms": 651}
+{"part": "gate", "lang": "en", "case": 23, "line": "haha nice", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 840}
+{"part": "gate", "lang": "en", "case": 24, "line": "What's the weather in Tokyo?", "label": false, "cand": "kev", "repeat": 0, "p": 0.3208, "pred": false, "ms": 394}
+{"part": "gate", "lang": "en", "case": 24, "line": "What's the weather in Tokyo?", "label": false, "cand": "kev", "repeat": 1, "p": 0.3208, "pred": false, "ms": 26}
+{"part": "gate", "lang": "en", "case": 24, "line": "What's the weather in Tokyo?", "label": false, "cand": "qwen", "pred": false, "ms": 502}
+{"part": "gate", "lang": "en", "case": 24, "line": "What's the weather in Tokyo?", "label": false, "cand": "nemotron", "pred": false, "ms": 710}
+{"part": "gate", "lang": "en", "case": 24, "line": "What's the weather in Tokyo?", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 822}
+{"part": "gate", "lang": "en", "case": 25, "line": "Thanks, that helps.", "label": false, "cand": "kev", "repeat": 0, "p": 0.2188, "pred": false, "ms": 530}
+{"part": "gate", "lang": "en", "case": 25, "line": "Thanks, that helps.", "label": false, "cand": "kev", "repeat": 1, "p": 0.2188, "pred": false, "ms": 47}
+{"part": "gate", "lang": "en", "case": 25, "line": "Thanks, that helps.", "label": false, "cand": "qwen", "pred": false, "ms": 474}
+{"part": "gate", "lang": "en", "case": 25, "line": "Thanks, that helps.", "label": false, "cand": "nemotron", "pred": false, "ms": 737}
+{"part": "gate", "lang": "en", "case": 25, "line": "Thanks, that helps.", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 971}
+{"part": "gate", "lang": "en", "case": 26, "line": "Hmm, I'm not sure.", "label": false, "cand": "kev", "repeat": 0, "p": 0.1087, "pred": false, "ms": 423}
+{"part": "gate", "lang": "en", "case": 26, "line": "Hmm, I'm not sure.", "label": false, "cand": "kev", "repeat": 1, "p": 0.1087, "pred": false, "ms": 48}
+{"part": "gate", "lang": "en", "case": 26, "line": "Hmm, I'm not sure.", "label": false, "cand": "qwen", "pred": false, "ms": 653}
+{"part": "gate", "lang": "en", "case": 26, "line": "Hmm, I'm not sure.", "label": false, "cand": "nemotron", "pred": false, "ms": 691}
+{"part": "gate", "lang": "en", "case": 26, "line": "Hmm, I'm not sure.", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 1662}
+{"part": "gate", "lang": "en", "case": 27, "line": "Search the web for Godot 4.6 news.", "label": false, "cand": "kev", "repeat": 0, "p": 0.2087, "pred": false, "ms": 377}
+{"part": "gate", "lang": "en", "case": 27, "line": "Search the web for Godot 4.6 news.", "label": false, "cand": "kev", "repeat": 1, "p": 0.2087, "pred": false, "ms": 28}
+{"part": "gate", "lang": "en", "case": 27, "line": "Search the web for Godot 4.6 news.", "label": false, "cand": "qwen", "pred": false, "ms": 1716}
+{"part": "gate", "lang": "en", "case": 27, "line": "Search the web for Godot 4.6 news.", "label": false, "cand": "nemotron", "pred": false, "ms": 692}
+{"part": "gate", "lang": "en", "case": 27, "line": "Search the web for Godot 4.6 news.", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 1500}
+{"part": "gate", "lang": "en", "case": 28, "line": "What did I tell you about my sister?", "label": false, "cand": "kev", "repeat": 0, "p": 0.3724, "pred": false, "ms": 570}
+{"part": "gate", "lang": "en", "case": 28, "line": "What did I tell you about my sister?", "label": false, "cand": "kev", "repeat": 1, "p": 0.3724, "pred": false, "ms": 22}
+{"part": "gate", "lang": "en", "case": 28, "line": "What did I tell you about my sister?", "label": false, "cand": "qwen", "pred": false, "ms": 1827}
+{"part": "gate", "lang": "en", "case": 28, "line": "What did I tell you about my sister?", "label": false, "cand": "nemotron", "pred": true, "ms": 1005}
+{"part": "gate", "lang": "en", "case": 28, "line": "What did I tell you about my sister?", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 5668}
+{"part": "gate", "lang": "en", "case": 29, "line": "wait what", "label": false, "cand": "kev", "repeat": 0, "p": 0.2098, "pred": false, "ms": 511}
+{"part": "gate", "lang": "en", "case": 29, "line": "wait what", "label": false, "cand": "kev", "repeat": 1, "p": 0.2098, "pred": false, "ms": 30}
+{"part": "gate", "lang": "en", "case": 29, "line": "wait what", "label": false, "cand": "qwen", "pred": false, "ms": 552}
+{"part": "gate", "lang": "en", "case": 29, "line": "wait what", "label": false, "cand": "nemotron", "pred": false, "ms": 688}
+{"part": "gate", "lang": "en", "case": 29, "line": "wait what", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 741}
+{"part": "gate", "lang": "ja", "case": 0, "line": "ラーメンが大好き、特に豚骨。", "label": true, "cand": "kev", "repeat": 0, "p": 0.595, "pred": true, "ms": 571}
+{"part": "gate", "lang": "ja", "case": 0, "line": "ラーメンが大好き、特に豚骨。", "label": true, "cand": "kev", "repeat": 1, "p": 0.595, "pred": true, "ms": 19}
+{"part": "gate", "lang": "ja", "case": 0, "line": "ラーメンが大好き、特に豚骨。", "label": true, "cand": "qwen", "pred": true, "ms": 497}
+{"part": "gate", "lang": "ja", "case": 0, "line": "ラーメンが大好き、特に豚骨。", "label": true, "cand": "nemotron", "pred": true, "ms": 749}
+{"part": "gate", "lang": "ja", "case": 0, "line": "ラーメンが大好き、特に豚骨。", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User loves ramen, especially pork bone broth."], "ms": 3104}
+{"part": "gate", "lang": "ja", "case": 1, "line": "妹のアイコは大阪に住んでる。", "label": true, "cand": "kev", "repeat": 0, "p": 0.2645, "pred": false, "ms": 848}
+{"part": "gate", "lang": "ja", "case": 1, "line": "妹のアイコは大阪に住んでる。", "label": true, "cand": "kev", "repeat": 1, "p": 0.2645, "pred": false, "ms": 84}
+{"part": "gate", "lang": "ja", "case": 1, "line": "妹のアイコは大阪に住んでる。", "label": true, "cand": "qwen", "pred": true, "ms": 2347}
+{"part": "gate", "lang": "ja", "case": 1, "line": "妹のアイコは大阪に住んでる。", "label": true, "cand": "nemotron", "pred": true, "ms": 768}
+{"part": "gate", "lang": "ja", "case": 1, "line": "妹のアイコは大阪に住んでる。", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User's sister lives in Osaka."], "ms": 1655}
+{"part": "gate", "lang": "ja", "case": 2, "line": "小さなインディースタジオでゲーム開発者として働いてる。", "label": true, "cand": "kev", "repeat": 0, "p": 0.285, "pred": false, "ms": 601}
+{"part": "gate", "lang": "ja", "case": 2, "line": "小さなインディースタジオでゲーム開発者として働いてる。", "label": true, "cand": "kev", "repeat": 1, "p": 0.285, "pred": false, "ms": 72}
+{"part": "gate", "lang": "ja", "case": 2, "line": "小さなインディースタジオでゲーム開発者として働いてる。", "label": true, "cand": "qwen", "pred": true, "ms": 636}
+{"part": "gate", "lang": "ja", "case": 2, "line": "小さなインディースタジオでゲーム開発者として働いてる。", "label": true, "cand": "nemotron", "pred": true, "ms": 1685}
+{"part": "gate", "lang": "ja", "case": 2, "line": "小さなインディースタジオでゲーム開発者として働いてる。", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User works as a game developer at a small indie studio."], "ms": 3124}
+{"part": "gate", "lang": "ja", "case": 3, "line": "ピーナッツアレルギーなんだ。", "label": true, "cand": "kev", "repeat": 0, "p": 0.3701, "pred": false, "ms": 60}
+{"part": "gate", "lang": "ja", "case": 3, "line": "ピーナッツアレルギーなんだ。", "label": true, "cand": "kev", "repeat": 1, "p": 0.3701, "pred": false, "ms": 42}
+{"part": "gate", "lang": "ja", "case": 3, "line": "ピーナッツアレルギーなんだ。", "label": true, "cand": "qwen", "pred": true, "ms": 818}
+{"part": "gate", "lang": "ja", "case": 3, "line": "ピーナッツアレルギーなんだ。", "label": true, "cand": "nemotron", "pred": true, "ms": 851}
+{"part": "gate", "lang": "ja", "case": 3, "line": "ピーナッツアレルギーなんだ。", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User has a peanut allergy."], "ms": 2268}
+{"part": "gate", "lang": "ja", "case": 4, "line": "猫の名前はモチで、3歳だよ。", "label": true, "cand": "kev", "repeat": 0, "p": 0.2699, "pred": false, "ms": 535}
+{"part": "gate", "lang": "ja", "case": 4, "line": "猫の名前はモチで、3歳だよ。", "label": true, "cand": "kev", "repeat": 1, "p": 0.2699, "pred": false, "ms": 212}
+{"part": "gate", "lang": "ja", "case": 4, "line": "猫の名前はモチで、3歳だよ。", "label": true, "cand": "qwen", "pred": true, "ms": 593}
+{"part": "gate", "lang": "ja", "case": 4, "line": "猫の名前はモチで、3歳だよ。", "label": true, "cand": "nemotron", "pred": true, "ms": 914}
+{"part": "gate", "lang": "ja", "case": 4, "line": "猫の名前はモチで、3歳だよ。", "label": true, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 2342}
+{"part": "gate", "lang": "ja", "case": 5, "line": "ホラー映画は苦手。", "label": true, "cand": "kev", "repeat": 0, "p": 0.2363, "pred": false, "ms": 674}
+{"part": "gate", "lang": "ja", "case": 5, "line": "ホラー映画は苦手。", "label": true, "cand": "kev", "repeat": 1, "p": 0.2363, "pred": false, "ms": 22}
+{"part": "gate", "lang": "ja", "case": 5, "line": "ホラー映画は苦手。", "label": true, "cand": "qwen", "pred": true, "ms": 629}
+{"part": "gate", "lang": "ja", "case": 5, "line": "ホラー映画は苦手。", "label": true, "cand": "nemotron", "pred": true, "ms": 896}
+{"part": "gate", "lang": "ja", "case": 5, "line": "ホラー映画は苦手。", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User dislikes horror movies."], "ms": 2005}
+{"part": "gate", "lang": "ja", "case": 6, "line": "昨日初めてフルマラソンを完走した！", "label": true, "cand": "kev", "repeat": 0, "p": 0.5432, "pred": true, "ms": 494}
+{"part": "gate", "lang": "ja", "case": 6, "line": "昨日初めてフルマラソンを完走した！", "label": true, "cand": "kev", "repeat": 1, "p": 0.5432, "pred": true, "ms": 37}
+{"part": "gate", "lang": "ja", "case": 6, "line": "昨日初めてフルマラソンを完走した！", "label": true, "cand": "qwen", "pred": true, "ms": 782}
+{"part": "gate", "lang": "ja", "case": 6, "line": "昨日初めてフルマラソンを完走した！", "label": true, "cand": "nemotron", "pred": true, "ms": 1775}
+{"part": "gate", "lang": "ja", "case": 6, "line": "昨日初めてフルマラソンを完走した！", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User completed a full marathon."], "ms": 4013}
+{"part": "gate", "lang": "ja", "case": 7, "line": "来月京都に引っ越すんだ。", "label": true, "cand": "kev", "repeat": 0, "p": 0.3322, "pred": false, "ms": 66}
+{"part": "gate", "lang": "ja", "case": 7, "line": "来月京都に引っ越すんだ。", "label": true, "cand": "kev", "repeat": 1, "p": 0.3322, "pred": false, "ms": 21}
+{"part": "gate", "lang": "ja", "case": 7, "line": "来月京都に引っ越すんだ。", "label": true, "cand": "qwen", "pred": true, "ms": 682}
+{"part": "gate", "lang": "ja", "case": 7, "line": "来月京都に引っ越すんだ。", "label": true, "cand": "nemotron", "pred": true, "ms": 774}
+{"part": "gate", "lang": "ja", "case": 7, "line": "来月京都に引っ越すんだ。", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User plans to move to Kyoto next month."], "ms": 5069}
+{"part": "gate", "lang": "ja", "case": 8, "line": "母の誕生日は5月3日だって覚えておいて。", "label": true, "cand": "kev", "repeat": 0, "p": 0.5532, "pred": true, "ms": 705}
+{"part": "gate", "lang": "ja", "case": 8, "line": "母の誕生日は5月3日だって覚えておいて。", "label": true, "cand": "kev", "repeat": 1, "p": 0.5532, "pred": true, "ms": 27}
+{"part": "gate", "lang": "ja", "case": 8, "line": "母の誕生日は5月3日だって覚えておいて。", "label": true, "cand": "qwen", "pred": true, "ms": 1619}
+{"part": "gate", "lang": "ja", "case": 8, "line": "母の誕生日は5月3日だって覚えておいて。", "label": true, "cand": "nemotron", "pred": true, "ms": 856}
+{"part": "gate", "lang": "ja", "case": 8, "line": "母の誕生日は5月3日だって覚えておいて。", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User remembers that their mother's birthday is May 3rd."], "ms": 3465}
+{"part": "gate", "lang": "ja", "case": 9, "line": "韓国語を勉強して2年になる。", "label": true, "cand": "kev", "repeat": 0, "p": 0.2767, "pred": false, "ms": 741}
+{"part": "gate", "lang": "ja", "case": 9, "line": "韓国語を勉強して2年になる。", "label": true, "cand": "kev", "repeat": 1, "p": 0.2767, "pred": false, "ms": 24}
+{"part": "gate", "lang": "ja", "case": 9, "line": "韓国語を勉強して2年になる。", "label": true, "cand": "qwen", "pred": true, "ms": 1386}
+{"part": "gate", "lang": "ja", "case": 9, "line": "韓国語を勉強して2年になる。", "label": true, "cand": "nemotron", "pred": true, "ms": 896}
+{"part": "gate", "lang": "ja", "case": 9, "line": "韓国語を勉強して2年になる。", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User has been studying Korean for two years."], "ms": 2563}
+{"part": "gate", "lang": "ja", "case": 10, "line": "エディタはNeovim派で、VS Codeは無理。", "label": true, "cand": "kev", "repeat": 0, "p": 0.3899, "pred": false, "ms": 959}
+{"part": "gate", "lang": "ja", "case": 10, "line": "エディタはNeovim派で、VS Codeは無理。", "label": true, "cand": "kev", "repeat": 1, "p": 0.3899, "pred": false, "ms": 98}
+{"part": "gate", "lang": "ja", "case": 10, "line": "エディタはNeovim派で、VS Codeは無理。", "label": true, "cand": "qwen", "pred": true, "ms": 1406}
+{"part": "gate", "lang": "ja", "case": 10, "line": "エディタはNeovim派で、VS Codeは無理。", "label": true, "cand": "nemotron", "pred": true, "ms": 781}
+{"part": "gate", "lang": "ja", "case": 10, "line": "エディタはNeovim派で、VS Codeは無理。", "label": true, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 3377}
+{"part": "gate", "lang": "ja", "case": 11, "line": "今朝歯医者に行って詰め物をした。", "label": true, "cand": "kev", "repeat": 0, "p": 0.2427, "pred": false, "ms": 451}
+{"part": "gate", "lang": "ja", "case": 11, "line": "今朝歯医者に行って詰め物をした。", "label": true, "cand": "kev", "repeat": 1, "p": 0.2427, "pred": false, "ms": 37}
+{"part": "gate", "lang": "ja", "case": 11, "line": "今朝歯医者に行って詰め物をした。", "label": true, "cand": "qwen", "pred": false, "ms": 566}
+{"part": "gate", "lang": "ja", "case": 11, "line": "今朝歯医者に行って詰め物をした。", "label": true, "cand": "nemotron", "pred": true, "ms": 585}
+{"part": "gate", "lang": "ja", "case": 11, "line": "今朝歯医者に行って詰め物をした。", "label": true, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 1938}
+{"part": "gate", "lang": "ja", "case": 12, "line": "実はベジタリアンだから肉は食べない。", "label": true, "cand": "kev", "repeat": 0, "p": 0.4405, "pred": false, "ms": 790}
+{"part": "gate", "lang": "ja", "case": 12, "line": "実はベジタリアンだから肉は食べない。", "label": true, "cand": "kev", "repeat": 1, "p": 0.4405, "pred": false, "ms": 900}
+{"part": "gate", "lang": "ja", "case": 12, "line": "実はベジタリアンだから肉は食べない。", "label": true, "cand": "qwen", "pred": true, "ms": 466}
+{"part": "gate", "lang": "ja", "case": 12, "line": "実はベジタリアンだから肉は食べない。", "label": true, "cand": "nemotron", "pred": true, "ms": 747}
+{"part": "gate", "lang": "ja", "case": 12, "line": "実はベジタリアンだから肉は食べない。", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User does not eat meat because they are a vegetarian."], "ms": 1172}
+{"part": "gate", "lang": "ja", "case": 13, "line": "パートナーの名前はサムです。", "label": true, "cand": "kev", "repeat": 0, "p": 0.3207, "pred": false, "ms": 1332}
+{"part": "gate", "lang": "ja", "case": 13, "line": "パートナーの名前はサムです。", "label": true, "cand": "kev", "repeat": 1, "p": 0.3207, "pred": false, "ms": 137}
+{"part": "gate", "lang": "ja", "case": 13, "line": "パートナーの名前はサムです。", "label": true, "cand": "qwen", "pred": true, "ms": 509}
+{"part": "gate", "lang": "ja", "case": 13, "line": "パートナーの名前はサムです。", "label": true, "cand": "nemotron", "pred": true, "ms": 1210}
+{"part": "gate", "lang": "ja", "case": 13, "line": "パートナーの名前はサムです。", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User's partner is named Sam."], "ms": 1019}
+{"part": "gate", "lang": "ja", "case": 14, "line": "笑 オーツミルクしか飲まないんだよね", "label": true, "cand": "kev", "repeat": 0, "p": 0.3294, "pred": false, "ms": 1061}
+{"part": "gate", "lang": "ja", "case": 14, "line": "笑 オーツミルクしか飲まないんだよね", "label": true, "cand": "kev", "repeat": 1, "p": 0.3294, "pred": false, "ms": 32}
+{"part": "gate", "lang": "ja", "case": 14, "line": "笑 オーツミルクしか飲まないんだよね", "label": true, "cand": "qwen", "pred": false, "ms": 569}
+{"part": "gate", "lang": "ja", "case": 14, "line": "笑 オーツミルクしか飲まないんだよね", "label": true, "cand": "nemotron", "pred": true, "ms": 972}
+{"part": "gate", "lang": "ja", "case": 14, "line": "笑 オーツミルクしか飲まないんだよね", "label": true, "cand": "extract_qwen", "pred": true, "stored": ["User only drinks oat milk."], "ms": 5355}
+{"part": "gate", "lang": "ja", "case": 15, "line": "草", "label": false, "cand": "kev", "repeat": 0, "p": 0.2571, "pred": false, "ms": 844}
+{"part": "gate", "lang": "ja", "case": 15, "line": "草", "label": false, "cand": "kev", "repeat": 1, "p": 0.2571, "pred": false, "ms": 33}
+{"part": "gate", "lang": "ja", "case": 15, "line": "草", "label": false, "cand": "qwen", "pred": false, "ms": 6974}
+{"part": "gate", "lang": "ja", "case": 15, "line": "草", "label": false, "cand": "nemotron", "pred": false, "ms": 855}
+{"part": "gate", "lang": "ja", "case": 15, "line": "草", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 4796}
+{"part": "gate", "lang": "ja", "case": 16, "line": "おやすみ！", "label": false, "cand": "kev", "repeat": 0, "p": 0.2697, "pred": false, "ms": 443}
+{"part": "gate", "lang": "ja", "case": 16, "line": "おやすみ！", "label": false, "cand": "kev", "repeat": 1, "p": 0.2697, "pred": false, "ms": 62}
+{"part": "gate", "lang": "ja", "case": 16, "line": "おやすみ！", "label": false, "cand": "qwen", "pred": false, "ms": 649}
+{"part": "gate", "lang": "ja", "case": 16, "line": "おやすみ！", "label": false, "cand": "nemotron", "pred": false, "ms": 716}
+{"part": "gate", "lang": "ja", "case": 16, "line": "おやすみ！", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 930}
+{"part": "gate", "lang": "ja", "case": 17, "line": "今何時？", "label": false, "cand": "kev", "repeat": 0, "p": 0.2112, "pred": false, "ms": 535}
+{"part": "gate", "lang": "ja", "case": 17, "line": "今何時？", "label": false, "cand": "kev", "repeat": 1, "p": 0.2112, "pred": false, "ms": 25}
+{"part": "gate", "lang": "ja", "case": 17, "line": "今何時？", "label": false, "cand": "qwen", "pred": false, "ms": 500}
+{"part": "gate", "lang": "ja", "case": 17, "line": "今何時？", "label": false, "cand": "nemotron", "pred": false, "ms": 710}
+{"part": "gate", "lang": "ja", "case": 17, "line": "今何時？", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 1090}
+{"part": "gate", "lang": "ja", "case": 18, "line": "20分後に水を飲むようにリマインドして。", "label": false, "cand": "kev", "repeat": 0, "p": 0.2678, "pred": false, "ms": 659}
+{"part": "gate", "lang": "ja", "case": 18, "line": "20分後に水を飲むようにリマインドして。", "label": false, "cand": "kev", "repeat": 1, "p": 0.2678, "pred": false, "ms": 21}
+{"part": "gate", "lang": "ja", "case": 18, "line": "20分後に水を飲むようにリマインドして。", "label": false, "cand": "qwen", "pred": true, "ms": 672}
+{"part": "gate", "lang": "ja", "case": 18, "line": "20分後に水を飲むようにリマインドして。", "label": false, "cand": "nemotron", "pred": true, "ms": 719}
+{"part": "gate", "lang": "ja", "case": 18, "line": "20分後に水を飲むようにリマインドして。", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 908}
+{"part": "gate", "lang": "ja", "case": 19, "line": "今日の気分はどう？", "label": false, "cand": "kev", "repeat": 0, "p": 0.292, "pred": false, "ms": 492}
+{"part": "gate", "lang": "ja", "case": 19, "line": "今日の気分はどう？", "label": false, "cand": "kev", "repeat": 1, "p": 0.292, "pred": false, "ms": 25}
+{"part": "gate", "lang": "ja", "case": 19, "line": "今日の気分はどう？", "label": false, "cand": "qwen", "pred": false, "ms": 688}
+{"part": "gate", "lang": "ja", "case": 19, "line": "今日の気分はどう？", "label": false, "cand": "nemotron", "pred": false, "ms": 770}
+{"part": "gate", "lang": "ja", "case": 19, "line": "今日の気分はどう？", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 916}
+{"part": "gate", "lang": "ja", "case": 20, "line": "ラーメン好き？", "label": false, "cand": "kev", "repeat": 0, "p": 0.5105, "pred": true, "ms": 523}
+{"part": "gate", "lang": "ja", "case": 20, "line": "ラーメン好き？", "label": false, "cand": "kev", "repeat": 1, "p": 0.5105, "pred": true, "ms": 150}
+{"part": "gate", "lang": "ja", "case": 20, "line": "ラーメン好き？", "label": false, "cand": "qwen", "pred": false, "ms": 673}
+{"part": "gate", "lang": "ja", "case": 20, "line": "ラーメン好き？", "label": false, "cand": "nemotron", "pred": false, "ms": 632}
+{"part": "gate", "lang": "ja", "case": 20, "line": "ラーメン好き？", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 1076}
+{"part": "gate", "lang": "ja", "case": 21, "line": "うん", "label": false, "cand": "kev", "repeat": 0, "p": 0.2703, "pred": false, "ms": 445}
+{"part": "gate", "lang": "ja", "case": 21, "line": "うん", "label": false, "cand": "kev", "repeat": 1, "p": 0.2703, "pred": false, "ms": 38}
+{"part": "gate", "lang": "ja", "case": 21, "line": "うん", "label": false, "cand": "qwen", "pred": false, "ms": 694}
+{"part": "gate", "lang": "ja", "case": 21, "line": "うん", "label": false, "cand": "nemotron", "pred": false, "ms": 751}
+{"part": "gate", "lang": "ja", "case": 21, "line": "うん", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 902}
+{"part": "gate", "lang": "ja", "case": 22, "line": "何か面白い話して。", "label": false, "cand": "kev", "repeat": 0, "p": 0.2815, "pred": false, "ms": 548}
+{"part": "gate", "lang": "ja", "case": 22, "line": "何か面白い話して。", "label": false, "cand": "kev", "repeat": 1, "p": 0.2815, "pred": false, "ms": 153}
+{"part": "gate", "lang": "ja", "case": 22, "line": "何か面白い話して。", "label": false, "cand": "qwen", "pred": false, "ms": 630}
+{"part": "gate", "lang": "ja", "case": 22, "line": "何か面白い話して。", "label": false, "cand": "nemotron", "pred": false, "ms": 714}
+{"part": "gate", "lang": "ja", "case": 22, "line": "何か面白い話して。", "label": false, "cand": "extract_qwen", "pred": true, "stored": ["User asked Ceti to tell an interesting story."], "ms": 3128}
+{"part": "gate", "lang": "ja", "case": 23, "line": "いいね笑", "label": false, "cand": "kev", "repeat": 0, "p": 0.3115, "pred": false, "ms": 480}
+{"part": "gate", "lang": "ja", "case": 23, "line": "いいね笑", "label": false, "cand": "kev", "repeat": 1, "p": 0.3115, "pred": false, "ms": 83}
+{"part": "gate", "lang": "ja", "case": 23, "line": "いいね笑", "label": false, "cand": "qwen", "pred": false, "ms": 4054}
+{"part": "gate", "lang": "ja", "case": 23, "line": "いいね笑", "label": false, "cand": "nemotron", "pred": false, "ms": 974}
+{"part": "gate", "lang": "ja", "case": 23, "line": "いいね笑", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 8814}
+{"part": "gate", "lang": "ja", "case": 24, "line": "東京の天気は？", "label": false, "cand": "kev", "repeat": 0, "p": 0.2186, "pred": false, "ms": 1023}
+{"part": "gate", "lang": "ja", "case": 24, "line": "東京の天気は？", "label": false, "cand": "kev", "repeat": 1, "p": 0.2186, "pred": false, "ms": 27}
+{"part": "gate", "lang": "ja", "case": 24, "line": "東京の天気は？", "label": false, "cand": "qwen", "pred": false, "ms": 1070}
+{"part": "gate", "lang": "ja", "case": 24, "line": "東京の天気は？", "label": false, "cand": "nemotron", "pred": false, "ms": 1730}
+{"part": "gate", "lang": "ja", "case": 24, "line": "東京の天気は？", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 490}
+{"part": "gate", "lang": "ja", "case": 25, "line": "ありがとう、助かる。", "label": false, "cand": "kev", "repeat": 0, "p": 0.2854, "pred": false, "ms": 459}
+{"part": "gate", "lang": "ja", "case": 25, "line": "ありがとう、助かる。", "label": false, "cand": "kev", "repeat": 1, "p": 0.2854, "pred": false, "ms": 30}
+{"part": "gate", "lang": "ja", "case": 25, "line": "ありがとう、助かる。", "label": false, "cand": "qwen", "pred": false, "ms": 410}
+{"part": "gate", "lang": "ja", "case": 25, "line": "ありがとう、助かる。", "label": false, "cand": "nemotron", "pred": false, "ms": 3572}
+{"part": "gate", "lang": "ja", "case": 25, "line": "ありがとう、助かる。", "label": false, "cand": "extract_qwen", "pred": true, "stored": ["User expressed gratitude."], "ms": 6938}
+{"part": "gate", "lang": "ja", "case": 26, "line": "うーん、どうだろう。", "label": false, "cand": "kev", "repeat": 0, "p": 0.1719, "pred": false, "ms": 74}
+{"part": "gate", "lang": "ja", "case": 26, "line": "うーん、どうだろう。", "label": false, "cand": "kev", "repeat": 1, "p": 0.1719, "pred": false, "ms": 21}
+{"part": "gate", "lang": "ja", "case": 26, "line": "うーん、どうだろう。", "label": false, "cand": "qwen", "pred": false, "ms": 1913}
+{"part": "gate", "lang": "ja", "case": 26, "line": "うーん、どうだろう。", "label": false, "cand": "nemotron", "pred": false, "ms": 981}
+{"part": "gate", "lang": "ja", "case": 26, "line": "うーん、どうだろう。", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 2302}
+{"part": "gate", "lang": "ja", "case": 27, "line": "Godot 4.6のニュースを検索して。", "label": false, "cand": "kev", "repeat": 0, "p": 0.277, "pred": false, "ms": 493}
+{"part": "gate", "lang": "ja", "case": 27, "line": "Godot 4.6のニュースを検索して。", "label": false, "cand": "kev", "repeat": 1, "p": 0.277, "pred": false, "ms": 55}
+{"part": "gate", "lang": "ja", "case": 27, "line": "Godot 4.6のニュースを検索して。", "label": false, "cand": "qwen", "pred": false, "ms": 1125}
+{"part": "gate", "lang": "ja", "case": 27, "line": "Godot 4.6のニュースを検索して。", "label": false, "cand": "nemotron", "pred": false, "ms": 773}
+{"part": "gate", "lang": "ja", "case": 27, "line": "Godot 4.6のニュースを検索して。", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 4467}
+{"part": "gate", "lang": "ja", "case": 28, "line": "妹について何て言ったっけ？", "label": false, "cand": "kev", "repeat": 0, "p": 0.333, "pred": false, "ms": 476}
+{"part": "gate", "lang": "ja", "case": 28, "line": "妹について何て言ったっけ？", "label": false, "cand": "kev", "repeat": 1, "p": 0.333, "pred": false, "ms": 139}
+{"part": "gate", "lang": "ja", "case": 28, "line": "妹について何て言ったっけ？", "label": false, "cand": "qwen", "pred": false, "ms": 1010}
+{"part": "gate", "lang": "ja", "case": 28, "line": "妹について何て言ったっけ？", "label": false, "cand": "nemotron", "pred": true, "ms": 627}
+{"part": "gate", "lang": "ja", "case": 28, "line": "妹について何て言ったっけ？", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 1488}
+{"part": "gate", "lang": "ja", "case": 29, "line": "え、なに？", "label": false, "cand": "kev", "repeat": 0, "p": 0.2065, "pred": false, "ms": 487}
+{"part": "gate", "lang": "ja", "case": 29, "line": "え、なに？", "label": false, "cand": "kev", "repeat": 1, "p": 0.2065, "pred": false, "ms": 76}
+{"part": "gate", "lang": "ja", "case": 29, "line": "え、なに？", "label": false, "cand": "qwen", "pred": false, "ms": 953}
+{"part": "gate", "lang": "ja", "case": 29, "line": "え、なに？", "label": false, "cand": "nemotron", "pred": false, "ms": 722}
+{"part": "gate", "lang": "ja", "case": 29, "line": "え、なに？", "label": false, "cand": "extract_qwen", "pred": false, "stored": [], "ms": 1527}
+{"part": "dedupe", "lang": "en", "case": 0, "stored": "User loves ramen.", "new": "User really loves ramen.", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.5181, "probabilities": {"same": 0.6787, "update": 0.2119, "different": 0.1094}}, "ms": 534}
+{"part": "dedupe", "lang": "en", "case": 0, "stored": "User loves ramen.", "new": "User really loves ramen.", "label": "same", "cand": "qwen", "pred": "update", "ms": 848}
+{"part": "dedupe", "lang": "en", "case": 0, "stored": "User loves ramen.", "new": "User really loves ramen.", "label": "same", "cand": "nemotron", "pred": "update", "ms": 1697}
+{"part": "dedupe", "lang": "en", "case": 0, "stored": "User loves ramen.", "new": "User really loves ramen.", "label": "same", "cand": "current_path", "pred": "same", "action": "skip", "cos": 0.991, "after": ["User loves ramen."], "seed_id": 1, "ms": 22}
+{"part": "dedupe", "lang": "en", "case": 1, "stored": "User's cat is named Mochi.", "new": "User has a cat called Mochi.", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.6474, "probabilities": {"same": 0.7649, "update": 0.1399, "different": 0.0952}}, "ms": 90}
+{"part": "dedupe", "lang": "en", "case": 1, "stored": "User's cat is named Mochi.", "new": "User has a cat called Mochi.", "label": "same", "cand": "qwen", "pred": "same", "ms": 1404}
+{"part": "dedupe", "lang": "en", "case": 1, "stored": "User's cat is named Mochi.", "new": "User has a cat called Mochi.", "label": "same", "cand": "nemotron", "pred": "same", "ms": 875}
+{"part": "dedupe", "lang": "en", "case": 1, "stored": "User's cat is named Mochi.", "new": "User has a cat called Mochi.", "label": "same", "cand": "current_path", "pred": "same", "action": "skip", "cos": 0.966, "after": ["User's cat is named Mochi."], "seed_id": 1, "ms": 3518}
+{"part": "dedupe", "lang": "en", "case": 2, "stored": "User works as a game developer.", "new": "User develops games for a living.", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.2824, "probabilities": {"same": 0.5216, "update": 0.3578, "different": 0.1206}}, "ms": 698}
+{"part": "dedupe", "lang": "en", "case": 2, "stored": "User works as a game developer.", "new": "User develops games for a living.", "label": "same", "cand": "qwen", "pred": "update", "ms": 1474}
+{"part": "dedupe", "lang": "en", "case": 2, "stored": "User works as a game developer.", "new": "User develops games for a living.", "label": "same", "cand": "nemotron", "pred": "same", "ms": 622}
+{"part": "dedupe", "lang": "en", "case": 2, "stored": "User works as a game developer.", "new": "User develops games for a living.", "label": "same", "cand": "current_path", "pred": "update", "action": "replace", "cos": 0.935, "after": ["User develops games for a living."], "seed_id": 1, "ms": 2920}
+{"part": "dedupe", "lang": "en", "case": 3, "stored": "User is allergic to peanuts.", "new": "User has a peanut allergy.", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.6401, "probabilities": {"same": 0.76, "update": 0.1539, "different": 0.0861}}, "ms": 583}
+{"part": "dedupe", "lang": "en", "case": 3, "stored": "User is allergic to peanuts.", "new": "User has a peanut allergy.", "label": "same", "cand": "qwen", "pred": "same", "ms": 1328}
+{"part": "dedupe", "lang": "en", "case": 3, "stored": "User is allergic to peanuts.", "new": "User has a peanut allergy.", "label": "same", "cand": "nemotron", "pred": "same", "ms": 651}
+{"part": "dedupe", "lang": "en", "case": 3, "stored": "User is allergic to peanuts.", "new": "User has a peanut allergy.", "label": "same", "cand": "current_path", "pred": "same", "action": "skip", "cos": 0.933, "after": ["User is allergic to peanuts."], "seed_id": 1, "ms": 3616}
+{"part": "dedupe", "lang": "en", "case": 4, "stored": "User's sister Aiko lives in Osaka.", "new": "User's sister Aiko is based in Osaka.", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.5293, "probabilities": {"same": 0.6862, "update": 0.2139, "different": 0.0999}}, "ms": 787}
+{"part": "dedupe", "lang": "en", "case": 4, "stored": "User's sister Aiko lives in Osaka.", "new": "User's sister Aiko is based in Osaka.", "label": "same", "cand": "qwen", "pred": "same", "ms": 1201}
+{"part": "dedupe", "lang": "en", "case": 4, "stored": "User's sister Aiko lives in Osaka.", "new": "User's sister Aiko is based in Osaka.", "label": "same", "cand": "nemotron", "pred": "same", "ms": 695}
+{"part": "dedupe", "lang": "en", "case": 4, "stored": "User's sister Aiko lives in Osaka.", "new": "User's sister Aiko is based in Osaka.", "label": "same", "cand": "current_path", "pred": "same", "action": "skip", "cos": 0.973, "after": ["User's sister Aiko lives in Osaka."], "seed_id": 1, "ms": 20}
+{"part": "dedupe", "lang": "en", "case": 5, "stored": "User's favorite color is blue.", "new": "User's favorite color is now green.", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.6263, "probabilities": {"same": 0.1184, "update": 0.7508, "different": 0.1308}}, "ms": 547}
+{"part": "dedupe", "lang": "en", "case": 5, "stored": "User's favorite color is blue.", "new": "User's favorite color is now green.", "label": "update", "cand": "qwen", "pred": "update", "ms": 1178}
+{"part": "dedupe", "lang": "en", "case": 5, "stored": "User's favorite color is blue.", "new": "User's favorite color is now green.", "label": "update", "cand": "nemotron", "pred": "update", "ms": 839}
+{"part": "dedupe", "lang": "en", "case": 5, "stored": "User's favorite color is blue.", "new": "User's favorite color is now green.", "label": "update", "cand": "current_path", "pred": "update", "action": "replace", "cos": 0.921, "after": ["User's favorite color is now green."], "seed_id": 1, "ms": 3267}
+{"part": "dedupe", "lang": "en", "case": 6, "stored": "User lives in Tokyo.", "new": "User moved to Kyoto last month.", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.5486, "probabilities": {"same": 0.1199, "update": 0.6991, "different": 0.181}}, "ms": 548}
+{"part": "dedupe", "lang": "en", "case": 6, "stored": "User lives in Tokyo.", "new": "User moved to Kyoto last month.", "label": "update", "cand": "qwen", "pred": "update", "ms": 1227}
+{"part": "dedupe", "lang": "en", "case": 6, "stored": "User lives in Tokyo.", "new": "User moved to Kyoto last month.", "label": "update", "cand": "nemotron", "pred": "update", "ms": 774}
+{"part": "dedupe", "lang": "en", "case": 6, "stored": "User lives in Tokyo.", "new": "User moved to Kyoto last month.", "label": "update", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.825, "after": ["User moved to Kyoto last month.", "User lives in Tokyo."], "seed_id": 1, "ms": 3526}
+{"part": "dedupe", "lang": "en", "case": 7, "stored": "User's cat Mochi is 3 years old.", "new": "User's cat Mochi just turned 4.", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.3112, "probabilities": {"same": 0.3262, "update": 0.5408, "different": 0.1329}}, "ms": 496}
+{"part": "dedupe", "lang": "en", "case": 7, "stored": "User's cat Mochi is 3 years old.", "new": "User's cat Mochi just turned 4.", "label": "update", "cand": "qwen", "pred": "update", "ms": 1145}
+{"part": "dedupe", "lang": "en", "case": 7, "stored": "User's cat Mochi is 3 years old.", "new": "User's cat Mochi just turned 4.", "label": "update", "cand": "nemotron", "pred": "update", "ms": 852}
+{"part": "dedupe", "lang": "en", "case": 7, "stored": "User's cat Mochi is 3 years old.", "new": "User's cat Mochi just turned 4.", "label": "update", "cand": "current_path", "pred": "update", "action": "replace", "cos": 0.958, "after": ["User's cat Mochi just turned 4."], "seed_id": 1, "ms": 3220}
+{"part": "dedupe", "lang": "en", "case": 8, "stored": "User uses VS Code.", "new": "User switched from VS Code to Neovim.", "label": "update", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.259, "probabilities": {"same": 0.1087, "update": 0.3853, "different": 0.506}}, "ms": 691}
+{"part": "dedupe", "lang": "en", "case": 8, "stored": "User uses VS Code.", "new": "User switched from VS Code to Neovim.", "label": "update", "cand": "qwen", "pred": "update", "ms": 2197}
+{"part": "dedupe", "lang": "en", "case": 8, "stored": "User uses VS Code.", "new": "User switched from VS Code to Neovim.", "label": "update", "cand": "nemotron", "pred": "update", "ms": 912}
+{"part": "dedupe", "lang": "en", "case": 8, "stored": "User uses VS Code.", "new": "User switched from VS Code to Neovim.", "label": "update", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.826, "after": ["User switched from VS Code to Neovim.", "User uses VS Code."], "seed_id": 1, "ms": 1930}
+{"part": "dedupe", "lang": "en", "case": 9, "stored": "User is learning Korean.", "new": "User has stopped learning Korean.", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.2758, "probabilities": {"same": 0.1976, "update": 0.5172, "different": 0.2852}}, "ms": 531}
+{"part": "dedupe", "lang": "en", "case": 9, "stored": "User is learning Korean.", "new": "User has stopped learning Korean.", "label": "update", "cand": "qwen", "pred": "update", "ms": 1193}
+{"part": "dedupe", "lang": "en", "case": 9, "stored": "User is learning Korean.", "new": "User has stopped learning Korean.", "label": "update", "cand": "nemotron", "pred": "update", "ms": 972}
+{"part": "dedupe", "lang": "en", "case": 9, "stored": "User is learning Korean.", "new": "User has stopped learning Korean.", "label": "update", "cand": "current_path", "pred": "update", "action": "replace", "cos": 0.939, "after": ["User has stopped learning Korean."], "seed_id": 1, "ms": 1972}
+{"part": "dedupe", "lang": "en", "case": 10, "stored": "User loves ramen.", "new": "User dislikes sushi.", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.1478, "probabilities": {"same": 0.2167, "update": 0.3514, "different": 0.4319}}, "ms": 536}
+{"part": "dedupe", "lang": "en", "case": 10, "stored": "User loves ramen.", "new": "User dislikes sushi.", "label": "different", "cand": "qwen", "pred": "different", "ms": 4521}
+{"part": "dedupe", "lang": "en", "case": 10, "stored": "User loves ramen.", "new": "User dislikes sushi.", "label": "different", "cand": "nemotron", "pred": "different", "ms": 732}
+{"part": "dedupe", "lang": "en", "case": 10, "stored": "User loves ramen.", "new": "User dislikes sushi.", "label": "different", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.747, "after": ["User dislikes sushi.", "User loves ramen."], "seed_id": 1, "ms": 25}
+{"part": "dedupe", "lang": "en", "case": 11, "stored": "User's sister Aiko lives in Osaka.", "new": "User's brother Ken lives in Sapporo.", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.1771, "probabilities": {"same": 0.2065, "update": 0.3421, "different": 0.4514}}, "ms": 518}
+{"part": "dedupe", "lang": "en", "case": 11, "stored": "User's sister Aiko lives in Osaka.", "new": "User's brother Ken lives in Sapporo.", "label": "different", "cand": "qwen", "pred": "different", "ms": 3893}
+{"part": "dedupe", "lang": "en", "case": 11, "stored": "User's sister Aiko lives in Osaka.", "new": "User's brother Ken lives in Sapporo.", "label": "different", "cand": "nemotron", "pred": "different", "ms": 724}
+{"part": "dedupe", "lang": "en", "case": 11, "stored": "User's sister Aiko lives in Osaka.", "new": "User's brother Ken lives in Sapporo.", "label": "different", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.812, "after": ["User's brother Ken lives in Sapporo.", "User's sister Aiko lives in Osaka."], "seed_id": 1, "ms": 9040}
+{"part": "dedupe", "lang": "en", "case": 12, "stored": "User works as a game developer.", "new": "User plays guitar on weekends.", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.1637, "probabilities": {"same": 0.2025, "update": 0.355, "different": 0.4425}}, "ms": 629}
+{"part": "dedupe", "lang": "en", "case": 12, "stored": "User works as a game developer.", "new": "User plays guitar on weekends.", "label": "different", "cand": "qwen", "pred": "different", "ms": 2999}
+{"part": "dedupe", "lang": "en", "case": 12, "stored": "User works as a game developer.", "new": "User plays guitar on weekends.", "label": "different", "cand": "nemotron", "pred": "update", "ms": 683}
+{"part": "dedupe", "lang": "en", "case": 12, "stored": "User works as a game developer.", "new": "User plays guitar on weekends.", "label": "different", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.753, "after": ["User plays guitar on weekends.", "User works as a game developer."], "seed_id": 1, "ms": 32}
+{"part": "dedupe", "lang": "en", "case": 13, "stored": "User's favorite color is blue.", "new": "User's favorite season is autumn.", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.2407, "probabilities": {"same": 0.2024, "update": 0.3038, "different": 0.4938}}, "ms": 656}
+{"part": "dedupe", "lang": "en", "case": 13, "stored": "User's favorite color is blue.", "new": "User's favorite season is autumn.", "label": "different", "cand": "qwen", "pred": "different", "ms": 2190}
+{"part": "dedupe", "lang": "en", "case": 13, "stored": "User's favorite color is blue.", "new": "User's favorite season is autumn.", "label": "different", "cand": "nemotron", "pred": "different", "ms": 847}
+{"part": "dedupe", "lang": "en", "case": 13, "stored": "User's favorite color is blue.", "new": "User's favorite season is autumn.", "label": "different", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.771, "after": ["User's favorite season is autumn.", "User's favorite color is blue."], "seed_id": 1, "ms": 18}
+{"part": "dedupe", "lang": "en", "case": 14, "stored": "User is allergic to peanuts.", "new": "User is allergic to cats.", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.2231, "probabilities": {"same": 0.2678, "update": 0.2501, "different": 0.4821}}, "ms": 546}
+{"part": "dedupe", "lang": "en", "case": 14, "stored": "User is allergic to peanuts.", "new": "User is allergic to cats.", "label": "different", "cand": "qwen", "pred": "different", "ms": 2231}
+{"part": "dedupe", "lang": "en", "case": 14, "stored": "User is allergic to peanuts.", "new": "User is allergic to cats.", "label": "different", "cand": "nemotron", "pred": "different", "ms": 711}
+{"part": "dedupe", "lang": "en", "case": 14, "stored": "User is allergic to peanuts.", "new": "User is allergic to cats.", "label": "different", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.817, "after": ["User is allergic to cats.", "User is allergic to peanuts."], "seed_id": 1, "ms": 5968}
+{"part": "dedupe", "lang": "ja", "case": 0, "stored": "ユーザーはラーメンが大好き。", "new": "ユーザーはラーメンがとても好き。", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.6174, "probabilities": {"same": 0.7449, "update": 0.1529, "different": 0.1021}}, "ms": 539}
+{"part": "dedupe", "lang": "ja", "case": 0, "stored": "ユーザーはラーメンが大好き。", "new": "ユーザーはラーメンがとても好き。", "label": "same", "cand": "qwen", "pred": "update", "ms": 3521}
+{"part": "dedupe", "lang": "ja", "case": 0, "stored": "ユーザーはラーメンが大好き。", "new": "ユーザーはラーメンがとても好き。", "label": "same", "cand": "nemotron", "pred": "update", "ms": 811}
+{"part": "dedupe", "lang": "ja", "case": 0, "stored": "ユーザーはラーメンが大好き。", "new": "ユーザーはラーメンがとても好き。", "label": "same", "cand": "current_path", "pred": "same", "action": "skip", "cos": 0.941, "after": ["ユーザーはラーメンが大好き。"], "seed_id": 1, "ms": 3419}
+{"part": "dedupe", "lang": "ja", "case": 1, "stored": "ユーザーの猫の名前はモチ。", "new": "ユーザーはモチという猫を飼っている。", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.5924, "probabilities": {"same": 0.7282, "update": 0.1595, "different": 0.1122}}, "ms": 826}
+{"part": "dedupe", "lang": "ja", "case": 1, "stored": "ユーザーの猫の名前はモチ。", "new": "ユーザーはモチという猫を飼っている。", "label": "same", "cand": "qwen", "pred": "update", "ms": 5166}
+{"part": "dedupe", "lang": "ja", "case": 1, "stored": "ユーザーの猫の名前はモチ。", "new": "ユーザーはモチという猫を飼っている。", "label": "same", "cand": "nemotron", "pred": "same", "ms": 617}
+{"part": "dedupe", "lang": "ja", "case": 1, "stored": "ユーザーの猫の名前はモチ。", "new": "ユーザーはモチという猫を飼っている。", "label": "same", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.793, "after": ["ユーザーはモチという猫を飼っている。", "ユーザーの猫の名前はモチ。"], "seed_id": 1, "ms": 18}
+{"part": "dedupe", "lang": "ja", "case": 2, "stored": "ユーザーはゲーム開発者として働いている。", "new": "ユーザーの仕事はゲーム開発。", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.4396, "probabilities": {"same": 0.6264, "update": 0.2684, "different": 0.1052}}, "ms": 512}
+{"part": "dedupe", "lang": "ja", "case": 2, "stored": "ユーザーはゲーム開発者として働いている。", "new": "ユーザーの仕事はゲーム開発。", "label": "same", "cand": "qwen", "pred": "same", "ms": 7115}
+{"part": "dedupe", "lang": "ja", "case": 2, "stored": "ユーザーはゲーム開発者として働いている。", "new": "ユーザーの仕事はゲーム開発。", "label": "same", "cand": "nemotron", "pred": "same", "ms": 776}
+{"part": "dedupe", "lang": "ja", "case": 2, "stored": "ユーザーはゲーム開発者として働いている。", "new": "ユーザーの仕事はゲーム開発。", "label": "same", "cand": "current_path", "pred": "same", "action": "skip", "cos": 0.879, "after": ["ユーザーはゲーム開発者として働いている。"], "seed_id": 1, "ms": 10517}
+{"part": "dedupe", "lang": "ja", "case": 3, "stored": "ユーザーはピーナッツアレルギー。", "new": "ユーザーはピーナッツにアレルギーがある。", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.6285, "probabilities": {"same": 0.7523, "update": 0.1539, "different": 0.0937}}, "ms": 486}
+{"part": "dedupe", "lang": "ja", "case": 3, "stored": "ユーザーはピーナッツアレルギー。", "new": "ユーザーはピーナッツにアレルギーがある。", "label": "same", "cand": "qwen", "pred": "same", "ms": 1473}
+{"part": "dedupe", "lang": "ja", "case": 3, "stored": "ユーザーはピーナッツアレルギー。", "new": "ユーザーはピーナッツにアレルギーがある。", "label": "same", "cand": "nemotron", "pred": "same", "ms": 686}
+{"part": "dedupe", "lang": "ja", "case": 3, "stored": "ユーザーはピーナッツアレルギー。", "new": "ユーザーはピーナッツにアレルギーがある。", "label": "same", "cand": "current_path", "pred": "same", "action": "skip", "cos": 1.0, "after": ["ユーザーはピーナッツアレルギー。"], "seed_id": 1, "ms": 24}
+{"part": "dedupe", "lang": "ja", "case": 4, "stored": "ユーザーの妹アイコは大阪に住んでいる。", "new": "ユーザーの妹アイコの住まいは大阪。", "label": "same", "cand": "kev", "pred": "same", "raw": {"type": "choice", "choice": "same", "confidence": 0.4498, "probabilities": {"same": 0.6332, "update": 0.2482, "different": 0.1186}}, "ms": 731}
+{"part": "dedupe", "lang": "ja", "case": 4, "stored": "ユーザーの妹アイコは大阪に住んでいる。", "new": "ユーザーの妹アイコの住まいは大阪。", "label": "same", "cand": "qwen", "pred": "same", "ms": 4086}
+{"part": "dedupe", "lang": "ja", "case": 4, "stored": "ユーザーの妹アイコは大阪に住んでいる。", "new": "ユーザーの妹アイコの住まいは大阪。", "label": "same", "cand": "nemotron", "pred": "same", "ms": 641}
+{"part": "dedupe", "lang": "ja", "case": 4, "stored": "ユーザーの妹アイコは大阪に住んでいる。", "new": "ユーザーの妹アイコの住まいは大阪。", "label": "same", "cand": "current_path", "pred": "same", "action": "skip", "cos": 0.928, "after": ["ユーザーの妹アイコは大阪に住んでいる。"], "seed_id": 1, "ms": 1120}
+{"part": "dedupe", "lang": "ja", "case": 5, "stored": "ユーザーの好きな色は青。", "new": "ユーザーの好きな色は今は緑。", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.637, "probabilities": {"same": 0.1218, "update": 0.758, "different": 0.1202}}, "ms": 468}
+{"part": "dedupe", "lang": "ja", "case": 5, "stored": "ユーザーの好きな色は青。", "new": "ユーザーの好きな色は今は緑。", "label": "update", "cand": "qwen", "pred": "update", "ms": 926}
+{"part": "dedupe", "lang": "ja", "case": 5, "stored": "ユーザーの好きな色は青。", "new": "ユーザーの好きな色は今は緑。", "label": "update", "cand": "nemotron", "pred": "update", "ms": 678}
+{"part": "dedupe", "lang": "ja", "case": 5, "stored": "ユーザーの好きな色は青。", "new": "ユーザーの好きな色は今は緑。", "label": "update", "cand": "current_path", "pred": "update", "action": "replace", "cos": 0.924, "after": ["ユーザーの好きな色は今は緑。"], "seed_id": 1, "ms": 1126}
+{"part": "dedupe", "lang": "ja", "case": 6, "stored": "ユーザーは東京に住んでいる。", "new": "ユーザーは先月京都に引っ越した。", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.4966, "probabilities": {"same": 0.1243, "update": 0.6644, "different": 0.2114}}, "ms": 553}
+{"part": "dedupe", "lang": "ja", "case": 6, "stored": "ユーザーは東京に住んでいる。", "new": "ユーザーは先月京都に引っ越した。", "label": "update", "cand": "qwen", "pred": "update", "ms": 843}
+{"part": "dedupe", "lang": "ja", "case": 6, "stored": "ユーザーは東京に住んでいる。", "new": "ユーザーは先月京都に引っ越した。", "label": "update", "cand": "nemotron", "pred": "update", "ms": 684}
+{"part": "dedupe", "lang": "ja", "case": 6, "stored": "ユーザーは東京に住んでいる。", "new": "ユーザーは先月京都に引っ越した。", "label": "update", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.863, "after": ["ユーザーは先月京都に引っ越した。", "ユーザーは東京に住んでいる。"], "seed_id": 1, "ms": 1163}
+{"part": "dedupe", "lang": "ja", "case": 7, "stored": "ユーザーの猫モチは3歳。", "new": "ユーザーの猫モチは4歳になった。", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.4682, "probabilities": {"same": 0.2344, "update": 0.6455, "different": 0.1201}}, "ms": 404}
+{"part": "dedupe", "lang": "ja", "case": 7, "stored": "ユーザーの猫モチは3歳。", "new": "ユーザーの猫モチは4歳になった。", "label": "update", "cand": "qwen", "pred": "update", "ms": 1714}
+{"part": "dedupe", "lang": "ja", "case": 7, "stored": "ユーザーの猫モチは3歳。", "new": "ユーザーの猫モチは4歳になった。", "label": "update", "cand": "nemotron", "pred": "update", "ms": 665}
+{"part": "dedupe", "lang": "ja", "case": 7, "stored": "ユーザーの猫モチは3歳。", "new": "ユーザーの猫モチは4歳になった。", "label": "update", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.907, "after": ["ユーザーの猫モチは4歳になった。", "ユーザーの猫モチは3歳。"], "seed_id": 1, "ms": 1360}
+{"part": "dedupe", "lang": "ja", "case": 8, "stored": "ユーザーはVS Codeを使っている。", "new": "ユーザーはVS CodeからNeovimに乗り換えた。", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.3375, "probabilities": {"same": 0.1385, "update": 0.5583, "different": 0.3031}}, "ms": 476}
+{"part": "dedupe", "lang": "ja", "case": 8, "stored": "ユーザーはVS Codeを使っている。", "new": "ユーザーはVS CodeからNeovimに乗り換えた。", "label": "update", "cand": "qwen", "pred": "update", "ms": 2009}
+{"part": "dedupe", "lang": "ja", "case": 8, "stored": "ユーザーはVS Codeを使っている。", "new": "ユーザーはVS CodeからNeovimに乗り換えた。", "label": "update", "cand": "nemotron", "pred": "update", "ms": 631}
+{"part": "dedupe", "lang": "ja", "case": 8, "stored": "ユーザーはVS Codeを使っている。", "new": "ユーザーはVS CodeからNeovimに乗り換えた。", "label": "update", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.826, "after": ["ユーザーはVS CodeからNeovimに乗り換えた。", "ユーザーはVS Codeを使っている。"], "seed_id": 1, "ms": 1933}
+{"part": "dedupe", "lang": "ja", "case": 9, "stored": "ユーザーは韓国語を勉強している。", "new": "ユーザーは韓国語の勉強をやめた。", "label": "update", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.5822, "probabilities": {"same": 0.1313, "update": 0.7215, "different": 0.1472}}, "ms": 590}
+{"part": "dedupe", "lang": "ja", "case": 9, "stored": "ユーザーは韓国語を勉強している。", "new": "ユーザーは韓国語の勉強をやめた。", "label": "update", "cand": "qwen", "pred": "update", "ms": 1326}
+{"part": "dedupe", "lang": "ja", "case": 9, "stored": "ユーザーは韓国語を勉強している。", "new": "ユーザーは韓国語の勉強をやめた。", "label": "update", "cand": "nemotron", "pred": "different", "ms": 865}
+{"part": "dedupe", "lang": "ja", "case": 9, "stored": "ユーザーは韓国語を勉強している。", "new": "ユーザーは韓国語の勉強をやめた。", "label": "update", "cand": "current_path", "pred": "update", "action": "replace", "cos": 0.956, "after": ["ユーザーは韓国語の勉強をやめた。"], "seed_id": 1, "ms": 3813}
+{"part": "dedupe", "lang": "ja", "case": 10, "stored": "ユーザーはラーメンが大好き。", "new": "ユーザーは寿司が苦手。", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.1199, "probabilities": {"same": 0.1926, "update": 0.3942, "different": 0.4132}}, "ms": 397}
+{"part": "dedupe", "lang": "ja", "case": 10, "stored": "ユーザーはラーメンが大好き。", "new": "ユーザーは寿司が苦手。", "label": "different", "cand": "qwen", "pred": "different", "ms": 799}
+{"part": "dedupe", "lang": "ja", "case": 10, "stored": "ユーザーはラーメンが大好き。", "new": "ユーザーは寿司が苦手。", "label": "different", "cand": "nemotron", "pred": "different", "ms": 614}
+{"part": "dedupe", "lang": "ja", "case": 10, "stored": "ユーザーはラーメンが大好き。", "new": "ユーザーは寿司が苦手。", "label": "different", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.768, "after": ["ユーザーは寿司が苦手。", "ユーザーはラーメンが大好き。"], "seed_id": 1, "ms": 25}
+{"part": "dedupe", "lang": "ja", "case": 11, "stored": "ユーザーの妹アイコは大阪に住んでいる。", "new": "ユーザーの兄ケンは札幌に住んでいる。", "label": "different", "cand": "kev", "pred": "update", "raw": {"type": "choice", "choice": "update", "confidence": 0.137, "probabilities": {"same": 0.17, "update": 0.4247, "different": 0.4054}}, "ms": 366}
+{"part": "dedupe", "lang": "ja", "case": 11, "stored": "ユーザーの妹アイコは大阪に住んでいる。", "new": "ユーザーの兄ケンは札幌に住んでいる。", "label": "different", "cand": "qwen", "pred": "different", "ms": 1409}
+{"part": "dedupe", "lang": "ja", "case": 11, "stored": "ユーザーの妹アイコは大阪に住んでいる。", "new": "ユーザーの兄ケンは札幌に住んでいる。", "label": "different", "cand": "nemotron", "pred": "different", "ms": 294}
+{"part": "dedupe", "lang": "ja", "case": 11, "stored": "ユーザーの妹アイコは大阪に住んでいる。", "new": "ユーザーの兄ケンは札幌に住んでいる。", "label": "different", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.91, "after": ["ユーザーの兄ケンは札幌に住んでいる。", "ユーザーの妹アイコは大阪に住んでいる。"], "seed_id": 1, "ms": 2717}
+{"part": "dedupe", "lang": "ja", "case": 12, "stored": "ユーザーはゲーム開発者として働いている。", "new": "ユーザーは週末にギターを弾く。", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.1246, "probabilities": {"same": 0.2189, "update": 0.3647, "different": 0.4164}}, "ms": 646}
+{"part": "dedupe", "lang": "ja", "case": 12, "stored": "ユーザーはゲーム開発者として働いている。", "new": "ユーザーは週末にギターを弾く。", "label": "different", "cand": "qwen", "pred": "different", "ms": 457}
+{"part": "dedupe", "lang": "ja", "case": 12, "stored": "ユーザーはゲーム開発者として働いている。", "new": "ユーザーは週末にギターを弾く。", "label": "different", "cand": "nemotron", "pred": "different", "ms": 653}
+{"part": "dedupe", "lang": "ja", "case": 12, "stored": "ユーザーはゲーム開発者として働いている。", "new": "ユーザーは週末にギターを弾く。", "label": "different", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.797, "after": ["ユーザーは週末にギターを弾く。", "ユーザーはゲーム開発者として働いている。"], "seed_id": 1, "ms": 24}
+{"part": "dedupe", "lang": "ja", "case": 13, "stored": "ユーザーの好きな色は青。", "new": "ユーザーの好きな季節は秋。", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.1952, "probabilities": {"same": 0.2056, "update": 0.331, "different": 0.4635}}, "ms": 67}
+{"part": "dedupe", "lang": "ja", "case": 13, "stored": "ユーザーの好きな色は青。", "new": "ユーザーの好きな季節は秋。", "label": "different", "cand": "qwen", "pred": "different", "ms": 1121}
+{"part": "dedupe", "lang": "ja", "case": 13, "stored": "ユーザーの好きな色は青。", "new": "ユーザーの好きな季節は秋。", "label": "different", "cand": "nemotron", "pred": "different", "ms": 487}
+{"part": "dedupe", "lang": "ja", "case": 13, "stored": "ユーザーの好きな色は青。", "new": "ユーザーの好きな季節は秋。", "label": "different", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.905, "after": ["ユーザーの好きな季節は秋。", "ユーザーの好きな色は青。"], "seed_id": 1, "ms": 1267}
+{"part": "dedupe", "lang": "ja", "case": 14, "stored": "ユーザーはピーナッツアレルギー。", "new": "ユーザーは猫アレルギー。", "label": "different", "cand": "kev", "pred": "different", "raw": {"type": "choice", "choice": "different", "confidence": 0.2636, "probabilities": {"same": 0.2054, "update": 0.2856, "different": 0.5091}}, "ms": 438}
+{"part": "dedupe", "lang": "ja", "case": 14, "stored": "ユーザーはピーナッツアレルギー。", "new": "ユーザーは猫アレルギー。", "label": "different", "cand": "qwen", "pred": "different", "ms": 422}
+{"part": "dedupe", "lang": "ja", "case": 14, "stored": "ユーザーはピーナッツアレルギー。", "new": "ユーザーは猫アレルギー。", "label": "different", "cand": "nemotron", "pred": "different", "ms": 758}
+{"part": "dedupe", "lang": "ja", "case": 14, "stored": "ユーザーはピーナッツアレルギー。", "new": "ユーザーは猫アレルギー。", "label": "different", "cand": "current_path", "pred": "different", "action": "add", "cos": 0.813, "after": ["ユーザーは猫アレルギー。", "ユーザーはピーナッツアレルギー。"], "seed_id": 1, "ms": 1950}
