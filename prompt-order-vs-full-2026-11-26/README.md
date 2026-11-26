@@ -150,7 +150,18 @@ The check picked a tool on 123 of 126 tool lines and on 0 of 42 chit-chat lines.
 ## Limits
 
 - **Scope:** one 4B model and 6 tools.
-- **Single-turn lines on light, synthetic context.** The history never reached `PROMPT_TOKEN_BUDGET`, few memories were retrieved, and the jobs list was off. The tiered order's tool rounds never see that context, so a heavier context could hurt the one-prompt arms more than this run shows. That is untested.
+- **Single-turn lines on light, synthetic context.** The seeded context totals about 1,200 characters. The developer's live store on the same day (counts and sizes only) totals about 4,900, so the real prompt is about 1,000–1,200 tokens longer:
+
+  | Part | This run | Live store |
+  | --- | --- | --- |
+  | Persona card | ~150 characters | ~1,570 |
+  | Pinned facts | 5 (~150 characters) | 7 (~740) |
+  | Unpinned facts that retrieval can return | 0 | 171 (up to 4 returned per turn, about 550 characters) |
+  | Profile | ~210 characters | none |
+  | Summary | ~200 characters | ~420 |
+  | History | 10 messages (~500 characters) | 16 messages (~1,650) |
+
+  Retrieval returned nothing in this run, because everything stored was already in the prompt. The jobs list was off. The tiered order's tool rounds never see that context, but the one-prompt answers (B, B512, C) do, so a heavier context could hurt them more than this run shows. A rerun with context seeded to the live sizes is planned.
 - **Run order:** B512 and C ran on their own after the main run, not interleaved with A, so server drift between runs lands on them alone.
 - **Scoring:** automatic and keyword-based. The false-claim check catches less in Japanese. A reply that runs one tool and only claims the second ("I'll set a reminder") counts as a tool miss, not a false claim.
 - **Timing:** wall clock around non-streaming calls. There is no time-to-first-token, and streaming TTS could start speaking earlier in every arm. Filler audio is left out.
