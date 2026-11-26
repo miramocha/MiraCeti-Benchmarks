@@ -19,7 +19,8 @@ Two more arms were added during the run:
 ## Setup
 
 - **Date:** 2026-11-26.
-- **Server:** LM Studio on a separate machine on the local network, OpenAI-compatible API. The bench ran from another PC. The server's load settings were not recorded.
+- **Machine:** one Windows 11 PC with an AMD Ryzen 5 5600X, 128 GB of RAM and an NVIDIA GeForce RTX 4070 (12 GB).
+- **Server:** LM Studio on the same PC, OpenAI-compatible API. The bench ran on that PC as well. The server's load settings were not recorded.
 - **Model:** `qwen3.5-4b` for every call. `tool_model` and `judge_model` are empty, as in the live settings. The embedder is `nomic-embed-text-v1.5`.
 - **Settings:** copied from the live CetiMind settings on 2026-11-26 and pinned in `bench.py`:
   - `chat_temperature` and `tool_temperature` 0.6
