@@ -295,8 +295,11 @@ def _page(topic: dict, lang: str, position: str) -> str:
 def _search(lang: str, position: str) -> str:
     """Ten hits in format_hits style: the distractor at hit 2 and the answer at its position."""
     hits = list(_SEARCH["filler"][lang])
-    hits.insert(1, _SEARCH["distractor"][lang])
-    hits.insert(_SEARCH_HIT[position] - 1, _SEARCH["answer"][lang])
+    # Insert the earlier hit first. An answer at hit 1, inserted after the distractor, would push it to hit 3.
+    placed = [(1, _SEARCH["distractor"][lang]),
+              (_SEARCH_HIT[position] - 1, _SEARCH["answer"][lang])]
+    for at, hit in sorted(placed):
+        hits.insert(at, hit)
     blocks = []
     for number, (title, url, snippet) in enumerate(hits[:10], start=1):
         while len(snippet) < _SNIPPET_CHARS[lang]:
