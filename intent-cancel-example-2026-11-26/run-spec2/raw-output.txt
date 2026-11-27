@@ -1,0 +1,74 @@
+{"repeat": 0, "elapsed_s": 64}
+{"repeat": 1, "elapsed_s": 129}
+{"repeat": 2, "elapsed_s": 197}
+{"repeat": 3, "elapsed_s": 263}
+{"repeat": 4, "elapsed_s": 326}
+{
+  "groups": {
+    "live": {
+      "cancel_test": {
+        "right": 20,
+        "total": 20
+      },
+      "cancel_new": {
+        "right": 60,
+        "total": 60
+      },
+      "near_miss": {
+        "right": 30,
+        "total": 40
+      },
+      "tool": {
+        "right": 155,
+        "total": 160
+      },
+      "none": {
+        "right": 70,
+        "total": 70
+      },
+      "either": {
+        "right": 40,
+        "total": 40
+      }
+    },
+    "bare": {
+      "cancel_test": {
+        "right": 10,
+        "total": 20
+      },
+      "cancel_new": {
+        "right": 30,
+        "total": 60
+      },
+      "near_miss": {
+        "right": 35,
+        "total": 40
+      },
+      "tool": {
+        "right": 155,
+        "total": 160
+      },
+      "none": {
+        "right": 70,
+        "total": 70
+      },
+      "either": {
+        "right": 40,
+        "total": 40
+      }
+    }
+  },
+  "median_ms": {
+    "live": 333.8,
+    "bare": 339.2
+  },
+  "checks": {
+    "cancel_new": true,
+    "near_miss_alarms": false,
+    "no_drop_tool": true,
+    "no_drop_none": true,
+    "no_drop_either": true,
+    "no_drop_cancel_test": true
+  },
+  "pass": false
+}

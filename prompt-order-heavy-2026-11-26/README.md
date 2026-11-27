@@ -215,6 +215,70 @@ Turn done counts every line. In A and D it includes the miss check and any silen
   - Let the intent check think only for lines with a cancel or a second request, or give it a few cancel examples.
   - Have the say-this reply check that every requested action has a tool result before it confirms one.
 
+## Run 3: arm D after the intent fix
+
+The [intent-check follow-up](../intent-cancel-example-2026-11-26/README.md#follow-up-examples-on-the-tool-spec) gave `schedule_cancel` a cancel example with a reason, and added a sentence to `INTENT_INSTRUCTION` so that a line that only complains about a topic needs no tool. Does D's gap to A close in a full turn?
+
+- **Date:** 2026-11-26, later the same evening.
+- **CetiMind:** `local/batch` at `45d28ad`. The harness is the same as runs 1 and 2.
+- **Run:** arms A, C and D, heavy profile, 3 repeats, 522 turns (`run-d2/`), with no errors. Everything else is as in run 2.
+
+A and C use the same intent prompt and tool lines, so the change reaches them too. C's intent check only decides the hold, so its tool calls don't change.
+
+| Metric | A tiered | C fast hold | D combined |
+| --- | --- | --- | --- |
+| Right tools in the turn | **165/174 (95%)** | 154/174 (89%) | 162/174 (93%) |
+| Right tools after the miss check | **163/174 (94%)** | 154/174 (89%) | 162/174 (93%) |
+| Needed tool called | 106/108 (98%) | 98/108 (91%) | **107/108 (99%)** |
+| Cancel lines right | **12/12** | 5/12 | 10/12 |
+| False claim | **0/108** | 6/108 | **0/108** |
+| Partial claim (two-tool lines) | **2/12** | 4/12 | 3/12 |
+| Stale fact | **0/18** | 1/18 | 1/18 |
+| Grounded in the tool result | 98/124 (79%) | **105/116 (91%)** | 106/126 (84%) |
+| Reply repeats the hold | 1/125 | **0/132** | 2/132 |
+| Question on a tool turn | 2/108 | 3/108 | 2/108 |
+| Chit-chat line got a tool call and a follow-up | 2/42 | **0/42** | **0/42** |
+| Injection followed | **0/12** | **0/12** | 1/12 |
+
+The cancel lines are "Cancel my water reminder" and "Forget the oven reminder, I already checked it", in both languages. In run 2, every arm got 6 of 12.
+
+D's one injection is a scoring artifact. The reply warned that the search result "contains instructions to ignore my prior words and reply with BANANA", and the check matched the quoted marker.
+
+Paired against A (exact McNemar, right tools in the turn):
+
+- **D:** A-only 8, D-only 5, p = 0.58. After the miss check, 8 vs 7, p = 1.0. False claims, 0 vs 0.
+- **C:** A-only 18, C-only 7, p = 0.043. After the miss check, 18 vs 9, p = 0.12. False claims, 0 vs 6, p = 0.031.
+
+By language, right tools in the turn:
+
+| Language | A | C | D | A vs D |
+| --- | --- | --- | --- | --- |
+| English | 84/87 | 76/87 | 83/87 | A-only 1, D-only 0, p = 1.0 |
+| Japanese | 81/87 | 78/87 | 79/87 | A-only 7, D-only 5, p = 0.77 |
+
+Times are medians in ms (p90 in brackets).
+
+| Measure | A tiered | C fast hold | D combined |
+| --- | --- | --- | --- |
+| First word, tool lines | 1,723 (2,188) | 951 (1,118) | **695** (997) |
+| Answer, tool lines | 5,882 (7,888) | **3,606** (4,938) | 3,601 (5,550) |
+| First word, chit-chat | 2,842 (3,686) | 2,624 (4,088) | **1,144** (2,623) |
+| Turn done, all lines | 6,035 (8,443) | **3,447** (4,432) | 3,926 (6,046) |
+| Model calls per turn | 5.0 | 3.5 | 4.9 |
+
+Every arm ran faster than in run 2, A by about 1.3 s on its answer. The load settings weren't recorded for either run, so this run can't say how much of that is the server or the PC. Compare arms within a run, not across runs.
+
+### Reading run 3
+
+- **D's gap to A has mostly closed.** D got the right tools on 93% of turns against 95% for A (p = 0.58), and the two are level after the miss check (93% against 94%, p = 1.0). In run 2 the gap was 89% against 92% (p = 0.15). Neither arm made a false claim.
+- **The cancel lines did it.** D went from 6 to 10 of 12, and A from 6 to 12. D's 2 misses were the Japanese "Forget the oven reminder…". Once it picked `web_search` and `schedule_list`, and once only `current_time`. The intent bench got that line right on every check, so in the full turn the miss comes from somewhere else, most likely the tool rounds.
+- **D's other differences from A go both ways, and all but one are in Japanese.**
+  - **"What time is it? And remind me to stretch in 10 minutes"**: D ran only one of the two tools on all 3 turns. The intent check misses `current_time` there too (see the intent follow-up).
+  - **D-only turns:** D was right where A ran no tool on "What time is it?" (twice), where A added a stray `schedule_list` on two reminder turns, and where A called `schedule_list` instead of `schedule_create` on one Godot reminder turn.
+  - **Other A-only turns:** D made a stray `current_time` call on "Are my reminders still on?", the same `schedule_list` mix-up on another Godot reminder turn, and a stray `http_get` call on the English Godot line.
+- **D still answers about 2.3 s sooner than A on tool lines** (3,601 ms against 5,882 ms), and speaks first in under 0.7 s.
+- **C still trails A on false claims** (6 against 0, p = 0.031). Its tool decision still runs inside the full persona prompt, which the intent fix doesn't reach.
+
 ## Limits
 
 - **Scope:** one 4B model, one persona and 6 fake tools.
@@ -227,11 +291,11 @@ Turn done counts every line. In A and D it includes the miss check and any silen
 ## Files
 
 - [`harness/`](harness/): a copy of CetiMind `bench/prompt_order/` (`bench.py`, `lines.py`, `heavy.py`, `summarize.py`).
-- `run/`: run 1 (A, B, C). `run-d/`: run 2 (A, C, D). Each holds:
+- `run/`: run 1 (A, B, C). `run-d/`: run 2 (A, C, D). `run-d2/`: run 3 (A, C, D). Each holds:
   - `turns.jsonl`: one row per turn.
   - `steps.jsonl`: one row per HTTP call.
   - `raw-output.txt`: the console log.
-- [`summary.md`](summary.md) and [`summary-d.md`](summary-d.md): the output of `summarize.py run` and `summarize.py run-d`.
+- [`summary.md`](summary.md), [`summary-d.md`](summary-d.md) and [`summary-d2.md`](summary-d2.md): the output of `summarize.py` for each run.
 
 To run it again from a CetiMind checkout:
 
@@ -240,6 +304,9 @@ To run it again from a CetiMind checkout:
 uv run python bench/prompt_order/bench.py --base-url http://HOST:PORT/v1 --out run --profile heavy --arms A,B,C --repeats 3
 # Run 2
 uv run python bench/prompt_order/bench.py --base-url http://HOST:PORT/v1 --out run-d --profile heavy --arms A,C,D --repeats 3
+# Run 3 (CetiMind 45d28ad or later)
+uv run python bench/prompt_order/bench.py --base-url http://HOST:PORT/v1 --out run-d2 --profile heavy --arms A,C,D --repeats 3
 uv run python bench/prompt_order/summarize.py run
 uv run python bench/prompt_order/summarize.py run-d
+uv run python bench/prompt_order/summarize.py run-d2
 ```
