@@ -28,11 +28,20 @@ def count(v, f=lambda r: True):
     return f"{sum(r['right'] for r in sub)}/{len(sub)}"
 
 
+def pct(values, q):
+    if not values:
+        return float("nan")
+    ordered = sorted(values)
+    index = min(len(ordered) - 1, max(0, math.ceil(q * len(ordered)) - 1))
+    return ordered[index]
+
+
 def med(vals):
-    return f"{st.median(vals) / 1000:.2f} s" if vals else "–"
+    return f"{st.median(vals):,.0f} ({pct(vals, 0.9):,.0f})" if vals else "–"
 
 
 print(f"Turns: {len(rows)}, errors: {sum(bool(r.get('error')) for r in rows)}\n")
+print("Times are medians in ms (p90 in brackets).\n")
 print("| Measure | " + " | ".join(ARMS) + " |")
 print("| --- |" + " --- |" * len(ARMS))
 specs = [
@@ -46,12 +55,12 @@ specs = [
     ("Search results", lambda v: count(v, lambda r: r["case"].startswith("marathon"))),
     ("Distractor named instead", lambda v: f"{sum(r['wrong'] for r in v)}/{len(v)}"),
     ("Right tools called", lambda v: f"{sum(r['ok'] for r in v)}/{len(v)}"),
-    ("Answer time (median)", lambda v: med([r["reply_ms"] for r in v])),
+    ("Answer time", lambda v: med([r["reply_ms"] for r in v])),
 ]
 by_arm = {a: [r for r in rows if r["arm"] == a] for a in ARMS}
 for label, fn in specs:
     print(f"| {label} | " + " | ".join(fn(by_arm[a]) for a in ARMS) + " |")
-for step, label in (("say_this", "Say-this call (median)"), ("summary", "Summary call (median)")):
+for step, label in (("say_this", "Say-this call"), ("summary", "Summary call")):
     print(f"| {label} | " + " | ".join(med([s["ms"] for s in steps if s["arm"] == a and s["step"] == step])
                                      for a in ARMS) + " |")
 tok = {a: [s["prompt_tokens"] for s in steps if s["arm"] == a and s["step"] == "say_this"] for a in ARMS}

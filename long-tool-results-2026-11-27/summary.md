@@ -1,5 +1,7 @@
 Turns: 360, errors: 0
 
+Times are medians in ms (p90 in brackets).
+
 | Measure | L | L2500 | LFULL | LSUM |
 | --- | --- | --- | --- | --- |
 | Answer named, all | 28/90 | 62/90 | 89/90 | 77/90 |
@@ -12,9 +14,9 @@ Turns: 360, errors: 0
 | Search results | 6/18 | 15/18 | 18/18 | 18/18 |
 | Distractor named instead | 23/90 | 13/90 | 0/90 | 0/90 |
 | Right tools called | 90/90 | 90/90 | 90/90 | 90/90 |
-| Answer time (median) | 3.78 s | 3.93 s | 4.02 s | 4.15 s |
-| Say-this call (median) | 0.64 s | 0.75 s | 0.80 s | 0.53 s |
-| Summary call (median) | – | – | – | 0.60 s |
+| Answer time | 3,783 (4,612) | 3,927 (4,827) | 4,021 (4,734) | 4,148 (5,517) |
+| Say-this call | 636 (790) | 751 (880) | 803 (948) | 530 (690) |
+| Summary call | – | – | – | 598 (910) |
 | Say-this prompt tokens (median) | 1,864 | 2,402 | 2,871 | 1,539 |
 
 Paired, answer named (exact McNemar; x-only = x right, y wrong):
