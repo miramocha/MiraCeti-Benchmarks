@@ -2,7 +2,7 @@
 
 ## Question
 
-The [first run](../prompt-order-vs-full-2026-11-26/README.md) found that one full persona prompt matched CetiMind's tiered tool turn on tool accuracy and answered 3–4 s sooner. That run had a light, synthetic context: a 150-character persona, 5 pinned facts, no retrievable records, and no jobs list. Its README noted that this left the tiered order's main argument untested. The tiered order's tool rounds never see memories or history, so a heavier context could hurt the one-prompt arms more.
+The [first run](../prompt-order-vs-full-2026-11-26/README.md) found that one full persona prompt matched CetiMind's tiered tool turn on tool accuracy and answered 3–4 s sooner. That run had a light, synthetic context: a 150-character persona, 5 pinned facts, no retrievable records, and no jobs list. Its README noted that this left the tiered order's main argument untested. The tiered order's tool rounds never see retrieved records or history, so a heavier context could hurt the one-prompt arms more.
 
 This run sizes the context like real use and plants traps that tempt an answer from memory instead of a tool call. Does the tiered order hold up better there, and at what cost in time?
 
@@ -11,18 +11,19 @@ This run sizes the context like real use and plants traps that tempt an answer f
 The same as the first run, except for the context and the persona:
 
 - **Date:** 2026-11-26.
-- **Machine:** one Windows 11 PC with an AMD Ryzen 5 5600X, 128 GB of RAM and an NVIDIA GeForce RTX 4070 (12 GB). LM Studio and the bench ran on this PC. The server's load settings were not recorded.
+- **Machine:** one Windows 11 PC with an AMD Ryzen 5 5600X, 128 GB of RAM and an NVIDIA GeForce RTX 4070 (12 GB). LM Studio and the bench ran on this PC. The server's load settings (context length, `parallel`, K/V cache type, GPU offload) and VRAM use weren't recorded for runs 1 and 2.
 - **Model and settings:** `qwen3.5-4b` for every call, with the live CetiMind settings of 2026-11-26 pinned (see the first run).
-- **CetiMind:** `main` at `c4cd140`, with the harness in `bench/prompt_order/` (`--profile heavy`). A copy is in [`harness/`](harness/).
+- **CetiMind:** `main` at `c4cd140`, with the harness in `bench/prompt_order/` (`--profile heavy`). A copy is in [`harness/`](harness/). Both runs used the default seed `20261126`.
 
 ## Method
 
-- **Lines, tools and arms:** the first run's 29 lines in English and in Japanese, with the same 6 fake tools. There are three arms:
+- **Lines, tools and arms:** the first run's 29 lines in English and in Japanese, with the same 6 fake tools. There are three arms in run 1, and run 2 adds D:
   - **A, tiered:** today's `reply_turn`.
   - **B, one prompt:** the full persona prompt with every tool.
   - **C, fast hold:** B's answer, plus a thinking-off intent check that only decides whether to play a hold line.
+  - **D, combined:** run 2 only. Keeps A's order, with three changes at once (see [Run 2](#run-2-the-combined-arm-d)).
 
-  The three arms were interleaved on every line, in shuffled order, for 3 repeats (522 turns).
+  In each run the arms were interleaved on every line, in shuffled order, for 3 repeats (522 turns).
 - **Context:** sized against the developer's live store on the same day (counts and sizes only). Everything is synthetic ([`harness/heavy.py`](harness/heavy.py)).
 
   | Part | This run | Live store | First run |
@@ -33,25 +34,38 @@ The same as the first run, except for the context and the persona:
   | Profile | none | none | ~210 characters |
   | Summary | ~390 characters | ~420 | ~200 |
   | History | 16 messages (~1,730 characters) | 16 (~1,650) | 10 (~500) |
-  | Jobs list | 2 open jobs | 0 at the time | off |
+  | Jobs list | 2 open jobs, planted | 0 at the time | off |
 
   The Japanese text is shorter in characters, as Japanese is. Retrieval returned 2.2 records per turn on average (3.2 in English, 1.1 in Japanese). The median persona prompt size was 2,372 tokens for B and C, against about 1,430 in the first run. A's say-this prompt was 1,502 tokens.
 - **Traps:**
   - A stale fact ("the latest Godot version is 4.4", while the tool says 4.6).
   - A past assistant line, "Done, your oven reminder is set".
-  - Memories of a water-reminder habit, a rainy week in Tokyo and a daily stretch.
+  - Stored facts about a water-reminder habit, a rainy week in Tokyo and a daily stretch.
   - An "it's almost 2" remark in the history.
 - **Scoring:** the same as the first run, with these changes:
-  - The list lines ("What reminders do I have?" and similar) are right with or without `schedule_list`, since the jobs list is in the prompt.
+  - The list lines ("What reminders do I have?" and similar) are right with or without `schedule_list`, since the jobs list is in the prompt. That cuts tool lines from 126 in the first run to 108 here, so the two runs' right-tools figures aren't directly comparable.
   - **Stale fact:** a Godot reply that gives 4.4 without 4.6.
   - **Partial claim:** on the two-tool lines, a tool ran but `schedule_create` did not, and the reply says a reminder is set.
   - **Sound tags:** the card's own speech tags are allowed.
 
 ## Results
 
-522 turns, 174 per arm, no errors.
+There are two runs, each with 522 turns (174 per arm) and no errors:
 
-### Accuracy
+- **Run 1** (`run/`): A, B, and C.
+- **Run 2** (`run-d/`): A, C, and D. A and C ran again. They weren't copied from run 1.
+
+The two runs aren't pooled. C got the right tools on 90% of turns in run 1 and 86% in run 2, with the same arm and profile.
+
+How to read the tables:
+
+- **p:** exact McNemar, paired on the same line and repeat. "A-only" counts turns where A was right and the other arm wasn't. The p-values are uncorrected.
+- **Tool lines:** the 108 turns per arm whose line needs a tool. **Chit-chat:** the 42 turns whose line needs none. The 24 list-line turns, right with or without `schedule_list`, are in neither time row.
+- **Times:** medians in ms, p90 in brackets, wall clock around non-streaming calls.
+- **First word:** the time from the start of the turn until the first spoken text is ready. That's the hold line when one is spoken, otherwise the whole reply. It isn't time-to-first-token.
+- **Answer:** the time until the reply with the tool result is ready.
+
+### Run 1: A, B, and C
 
 | Metric | A tiered | B one prompt | C fast hold |
 | --- | --- | --- | --- |
@@ -68,56 +82,84 @@ The same as the first run, except for the context and the persona:
 | Question on a tool turn | 1/108 | 3/108 | 4/108 |
 | Injection followed | 1/12 | 0/12 | 0/12 |
 
+Grounded counts only turns where a tool ran, plus the list lines, so its denominator differs by arm.
+
 Paired on the same line and repeat (exact McNemar):
 
-- **A vs B, right tools:** A-only 13, B-only 4, **p = 0.049**. False claims: 1 vs 7, p = 0.070.
+- **A vs B, right tools:** A-only 13, B-only 4, **p = 0.049**. After the miss check, 19 vs 9, p = 0.087. False claims: 1 vs 7, p = 0.070.
 - **A vs C, right tools:** A-only 8, C-only 5, p = 0.58. False claims: 0 vs 4, p = 0.125.
 
 By language, right tools in the turn (false claims in brackets):
 
 | Language | A | B | C | A vs B | A vs C |
 | --- | --- | --- | --- | --- | --- |
-| English | 92% (1/54) | 83% (7/54) | 87% (4/54) | A-only 8, B-only 0, **p = 0.01** | 5/1, p = 0.22 |
-| Japanese | 91% (0/54) | 90% (0/54) | 92% (1/54) | 5/4, p = 1.0 | 3/4, p = 1.0 |
+| English | 80/87, 92% (1/54) | 72/87, 83% (7/54) | 76/87, 87% (4/54) | A-only 8, B-only 0, **p = 0.008** | 5/1, p = 0.22 |
+| Japanese | 79/87, 91% (0/54) | 78/87, 90% (0/54) | 80/87, 92% (1/54) | 5/4, p = 1.0 | 3/4, p = 1.0 |
 
-### Time
-
-Medians in ms (p90 in brackets).
+Times are medians in ms (p90 in brackets).
 
 | Measure | A tiered | B one prompt | C fast hold |
 | --- | --- | --- | --- |
 | First word, tool lines | 2,348 (2,709) | 3,718 (4,842) | **1,037** (1,422) |
 | Answer, tool lines | 7,241 (9,221) | **3,718** (4,842) | 4,192 (5,164) |
 | First word, chit-chat | 3,760 (4,038) | **2,156** (2,481) | 2,487 (3,000) |
-| Turn done, including the miss check | 7,734 (11,188) | 3,016 (4,454) | 3,684 (4,880) |
+| Turn done, all lines | 7,734 (11,188) | **3,016** (4,454) | 3,684 (4,880) |
 | Model calls per turn | 5.0 | 1.7 | 3.4 |
 | Reasoning tokens per turn | 516 | 195 | 194 |
 
-Against the first run, B's answer on tool lines slowed from 2.8 s to 3.7 s, and C's from 3.5 s to 4.2 s. A's answer barely moved (6.6 s to 7.2 s). C's thinking-off intent check picked a tool on 103 of 108 tool lines and on 0 of 42 chit-chat lines.
+Turn done counts every line. In A it includes the miss check and any silent retry. B and C have no miss check, so their turn done is the answer.
 
-## Reading
+Against the first run, B's answer on tool lines slowed from 2,797 ms to 3,718 ms, and C's from 3,479 ms to 4,192 ms. A's answer barely moved (6,614 ms to 7,241 ms). C's thinking-off intent check picked a tool on 103 of 108 tool lines and on 0 of 42 chit-chat lines.
 
-- **Under heavy context, the tiered order is the most accurate.** It got the right tools on 91% of turns, against 86% for one prompt (p = 0.049). It made 1 false claim against 7, and gave the stale Godot version once against 3 times. Its tool rounds see only the user's line, so the planted memories and the "Done, your oven reminder is set" line can't reach the tool decision. In the first run, with light context, the two were even.
-- **The gap is in English.** In English, one prompt drops to 83% (A-only 8, B-only 0, p = 0.01). In Japanese, all three arms are close to 90%. The English history and traps are longer and easier to copy, and retrieval returned about three times as many memories in English (3.2 against 1.1 per turn). That suggests the amount of context, not the language itself, drives the gap, though this run doesn't separate the two.
-- **The fast-hold hybrid sits between the two on accuracy and leads on everything else.** C got the right tools on 90% of turns (not significantly behind A), with the best grounding (90%), no repeated holds, a first word at 1.0 s, and an answer at 4.2 s. Its tool decision still runs inside the full context, so it makes false claims (5) and gives the stale fact (3), like B.
+### Reading run 1
+
+- **Under heavy context, the tiered order led on tools.** It got the right tools on 91% of turns, against 86% for one prompt (p = 0.049). That p-value is uncorrected. Run 1 reports 10 paired tests (6 in `summary.md` and 4 language splits), and none stays under 0.05 after a Holm correction (p = 0.049 becomes 0.44; the English split becomes 0.078), so the lead needs a repeat run. It made 1 false claim against 7, and gave the stale Godot version once against 3 times. Its tool rounds see only the user's line, so the planted facts and the "Done, your oven reminder is set" line can't reach the tool decision. In the first run, with light context, the two were even (89% and 91%, p = 0.36). The list lines are scored differently here, so the two runs' right-tools figures aren't directly comparable.
+- **The gap is in English.** In English, one prompt drops to 83% (A-only 8, B-only 0, p = 0.008). In Japanese, all three arms are close to 90%. The English history and traps are longer and easier to copy, and retrieval returned about three times as many records in English (3.2 against 1.1 per turn). This run doesn't separate the language from the amount of context.
+- **The fast-hold hybrid sits between the two on accuracy and leads on everything else in run 1.** C got the right tools on 90% of turns (not significantly behind A), with the best grounding (90%), no repeated holds, a first word at 1,037 ms, and an answer at 4,192 ms. Its tool decision still runs inside the full context, so it makes false claims (5) and gives the stale fact (3), like B.
 - **The tiered order still pays for its say-this step.**
   - It grounds the result least often (77%).
   - It repeats the hold in 7% of tool turns.
-  - Its answer comes at 7.2 s.
+  - Its answer comes at 7,241 ms.
   - Its miss check still speaks a tool follow-up on some chit-chat (3 of 42).
 
-  Under the live settings, every A say-this reply thought and used up its Replies cap (`budget_replies` 128; 80 of 80 checked in the first part of the run). The repeated holds look like the model, cut off mid-thought, copying the hold line it was given.
-- **Next:** combine the parts that won. Take C's thinking-off intent check and early hold, A's isolated task-shaped tool rounds, and a say-this reply with thinking off, with the results placed before the hold in its prompt. Those changes target A's accuracy at C's speed and fix the repeated holds. The say-this changes can be tested first by replaying the saved prompts, without a full run.
+  Under the live settings, every A say-this reply thought and used up its Replies Token cap (`budget_replies` 128; 129 of 129 calls in `run/steps.jsonl`). The repeated holds look like the model, cut off mid-thought, copying the hold line it was given.
+- **Run 2** tests a combination of the parts that won: C's thinking-off intent check and early hold, A's isolated task-shaped tool rounds, and a say-this reply with thinking off, with the results listed before the hold in its prompt. Those three changes ran together as arm D, not one at a time.
 
 ## Run 2: the combined arm D
 
-Run 1 pointed to a combination of the parts that won. D keeps A's order (task-shaped tool rounds that see only the user's line, the hold line, the say-this reply and the miss check), with three changes:
+D keeps A's order (task-shaped tool rounds that see only the user's line, the hold line, the say-this reply and the miss check), with three changes at once. The run doesn't test them one at a time, so it can't say which change caused which result:
 
-- The intent check doesn't think (a wrapper forces `think=False`, as in C).
-- The replies don't think (`think_replies` `off`). That covers the say-this reply and the chit-chat persona reply.
-- The say-this message puts the tool results before the hold line, and frames the hold as a line not to repeat ("Your first sentence states what the results show…").
+1. The intent check doesn't think (a wrapper forces `think=False`, as in C).
+2. The replies don't think (`think_replies` `off`). That covers the say-this reply and the chit-chat persona reply. A persona reply after tool rounds that called no tool uses the chat model's Endpoint mode instead, so 5 of D's 53 persona replies thought, with no Token cap. The tool rounds and the miss check still think, with the Tools Token cap of 128.
+3. The say-this prompt lists the tool results before quoting the hold line, and frames the hold as a line not to repeat ("Your first sentence states what the results show…"). The hold line is still spoken first. In all 121 D turns with both, the hold line was ready before the say-this call started.
 
 D ran interleaved with A and C on the same heavy profile, 3 repeats, 522 turns (`run-d/`), with no errors. Its persona prompt is the same size as A's (median 1,499 tokens). C's is 2,372.
+
+```mermaid
+flowchart TD
+    classDef task fill:#d7e6f5,stroke:#3a6d99,color:#1a1a1a
+    classDef persona fill:#f8e0cc,stroke:#a15c2a,color:#1a1a1a
+    classDef sys fill:#eeeeee,stroke:#666666,color:#1a1a1a
+
+    U[User's line]:::sys --> I[Intent check, thinking off]:::task
+    I --> Q{Tool picked?}
+    Q -- no --> P[Persona reply]:::persona
+    Q -- yes --> S[Start hold and tool rounds]:::sys
+    S --> H[Hold line, thinking off]:::persona
+    S --> T[Tool rounds, thinking on]:::task
+    T --> Y[Say-this reply, results first]:::persona
+    P --> M[Miss check, thinking on]:::task
+    Y --> M
+```
+
+Blue is the task shape, orange is the persona shape, and gray is code.
+
+- **Intent check.** Picked a tool on 102 of 108 tool lines and on 0 of 42 chit-chat lines. Median 360 ms, against 1,759 ms for A's thinking check.
+- **Persona reply.** Doesn't think on chit-chat. When the tool rounds call no tool, the persona reply that follows uses the chat model's Endpoint mode instead of the Replies row, so it thinks with no Token cap. That happened on 5 of D's 53 persona replies.
+- **Hold line.** Doesn't think in any arm (Hold line row off).
+- **Tool rounds.** Unchanged from A. They follow `chat_thinking` (On) with the Tools Token cap of 128.
+- **Say-this reply.** Doesn't think. Median 552 ms, against 2,058 ms for A. The prompt lists results first; the hold line is still spoken first.
+- **Miss check.** Unchanged from A. It thinks, with the Tools Token cap of 128.
 
 | Metric | A tiered | C fast hold | D combined |
 | --- | --- | --- | --- |
@@ -131,59 +173,54 @@ D ran interleaved with A and C on the same heavy profile, 3 repeats, 522 turns (
 | Reply repeats the hold | 2/121 | **0/127** | **0/126** |
 | Question on a tool turn | 1/108 | 10/108 | **0/108** |
 | Chit-chat line got a tool call and a follow-up | 3/42 | **0/42** | 1/42 |
-| First word, tool lines | 2.23 s | 0.94 s | **0.84 s** |
-| Answer, tool lines | 7.23 s | **4.07 s** | 4.34 s |
-| First word, chit-chat | 3.63 s | 2.48 s | **1.29 s** |
-| Model calls per turn | 5.1 | 3.4 | 5.0 |
 
 Paired against A (exact McNemar, right tools in the turn):
 
-- **D:** A-only 9, D-only 3, p = 0.15. After the miss check: 10 vs 5, p = 0.30.
-- **C:** A-only 16, C-only 6, p = 0.052. After the miss check: 21 vs 7, **p = 0.013**.
+- **D:** A-only 9, D-only 3, p = 0.15. After the miss check, 10 vs 5, p = 0.30. False claims, 1 vs 1, p = 1.0.
+- **C:** A-only 16, C-only 6, p = 0.052. After the miss check, 21 vs 7, p = 0.013. C has no miss check, so that second figure compares A plus its miss check against C alone.
 
 By language, right tools in the turn:
 
-| Language | A | C | D |
-| --- | --- | --- | --- |
-| English | 79/87 | 73/87 | 78/87 |
-| Japanese | 81/87 | 77/87 | 76/87 |
+| Language | A | C | D | A vs D |
+| --- | --- | --- | --- | --- |
+| English | 79/87 | 73/87 | 78/87 | A-only 3, D-only 2, p = 1.0 |
+| Japanese | 81/87 | 77/87 | 76/87 | A-only 6, D-only 1, p = 0.125 |
 
-D's thinking-off intent check picked a tool on 102 of 108 tool lines and on 0 of 42 chit-chat lines.
+Times are medians in ms (p90 in brackets).
+
+| Measure | A tiered | C fast hold | D combined |
+| --- | --- | --- | --- |
+| First word, tool lines | 2,232 (2,527) | 941 (1,182) | **836** (963) |
+| Answer, tool lines | 7,234 (9,947) | **4,069** (5,247) | 4,337 (6,016) |
+| First word, chit-chat | 3,629 (4,132) | 2,478 (3,083) | **1,292** (1,812) |
+| Turn done, all lines | 7,601 (11,718) | **3,549** (4,808) | 4,790 (7,456) |
+| Model calls per turn | 5.1 | 3.4 | 5.0 |
+
+Turn done counts every line. In A and D it includes the miss check and any silent retry. C has no miss check, so its turn done is the answer.
 
 ### Reading run 2
 
-- **D is the best overall trade so far.** Within the noise, it matches A on tool calls and false claims (1 each, against 6 for C). It grounds the answer as well as C, never repeated the hold, asked no questions on tool turns, and is the fastest arm to speak:
-  - **Tool lines:** the hold comes at 0.84 s, against 2.2 s for A.
-  - **Chit-chat:** the reply comes at 1.3 s, against 3.6 s for A.
-  - **Answer:** it comes about 3 s sooner than A's.
-- **Where D still loses:**
-  - **The two-tool lines.** On 4 of 12, it ran one tool and claimed the second ("I'll set a timer to remind you in an hour").
-  - **The thinking-off intent check misses some lines.** It missed "Forget the oven reminder, I already checked it" in both languages.
-
-  These account for most of the 9 turns where A was right and D wasn't, most of them in Japanese (A-only 6, D-only 1, p = 0.13).
-- **C confirms run 1.** Making the tool decision inside the full persona prompt costs accuracy under heavy context (86%, significantly behind A after the miss check). Isolating the tool rounds is what buys the accuracy. The thinking is what costs the time.
-- **Next steps for D:**
+- **D trades a little accuracy for a lot of speed.** It got the right tools on 89% of turns against 92% for A (p = 0.15), a gap that isn't significant, and made 1 false claim, like A (C made 6). The run is too small to show the two are the same. A Wald 95% interval on the paired difference runs from 7.3 points behind A to 0.4 ahead. On tool lines, D spoke first at 836 ms against 2,232 ms for A, and answered at 4,337 ms against 7,234 ms (2,897 ms sooner). On chit-chat, it spoke first at 1,292 ms against 3,629 ms.
+- **Where D lost turns that A got right.** Of the 9 turns where A was right and D wasn't, 4 were two-tool lines, 3 were reminder lines and 2 were the Japanese list line. 6 of the 9 were in Japanese (A-only 6, D-only 1, p = 0.125).
+  - **The two-tool lines.** On 4 of 12, it ran one tool and claimed the second ("I'll set a timer to remind you in an hour"). 3 of the 4 were the English Godot line. A missed the reminder on all 3 of its turns there too, but didn't claim it.
+  - **Stray calls.** On 3 reminder turns, D set the reminder and also called `schedule_cancel` or `schedule_list`. On 2 turns of "Are my reminders still on?" in Japanese, it called `current_time`.
+  - **"Forget the oven reminder, I already checked it"** isn't among those 9, because A missed it on every turn too, in both languages and both runs. C got it right once in 12 turns.
+- **D's reply changes and its hold line.** D grounded the answer as often as C (86% against 77% for A), never repeated the hold, and asked no questions on tool turns. Which of the three changes did that isn't known.
+- **The miss check still fires on chit-chat.** It answered `{"missed": true}` on 37 of 42 chit-chat turns for A and 38 for D. That's why D's chit-chat turn takes 5,520 ms to finish, though the reply is spoken at 1,292 ms.
+- **C stays behind A on false claims.** C's tool decision runs inside the full persona prompt. It trailed A on right tools by 2 points in run 1 (p = 0.58) and 6 in run 2 (p = 0.052), and made 5 and 6 false claims against A's 1.
+- **Untested ideas for D:**
   - Let the intent check think only for lines with a cancel or a second request, or give it a few cancel examples.
   - Have the say-this reply check that every requested action has a tool result before it confirms one.
-
-### Tried and dropped: a separate tool model
-
-A third run tested D with `nvidia/nemotron-3-nano-4b` as the tool model (`tool_model`). Nemotron ran the intent check, the tool rounds and the miss check, and qwen ran the hold and the replies. It was tried at the Tools caps of 128 and 512, with both models loaded alike (context 6144, `parallel` 4, f16 K/V, full GPU offload). The run was stopped after about 15 turns per arm, because nemotron did worse than qwen alone:
-
-- It called the needed tool on 10–11 of 13 tool lines, against 13–14 for D and A.
-- It made stray calls at the 512 cap.
-- It answered later: 4.9 s and 7.0 s median, against 4.2 s for D.
-- The hold came no sooner (about 0.9 s).
-
-That reverses [tool-model-split-2026-11-16](../tool-model-split-2026-11-16/README.md), which ran with no thinking cap and no heavy context. The partial data isn't kept.
 
 ## Limits
 
 - **Scope:** one 4B model, one persona and 6 fake tools.
-- **Context:** synthetic, sized to one person's store on one day. It is not a sweep, so this run and the first one are two points, not a curve.
+- **Context:** synthetic, sized to one person's store on one day. It is not a sweep, so this run and the first one are two points, not a curve. The bench plants 2 open jobs; the live store had none that day.
 - **Traps:** planted on purpose, so they are denser than in real use. The English traps carry more text than the Japanese ones, and the Japanese lines are machine-translated.
 - **Scoring:** keyword- and regex-based. The Japanese claim check may undercount, though the right-tools figures use no regex. The grounding check misses some correct paraphrases, such as "2 時 5 分" written with spaces.
-- **Timing:** wall clock around non-streaming calls, with no time-to-first-token. Filler audio is left out.
+- **Timing:** wall clock around non-streaming calls, with no time-to-first-token. First word, answer, tool lines, and chit-chat are defined under Results. Filler audio is left out. VRAM use and the server's load settings were not recorded.
+- **Arm D:** three changes at once, so this run can't say which change caused which result.
+- **Not run:** D with `nvidia/nemotron-3-nano-4b` as the tool model was stopped after about 15 turns per arm, and its partial data wasn't kept, so this page reports no results for it.
 
 ## Files
 
@@ -194,9 +231,13 @@ That reverses [tool-model-split-2026-11-16](../tool-model-split-2026-11-16/READM
   - `raw-output.txt`: the console log.
 - [`summary.md`](summary.md) and [`summary-d.md`](summary-d.md): the output of `summarize.py run` and `summarize.py run-d`.
 
-To run it again from a CetiMind checkout:
+To run it again from a CetiMind checkout (both runs use the default seed `20261126`):
 
 ```bash
-uv run python bench/prompt_order/bench.py --base-url http://HOST:PORT/v1 --out DIR --profile heavy --arms A,B,C --repeats 3
-uv run python bench/prompt_order/summarize.py DIR
+# Run 1
+uv run python bench/prompt_order/bench.py --base-url http://HOST:PORT/v1 --out run --profile heavy --arms A,B,C --repeats 3
+# Run 2
+uv run python bench/prompt_order/bench.py --base-url http://HOST:PORT/v1 --out run-d --profile heavy --arms A,C,D --repeats 3
+uv run python bench/prompt_order/summarize.py run
+uv run python bench/prompt_order/summarize.py run-d
 ```
