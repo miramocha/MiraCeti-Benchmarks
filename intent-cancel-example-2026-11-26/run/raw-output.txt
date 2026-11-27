@@ -1,0 +1,5 @@
+{"repeat": 0, "elapsed_s": 178}
+{"repeat": 1, "elapsed_s": 355}
+{"repeat": 2, "elapsed_s": 533}
+{"repeat": 3, "elapsed_s": 720}
+{"repeat": 4, "elapsed_s": 922}

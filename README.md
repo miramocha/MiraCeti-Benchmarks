@@ -28,6 +28,7 @@ Performance and accuracy experiments for the MiraCeti apps. One directory per ex
 | 2026-11-16 | [Judge model](judge-model-2026-11-16/README.md) | CetiMind | Accuracy | `qwen3.5-4b` vs `nemotron-3-nano-4b` as the learn-step judge: fact extraction and fact updates on hand-written lines. |
 | 2026-11-17 | [Turn latency](turn-latency-2026-11-17/README.md) | CetiMind | Speed | Where reply time goes, from the app log: thinking turns, the intent check, and tool-call retries. |
 | 2026-11-26 | [Tiered prompts vs. one prompt](prompt-order-vs-full-2026-11-26/README.md) | CetiMind | Accuracy, speed | CetiMind's tiered tool turn against one full persona prompt, plus a 512-token Tools cap and a fast-hold hybrid. One prompt matched it on tools (91% vs 89%) and answered at 2.8 s vs 6.6 s. The hybrid spoke a hold at 0.95 s. |
+| 2026-11-26 | [Intent check: one cancel example](intent-cancel-example-2026-11-26/README.md) | CetiMind | Accuracy, speed | One cancel example in the thinking-off intent check: held-out cancel lines 47% to 83%, near-miss false alarms 5 to 0, about +20 ms. Thinking on did worst (28%) at 5x the time. |
 
 ## Setup notes
 
