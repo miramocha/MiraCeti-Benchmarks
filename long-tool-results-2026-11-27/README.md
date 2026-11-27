@@ -2,7 +2,7 @@
 
 ## Question
 
-The live turn copies only the first 1,000 characters of each tool result into the say-this prompt (`TASK_RESULT_CAP` in `config.py`), while `http_get` returns up to 6,000 characters of page text and `web_search` up to 10 hits with 300-character snippets. The prompt-order benchmarks used short canned results, so they never tested this.
+At the time of this run, the live turn copied only the first 1,000 characters of each tool result into the say-this prompt (`TASK_RESULT_CAP` in `config.py`), while `http_get` returned up to 6,000 characters of page text and `web_search` up to 10 hits with 300-character snippets. The prompt-order benchmarks used short canned results, so they never tested this.
 
 When the answer sits deep in a long result, does the spoken reply still find it? Would a higher cap, the whole result, or a short summary first do better, and at what cost in time?
 
@@ -65,7 +65,7 @@ Paired against live (exact McNemar), LFULL was right on 62 more turns and wrong 
 - **The whole result did best.** It named 89 of 90 answers for about 240 ms more on the median answer, with a say-this prompt about 1,000 tokens longer.
 - **A summary first did worse.** It named 77 of 90, lost answers even when they were early (24 of 30), and had the highest median answer time. Twelve of its 13 misses were Japanese: it often kept "20 then 22 minutes" but not the 42 total, or "June" without the 12th.
 - **2,500 characters was a half step.** It found almost every Japanese answer only because the Japanese pages fit in 2,500 characters.
-- **Recommendation:** stop cutting tool results at 1,000 characters in the say-this prompt. Guard the context by tokens instead of characters, since a long Japanese page could overflow the 6,144-token context.
+- **Recommendation:** stop cutting tool results at 1,000 characters in the say-this prompt, and guard the context by tokens instead. CetiMind now has a tool-result token budget. This run didn't test it.
 
 ## Limits
 
@@ -84,7 +84,7 @@ Paired against live (exact McNemar), LFULL was right on 62 more turns and wrong 
 - `run/turns.jsonl`: one row per turn. `run/steps.jsonl`: one row per model call.
 - [`summary.md`](summary.md): the rescored tables, from `rescore.py`.
 
-To run it again, copy `harness/` into `bench/prompt_order/` in a CetiMind checkout that still cuts each tool result at 1,000 characters in the say-this prompt, then:
+To run it again, copy `harness/` into `bench/prompt_order/` in a CetiMind checkout from before the tool-result token budget, then:
 
 ```bash
 uv run python bench/prompt_order/bench.py --base-url http://HOST:PORT/v1 --out run --profile long --arms L,L2500,LFULL,LSUM --repeats 3
