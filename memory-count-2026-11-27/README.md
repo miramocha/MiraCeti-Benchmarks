@@ -2,7 +2,7 @@
 
 ## Question
 
-In the [heavy prompt-order run](../prompt-order-heavy-2026-11-26/README.md), the one-prompt order (B) lost accuracy against the tiered order (A) in English only, and English turns carried 3.24 memories against Japanese's 1.07. One guess ([CetiMind #141](https://github.com/miramocha/CetiMind/issues/141)) was that the prompt budget, counted in characters, lets English carry more memories and bury the right fact deeper.
+In the [heavy prompt-order run](../prompt-order-heavy-2026-11-26/README.md), the one-prompt order (B) lost accuracy against the tiered order (A) in English only, and English turns carried 3.24 memories against Japanese's 1.07. One guess was that the prompt budget, counted in characters, lets English carry more memories and bury the right fact deeper.
 
 Why do the two languages get different memory counts? If both get the same count, does the English gap between A and B close?
 
@@ -11,7 +11,7 @@ Why do the two languages get different memory counts? If both get the same count
 - **Date:** 2026-11-27.
 - **Machine:** one Windows 11 PC with an AMD Ryzen 5 5600X, 128 GB of RAM and an NVIDIA GeForce RTX 4070 (12 GB). LM Studio and the bench ran on this PC.
 - **Model:** `qwen3.5-4b` for every call, loaded at a 6,144-token context. Embeddings from `nomic-embed-text-v1.5`.
-- **Settings:** the live settings of 2026-11-26, pinned in the harness, as in the heavy runs.
+- **Settings:** the 2026-11-26 settings pinned in the harness, matching the original heavy A and B arms: chat thinking on, and Replies set to follow, so the intent check and say-this reply think. These are not the later live settings, where the intent check and replies don't think.
 - **CetiMind:** the version with the fix below. A copy of the harness is in [`harness/`](harness/).
 - **Profile:** `heavy`: the "Wren" persona, 177 facts with 12 traps, a 16-message history, a summary and 2 open jobs.
 - **Run:** `bench.py --profile heavy --arms A,B,A1,B1 --repeats 3`, default seed `20261126`. 58 lines × 4 arms × 3 repeats = 696 turns, 1 error, about 60 minutes.
@@ -30,7 +30,7 @@ Why do the two languages get different memory counts? If both get the same count
 Means over the 29 lines per language. Rows are in [`counts/`](counts/).
 
 - **The prompt budget never cut a memory.** In every line, every memory the lookup kept reached the prompt. The estimate stays under the 3,000-token budget in both languages.
-- **Japanese lost its memories to the already-shown filter.** Every Japanese line had 20 candidates over the relevance floor, but one usually survived. `_already_shown` drops a memory when 85% of its words are already in one sentence of the profile, summary or recent chat. It counted only Latin words (`[0-9a-z']+`), so `Alexは毎朝8時にストレッチをしている。` became `{alex, 8}`. Any summary sentence with "Alex" then hid it. That dropped 164 of the 170 Japanese facts. The survivors had another Latin word, such as `godot` or `f1`.
+- **Japanese lost its memories to the already-shown filter.** Every Japanese line had 20 candidates over the relevance floor, but one usually survived. `_already_shown` drops a memory when 85% of its words are already in one sentence of the profile, summary or recent chat. It counted only Latin words (`[0-9a-z']+`), so `Alexは毎朝8時にストレッチをしている。` became `{alex, 8}`. Any summary sentence with "Alex" then hid it. That dropped 165 of the 170 Japanese facts. The survivors had another Latin word or number the summary didn't share, such as `f1` or `godot` plus `4`.
 - **The fix:** kana, CJK and hangul runs count as pairs of neighboring characters, and `。！？` end a sentence. Japanese then reaches the live limit of 4 memories per turn.
 
 ## Step 2: method
@@ -44,7 +44,7 @@ Arms interleaved in shuffled order on each line. Lines and scoring as in the hea
 | A1 | Tiered | 1 |
 | B1 | One prompt | 1 |
 
-With one memory kept, both languages carry the same count: 1.0 per turn (B1 Japanese 0.99, from one line with no memory over the floor).
+With one memory kept, both languages carry the same count: 1.0 per scored turn.
 
 ## Results
 
@@ -72,23 +72,26 @@ The A − B gap in right tools, in points:
 | English | +9 | +6 | +9 |
 | Japanese | +1 | +6 | +6 |
 
-Cutting to one memory shrank the first persona-prompt call by about 70–90 tokens on the median (A 1,551 to 1,480, B 2,452 to 2,360) and changed no median time by more than 0.25 s.
+Times are medians of wall-clock time around non-streaming calls, in ms (p90 in brackets). Answer is as defined in the [heavy prompt-order run](../prompt-order-heavy-2026-11-26/README.md#results).
+
+Cutting to one memory shrank the first persona-prompt call by about 70–90 tokens on the median (A 1,551 to 1,480, B 2,452 to 2,360). Cutting to one memory changed no median answer by more than 230 ms (B 2,731 (4,052) to 2,498 (3,942); A 4,741 (6,603) to 4,702 (6,345)).
 
 ## Reading
 
-- **Memory count does not explain the A vs B gap.** With one memory in both languages, A1 beat B1 in English by 9 points (p = 0.021), as wide as in the 11-26 run. Cutting to one memory changed neither order: A vs A1 and B vs B1 split almost evenly.
+- **Memory count doesn't explain the English A vs B gap on this run.** With one memory in both languages, on this model and the heavy profile, A1 beat B1 in English by 9 points (p = 0.021), as wide as in the 11-26 run. Cutting to one memory changed neither order: A vs A1 and B vs B1 split almost evenly.
 - **The one-prompt order's loss is not English only.** With Japanese at 4 memories, B trailed A by 6 points in both languages. In the 11-26 run Japanese had about 1 memory and the gap there was 1 point. That comparison is across runs, so it isn't paired.
 - **The live tiered order holds its accuracy with the extra Japanese memories:** 92% here against 91% in the 11-26 run.
-- **Recommendation:** keep the already-shown fix, so Japanese turns get the memories the lookup finds. No change to the memory limit. B's loss comes from the order itself, which isn't live.
+- **Recommendation:** keep the already-shown fix, so Japanese turns get the memories the lookup finds. No change to the memory limit. B's loss on this run stays when the memory count is the same, so it isn't the extra English memories. The one-prompt order isn't live.
 
 ## Limits
 
 - One model, one machine, synthetic memories and lines. The Japanese lines are machine-translated.
-- The Japanese candidates barely separate on relevance: the top 8 sit at about 0.35–0.45 and all 20 clear the 0.27 floor. The embedder ranks Japanese poorly, so the 4 Japanese memories are close to a random pick from the haystack. This run doesn't test better Japanese ranking.
+- The Japanese candidates barely separate on relevance: the top 8 sit at about 0.30–0.47 and all 20 clear the 0.27 floor. The embedder ranks Japanese poorly, so the 4 Japanese memories are close to a random pick from the haystack. This run doesn't test better Japanese ranking.
 - FTS keyword matching (`_TOKEN` in `retrieve.py`) finds only Latin words, so Japanese lines get no keyword boost.
 - The heavy profile's summary names Alex, which is what made the filter bug so wide here. A real summary may hide fewer memories.
 - 3 repeats at temperature 0.6. 87 turns per arm and language.
 - One turn (B1, a Japanese line) ended with an empty reply from the server and is left out.
+- **Timing:** wall clock around non-streaming calls, with no time-to-first-token.
 - The p-values are uncorrected across the four paired comparisons.
 
 ## Files
