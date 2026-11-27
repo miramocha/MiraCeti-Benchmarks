@@ -45,7 +45,7 @@ The same as the first run, except for the context and the persona:
 - **Scoring:** the same as the first run, with these changes:
   - The list lines ("What reminders do I have?" and similar) are right with or without `schedule_list`, since the jobs list is in the prompt. That cuts tool lines from 126 in the first run to 108 here, so the two runs' right-tools figures aren't directly comparable.
   - **Stale fact:** a Godot reply that gives 4.4 without 4.6.
-  - **Partial claim:** on the two-tool lines, a tool ran but `schedule_create` did not, and the reply says a reminder is set.
+  - **Partial claim:** on the two-tool lines, a tool ran but `schedule_create` didn't, and the reply says a reminder is set.
   - **Sound tags:** the card's own speech tags are allowed.
 
 ## Results
@@ -113,17 +113,18 @@ Against the first run, B's answer on tool lines slowed from 2,797 ms to 3,718 ms
 
 ### Reading run 1
 
-- **Under heavy context, the tiered order led on tools.** It got the right tools on 91% of turns, against 86% for one prompt (p = 0.049). That p-value is uncorrected. Run 1 reports 10 paired tests (6 in `summary.md` and 4 language splits), and none stays under 0.05 after a Holm correction (p = 0.049 becomes 0.44; the English split becomes 0.078), so the lead needs a repeat run. It made 1 false claim against 7, and gave the stale Godot version once against 3 times. Its tool rounds see only the user's line, so the planted facts and the "Done, your oven reminder is set" line can't reach the tool decision. In the first run, with light context, the two were even (89% and 91%, p = 0.36). The list lines are scored differently here, so the two runs' right-tools figures aren't directly comparable.
+- **Under heavy context, the tiered order led on tools.** It got the right tools on 91% of turns, against 86% for one prompt (p = 0.049, uncorrected). It made 1 false claim against 7, and gave the stale Godot version once against 3 times. Its tool rounds see only the user's line, so the planted facts and the "Done, your oven reminder is set" line can't reach the tool decision. In the first run, with light context, the two were even (89% and 91%, p = 0.36). The list lines are scored differently here, so the two runs' right-tools figures aren't directly comparable.
 - **The gap is in English.** In English, one prompt drops to 83% (A-only 8, B-only 0, p = 0.008). In Japanese, all three arms are close to 90%. The English history and traps are longer and easier to copy, and retrieval returned about three times as many records in English (3.2 against 1.1 per turn). This run doesn't separate the language from the amount of context.
-- **The fast-hold hybrid sits between the two on accuracy and leads on everything else in run 1.** C got the right tools on 90% of turns (not significantly behind A), with the best grounding (90%), no repeated holds, a first word at 1,037 ms, and an answer at 4,192 ms. Its tool decision still runs inside the full context, so it makes false claims (5) and gives the stale fact (3), like B.
+- **No result survives a correction.** Run 1 reports 10 paired tests (6 in `summary.md` and 4 language splits). Under a Holm correction, p = 0.049 becomes 0.44 and the English split becomes 0.078. A's lead needs a repeat run.
+- **The fast-hold hybrid sits between the two on accuracy, and spoke first and grounded best in run 1.** C got the right tools on 90% of turns (not significantly behind A), with the best grounding (90%), no repeated holds, a first word at 1,037 ms, and an answer at 4,192 ms. Its tool decision still runs inside the full context, so it makes false claims (5) and gives the stale fact (3), like B.
 - **The tiered order still pays for its say-this step.**
   - It grounds the result least often (77%).
-  - It repeats the hold in 7% of tool turns.
+  - It repeats the hold in 9 of 121 turns with a hold line (7%).
   - Its answer comes at 7,241 ms.
   - Its miss check still speaks a tool follow-up on some chit-chat (3 of 42).
 
   Under the live settings, every A say-this reply thought and used up its Replies Token cap (`budget_replies` 128; 129 of 129 calls in `run/steps.jsonl`). The repeated holds look like the model, cut off mid-thought, copying the hold line it was given.
-- **Run 2** tests a combination of the parts that won: C's thinking-off intent check and early hold, A's isolated task-shaped tool rounds, and a say-this reply with thinking off, with the results listed before the hold in its prompt. Those three changes ran together as arm D, not one at a time.
+- **Run 2** tests a combination of the parts that won: C's thinking-off intent check and early hold, A's isolated task-shaped tool rounds, and a say-this reply with thinking off, with the results listed before the hold in its prompt.
 
 ## Run 2: the combined arm D
 
@@ -147,19 +148,21 @@ flowchart TD
     Q -- yes --> S[Start hold and tool rounds]:::sys
     S --> H[Hold line, thinking off]:::persona
     S --> T[Tool rounds, thinking on]:::task
-    T --> Y[Say-this reply, results first]:::persona
+    T --> C{Tool called?}
+    C -- yes --> Y[Say-this reply, thinking off]:::persona
+    C -- no --> P
     P --> M[Miss check, thinking on]:::task
-    Y --> M
 ```
 
 Blue is the task shape, orange is the persona shape, and gray is code.
 
 - **Intent check.** Picked a tool on 102 of 108 tool lines and on 0 of 42 chit-chat lines. Median 360 ms, against 1,759 ms for A's thinking check.
-- **Persona reply.** Doesn't think on chit-chat. When the tool rounds call no tool, the persona reply that follows uses the chat model's Endpoint mode instead of the Replies row, so it thinks with no Token cap. That happened on 5 of D's 53 persona replies.
+- **Persona reply.** Doesn't think when no tool was picked. After tool rounds that called no tool, it uses the chat model's Endpoint mode instead of the Replies row, so it thinks with no Token cap. That happened on 5 of D's 53 persona replies.
 - **Hold line.** Doesn't think in any arm (Hold line row off).
 - **Tool rounds.** Unchanged from A. They follow `chat_thinking` (On) with the Tools Token cap of 128.
-- **Say-this reply.** Doesn't think. Median 552 ms, against 2,058 ms for A. The prompt lists results first; the hold line is still spoken first.
-- **Miss check.** Unchanged from A. It thinks, with the Tools Token cap of 128.
+- **Tool called?** Yes on 121 of the 126 turns with a hold line.
+- **Say-this reply.** Doesn't think. Median 552 ms, against 2,058 ms for A.
+- **Miss check.** Unchanged from A. It thinks, with the Tools Token cap of 128. With no hold line, it runs after the turn (48 times). With a hold line and no tool called, it runs inside the turn, after the persona reply (5 times).
 
 | Metric | A tiered | C fast hold | D combined |
 | --- | --- | --- | --- |
@@ -215,11 +218,10 @@ Turn done counts every line. In A and D it includes the miss check and any silen
 ## Limits
 
 - **Scope:** one 4B model, one persona and 6 fake tools.
-- **Context:** synthetic, sized to one person's store on one day. It is not a sweep, so this run and the first one are two points, not a curve. The bench plants 2 open jobs; the live store had none that day.
-- **Traps:** planted on purpose, so they are denser than in real use. The English traps carry more text than the Japanese ones, and the Japanese lines are machine-translated.
+- **Context:** synthetic, sized to one person's store on one day. It isn't a sweep, so this run and the first one are two points, not a curve.
+- **Traps:** planted on purpose, so they're denser than in real use. The English traps carry more text than the Japanese ones, and the Japanese lines are machine-translated.
 - **Scoring:** keyword- and regex-based. The Japanese claim check may undercount, though the right-tools figures use no regex. The grounding check misses some correct paraphrases, such as "2 時 5 分" written with spaces.
-- **Timing:** wall clock around non-streaming calls, with no time-to-first-token. First word, answer, tool lines, and chit-chat are defined under Results. Filler audio is left out. VRAM use and the server's load settings were not recorded.
-- **Arm D:** three changes at once, so this run can't say which change caused which result.
+- **Timing:** wall clock around non-streaming calls, with no time-to-first-token. First word, answer, tool lines, and chit-chat are defined under Results. Filler audio is left out.
 - **Not run:** D with `nvidia/nemotron-3-nano-4b` as the tool model was stopped after about 15 turns per arm, and its partial data wasn't kept, so this page reports no results for it.
 
 ## Files
@@ -231,7 +233,7 @@ Turn done counts every line. In A and D it includes the miss check and any silen
   - `raw-output.txt`: the console log.
 - [`summary.md`](summary.md) and [`summary-d.md`](summary-d.md): the output of `summarize.py run` and `summarize.py run-d`.
 
-To run it again from a CetiMind checkout (both runs use the default seed `20261126`):
+To run it again from a CetiMind checkout:
 
 ```bash
 # Run 1
