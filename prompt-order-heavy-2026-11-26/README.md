@@ -212,7 +212,7 @@ Turn done counts every line. In A and D it includes the miss check and any silen
 - **The miss check still fires on chit-chat.** It answered `{"missed": true}` on 37 of 42 chit-chat turns for A and 38 for D. That's why D's chit-chat turn takes 5,520 ms to finish, though the reply is spoken at 1,292 ms.
 - **C stays behind A on false claims.** C's tool decision runs inside the full persona prompt. It trailed A on right tools by 2 points in run 1 (p = 0.58) and 6 in run 2 (p = 0.052), and made 5 and 6 false claims against A's 1.
 - **Untested ideas for D:**
-  - Let the intent check think only for lines with a cancel or a second request, or give it a few cancel examples.
+  - Let the intent check think only for lines with a cancel or a second request, or give it a few cancel examples (run 3 tests one).
   - Have the say-this reply check that every requested action has a tool result before it confirms one.
 
 ## Run 3: arm D after the intent fix
@@ -220,10 +220,10 @@ Turn done counts every line. In A and D it includes the miss check and any silen
 The [intent-check follow-up](../intent-cancel-example-2026-11-26/README.md#follow-up-examples-on-the-tool-spec) gave `schedule_cancel` a cancel example with a reason, and added a sentence to `INTENT_INSTRUCTION` so that a line that only complains about a topic needs no tool. Does D's gap to A close in a full turn?
 
 - **Date:** 2026-11-26, later the same evening.
-- **CetiMind:** `local/batch` at `45d28ad`. The harness is the same as runs 1 and 2.
+- **CetiMind:** CetiMind with per-tool intent examples and the complaint sentence in the intent instruction. The harness is the same as runs 1 and 2.
 - **Run:** arms A, C and D, heavy profile, 3 repeats, 522 turns (`run-d2/`), with no errors. Everything else is as in run 2.
 
-A and C use the same intent prompt and tool lines, so the change reaches them too. C's intent check only decides the hold, so its tool calls don't change.
+A and C use the same intent prompt and tool lines, so the change reaches them too. C's intent check only decides the hold, so its tool calls didn't get the fix.
 
 | Metric | A tiered | C fast hold | D combined |
 | --- | --- | --- | --- |
@@ -270,13 +270,13 @@ Every arm ran faster than in run 2, A by about 1.3 s on its answer. The load set
 
 ### Reading run 3
 
-- **D's gap to A has mostly closed.** D got the right tools on 93% of turns against 95% for A (p = 0.58), and the two are level after the miss check (93% against 94%, p = 1.0). In run 2 the gap was 89% against 92% (p = 0.15). Neither arm made a false claim.
-- **The cancel lines did it.** D went from 6 to 10 of 12, and A from 6 to 12. D's 2 misses were the Japanese "Forget the oven reminder…". Once it picked `web_search` and `schedule_list`, and once only `current_time`. The intent bench got that line right on every check, so in the full turn the miss comes from somewhere else, most likely the tool rounds.
+- **D stayed close to A.** D got the right tools on 93% of turns against 95% for A (p = 0.58), and 93% against 94% after the miss check (p = 1.0). Neither gap is significant, and the run is too small to show the two are the same. Neither arm made a false claim.
+- **Cancel lines.** A got all 12 and D got 10, against 6 of 12 for every arm in run 2, on older code and an older prompt. D's 2 misses were the Japanese "Forget the oven reminder…". Once it picked `web_search` and `schedule_list`, and once only `current_time`. The intent check picked `schedule_cancel` on both of those turns, and the intent bench got that line right on every check, so the miss is after the intent check, in the tool rounds.
 - **D's other differences from A go both ways, and all but one are in Japanese.**
-  - **"What time is it? And remind me to stretch in 10 minutes"**: D ran only one of the two tools on all 3 turns. The intent check misses `current_time` there too (see the intent follow-up).
+  - **"What time is it? And remind me to stretch in 10 minutes"**: D ran only one of the two tools on all 3 Japanese turns. English was right on all 3. The intent check also missed `current_time` on the Japanese line (see the intent follow-up).
   - **D-only turns:** D was right where A ran no tool on "What time is it?" (twice), where A added a stray `schedule_list` on two reminder turns, and where A called `schedule_list` instead of `schedule_create` on one Godot reminder turn.
   - **Other A-only turns:** D made a stray `current_time` call on "Are my reminders still on?", the same `schedule_list` mix-up on another Godot reminder turn, and a stray `http_get` call on the English Godot line.
-- **D still answers about 2.3 s sooner than A on tool lines** (3,601 ms against 5,882 ms), and speaks first in under 0.7 s.
+- **D answered 2,281 ms sooner than A on tool lines** (3,601 ms against 5,882 ms), and spoke first at 695 ms.
 - **C still trails A on false claims** (6 against 0, p = 0.031). Its tool decision still runs inside the full persona prompt, which the intent fix doesn't reach.
 
 ## Limits
@@ -304,7 +304,7 @@ To run it again from a CetiMind checkout:
 uv run python bench/prompt_order/bench.py --base-url http://HOST:PORT/v1 --out run --profile heavy --arms A,B,C --repeats 3
 # Run 2
 uv run python bench/prompt_order/bench.py --base-url http://HOST:PORT/v1 --out run-d --profile heavy --arms A,C,D --repeats 3
-# Run 3 (CetiMind 45d28ad or later)
+# Run 3 (CetiMind with per-tool intent examples)
 uv run python bench/prompt_order/bench.py --base-url http://HOST:PORT/v1 --out run-d2 --profile heavy --arms A,C,D --repeats 3
 uv run python bench/prompt_order/summarize.py run
 uv run python bench/prompt_order/summarize.py run-d

@@ -2,7 +2,7 @@
 
 ## Question
 
-In the heavy prompt-order runs (`prompt-order-heavy-2026-11-26`, run 2), the fast intent check with thinking off (arm D) missed "Forget the oven reminder, I already checked it" in both languages, so no tool ran. The 2026-11-16 [tool-model-split](../tool-model-split-2026-11-16/README.md) run had found the same line missed by every intent check.
+In the heavy prompt-order runs (`prompt-order-heavy-2026-11-26`), "Forget the oven reminder, I already checked it" was missed on every turn by both intent checks: A's, which thinks, and D's, which doesn't. The 2026-11-16 [tool-model-split](../tool-model-split-2026-11-16/README.md) run found that every intent check usually sent that line to no tool.
 
 Does one cancel example in the intent check's instruction fix cancel lines? Does it add false alarms on lines that only mention reminders? And does thinking help?
 
@@ -10,8 +10,8 @@ Does one cancel example in the intent check's instruction fix cancel lines? Does
 
 - **Date:** 2026-11-26.
 - **Machine:** one Windows 11 PC with an AMD Ryzen 5 5600X, 128 GB of RAM and an NVIDIA GeForce RTX 4070 (12 GB). LM Studio and the bench ran on this PC.
-- **Model:** `qwen3.5-4b`, loaded with context 6144, `parallel` 4, flash attention, f16 K/V, and a server reasoning budget of 256. `nvidia/nemotron-3-nano-4b` was also loaded but not called.
-- **CetiMind:** `main` at `c4cd140` for the code under test. The harness, `bench/prompt_order/intent_bench.py`, was committed afterward as `8750404` on branch `local/batch` (copied to [`harness/`](harness/)).
+- **Model:** `qwen3.5-4b`, loaded with context 6144, `parallel` 4, flash attention, f16 K/V, and a server reasoning budget of 256. `on128` sends a Token cap of 128 per call. The log has no reasoning-token counts, so which limit applied isn't recorded. `nvidia/nemotron-3-nano-4b` was also loaded but not called. VRAM use and the LM Studio version weren't recorded.
+- **CetiMind:** `main` at `c4cd140` for the code under test. The harness later landed in CetiMind as `bench/prompt_order/intent_bench.py`. [`harness/`](harness/) holds the copy that ran. Default seed `20261126`.
 
 ## Method
 
@@ -22,18 +22,19 @@ Does one cancel example in the intent check's instruction fix cancel lines? Does
   | --- | --- | --- |
   | `off` | off | Today's `INTENT_INSTRUCTION` (arm D's intent check) |
   | `off_example` | off | Today's instruction, plus the cancel example below |
-  | `on128` | on, Tools cap 128 | Today's instruction (arm A's intent check under the live settings) |
+  | `on128` | on, Token cap 128 | Today's instruction (arm A's intent check under the live settings) |
 
   The example added to the instruction:
 
   > Example: "Never mind the laundry alarm, I already emptied it." needs schedule_list and schedule_cancel, because the user wants an existing reminder removed.
 
-  It's worded unlike every test line, so a hit on the test lines doesn't come from copying the example. The example is in English only, for both languages.
+  No cancel line names its reminder (laundry). It has the same shape as "Forget the oven reminder, I already checked it." (a dismissal, then "I already ___ it"), and it was written after the heavy runs missed that line, so the held-out lines are the fair test. The example is in English, for both languages.
+- **Time:** wall clock around one non-streaming `IntentRouter.decide` call, median and p90 per variant.
 - **Lines:** 78 per repeat (1,170 checks in all). All are synthetic, and the Japanese lines are machine-translated.
 
   | Group | Lines | Right when |
   | --- | --- | --- |
-  | Cancel lines in the test set | 2 × 2 languages ("Cancel my water reminder.", "Forget the oven reminder, I already checked it.") | `schedule_cancel` is picked |
+  | Cancel lines from the prompt-order set (not held out) | 2 × 2 languages ("Cancel my water reminder.", "Forget the oven reminder, I already checked it.") | `schedule_cancel` is picked |
   | New cancel lines (held out) | 6 × 2 languages, written for this run ("Drop the water reminder, I just had a glass.", "Scrap my oven timer, the bread is out.", "Can you clear my reminders?"…) | `schedule_cancel` is picked |
   | Near misses | 4 × 2 languages that mention reminders but ask for nothing ("I already checked the oven, the bread looks great.", "I cancelled my gym membership today."…) | nothing is picked |
   | Other tool lines | 16 × 2 languages from the prompt-order set | an expected tool is picked (both on the two-tool lines) |
@@ -46,7 +47,7 @@ Does one cancel example in the intent check's instruction fix cancel lines? Does
 
 | Group | `off` | `off_example` | `on128` |
 | --- | --- | --- | --- |
-| Cancel lines in the test set | 13/20 (65%) | **20/20 (100%)** | 10/20 (50%) |
+| Cancel lines from the prompt-order set (not held out) | 13/20 (65%) | **20/20 (100%)** | 10/20 (50%) |
 | New cancel lines (held out) | 28/60 (47%) | **50/60 (83%)** | 17/60 (28%) |
 | Near misses (need no tool) | 35/40 (88%) | **40/40** | **40/40** |
 | Other tool lines | 155/160 (97%) | **160/160** | **160/160** |
@@ -56,30 +57,32 @@ Does one cancel example in the intent check's instruction fix cancel lines? Does
 
 By language, on the held-out cancel lines: `off` 13/30 in English and 15/30 in Japanese; `off_example` 25/30 in both; `on128` 2/30 in English and 15/30 in Japanese.
 
-Paired on the same line and repeat, over the cancel and near-miss lines (exact McNemar):
+At temperature 0, the 5 repeats gave the same result on 231 of 234 line-and-variant pairs, so the comparisons count lines, not checks. Over the 24 cancel and near-miss lines (exact sign test):
 
-- **`off_example` vs `off`:** example right and `off` wrong on 34 checks; the reverse on 0. p < 0.0001.
-- **`off_example` vs `on128`:** 43 vs 0. p < 0.0001.
+- **`off_example` vs `off`:** better on 8 lines, worse on none. p = 0.008. On the 12 held-out cancel lines alone, better on 5, worse on none, p = 0.063.
+- **`off_example` vs `on128`:** better on 9 lines, worse on none. p = 0.004.
+
+Both stay under 0.05 after a Holm correction for the two tests (both 0.008).
 
 All 10 of `off_example`'s misses were one line, in both languages: "No need to remind me about water today." It picked nothing every time. That line asks to skip a reminder without naming one to cancel, which is the vaguest of the six.
 
 ## Reading
 
-- **One example fixes most cancels, and it generalizes.** Held-out cancel lines went from 47% to 83% right, though none of them share wording with the example. Both test-set cancel lines went to 20/20.
-- **It adds no false alarms.** The near misses went from 35/40 to 40/40, so the example made the check stricter about "mentions a reminder" vs. "asks to remove one", not looser. The other tool lines and chit-chat didn't change, or improved slightly.
-- **It costs about 20 ms per check.**
-- **Thinking doesn't help here, and it hurts.** The thinking-on check (arm A's) got the fewest cancels right (28% held out, 2/30 in English) and took about 5 times longer. Turning thinking off in arm D wasn't what cost the cancel lines. The intent check didn't know what a cancel looks like.
-- **Implication for CetiMind:** add a cancel example to `INTENT_INSTRUCTION`. With it, arm D's main accuracy gap to A (the missed cancel lines) should close at no speed cost. A rerun of D with the example on the heavy profile would confirm it end to end.
+- **One example fixed most cancel lines, including new ones.** On the 12 held-out cancel lines, the check was right on every repeat for 10 lines with the example, against 5 without it. Only one shares a word with the example ("alarm"), and it was right without the example too.
+- **It added no false alarms.** The near misses went from 35/40 to 40/40. All 5 false alarms without the example were one line, "My reminders app at work is so annoying." The other tool lines went from 155/160 to 160/160, also one line (the Japanese time-and-stretch line). Chit-chat didn't change.
+- **It added no measurable time.** The median was 356 ms against 335 ms, and the p90 was 470 ms against 878 ms.
+- **Thinking didn't help.** The thinking-on check (arm A's) got the fewest cancel checks right (28% held out). On the held-out lines, the whole gap to thinking off was in English. By line, thinking off did better on 4 cancel lines in both languages and worse on none, which isn't significant (p = 0.125). Three are English held-out lines, and the fourth is the Japanese "Forget the oven reminder…" line (3/5 against 0/5). Thinking on made no false alarms on near misses, and its median time was 1,637 ms against 335 ms. Turning thinking off in arm D wasn't what cost the cancel lines.
+- **For CetiMind:** a cancel example in `INTENT_INSTRUCTION` is the candidate fix for cancel lines. It doesn't address D's gap to A in the heavy runs, which came from two-tool lines and stray calls, not cancels. Run 3 of the heavy prompt-order run tests it in a full turn (see the follow-up's last bullet).
 
 ## Follow-up: examples on the tool spec
 
-CetiMind issue #137 moved the example out of `INTENT_INSTRUCTION` and onto the tool. `ToolSpec` gained an optional `intent_examples` field, and `IntentRouter` lists each example on its own indented line under its tool's line. The tool lines don't change from turn to turn, so the prompt cache still holds. `schedule_cancel` brings the one example. The bench was rewritten as a regression check that runs whenever the instruction or an example changes.
+The follow-up moved the example out of `INTENT_INSTRUCTION` and onto the tool. `ToolSpec` gained an optional `intent_examples` field, and `IntentRouter` lists each example on its own indented line under its tool's line. The tool lines don't change from turn to turn, so the prompt cache still holds. `schedule_cancel` brings the one example. The bench was rewritten as a regression check that runs whenever the instruction or an example changes.
 
 ### Setup
 
 - **Date:** 2026-11-26, the same evening and PC as the first run.
 - **Model:** `qwen3.5-4b` on LM Studio, with `text-embedding-nomic-embed-text-v1.5` also loaded and not called. The load settings weren't recorded again.
-- **CetiMind:** branch `local/batch`. Run 1 at `f202b32`. Runs 2 and 3 on uncommitted changes, and run 3's changes are what `45d28ad` committed. The harness is in [`harness-spec/`](harness-spec/), and the history and test lines are the same as in [`harness/`](harness/).
+- **CetiMind:** CetiMind with per-tool intent examples. Spec run 1 used the example line without the reason clause. Spec runs 2 and 3 added the reason clause, and spec run 3 also added the complaint sentence, which is the prompt the later runs used. The harness is in [`harness-spec/`](harness-spec/), and the history and test lines are the same as in [`harness/`](harness/).
 
 ### Method
 
@@ -91,19 +94,19 @@ CetiMind issue #137 moved the example out of `INTENT_INSTRUCTION` and onto the t
   | `live` | Today's `INTENT_INSTRUCTION` | With every `intent_examples` line |
   | `bare` | Today's `INTENT_INSTRUCTION` | With the examples stripped |
 
-  Both use the same instruction, so in run 3 `bare` also has the new instruction sentence.
-- **Lines:** the same 78 lines per repeat as the first run, in the same groups (780 checks per run). The held-out cancel lines and near misses now live in [`harness-spec/intent_lines.py`](harness-spec/intent_lines.py). The bench stops if an example reuses the wording of any bench line.
+  Both use the same instruction, so in spec run 3 `bare` also has the new instruction sentence.
+- **Lines:** the same 78 lines per repeat as the first run, in the same groups (780 checks per run). The held-out cancel lines and near misses now live in [`harness-spec/intent_lines.py`](harness-spec/intent_lines.py). The bench stops if an example is a copy of a bench line.
 - **The bar for `live`:**
   - At least 80% of held-out cancel lines right.
   - No false alarms on the near misses.
-  - No group among other tool lines, chit-chat, either way and test-set cancels below `bare`.
+  - No group among other tool lines, chit-chat, either way, and cancel lines from the prompt-order set below `bare`.
 - **What changed between runs:**
 
   | Run | `schedule_cancel` example | Instruction |
   | --- | --- | --- |
-  | 1 | `Example: "Never mind the laundry alarm, I already emptied it." needs schedule_cancel.` | Unchanged from the first run |
-  | 2 | Adds `, because the user wants an existing reminder removed` | Unchanged |
-  | 3 | As run 2 | Adds "A tool is needed only when the user asks for something the tool does, not when they just mention or complain about the topic." |
+  | Spec 1 | `Example: "Never mind the laundry alarm, I already emptied it." needs schedule_cancel.` | Unchanged from the first bench |
+  | Spec 2 | Adds `, because the user wants an existing reminder removed` | Unchanged |
+  | Spec 3 | As spec run 2 | Adds "A tool is needed only when the user asks for something the tool does, not when they just mention or complain about the topic." |
 
   Unlike the first run's example, these name only `schedule_cancel`, not `schedule_list` as well.
 
@@ -111,9 +114,9 @@ CetiMind issue #137 moved the example out of `INTENT_INSTRUCTION` and onto the t
 
 780 checks per run. None failed.
 
-| Group | Run 1 `live` | Run 2 `live` | Run 3 `live` | Run 3 `bare` |
+| Group | Spec 1 `live` | Spec 2 `live` | Spec 3 `live` | Spec 3 `bare` |
 | --- | --- | --- | --- | --- |
-| Cancel lines in the test set | 20/20 | 20/20 | **20/20** | 10/20 (50%) |
+| Cancel lines from the prompt-order set (not held out) | 20/20 | 20/20 | **20/20** | 10/20 (50%) |
 | New cancel lines (held out) | 45/60 (75%) | 60/60 | **60/60** | 30/60 (50%) |
 | Near misses (need no tool) | 30/40 (75%) | 30/40 (75%) | **40/40** | 40/40 |
 | Other tool lines | 160/160 | 155/160 (97%) | 155/160 (97%) | 155/160 (97%) |
@@ -122,34 +125,35 @@ CetiMind issue #137 moved the example out of `INTENT_INSTRUCTION` and onto the t
 | Median time (p90) | 337 ms (584) | 334 ms (879) | 327 ms (916) | 330 ms (936) |
 | Meets the bar | No | No | **Yes** | – |
 
-`bare` in runs 1 and 2 matched run 3's `bare`, except on the near misses: 35/40 in both.
+`bare` in spec runs 1 and 2 matched spec run 3's `bare`, except on the near misses: 35/40 in both.
 
 Every miss repeated on all 5 repeats:
 
-- **Run 1:**
+- **Spec run 1:**
   - "No need to remind me about water today", in both languages, picked nothing.
-  - "Can you clear my reminders?" picked only `schedule_list`.
-  - "My reminders app at work is so annoying" picked `schedule_cancel`.
+  - "Can you clear my reminders?", in English, picked only `schedule_list`.
+  - "My reminders app at work is so annoying", in English, picked `schedule_cancel`.
   - The Japanese "I cancelled my gym membership today" picked `web_search`.
-- **Run 2:** the cancels were all right, but "My reminders app at work is so annoying" picked `schedule_cancel` in both languages. The Japanese two-tool line "What time is it? And remind me to stretch in 10 minutes" picked only `schedule_create`.
-- **Run 3:** only that two-tool line, the same as `bare` in every run.
+- **Spec run 2:** the cancels were all right, but "My reminders app at work is so annoying" picked `schedule_cancel` in both languages. The Japanese two-tool line picked only `schedule_create`.
+- **Spec run 3:** only that two-tool line, the same as `bare` in every run.
 
 ### Reading the follow-up
 
-- **The reason clause carried the held-out cancels.** With only the line, the example got 75% of them, below the bar and below the first run's 83%. With "because the user wants an existing reminder removed", it got all 60, including the soft "No need to remind me…" that the first run never got.
-- **The example made the check trigger on complaints.** "My reminders app at work is so annoying" picked `schedule_cancel` in runs 1 and 2. A cancel example alone teaches "reminders, said with annoyance, means cancel".
-- **One instruction sentence fixed the complaints without losing cancels.** Run 3 kept all the cancels and had no false alarms. It fixed `bare` too (35/40 to 40/40), so the sentence helps with or without examples.
-- **The two-tool line isn't an example problem.** The Japanese time-plus-reminder line missed `current_time` in `bare` in every run, and in `live` from run 2 on. Run 1's 160/160 says the example line can move it. This bench doesn't test a fix for it.
+- **With the reason clause, the held-out cancels went from 75% to all 60.** That includes the soft "No need to remind me…" that the first bench never got.
+- **The example made the check trigger on complaints.** "My reminders app at work is so annoying" picked `schedule_cancel` in spec runs 1 and 2. That was one line, on every repeat, and both languages in spec run 2.
+- **One instruction sentence fixed the complaints without losing cancels.** Spec run 3 kept all the cancels and had no false alarms. It also fixed `bare` on that line (35/40 to 40/40).
+- **The two-tool line isn't an example problem.** The Japanese time-plus-reminder line missed `current_time` in `bare` in every run, and in `live` from spec run 2 on. In spec run 1 it got that line right, so the example can change it, but this bench doesn't test a fix.
 - **No speed cost.** `live` and `bare` medians are within 6 ms of each other in every run.
-- **End to end:** arm D, rerun with run 3's prompt on the heavy profile, got the cancel lines right on 10 of 12 turns, up from 6 of 12. See [run 3 of the heavy prompt-order run](../prompt-order-heavy-2026-11-26/README.md#run-3-arm-d-after-the-intent-fix).
+- **End to end:** arm D, rerun with spec run 3's prompt on the heavy profile, got the cancel lines right on 10 of 12 turns, against 6 of 12 in heavy run 2. See [run 3 of the heavy prompt-order run](../prompt-order-heavy-2026-11-26/README.md#run-3-arm-d-after-the-intent-fix).
 
 ## Limits
 
 - **Scope:** one model, one example, 6 tools, single-turn lines. The intent check alone, not a full turn.
-- **Sample:** the held-out cancel lines are only 6 per language. "No need to remind me…" shows that softer phrasings still slip through.
-- **Language:** the example is in English. Japanese improved just as much, but a Japanese example wasn't tested.
-- **Unseen tools:** in the first run, the instruction names two tools. A future tool set without `schedule_cancel` would need the example adjusted. The follow-up fixes this: the example travels with its tool.
-- **Follow-up runs:** the bar was tuned on the same line sets it's scored on. Run 3 is the third try, so its held-out cancels aren't fully held out any more. The near misses are only 4 per language.
+- **Sample:** the held-out cancel lines are only 6 per language. In the first bench and spec run 1, "No need to remind me…" still slipped through.
+- **Language:** Japanese improved about as much as English, but a Japanese example wasn't tested.
+- **Unseen tools:** in the first run, the instruction names two tools. A future tool set without `schedule_cancel` would need the example adjusted. In the follow-up, the example lives on its tool, so it's left out when the tool is.
+- **Follow-up runs:** the bar was tuned on the same line sets it's scored on. Spec run 3 is the third try, so its held-out cancels aren't fully held out anymore. The near misses are only 4 per language.
+- **Repeats:** at temperature 0 the 5 repeats gave the same result on 231 of 234 line-and-variant pairs, so the run has 78 distinct lines, not 1,170 independent checks.
 
 ## Files
 
@@ -161,10 +165,10 @@ Every miss repeated on all 5 repeats:
   - [`harness-spec/intent_bench.py`](harness-spec/intent_bench.py) and [`harness-spec/intent_lines.py`](harness-spec/intent_lines.py). They also need `harness/heavy.py` and `harness/lines.py`.
   - `run-spec1/`, `run-spec2/` and `run-spec3/`: `calls.jsonl`, `summary.json` (the groups and the bar checks) and `raw-output.txt` for each run.
 
-To run the follow-up again from a CetiMind checkout (it exits 1 when `live` misses the bar):
+To run the follow-up again, copy `harness/` and `harness-spec/` into `bench/prompt_order/` in a CetiMind checkout with per-tool intent examples. It exits 1 when `live` misses the bar.
 
 ```bash
 uv run python bench/prompt_order/intent_bench.py --base-url http://HOST:PORT/v1 --out DIR --repeats 5
 ```
 
-CetiMind's `intent_bench.py` is now the follow-up version, with `live` and `bare`. To repeat the first run (`off`, `off_example`, `on128`), check out CetiMind at `8750404`, where the bench file matches [`harness/intent_bench.py`](harness/intent_bench.py) and `INTENT_INSTRUCTION` and the tools are as they were, and run the same command there.
+CetiMind's `intent_bench.py` is now the follow-up version, with `live` and `bare`. To repeat the first run (`off`, `off_example`, `on128`), use the copy in [`harness/intent_bench.py`](harness/intent_bench.py), when `INTENT_INSTRUCTION` and the tools are as they were, and run the same command.
