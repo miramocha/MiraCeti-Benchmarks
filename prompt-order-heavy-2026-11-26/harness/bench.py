@@ -197,6 +197,7 @@ def _record(log: TurnLog, body: dict, payload: object, started: float, ended: fl
             "repeat": log.repeat,
             "phase": log.phase,
             "step": step,
+            "model": body.get("model"),
             "start_ms": round((started - log.t0) * 1000, 1),
             "end_ms": round((ended - log.t0) * 1000, 1),
             "ms": round((ended - started) * 1000, 1),
@@ -224,9 +225,14 @@ class NoJudge:
         return {"facts": [], "events": []}
 
 
-def _client(base: str) -> LlmClient:
-    return LlmClient(base, MODEL, EMBED_MODEL, max_tokens=SETTINGS.chat_max_tokens, thinking=SETTINGS.judge_thinking,
+def _client(base: str, model: str = MODEL) -> LlmClient:
+    return LlmClient(base, model, EMBED_MODEL, max_tokens=SETTINGS.chat_max_tokens, thinking=SETTINGS.judge_thinking,
                      capabilities=CAPS, judge_max_tokens=SETTINGS.judge_max_tokens)
+
+
+# The tool model for arm DS. Loaded like qwen: context 6144, parallel 4, flash attention, K/V f16, full GPU offload.
+TOOL_MODEL = "nvidia/nemotron-3-nano-4b"
+TOOL_CLIENT: LlmClient | None = None
 
 
 def _registry(case: Case, ran: list[str]) -> ToolRegistry:
@@ -468,8 +474,25 @@ def arm_d(chat: LlmClient, persona: Persona, store: Store, case: Case, log: Turn
         turn_module.say_this = original
 
 
+def arm_ds(chat: LlmClient, persona: Persona, store: Store, case: Case, log: TurnLog, budget: int | None = None) -> dict:
+    """D with a separate tool model: nemotron runs the intent check, the tool rounds and the miss check, and qwen
+    runs the hold, the say-this reply and the chit-chat reply. tool_thinking stays auto, so a picked tool thinks."""
+    tool = TOOL_CLIENT
+    assert tool is not None, "arm DS needs --tool-model"
+    original = turn_module.say_this
+    turn_module.say_this = say_this_results_first
+    try:
+        return arm_a(chat, persona, store, case, log,
+                     tweak=lambda o: replace(o, router=FastRouter(IntentRouter(tool)), net=JsonMissCheck(tool),
+                                             tool_chatter=tool, think_replies="off",
+                                             budget_tools=budget or o.budget_tools))
+    finally:
+        turn_module.say_this = original
+
+
 # B512: arm B with the thinking cap raised from 128 to 512 tokens, every round.
-ARMS = {"A": arm_a, "B": arm_b, "B512": lambda *a: arm_b(*a, budget=512), "C": arm_c, "D": arm_d}
+ARMS = {"A": arm_a, "B": arm_b, "B512": lambda *a: arm_b(*a, budget=512), "C": arm_c, "D": arm_d, "DS": arm_ds,
+        "DS512": lambda *a: arm_ds(*a, budget=512)}
 
 # --- scoring --------------------------------------------------------------------------------------------------------
 
@@ -560,11 +583,16 @@ def main() -> None:
     ALLOWED_TAGS.update(tag.lower() for tag in persona.speech_tags)
     work = Path(tempfile.mkdtemp(prefix="prompt-order-"))
     chat = _client(args.base_url)
+    global TOOL_CLIENT
+    if any(arm.startswith("DS") for arm in arms):
+        TOOL_CLIENT = _client(args.base_url, TOOL_MODEL)
     run_started = time.perf_counter()
     try:
         templates = seed_templates(work, chat)
         warm = time.perf_counter()
         chat.chat([{"role": "user", "content": "hi"}], think=False)
+        if TOOL_CLIENT is not None:
+            TOOL_CLIENT.chat([{"role": "user", "content": "hi"}], think=False)
         chat.embed_query("hi")
         print(json.dumps({"warmup_ms": round((time.perf_counter() - warm) * 1000)}), flush=True)
         with (out / "steps.jsonl").open("a", encoding="utf-8") as steps_file, \
@@ -608,6 +636,8 @@ def main() -> None:
                         print(json.dumps(brief, ensure_ascii=False), flush=True)
     finally:
         chat.close()
+        if TOOL_CLIENT is not None:
+            TOOL_CLIENT.close()
         print(json.dumps({"run_s": round(time.perf_counter() - run_started, 1)}), flush=True)
 
 

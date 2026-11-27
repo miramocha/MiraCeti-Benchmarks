@@ -166,6 +166,17 @@ D's thinking-off intent check picked a tool on 102 of 108 tool lines and on 0 of
   - Let the intent check think only for lines with a cancel or a second request, or give it a few cancel examples.
   - Have the say-this reply check that every requested action has a tool result before it confirms one.
 
+### Tried and dropped: a separate tool model
+
+A third run tested D with `nvidia/nemotron-3-nano-4b` as the tool model (`tool_model`). Nemotron ran the intent check, the tool rounds and the miss check, and qwen ran the hold and the replies. It was tried at the Tools caps of 128 and 512, with both models loaded alike (context 6144, `parallel` 4, f16 K/V, full GPU offload). The run was stopped after about 15 turns per arm, because nemotron did worse than qwen alone:
+
+- It called the needed tool on 10–11 of 13 tool lines, against 13–14 for D and A.
+- It made stray calls at the 512 cap.
+- It answered later: 4.9 s and 7.0 s median, against 4.2 s for D.
+- The hold came no sooner (about 0.9 s).
+
+That reverses [tool-model-split-2026-11-16](../tool-model-split-2026-11-16/README.md), which ran with no thinking cap and no heavy context. The partial data isn't kept.
+
 ## Limits
 
 - **Scope:** one 4B model, one persona and 6 fake tools.
