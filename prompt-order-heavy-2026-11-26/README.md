@@ -109,6 +109,63 @@ Against the first run, B's answer on tool lines slowed from 2.8 s to 3.7 s, and 
   Under the live settings, every A say-this reply thought and used up its Replies cap (`budget_replies` 128; 80 of 80 checked in the first part of the run). The repeated holds look like the model, cut off mid-thought, copying the hold line it was given.
 - **Next:** combine the parts that won. Take C's thinking-off intent check and early hold, A's isolated task-shaped tool rounds, and a say-this reply with thinking off, with the results placed before the hold in its prompt. Those changes target A's accuracy at C's speed and fix the repeated holds. The say-this changes can be tested first by replaying the saved prompts, without a full run.
 
+## Run 2: the combined arm D
+
+Run 1 pointed to a combination of the parts that won. D keeps A's order (task-shaped tool rounds that see only the user's line, the hold line, the say-this reply and the miss check), with three changes:
+
+- The intent check doesn't think (a wrapper forces `think=False`, as in C).
+- The replies don't think (`think_replies` `off`). That covers the say-this reply and the chit-chat persona reply.
+- The say-this message puts the tool results before the hold line, and frames the hold as a line not to repeat ("Your first sentence states what the results show…").
+
+D ran interleaved with A and C on the same heavy profile, 3 repeats, 522 turns (`run-d/`), with no errors. Its persona prompt is the same size as A's (median 1,499 tokens). C's is 2,372.
+
+| Metric | A tiered | C fast hold | D combined |
+| --- | --- | --- | --- |
+| Right tools in the turn | **160/174 (92%)** | 150/174 (86%) | 154/174 (89%) |
+| Right tools after the miss check | **164/174 (94%)** | 150/174 (86%) | 159/174 (91%) |
+| Needed tool called | 101/108 (94%) | 92/108 (85%) | **102/108 (94%)** |
+| False claim | **1/108** | 6/108 | **1/108** |
+| Partial claim (two-tool lines) | **1/12** | **1/12** | 4/12 |
+| Stale fact | **1/18** | **1/18** | 2/18 |
+| Grounded in the tool result | 92/119 (77%) | 96/112 (86%) | **103/120 (86%)** |
+| Reply repeats the hold | 2/121 | **0/127** | **0/126** |
+| Question on a tool turn | 1/108 | 10/108 | **0/108** |
+| Chit-chat line got a tool call and a follow-up | 3/42 | **0/42** | 1/42 |
+| First word, tool lines | 2.23 s | 0.94 s | **0.84 s** |
+| Answer, tool lines | 7.23 s | **4.07 s** | 4.34 s |
+| First word, chit-chat | 3.63 s | 2.48 s | **1.29 s** |
+| Model calls per turn | 5.1 | 3.4 | 5.0 |
+
+Paired against A (exact McNemar, right tools in the turn):
+
+- **D:** A-only 9, D-only 3, p = 0.15. After the miss check: 10 vs 5, p = 0.30.
+- **C:** A-only 16, C-only 6, p = 0.052. After the miss check: 21 vs 7, **p = 0.013**.
+
+By language, right tools in the turn:
+
+| Language | A | C | D |
+| --- | --- | --- | --- |
+| English | 79/87 | 73/87 | 78/87 |
+| Japanese | 81/87 | 77/87 | 76/87 |
+
+D's thinking-off intent check picked a tool on 102 of 108 tool lines and on 0 of 42 chit-chat lines.
+
+### Reading run 2
+
+- **D is the best overall trade so far.** Within the noise, it matches A on tool calls and false claims (1 each, against 6 for C). It grounds the answer as well as C, never repeated the hold, asked no questions on tool turns, and is the fastest arm to speak:
+  - **Tool lines:** the hold comes at 0.84 s, against 2.2 s for A.
+  - **Chit-chat:** the reply comes at 1.3 s, against 3.6 s for A.
+  - **Answer:** it comes about 3 s sooner than A's.
+- **Where D still loses:**
+  - **The two-tool lines.** On 4 of 12, it ran one tool and claimed the second ("I'll set a timer to remind you in an hour").
+  - **The thinking-off intent check misses some lines.** It missed "Forget the oven reminder, I already checked it" in both languages.
+
+  These account for most of the 9 turns where A was right and D wasn't, most of them in Japanese (A-only 6, D-only 1, p = 0.13).
+- **C confirms run 1.** Making the tool decision inside the full persona prompt costs accuracy under heavy context (86%, significantly behind A after the miss check). Isolating the tool rounds is what buys the accuracy. The thinking is what costs the time.
+- **Next steps for D:**
+  - Let the intent check think only for lines with a cancel or a second request, or give it a few cancel examples.
+  - Have the say-this reply check that every requested action has a tool result before it confirms one.
+
 ## Limits
 
 - **Scope:** one 4B model, one persona and 6 fake tools.
@@ -120,10 +177,11 @@ Against the first run, B's answer on tool lines slowed from 2.8 s to 3.7 s, and 
 ## Files
 
 - [`harness/`](harness/): a copy of CetiMind `bench/prompt_order/` (`bench.py`, `lines.py`, `heavy.py`, `summarize.py`).
-- `run/turns.jsonl`: one row per turn.
-- `run/steps.jsonl`: one row per HTTP call.
-- `run/raw-output.txt`: the console log.
-- [`summary.md`](summary.md): the output of `summarize.py run`.
+- `run/`: run 1 (A, B, C). `run-d/`: run 2 (A, C, D). Each holds:
+  - `turns.jsonl`: one row per turn.
+  - `steps.jsonl`: one row per HTTP call.
+  - `raw-output.txt`: the console log.
+- [`summary.md`](summary.md) and [`summary-d.md`](summary-d.md): the output of `summarize.py run` and `summarize.py run-d`.
 
 To run it again from a CetiMind checkout:
 

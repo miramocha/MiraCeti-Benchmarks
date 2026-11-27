@@ -58,7 +58,8 @@ from cetimind.app.turn import (  # noqa: E402
     reply_turn,
     run_net,
 )
-from cetimind.core.calls import SAY_INSTRUCTION, TOOL_INSTRUCTION, hold_messages, wire_messages  # noqa: E402
+import cetimind.app.turn as turn_module  # noqa: E402
+from cetimind.core.calls import SAY_INSTRUCTION, TOOL_INSTRUCTION, _capped, hold_messages, wire_messages  # noqa: E402
 from cetimind.core.persona import Persona  # noqa: E402
 from cetimind.llm.capabilities import Capabilities  # noqa: E402
 from cetimind.llm.client import LlmClient  # noqa: E402
@@ -297,7 +298,7 @@ def _options(store: Store, embedder: LlmClient, case: Case, ran: list[str], chat
 # --- arms -----------------------------------------------------------------------------------------------------------
 
 
-def arm_a(chat: LlmClient, persona: Persona, store: Store, case: Case, log: TurnLog) -> dict:
+def arm_a(chat: LlmClient, persona: Persona, store: Store, case: Case, log: TurnLog, tweak=None) -> dict:
     ran: list[str] = []
     held: dict[str, float] = {}
 
@@ -305,6 +306,8 @@ def arm_a(chat: LlmClient, persona: Persona, store: Store, case: Case, log: Turn
         held["ms"] = (time.perf_counter() - log.t0) * 1000
 
     options = _options(store, chat, case, ran, chat, routed=True, on_hold=on_hold)
+    if tweak is not None:
+        options = tweak(options)
     produced = reply_turn(chat, persona, case.line, options)
     reply_ms = (time.perf_counter() - log.t0) * 1000
     turn_ran = list(ran)
@@ -430,8 +433,43 @@ def arm_c(chat: LlmClient, persona: Persona, store: Store, case: Case, log: Turn
     }
 
 
+class FastRouter:
+    """The intent check with thinking off, whatever the Tools row says."""
+
+    def __init__(self, inner: IntentRouter) -> None:
+        self._inner = inner
+
+    def decide(self, turn: RouteTurn):
+        return self._inner.decide(replace(turn, think=False, budget=None))
+
+
+def say_this_results_first(user_line: str, results, *, cap: int, hold: str = "") -> str:
+    """The say-this message with the results before the hold, and the hold framed as a line not to repeat."""
+    lines = [user_line, "", SAY_INSTRUCTION]
+    for name, text in results:
+        lines.append(f"{name}: {_capped(text, cap)}")
+    spoken = hold.strip()
+    if spoken:
+        lines += ["", "Your first sentence states what the results show. "
+                  "You already said the line below aloud, so do not say it again:", spoken]
+    return "\n".join(lines).strip()
+
+
+def arm_d(chat: LlmClient, persona: Persona, store: Store, case: Case, log: TurnLog) -> dict:
+    """A's order (isolated task-shaped tool rounds, hold, say-this, miss check) with three changes: the intent check
+    does not think, the replies (say-this and the persona reply) do not think, and the say-this message puts the
+    results before the hold."""
+    original = turn_module.say_this
+    turn_module.say_this = say_this_results_first
+    try:
+        return arm_a(chat, persona, store, case, log,
+                     tweak=lambda o: replace(o, router=FastRouter(IntentRouter(chat)), think_replies="off"))
+    finally:
+        turn_module.say_this = original
+
+
 # B512: arm B with the thinking cap raised from 128 to 512 tokens, every round.
-ARMS = {"A": arm_a, "B": arm_b, "B512": lambda *a: arm_b(*a, budget=512), "C": arm_c}
+ARMS = {"A": arm_a, "B": arm_b, "B512": lambda *a: arm_b(*a, budget=512), "C": arm_c, "D": arm_d}
 
 # --- scoring --------------------------------------------------------------------------------------------------------
 
