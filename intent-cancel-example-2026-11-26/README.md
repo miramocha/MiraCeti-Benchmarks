@@ -11,7 +11,7 @@ Does one cancel example in the intent check's instruction fix cancel lines? Does
 - **Date:** 2026-11-26.
 - **Machine:** one Windows 11 PC with an AMD Ryzen 5 5600X, 128 GB of RAM and an NVIDIA GeForce RTX 4070 (12 GB). LM Studio and the bench ran on this PC.
 - **Model:** `qwen3.5-4b`, loaded with context 6144, `parallel` 4, flash attention, f16 K/V, and a server reasoning budget of 256. `nvidia/nemotron-3-nano-4b` was also loaded but not called.
-- **CetiMind:** `main` at `c4cd140`, with the harness in `bench/prompt_order/intent_bench.py` (copied to [`harness/`](harness/)).
+- **CetiMind:** `main` at `c4cd140` for the code under test. The harness, `bench/prompt_order/intent_bench.py`, was committed afterward as `8750404` on branch `local/batch` (copied to [`harness/`](harness/)).
 
 ## Method
 
@@ -161,8 +161,10 @@ Every miss repeated on all 5 repeats:
   - [`harness-spec/intent_bench.py`](harness-spec/intent_bench.py) and [`harness-spec/intent_lines.py`](harness-spec/intent_lines.py). They also need `harness/heavy.py` and `harness/lines.py`.
   - `run-spec1/`, `run-spec2/` and `run-spec3/`: `calls.jsonl`, `summary.json` (the groups and the bar checks) and `raw-output.txt` for each run.
 
-To run it again from a CetiMind checkout (the follow-up version exits 1 when `live` misses the bar):
+To run the follow-up again from a CetiMind checkout (it exits 1 when `live` misses the bar):
 
 ```bash
 uv run python bench/prompt_order/intent_bench.py --base-url http://HOST:PORT/v1 --out DIR --repeats 5
 ```
+
+CetiMind's `intent_bench.py` is now the follow-up version, with `live` and `bare`. To repeat the first run (`off`, `off_example`, `on128`), check out CetiMind at `8750404`, where the bench file matches [`harness/intent_bench.py`](harness/intent_bench.py) and `INTENT_INSTRUCTION` and the tools are as they were, and run the same command there.
