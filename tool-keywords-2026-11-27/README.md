@@ -88,6 +88,34 @@ Tokens are means per line. Bold marks the single best value in a column; ties ar
 
 Right of 390. Bold marks the single best value in a row or column; ties are not bold. Expand at 16 to 66 tools comes from its own run, where full scored 365, 355 and 355 as in the table.
 
+Lines: full (grey), narrow (orange), strict (blue), expand (green). The x-axis is the tool count, evenly spaced, not to scale.
+
+```mermaid
+%%{init: {"themeVariables": {"xyChart": {"plotColorPalette": "#8a8f98, #d08a3a, #3a7bd5, #2e9d5b"}}}}%%
+xychart-beta
+    title "Right checks of 390, by tool count"
+    x-axis "Tools" [6, 16, 36, 66]
+    y-axis "Right" 340 --> 390
+    line [385, 365, 355, 355]
+    line [385, 360, 350, 351]
+    line [380, 370, 370, 365]
+    line [385, 375, 380, 380]
+```
+
+```mermaid
+%%{init: {"themeVariables": {"xyChart": {"plotColorPalette": "#8a8f98, #d08a3a, #3a7bd5, #2e9d5b"}}}}%%
+xychart-beta
+    title "Tool-round tools block tokens per line"
+    x-axis "Tools" [6, 16, 36, 66]
+    y-axis "Tokens" 0 --> 4500
+    line [861, 1425, 2573, 4289]
+    line [845, 1274, 2157, 3477]
+    line [684, 686, 686, 686]
+    line [684, 686, 686, 686]
+```
+
+Strict and expand share the same tools block, so their lines overlap in the second chart.
+
 | Tools | Set | Near-miss alarms | Intent prompt tokens | Tools block tokens | Median ms |
 | --- | --- | --- | --- | --- | --- |
 | 16 | Full | 10 | 400 | 1,425 | 307 |
