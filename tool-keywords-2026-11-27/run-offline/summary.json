@@ -1,0 +1,210 @@
+{
+  "offline": {
+    "full": {
+      "recall_tool_lines": {
+        "hits": 48,
+        "total": 48,
+        "rate": 1.0,
+        "lo": 0.9259,
+        "hi": 1.0
+      },
+      "recall_by_group": {
+        "cancel_test": {
+          "hits": 4,
+          "total": 4,
+          "rate": 1.0,
+          "lo": 0.5101,
+          "hi": 1.0
+        },
+        "cancel_new": {
+          "hits": 12,
+          "total": 12,
+          "rate": 1.0,
+          "lo": 0.7575,
+          "hi": 1.0
+        },
+        "near_miss": {
+          "hits": 8,
+          "total": 8,
+          "rate": 1.0,
+          "lo": 0.6756,
+          "hi": 1.0
+        },
+        "tool": {
+          "hits": 32,
+          "total": 32,
+          "rate": 1.0,
+          "lo": 0.8928,
+          "hi": 1.0
+        },
+        "none": {
+          "hits": 14,
+          "total": 14,
+          "rate": 1.0,
+          "lo": 0.7847,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 8,
+          "total": 8,
+          "rate": 1.0,
+          "lo": 0.6756,
+          "hi": 1.0
+        }
+      },
+      "mean_size": 6,
+      "mean_intent_est": 214,
+      "mean_block_est": 627,
+      "narrowed_lines": 0,
+      "fallback": {
+        "hits": 0,
+        "total": 78,
+        "rate": 0.0,
+        "lo": 0.0,
+        "hi": 0.0469
+      },
+      "extra_per_line": 1.795,
+      "lines_with_extra": 78,
+      "misses": []
+    },
+    "narrow": {
+      "recall_tool_lines": {
+        "hits": 48,
+        "total": 48,
+        "rate": 1.0,
+        "lo": 0.9259,
+        "hi": 1.0
+      },
+      "recall_by_group": {
+        "cancel_test": {
+          "hits": 4,
+          "total": 4,
+          "rate": 1.0,
+          "lo": 0.5101,
+          "hi": 1.0
+        },
+        "cancel_new": {
+          "hits": 12,
+          "total": 12,
+          "rate": 1.0,
+          "lo": 0.7575,
+          "hi": 1.0
+        },
+        "near_miss": {
+          "hits": 8,
+          "total": 8,
+          "rate": 1.0,
+          "lo": 0.6756,
+          "hi": 1.0
+        },
+        "tool": {
+          "hits": 32,
+          "total": 32,
+          "rate": 1.0,
+          "lo": 0.8928,
+          "hi": 1.0
+        },
+        "none": {
+          "hits": 14,
+          "total": 14,
+          "rate": 1.0,
+          "lo": 0.7847,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 8,
+          "total": 8,
+          "rate": 1.0,
+          "lo": 0.6756,
+          "hi": 1.0
+        }
+      },
+      "mean_size": 5.833,
+      "mean_intent_est": 208.4,
+      "mean_block_est": 612.3,
+      "narrowed_lines": 13,
+      "fallback": {
+        "hits": 63,
+        "total": 78,
+        "rate": 0.8077,
+        "lo": 0.7066,
+        "hi": 0.8798
+      },
+      "extra_per_line": 1.628,
+      "lines_with_extra": 65,
+      "misses": []
+    },
+    "strict": {
+      "recall_tool_lines": {
+        "hits": 47,
+        "total": 48,
+        "rate": 0.9792,
+        "lo": 0.891,
+        "hi": 0.9963
+      },
+      "recall_by_group": {
+        "cancel_test": {
+          "hits": 4,
+          "total": 4,
+          "rate": 1.0,
+          "lo": 0.5101,
+          "hi": 1.0
+        },
+        "cancel_new": {
+          "hits": 12,
+          "total": 12,
+          "rate": 1.0,
+          "lo": 0.7575,
+          "hi": 1.0
+        },
+        "near_miss": {
+          "hits": 8,
+          "total": 8,
+          "rate": 1.0,
+          "lo": 0.6756,
+          "hi": 1.0
+        },
+        "tool": {
+          "hits": 31,
+          "total": 32,
+          "rate": 0.9688,
+          "lo": 0.8426,
+          "hi": 0.9945
+        },
+        "none": {
+          "hits": 14,
+          "total": 14,
+          "rate": 1.0,
+          "lo": 0.7847,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 8,
+          "total": 8,
+          "rate": 1.0,
+          "lo": 0.6756,
+          "hi": 1.0
+        }
+      },
+      "mean_size": 4.218,
+      "mean_intent_est": 152.7,
+      "mean_block_est": 461.2,
+      "narrowed_lines": 76,
+      "fallback": {
+        "hits": 0,
+        "total": 78,
+        "rate": 0.0,
+        "lo": 0.0,
+        "hi": 0.0469
+      },
+      "extra_per_line": 0.026,
+      "lines_with_extra": 2,
+      "misses": [
+        "f1-ja"
+      ]
+    },
+    "lines": 78,
+    "matched_lines": 15,
+    "matched_on_no_tool_lines": []
+  }
+}

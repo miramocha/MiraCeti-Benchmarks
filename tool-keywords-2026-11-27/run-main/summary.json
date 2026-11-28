@@ -1,0 +1,793 @@
+{
+  "offline": {
+    "full": {
+      "recall_tool_lines": {
+        "hits": 48,
+        "total": 48,
+        "rate": 1.0,
+        "lo": 0.9259,
+        "hi": 1.0
+      },
+      "recall_by_group": {
+        "cancel_test": {
+          "hits": 4,
+          "total": 4,
+          "rate": 1.0,
+          "lo": 0.5101,
+          "hi": 1.0
+        },
+        "cancel_new": {
+          "hits": 12,
+          "total": 12,
+          "rate": 1.0,
+          "lo": 0.7575,
+          "hi": 1.0
+        },
+        "near_miss": {
+          "hits": 8,
+          "total": 8,
+          "rate": 1.0,
+          "lo": 0.6756,
+          "hi": 1.0
+        },
+        "tool": {
+          "hits": 32,
+          "total": 32,
+          "rate": 1.0,
+          "lo": 0.8928,
+          "hi": 1.0
+        },
+        "none": {
+          "hits": 14,
+          "total": 14,
+          "rate": 1.0,
+          "lo": 0.7847,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 8,
+          "total": 8,
+          "rate": 1.0,
+          "lo": 0.6756,
+          "hi": 1.0
+        }
+      },
+      "mean_size": 6,
+      "mean_intent_est": 214,
+      "mean_block_est": 627,
+      "narrowed_lines": 0,
+      "fallback": {
+        "hits": 0,
+        "total": 78,
+        "rate": 0.0,
+        "lo": 0.0,
+        "hi": 0.0469
+      },
+      "extra_per_line": 1.795,
+      "lines_with_extra": 78,
+      "misses": []
+    },
+    "narrow": {
+      "recall_tool_lines": {
+        "hits": 48,
+        "total": 48,
+        "rate": 1.0,
+        "lo": 0.9259,
+        "hi": 1.0
+      },
+      "recall_by_group": {
+        "cancel_test": {
+          "hits": 4,
+          "total": 4,
+          "rate": 1.0,
+          "lo": 0.5101,
+          "hi": 1.0
+        },
+        "cancel_new": {
+          "hits": 12,
+          "total": 12,
+          "rate": 1.0,
+          "lo": 0.7575,
+          "hi": 1.0
+        },
+        "near_miss": {
+          "hits": 8,
+          "total": 8,
+          "rate": 1.0,
+          "lo": 0.6756,
+          "hi": 1.0
+        },
+        "tool": {
+          "hits": 32,
+          "total": 32,
+          "rate": 1.0,
+          "lo": 0.8928,
+          "hi": 1.0
+        },
+        "none": {
+          "hits": 14,
+          "total": 14,
+          "rate": 1.0,
+          "lo": 0.7847,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 8,
+          "total": 8,
+          "rate": 1.0,
+          "lo": 0.6756,
+          "hi": 1.0
+        }
+      },
+      "mean_size": 5.833,
+      "mean_intent_est": 208.4,
+      "mean_block_est": 612.3,
+      "narrowed_lines": 13,
+      "fallback": {
+        "hits": 63,
+        "total": 78,
+        "rate": 0.8077,
+        "lo": 0.7066,
+        "hi": 0.8798
+      },
+      "extra_per_line": 1.628,
+      "lines_with_extra": 65,
+      "misses": []
+    },
+    "strict": {
+      "recall_tool_lines": {
+        "hits": 47,
+        "total": 48,
+        "rate": 0.9792,
+        "lo": 0.891,
+        "hi": 0.9963
+      },
+      "recall_by_group": {
+        "cancel_test": {
+          "hits": 4,
+          "total": 4,
+          "rate": 1.0,
+          "lo": 0.5101,
+          "hi": 1.0
+        },
+        "cancel_new": {
+          "hits": 12,
+          "total": 12,
+          "rate": 1.0,
+          "lo": 0.7575,
+          "hi": 1.0
+        },
+        "near_miss": {
+          "hits": 8,
+          "total": 8,
+          "rate": 1.0,
+          "lo": 0.6756,
+          "hi": 1.0
+        },
+        "tool": {
+          "hits": 31,
+          "total": 32,
+          "rate": 0.9688,
+          "lo": 0.8426,
+          "hi": 0.9945
+        },
+        "none": {
+          "hits": 14,
+          "total": 14,
+          "rate": 1.0,
+          "lo": 0.7847,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 8,
+          "total": 8,
+          "rate": 1.0,
+          "lo": 0.6756,
+          "hi": 1.0
+        }
+      },
+      "mean_size": 4.218,
+      "mean_intent_est": 152.7,
+      "mean_block_est": 461.2,
+      "narrowed_lines": 76,
+      "fallback": {
+        "hits": 0,
+        "total": 78,
+        "rate": 0.0,
+        "lo": 0.0,
+        "hi": 0.0469
+      },
+      "extra_per_line": 0.026,
+      "lines_with_extra": 2,
+      "misses": [
+        "f1-ja"
+      ]
+    },
+    "lines": 78,
+    "matched_lines": 15,
+    "matched_on_no_tool_lines": []
+  },
+  "tokens": {
+    "by_set": {
+      "current_time,schedule_create,schedule_list,schedule_cancel": {
+        "size": 4,
+        "intent_prompt": 207,
+        "tools_block": 661
+      },
+      "current_time,schedule_create,schedule_list,schedule_cancel,http_get": {
+        "size": 5,
+        "intent_prompt": 242,
+        "tools_block": 746
+      },
+      "current_time,schedule_create,schedule_list,schedule_cancel,web_search": {
+        "size": 5,
+        "intent_prompt": 245,
+        "tools_block": 776
+      },
+      "current_time,schedule_create,schedule_list,schedule_cancel,web_search,http_get": {
+        "size": 6,
+        "intent_prompt": 280,
+        "tools_block": 861
+      }
+    },
+    "mean_per_line": {
+      "full": {
+        "intent_prompt": 280,
+        "tools_block": 861
+      },
+      "narrow": {
+        "intent_prompt": 274.0,
+        "tools_block": 845.3
+      },
+      "strict": {
+        "intent_prompt": 215.1,
+        "tools_block": 683.8
+      }
+    }
+  },
+  "live": {
+    "groups": {
+      "full_live": {
+        "cancel_test": {
+          "hits": 20,
+          "total": 20,
+          "rate": 1.0,
+          "lo": 0.8389,
+          "hi": 1.0
+        },
+        "cancel_new": {
+          "hits": 60,
+          "total": 60,
+          "rate": 1.0,
+          "lo": 0.9398,
+          "hi": 1.0
+        },
+        "near_miss": {
+          "hits": 40,
+          "total": 40,
+          "rate": 1.0,
+          "lo": 0.9124,
+          "hi": 1.0
+        },
+        "tool": {
+          "hits": 155,
+          "total": 160,
+          "rate": 0.9688,
+          "lo": 0.9289,
+          "hi": 0.9866
+        },
+        "none": {
+          "hits": 70,
+          "total": 70,
+          "rate": 1.0,
+          "lo": 0.948,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 40,
+          "total": 40,
+          "rate": 1.0,
+          "lo": 0.9124,
+          "hi": 1.0
+        },
+        "all": {
+          "hits": 385,
+          "total": 390,
+          "rate": 0.9872,
+          "lo": 0.9703,
+          "hi": 0.9945
+        }
+      },
+      "narrow_live": {
+        "cancel_test": {
+          "hits": 20,
+          "total": 20,
+          "rate": 1.0,
+          "lo": 0.8389,
+          "hi": 1.0
+        },
+        "cancel_new": {
+          "hits": 60,
+          "total": 60,
+          "rate": 1.0,
+          "lo": 0.9398,
+          "hi": 1.0
+        },
+        "near_miss": {
+          "hits": 40,
+          "total": 40,
+          "rate": 1.0,
+          "lo": 0.9124,
+          "hi": 1.0
+        },
+        "tool": {
+          "hits": 155,
+          "total": 160,
+          "rate": 0.9688,
+          "lo": 0.9289,
+          "hi": 0.9866
+        },
+        "none": {
+          "hits": 70,
+          "total": 70,
+          "rate": 1.0,
+          "lo": 0.948,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 40,
+          "total": 40,
+          "rate": 1.0,
+          "lo": 0.9124,
+          "hi": 1.0
+        },
+        "all": {
+          "hits": 385,
+          "total": 390,
+          "rate": 0.9872,
+          "lo": 0.9703,
+          "hi": 0.9945
+        }
+      },
+      "strict_live": {
+        "cancel_test": {
+          "hits": 20,
+          "total": 20,
+          "rate": 1.0,
+          "lo": 0.8389,
+          "hi": 1.0
+        },
+        "cancel_new": {
+          "hits": 55,
+          "total": 60,
+          "rate": 0.9167,
+          "lo": 0.8193,
+          "hi": 0.9639
+        },
+        "near_miss": {
+          "hits": 40,
+          "total": 40,
+          "rate": 1.0,
+          "lo": 0.9124,
+          "hi": 1.0
+        },
+        "tool": {
+          "hits": 155,
+          "total": 160,
+          "rate": 0.9688,
+          "lo": 0.9289,
+          "hi": 0.9866
+        },
+        "none": {
+          "hits": 70,
+          "total": 70,
+          "rate": 1.0,
+          "lo": 0.948,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 40,
+          "total": 40,
+          "rate": 1.0,
+          "lo": 0.9124,
+          "hi": 1.0
+        },
+        "all": {
+          "hits": 380,
+          "total": 390,
+          "rate": 0.9744,
+          "lo": 0.9535,
+          "hi": 0.986
+        }
+      },
+      "expand_live": {
+        "cancel_test": {
+          "hits": 20,
+          "total": 20,
+          "rate": 1.0,
+          "lo": 0.8389,
+          "hi": 1.0
+        },
+        "cancel_new": {
+          "hits": 60,
+          "total": 60,
+          "rate": 1.0,
+          "lo": 0.9398,
+          "hi": 1.0
+        },
+        "near_miss": {
+          "hits": 40,
+          "total": 40,
+          "rate": 1.0,
+          "lo": 0.9124,
+          "hi": 1.0
+        },
+        "tool": {
+          "hits": 155,
+          "total": 160,
+          "rate": 0.9688,
+          "lo": 0.9289,
+          "hi": 0.9866
+        },
+        "none": {
+          "hits": 70,
+          "total": 70,
+          "rate": 1.0,
+          "lo": 0.948,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 40,
+          "total": 40,
+          "rate": 1.0,
+          "lo": 0.9124,
+          "hi": 1.0
+        },
+        "all": {
+          "hits": 385,
+          "total": 390,
+          "rate": 0.9872,
+          "lo": 0.9703,
+          "hi": 0.9945
+        }
+      },
+      "full_bare": {
+        "cancel_test": {
+          "hits": 10,
+          "total": 20,
+          "rate": 0.5,
+          "lo": 0.2993,
+          "hi": 0.7007
+        },
+        "cancel_new": {
+          "hits": 30,
+          "total": 60,
+          "rate": 0.5,
+          "lo": 0.3773,
+          "hi": 0.6227
+        },
+        "near_miss": {
+          "hits": 40,
+          "total": 40,
+          "rate": 1.0,
+          "lo": 0.9124,
+          "hi": 1.0
+        },
+        "tool": {
+          "hits": 155,
+          "total": 160,
+          "rate": 0.9688,
+          "lo": 0.9289,
+          "hi": 0.9866
+        },
+        "none": {
+          "hits": 70,
+          "total": 70,
+          "rate": 1.0,
+          "lo": 0.948,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 40,
+          "total": 40,
+          "rate": 1.0,
+          "lo": 0.9124,
+          "hi": 1.0
+        },
+        "all": {
+          "hits": 345,
+          "total": 390,
+          "rate": 0.8846,
+          "lo": 0.8491,
+          "hi": 0.9126
+        }
+      },
+      "narrow_bare": {
+        "cancel_test": {
+          "hits": 10,
+          "total": 20,
+          "rate": 0.5,
+          "lo": 0.2993,
+          "hi": 0.7007
+        },
+        "cancel_new": {
+          "hits": 30,
+          "total": 60,
+          "rate": 0.5,
+          "lo": 0.3773,
+          "hi": 0.6227
+        },
+        "near_miss": {
+          "hits": 40,
+          "total": 40,
+          "rate": 1.0,
+          "lo": 0.9124,
+          "hi": 1.0
+        },
+        "tool": {
+          "hits": 155,
+          "total": 160,
+          "rate": 0.9688,
+          "lo": 0.9289,
+          "hi": 0.9866
+        },
+        "none": {
+          "hits": 70,
+          "total": 70,
+          "rate": 1.0,
+          "lo": 0.948,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 40,
+          "total": 40,
+          "rate": 1.0,
+          "lo": 0.9124,
+          "hi": 1.0
+        },
+        "all": {
+          "hits": 345,
+          "total": 390,
+          "rate": 0.8846,
+          "lo": 0.8491,
+          "hi": 0.9126
+        }
+      }
+    },
+    "median_ms": {
+      "full_live": 325.9,
+      "narrow_live": 312.9,
+      "strict_live": 312.8,
+      "expand_live": 310.8,
+      "full_bare": 323.1,
+      "narrow_bare": 320.6
+    },
+    "failures": {
+      "full_live": 0,
+      "narrow_live": 0,
+      "strict_live": 0,
+      "expand_live": 0,
+      "full_bare": 0,
+      "narrow_bare": 0
+    },
+    "near_miss_alarms": {
+      "full_live": 0,
+      "narrow_live": 0,
+      "strict_live": 0,
+      "expand_live": 0,
+      "full_bare": 0,
+      "narrow_bare": 0
+    },
+    "stray_lines": {
+      "full_live": 0,
+      "narrow_live": 0,
+      "strict_live": 0,
+      "expand_live": 0,
+      "full_bare": 0,
+      "narrow_bare": 0
+    },
+    "expand_fallback": {
+      "rate": {
+        "hits": 0,
+        "total": 390,
+        "rate": 0.0,
+        "lo": 0.0,
+        "hi": 0.0098
+      },
+      "by_group": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 20,
+          "rate": 0.0,
+          "lo": 0.0,
+          "hi": 0.1611
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 60,
+          "rate": 0.0,
+          "lo": 0.0,
+          "hi": 0.0602
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 40,
+          "rate": 0.0,
+          "lo": 0.0,
+          "hi": 0.0876
+        },
+        "tool": {
+          "hits": 0,
+          "total": 160,
+          "rate": 0.0,
+          "lo": 0.0,
+          "hi": 0.0234
+        },
+        "none": {
+          "hits": 0,
+          "total": 70,
+          "rate": 0.0,
+          "lo": 0.0,
+          "hi": 0.052
+        },
+        "either": {
+          "hits": 0,
+          "total": 40,
+          "rate": 0.0,
+          "lo": 0.0,
+          "hi": 0.0876
+        }
+      }
+    },
+    "mcnemar": {
+      "narrow_live_vs_full_live": {
+        "cancel_test": {
+          "narrow_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "cancel_new": {
+          "narrow_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "near_miss": {
+          "narrow_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "tool": {
+          "narrow_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "none": {
+          "narrow_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "either": {
+          "narrow_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "all": {
+          "narrow_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        }
+      },
+      "strict_live_vs_full_live": {
+        "cancel_test": {
+          "strict_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "cancel_new": {
+          "strict_live_only": 0,
+          "full_live_only": 5,
+          "p": 0.0625
+        },
+        "near_miss": {
+          "strict_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "tool": {
+          "strict_live_only": 5,
+          "full_live_only": 5,
+          "p": 1.0
+        },
+        "none": {
+          "strict_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "either": {
+          "strict_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "all": {
+          "strict_live_only": 5,
+          "full_live_only": 10,
+          "p": 0.3018
+        }
+      },
+      "expand_live_vs_full_live": {
+        "cancel_test": {
+          "expand_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "cancel_new": {
+          "expand_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "near_miss": {
+          "expand_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "tool": {
+          "expand_live_only": 5,
+          "full_live_only": 5,
+          "p": 1.0
+        },
+        "none": {
+          "expand_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "either": {
+          "expand_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "all": {
+          "expand_live_only": 5,
+          "full_live_only": 5,
+          "p": 1.0
+        }
+      },
+      "narrow_bare_vs_full_bare": {
+        "cancel_test": {
+          "narrow_bare_only": 0,
+          "full_bare_only": 0,
+          "p": 1.0
+        },
+        "cancel_new": {
+          "narrow_bare_only": 0,
+          "full_bare_only": 0,
+          "p": 1.0
+        },
+        "near_miss": {
+          "narrow_bare_only": 0,
+          "full_bare_only": 0,
+          "p": 1.0
+        },
+        "tool": {
+          "narrow_bare_only": 0,
+          "full_bare_only": 0,
+          "p": 1.0
+        },
+        "none": {
+          "narrow_bare_only": 0,
+          "full_bare_only": 0,
+          "p": 1.0
+        },
+        "either": {
+          "narrow_bare_only": 0,
+          "full_bare_only": 0,
+          "p": 1.0
+        },
+        "all": {
+          "narrow_bare_only": 0,
+          "full_bare_only": 0,
+          "p": 1.0
+        }
+      }
+    }
+  }
+}
