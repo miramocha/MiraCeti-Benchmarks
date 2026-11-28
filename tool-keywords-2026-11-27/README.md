@@ -56,7 +56,7 @@ The first scaling run had a fake `water_log` tool, which is a fair pick for "I'm
 | --- | --- | --- | --- | --- |
 | Full | 48/48 | — | 1.79 | 6.0 |
 | Narrow | 48/48 | 63/78 (81%) | 1.63 | 5.8 |
-| Strict | 47/48 | 0 | 0.03 | 4.2 |
+| Strict | 47/48 | 0 | **0.03** | **4.2** |
 
 Strict's one miss is `f1-ja`, 直近のF1レースで勝ったのは誰？ ("Who won the most recent F1 race?"), which matches no Japanese keyword. Narrow falls back on most lines because time and reminder lines match no keyword, and the four Timer tools are all a turn needs for them.
 
@@ -66,12 +66,12 @@ Strict's one miss is `f1-ja`, 直近のF1レースで勝ったのは誰？ ("Who
 | --- | --- | --- | --- | --- |
 | Full | 385 | 326 | 280 | 861 |
 | Narrow | 385 | 313 | 274 | 845 |
-| Strict | 380 | 313 | 215 | 684 |
-| Expand | 385 | 311 | 243 | 684 |
+| Strict | 380 | 313 | **215** | 684 |
+| Expand | 385 | **311** | 243 | 684 |
 | Full, bare | 345 | 323 | — | — |
 | Narrow, bare | 345 | 321 | — | — |
 
-Tokens are means per line. Expand's intent prompt is strict's plus 28 tokens for the `more_tools` line, and its tools block is strict's.
+Tokens are means per line. Bold marks the single best value in a column; ties are not bold. Expand's intent prompt is strict's plus 28 tokens for the `more_tools` line, and its tools block is strict's.
 
 - **Narrow matched full on every pair.** Strict lost `f1-ja` and `cnew4-ja`, 今日は水のことリマインドしなくていいよ ("No need to remind me about water today"), and won one line. Expand tied full: it also lost `f1-ja`, and got `time-stretch-ja` right where every other variant picked only `schedule_create`.
 - **Expand picked `more_tools` 0 times in 390 checks.**
@@ -82,23 +82,23 @@ Tokens are means per line. Expand's intent prompt is strict's plus 28 tokens for
 | Tools | Full | Narrow | Strict | Expand |
 | --- | --- | --- | --- | --- |
 | 6 | 385 | 385 | 380 | 385 |
-| 16 | 365 | 360 | 370 | 375 |
-| 36 | 355 | 350 | 370 | 380 |
-| 66 | 355 | 351 | 365 | 380 |
+| 16 | 365 | 360 | 370 | **375** |
+| 36 | 355 | 350 | 370 | **380** |
+| 66 | 355 | 351 | 365 | **380** |
 
-Right of 390. Expand at 16 to 66 tools comes from its own run, where full scored 365, 355 and 355 as in the table.
+Right of 390. Bold marks the single best value in a row or column; ties are not bold. Expand at 16 to 66 tools comes from its own run, where full scored 365, 355 and 355 as in the table.
 
 | Tools | Set | Near-miss alarms | Intent prompt tokens | Tools block tokens | Median ms |
 | --- | --- | --- | --- | --- | --- |
 | 16 | Full | 10 | 400 | 1,425 | 307 |
-| 16 | Strict | 0 | 216 | 686 | 299 |
-| 16 | Expand | 0 | 244 | 686 | 292 |
+| 16 | Strict | 0 | **216** | 686 | 299 |
+| 16 | Expand | 0 | 244 | 686 | **292** |
 | 36 | Full | 10 | 665 | 2,573 | 344 |
-| 36 | Strict | 0 | 216 | 686 | 307 |
+| 36 | Strict | 0 | **216** | 686 | **307** |
 | 36 | Expand | 0 | 244 | 686 | 317 |
 | 66 | Full | 10 | 1,061 | 4,289 | 364 |
 | 66 | Narrow | 10 | 873 | 3,477 | 323 |
-| 66 | Strict | 0 | 216 | 686 | 284 |
+| 66 | Strict | 0 | **216** | 686 | **284** |
 | 66 | Expand | 0 | 244 | 686 | 340 |
 
 Paired against the full list, by line (lines only the variant got right / lines only full got right):
