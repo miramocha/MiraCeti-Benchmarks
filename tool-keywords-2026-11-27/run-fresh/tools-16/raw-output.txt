@@ -1,0 +1,528 @@
+{"repeat": 0, "elapsed_s": 62}
+{"repeat": 1, "elapsed_s": 120}
+{"repeat": 2, "elapsed_s": 178}
+{"repeat": 3, "elapsed_s": 239}
+{"repeat": 4, "elapsed_s": 296}
+{
+  "tools": 16,
+  "fakes": 10,
+  "offline": {
+    "full": {
+      "recall_tool_lines": {
+        "hits": 24,
+        "total": 24,
+        "rate": 1.0,
+        "lo": 0.862,
+        "hi": 1.0
+      },
+      "recall_by_group": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 24,
+          "total": 24,
+          "rate": 1.0,
+          "lo": 0.862,
+          "hi": 1.0
+        },
+        "none": {
+          "hits": 16,
+          "total": 16,
+          "rate": 1.0,
+          "lo": 0.8064,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        }
+      },
+      "mean_size": 16,
+      "mean_intent_est": 329,
+      "mean_block_est": 1170,
+      "narrowed_lines": 0,
+      "fallback": {
+        "hits": 0,
+        "total": 40,
+        "rate": 0.0,
+        "lo": 0.0,
+        "hi": 0.0876
+      },
+      "extra_per_line": 11.4,
+      "lines_with_extra": 40,
+      "misses": []
+    },
+    "narrow": {
+      "recall_tool_lines": {
+        "hits": 24,
+        "total": 24,
+        "rate": 1.0,
+        "lo": 0.862,
+        "hi": 1.0
+      },
+      "recall_by_group": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 24,
+          "total": 24,
+          "rate": 1.0,
+          "lo": 0.862,
+          "hi": 1.0
+        },
+        "none": {
+          "hits": 16,
+          "total": 16,
+          "rate": 1.0,
+          "lo": 0.8064,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        }
+      },
+      "mean_size": 16,
+      "mean_intent_est": 329,
+      "mean_block_est": 1170,
+      "narrowed_lines": 0,
+      "fallback": {
+        "hits": 40,
+        "total": 40,
+        "rate": 1.0,
+        "lo": 0.9124,
+        "hi": 1.0
+      },
+      "extra_per_line": 11.4,
+      "lines_with_extra": 40,
+      "misses": []
+    },
+    "strict": {
+      "recall_tool_lines": {
+        "hits": 0,
+        "total": 24,
+        "rate": 0.0,
+        "lo": 0.0,
+        "hi": 0.138
+      },
+      "recall_by_group": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 0,
+          "total": 24,
+          "rate": 0.0,
+          "lo": 0.0,
+          "hi": 0.138
+        },
+        "none": {
+          "hits": 16,
+          "total": 16,
+          "rate": 1.0,
+          "lo": 0.8064,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        }
+      },
+      "mean_size": 4,
+      "mean_intent_est": 145,
+      "mean_block_est": 440,
+      "narrowed_lines": 40,
+      "fallback": {
+        "hits": 0,
+        "total": 40,
+        "rate": 0.0,
+        "lo": 0.0,
+        "hi": 0.0876
+      },
+      "extra_per_line": 0,
+      "lines_with_extra": 0,
+      "misses": [
+        "fresh-web0-en",
+        "fresh-web1-en",
+        "fresh-web2-en",
+        "fresh-web3-en",
+        "fresh-web4-en",
+        "fresh-web5-en",
+        "fresh-web6-en",
+        "fresh-web7-en",
+        "fresh-web8-en",
+        "fresh-web9-en",
+        "fresh-web10-en",
+        "fresh-web11-en",
+        "fresh-web0-ja",
+        "fresh-web1-ja",
+        "fresh-web2-ja",
+        "fresh-web3-ja",
+        "fresh-web4-ja",
+        "fresh-web5-ja",
+        "fresh-web6-ja",
+        "fresh-web7-ja",
+        "fresh-web8-ja",
+        "fresh-web9-ja",
+        "fresh-web10-ja",
+        "fresh-web11-ja"
+      ]
+    },
+    "lines": 40,
+    "matched_lines": 0,
+    "matched_on_no_tool_lines": []
+  },
+  "tokens": {
+    "by_set": {
+      "current_time,schedule_create,schedule_list,schedule_cancel": {
+        "size": 4,
+        "intent_prompt": 207,
+        "tools_block": 661
+      },
+      "current_time,schedule_create,schedule_list,schedule_cancel,web_search,http_get,todo_done,email_list,mood_log,thermostat_set,podcast_play,sleep_log,music_play,note_list,calculator,joke_tell": {
+        "size": 16,
+        "intent_prompt": 400,
+        "tools_block": 1425
+      }
+    },
+    "mean_per_line": {
+      "full": {
+        "intent_prompt": 400,
+        "tools_block": 1425
+      },
+      "narrow": {
+        "intent_prompt": 400,
+        "tools_block": 1425
+      },
+      "strict": {
+        "intent_prompt": 207,
+        "tools_block": 661
+      }
+    }
+  },
+  "live": {
+    "groups": {
+      "full_live": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 120,
+          "total": 120,
+          "rate": 1.0,
+          "lo": 0.969,
+          "hi": 1.0
+        },
+        "none": {
+          "hits": 25,
+          "total": 80,
+          "rate": 0.3125,
+          "lo": 0.2215,
+          "hi": 0.4207
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        },
+        "all": {
+          "hits": 145,
+          "total": 200,
+          "rate": 0.725,
+          "lo": 0.6593,
+          "hi": 0.7822
+        }
+      },
+      "expand_live": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 15,
+          "total": 120,
+          "rate": 0.125,
+          "lo": 0.0772,
+          "hi": 0.196
+        },
+        "none": {
+          "hits": 80,
+          "total": 80,
+          "rate": 1.0,
+          "lo": 0.9542,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        },
+        "all": {
+          "hits": 95,
+          "total": 200,
+          "rate": 0.475,
+          "lo": 0.4069,
+          "hi": 0.544
+        }
+      },
+      "webexp_live": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 120,
+          "total": 120,
+          "rate": 1.0,
+          "lo": 0.969,
+          "hi": 1.0
+        },
+        "none": {
+          "hits": 60,
+          "total": 80,
+          "rate": 0.75,
+          "lo": 0.6452,
+          "hi": 0.8319
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        },
+        "all": {
+          "hits": 180,
+          "total": 200,
+          "rate": 0.9,
+          "lo": 0.8506,
+          "hi": 0.9343
+        }
+      }
+    },
+    "median_ms": {
+      "full_live": 379.5,
+      "expand_live": 353.8,
+      "webexp_live": 409.6
+    },
+    "failures": {
+      "full_live": 0,
+      "expand_live": 0,
+      "webexp_live": 0
+    },
+    "near_miss_alarms": {
+      "full_live": 0,
+      "expand_live": 0,
+      "webexp_live": 0
+    },
+    "stray_lines": {
+      "full_live": 0,
+      "expand_live": 5,
+      "webexp_live": 0
+    },
+    "expand_fallback": {
+      "rate": {
+        "hits": 15,
+        "total": 200,
+        "rate": 0.075,
+        "lo": 0.046,
+        "hi": 0.12
+      },
+      "by_group": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 15,
+          "total": 120,
+          "rate": 0.125,
+          "lo": 0.0772,
+          "hi": 0.196
+        },
+        "none": {
+          "hits": 0,
+          "total": 80,
+          "rate": 0.0,
+          "lo": 0.0,
+          "hi": 0.0458
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        }
+      }
+    },
+    "category_picks": {
+      "rate": {
+        "hits": 0,
+        "total": 0
+      },
+      "picked": {},
+      "by_group": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 0,
+          "total": 0
+        },
+        "none": {
+          "hits": 0,
+          "total": 0
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        }
+      }
+    },
+    "first_pass_intent_tokens_est": {
+      "full_live": 329,
+      "expand_live": 174,
+      "webexp_live": 211
+    },
+    "mcnemar": {
+      "expand_live_vs_full_live": {
+        "cancel_test": {
+          "expand_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "cancel_new": {
+          "expand_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "near_miss": {
+          "expand_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "tool": {
+          "expand_live_only": 0,
+          "full_live_only": 105,
+          "p": 0.0
+        },
+        "none": {
+          "expand_live_only": 55,
+          "full_live_only": 0,
+          "p": 0.0
+        },
+        "either": {
+          "expand_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "all": {
+          "expand_live_only": 55,
+          "full_live_only": 105,
+          "p": 0.0001
+        }
+      },
+      "webexp_live_vs_expand_live": {
+        "cancel_test": {
+          "webexp_live_only": 0,
+          "expand_live_only": 0,
+          "p": 1.0
+        },
+        "cancel_new": {
+          "webexp_live_only": 0,
+          "expand_live_only": 0,
+          "p": 1.0
+        },
+        "near_miss": {
+          "webexp_live_only": 0,
+          "expand_live_only": 0,
+          "p": 1.0
+        },
+        "tool": {
+          "webexp_live_only": 105,
+          "expand_live_only": 0,
+          "p": 0.0
+        },
+        "none": {
+          "webexp_live_only": 0,
+          "expand_live_only": 20,
+          "p": 0.0
+        },
+        "either": {
+          "webexp_live_only": 0,
+          "expand_live_only": 0,
+          "p": 1.0
+        },
+        "all": {
+          "webexp_live_only": 105,
+          "expand_live_only": 20,
+          "p": 0.0
+        }
+      }
+    }
+  }
+}

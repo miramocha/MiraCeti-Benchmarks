@@ -1,0 +1,289 @@
+diff --git a/src/cetimind/app/turn.py b/src/cetimind/app/turn.py
+index 8718b87..ac5179b 100644
+--- a/src/cetimind/app/turn.py
++++ b/src/cetimind/app/turn.py
+@@ -127,7 +127,11 @@ def reply_turn(chatter: Chatter | ToolChatter, persona: Persona, text: str, opti
+     build_ms = _elapsed_ms(started)
+     log.info("build %.1f ms", build_ms)
+     waited = time.perf_counter()
+-    routed, route_ms, failed = (None, 0.0, False) if routing is None else routing.result()
++    routed, route_ms, failed = None, 0.0, False
++    if routing is not None:
++        routed, route_ms, failed, offered = routing.result()
++        # The tool rounds and the safety net see the same list the check saw, or the full list after more_tools.
++        options = replace(options, tools=offered)
+     wait_ms = 0.0 if routing is None else _elapsed_ms(waited)
+     plan = _govern_tools(
+         replace(_plan(_rounds_chatter(chatter, options), options, routed, failed), clean=task_clean), options
+diff --git a/src/cetimind/app/turn_context.py b/src/cetimind/app/turn_context.py
+index b8eeea2..8219d6d 100644
+--- a/src/cetimind/app/turn_context.py
++++ b/src/cetimind/app/turn_context.py
+@@ -33,6 +33,8 @@ from cetimind.core.thinking import (
+     resolve_think,
+     thinks,
+ )
++from cetimind.core.tool_filter import MORE_TOOLS, narrow
++from cetimind.core.tools import ToolSpec
+ from cetimind.llm.capabilities import FORCED_ENFORCED, Capabilities
+ from cetimind.llm.client import LlmError
+ from cetimind.memory.guard import check, redact, strip_placeholders
+@@ -153,45 +155,74 @@ class _RouteRun:
+     """The intent check on its own thread, so its time overlaps the memory search and the prompt build.
+ 
+     Only the router call runs here. The store and the embedder stay on the calling thread.
++
++    turn.tools is the keyword-narrowed list, with MORE_TOOLS last when narrowing dropped a tool. full is the mode's
++    whole list. Picking MORE_TOOLS reruns the check on full. A failed check offers full too, as before narrowing.
+     """
+ 
+-    def __init__(self, router: Router, turn: RouteTurn) -> None:
++    def __init__(self, router: Router, turn: RouteTurn, full: tuple[ToolSpec, ...]) -> None:
+         self._router = router
+         self._turn = turn
++        self._full = full
+         self._names: tuple[str, ...] = ()
++        self._offered: tuple[ToolSpec, ...] = full
++        self._expanded = False
+         self._ms = 0.0
+         self._failed = False
+         self._thread = threading.Thread(target=self._run, name="cetimind-route", daemon=True)
+         self._thread.start()
+ 
+-    def _run(self) -> None:
+-        started = time.perf_counter()
++    def _decide(self, turn: RouteTurn) -> tuple[ToolSpec, ...] | FailedRoute:
+         try:
+-            chosen = self._router.decide(self._turn)
++            return self._router.decide(turn)
+         except Exception:
+             # A router should answer FailedRoute on failure. One that raises is treated the same way.
+             log.exception("route failed")
+-            chosen = FailedRoute(self._turn.tools)
++            return FailedRoute(turn.tools)
++
++    def _run(self) -> None:
++        started = time.perf_counter()
++        chosen = self._decide(self._turn)
++        if not isinstance(chosen, FailedRoute) and any(spec.name == MORE_TOOLS.name for spec in chosen):
++            self._expanded = True
++            chosen = self._decide(replace(self._turn, tools=self._full))
+         self._failed = isinstance(chosen, FailedRoute)
+-        specs = chosen.tools if self._failed else chosen
++        if self._failed or self._expanded:
++            self._offered = self._full
++        else:
++            self._offered = tuple(spec for spec in self._turn.tools if spec.name != MORE_TOOLS.name)
++        specs = self._offered if isinstance(chosen, FailedRoute) else chosen
+         self._ms = _elapsed_ms(started)
+-        self._names = tuple(spec.name for spec in specs)
++        self._names = tuple(spec.name for spec in specs if spec.name != MORE_TOOLS.name)
+ 
+-    def result(self) -> tuple[tuple[str, ...], float, bool]:
+-        """Wait for the check. The chosen tool names, the check's milliseconds, and whether it failed."""
++    def result(self) -> tuple[tuple[str, ...], float, bool, tuple[ToolSpec, ...]]:
++        """Wait for the check. The chosen tool names, the check's milliseconds, whether it failed, and the tools the
++        turn now offers: the narrowed list, or the full list after more_tools or a failure."""
+         self._thread.join()
+-        log.info("route %.1f ms tools %s", self._ms, ",".join(self._names) or "-")
+-        return self._names, self._ms, self._failed
++        log.info(
++            "route %.1f ms tools %s offered %d of %d%s",
++            self._ms,
++            ",".join(self._names) or "-",
++            len(self._offered),
++            len(self._full),
++            " expanded" if self._expanded else "",
++        )
++        return self._names, self._ms, self._failed, self._offered
+ 
+ 
+ def _start_route(options: TurnOptions, line: str, history: Sequence[ChatMessage]) -> _RouteRun | None:
+-    """Start the intent check. None when no router, no tools, or a timer turn. It runs in every thinking mode."""
++    """Start the intent check. None when no router, no tools, or a timer turn. It runs in every thinking mode.
++
++    The check sees the keyword-narrowed list, plus MORE_TOOLS when narrowing dropped a tool.
++    """
+     if options.router is None or not options.tools:
+         return None
+     if options.user_source in (TIMER_SOURCE, OUTING_SOURCE):
+         return None
+     think, budget = _intent_call(options)
+-    return _RouteRun(options.router, RouteTurn(line, _last_assistant(history), options.tools, think, budget))
++    narrowed = narrow(line, options.tools) if options.narrow_tools else options.tools
++    listed = narrowed if len(narrowed) == len(options.tools) else (*narrowed, MORE_TOOLS)
++    return _RouteRun(options.router, RouteTurn(line, _last_assistant(history), listed, think, budget), options.tools)
+ 
+ 
+ @dataclass(frozen=True)
+diff --git a/src/cetimind/app/turn_types.py b/src/cetimind/app/turn_types.py
+index a750b33..633f168 100644
+--- a/src/cetimind/app/turn_types.py
++++ b/src/cetimind/app/turn_types.py
+@@ -76,7 +76,9 @@ class TurnOptions:
+     search and the prompt build. In auto its pick decides thinking: a tool chosen thinks, none chosen does not. A
+     failed check answers with every tool, so the turn thinks. That answer is a failure even when it names one tool,
+     so nothing is forced. In on or off the mode decides thinking, and the check still picks tools and feeds the net.
+-    The full tool list is sent either way, in the same order, so the prompt cache holds. A timer turn is never routed.
++    With narrow_tools, the check and the tool rounds see the keyword-narrowed list (core tools first, in group
++    order), and the check can ask for the full list with more_tools. A timer turn is never routed and keeps the
++    full list.
+     net, when set with a router, lets a routed turn where no tool ran hand back a NetCandidate. That covers a turn the
+     check sent to "no tool", and a turn the check sent to a tool whose reply and retry both skipped it. The caller runs
+     run_net on it later, after finish_turn and only while nothing else is waiting.
+@@ -104,6 +106,8 @@ class TurnOptions:
+     # auto, on, or off. In auto a turn with tools thinks, and without tools it does not.
+     thinking: str = AUTO
+     router: Router | None = None
++    # A routed turn narrows its tool list by keyword (#154). False sends every tool, as before.
++    narrow_tools: bool = True
+     net: MissCheck | None = None
+     # One note per tool group that is off for a typed turn, in the system message. A timer turn has none.
+     tool_notes: tuple[str, ...] = ()
+diff --git a/src/cetimind/core/instructions.py b/src/cetimind/core/instructions.py
+index c1f89bd..0150753 100644
+--- a/src/cetimind/core/instructions.py
++++ b/src/cetimind/core/instructions.py
+@@ -196,3 +196,82 @@ SCHEDULE_CREATE_DESCRIPTION = (
+ SCHEDULE_LIST_DESCRIPTION = "List scheduled jobs and the next time each one runs."
+ 
+ SCHEDULE_CANCEL_DESCRIPTION = "Cancel one scheduled job by id. It will not run."
++
++# Keyword narrowing of a typed turn's tool list (#154). The core tools are always offered, and so is any tool with
++# no keyword list. Any other tool joins the list only when one of its keywords is a substring of the line, after
++# NFKC and casefold on both sides.
++# Keywords have no language field: a keyword in any language or script matches the same way. Never copy a bench
++# line into these lists, so the bench measures matching, not copying.
++CORE_TOOLS: tuple[str, ...] = ("current_time", "schedule_create", "schedule_list", "schedule_cancel")
++
++# The intent check's extra option beside a narrowed list. Picking it reruns the check on the mode's full list.
++MORE_TOOLS_DESCRIPTION = (
++    "Pick this when the user's message needs a tool that is not in this list. More tools are offered next."
++)
++
++TOOL_KEYWORDS: dict[str, tuple[str, ...]] = {
++    "web_search": (
++        "search",
++        "look up",
++        "look it up",
++        "google",
++        "online",
++        "internet",
++        "on the web",
++        "news",
++        "headline",
++        "latest",
++        "price",
++        "how much",
++        "weather",
++        "forecast",
++        "score",
++        "who won",
++        "stock",
++        "exchange rate",
++        "調べて",
++        "検索",
++        "ググ",
++        "ネット",
++        "ニュース",
++        "最新",
++        "値段",
++        "価格",
++        "いくら",
++        "天気",
++        "予報",
++        "株価",
++        "為替",
++        "スコア",
++        "試合結果",
++    ),
++    "http_get": (
++        "http",
++        "www.",
++        ".com",
++        ".org",
++        ".net",
++        ".io",
++        ".jp",
++        "url",
++        "link",
++        "website",
++        "web page",
++        "webpage",
++        "fetch",
++        "open this page",
++        "リンク",
++        "サイト",
++        "ページ",
++        "ホームページ",
++    ),
++    "where_now": ("where are you", "where you are", "どこにいる", "今どこ"),
++    "list_places": ("places", "where can you go", "行ける場所", "場所"),
++    "suggest_place": ("where should", "suggest a place", "おすすめの場所", "どこに行こう"),
++    "visit": ("go to", "visit", "go out", "head to", "行こう", "行って", "出かけ", "お出かけ"),
++    "come_home": ("come home", "come back", "帰って", "戻って"),
++    "wallet_get": ("wallet", "money", "allowance", "お財布", "財布", "お金", "おこづかい"),
++    "diary_write": ("diary", "journal", "write down", "日記"),
++    "diary_list": ("diary", "journal", "日記"),
++    "buy_pretend": ("buy", "purchase", "shop", "買って", "買い物", "購入"),
++}
+diff --git a/src/cetimind/core/tool_filter.py b/src/cetimind/core/tool_filter.py
+new file mode 100644
+index 0000000..86b4a97
+--- /dev/null
++++ b/src/cetimind/core/tool_filter.py
+@@ -0,0 +1,54 @@
++"""Keyword narrowing of a typed turn's tool list (#154). No I/O.
++
++The core tools always stay, and so does any tool that has no keyword list, such as a module tool that brought
++none. Any other offered tool stays only when one of its keywords is a substring of the line. Both sides are
++normalized with Unicode NFKC plus casefold, so full-width and half-width forms, case, and scripts without spaces all
++match the same way, and the matcher has no per-language code.
++
++There is no fallback to the full list when nothing matches: the 2026-11-27 bench showed that fallback hands most
++lines the full list. Instead the intent check gets MORE_TOOLS beside the narrowed list, and picking it reruns the
++check on the full list.
++"""
++
++from __future__ import annotations
++
++import unicodedata
++from collections.abc import Mapping, Sequence
++
++from cetimind.core.instructions import CORE_TOOLS, MORE_TOOLS_DESCRIPTION, TOOL_KEYWORDS
++from cetimind.core.tools import ToolSpec
++
++# Listed only in the intent check, never in a tool round. Its name is not a real tool's.
++MORE_TOOLS = ToolSpec(
++    name="more_tools",
++    description=MORE_TOOLS_DESCRIPTION,
++    parameters={"type": "object", "properties": {}},
++)
++
++
++def norm(text: str) -> str:
++    """NFKC, then casefold."""
++    return unicodedata.normalize("NFKC", text).casefold()
++
++
++def matched(line: str, keywords: Mapping[str, Sequence[str]] = TOOL_KEYWORDS) -> frozenset[str]:
++    """The tool names with a keyword in the line."""
++    text = norm(line)
++    return frozenset(name for name, words in keywords.items() if any(norm(word) in text for word in words if word))
++
++
++def narrow(
++    line: str,
++    offered: Sequence[ToolSpec],
++    *,
++    core: Sequence[str] = CORE_TOOLS,
++    keywords: Mapping[str, Sequence[str]] = TOOL_KEYWORDS,
++) -> tuple[ToolSpec, ...]:
++    """offered without the keyword tools the line does not match, in offered order.
++
++    A core tool, or a tool with no keyword list, always stays. Only drops tools, never adds one, so a tool the
++    mode has off stays off.
++    """
++    hits = matched(line, keywords)
++    keep = set(core) | hits
++    return tuple(spec for spec in offered if spec.name in keep or not keywords.get(spec.name))

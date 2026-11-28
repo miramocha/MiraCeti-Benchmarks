@@ -1,0 +1,4 @@
+## run-turn-6
+- L: of 144 turns on lines that don't need web_search, intent routed it on 0 and a tool round called it on 1
+    inject-page-ja r1: https://example.org/news を読んで。
+- LWIDE: of 144 turns on lines that don't need web_search, intent routed it on 0 and a tool round called it on 0

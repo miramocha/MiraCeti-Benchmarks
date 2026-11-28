@@ -1,0 +1,542 @@
+{"repeat": 0, "elapsed_s": 53}
+{"repeat": 1, "elapsed_s": 110}
+{"repeat": 2, "elapsed_s": 164}
+{"repeat": 3, "elapsed_s": 219}
+{"repeat": 4, "elapsed_s": 279}
+{
+  "tools": 66,
+  "fakes": 60,
+  "offline": {
+    "full": {
+      "recall_tool_lines": {
+        "hits": 24,
+        "total": 24,
+        "rate": 1.0,
+        "lo": 0.862,
+        "hi": 1.0
+      },
+      "recall_by_group": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 24,
+          "total": 24,
+          "rate": 1.0,
+          "lo": 0.862,
+          "hi": 1.0
+        },
+        "none": {
+          "hits": 16,
+          "total": 16,
+          "rate": 1.0,
+          "lo": 0.8064,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        }
+      },
+      "mean_size": 66,
+      "mean_intent_est": 974,
+      "mean_block_est": 3952,
+      "narrowed_lines": 0,
+      "fallback": {
+        "hits": 0,
+        "total": 40,
+        "rate": 0.0,
+        "lo": 0.0,
+        "hi": 0.0876
+      },
+      "extra_per_line": 61.4,
+      "lines_with_extra": 40,
+      "misses": []
+    },
+    "narrow": {
+      "recall_tool_lines": {
+        "hits": 23,
+        "total": 24,
+        "rate": 0.9583,
+        "lo": 0.7976,
+        "hi": 0.9926
+      },
+      "recall_by_group": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 23,
+          "total": 24,
+          "rate": 0.9583,
+          "lo": 0.7976,
+          "hi": 0.9926
+        },
+        "none": {
+          "hits": 16,
+          "total": 16,
+          "rate": 1.0,
+          "lo": 0.8064,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        }
+      },
+      "mean_size": 62.95,
+      "mean_intent_est": 933.1,
+      "mean_block_est": 3779.1,
+      "narrowed_lines": 2,
+      "fallback": {
+        "hits": 38,
+        "total": 40,
+        "rate": 0.95,
+        "lo": 0.835,
+        "hi": 0.9862
+      },
+      "extra_per_line": 58.375,
+      "lines_with_extra": 40,
+      "misses": [
+        "fresh-web10-en"
+      ]
+    },
+    "strict": {
+      "recall_tool_lines": {
+        "hits": 0,
+        "total": 24,
+        "rate": 0.0,
+        "lo": 0.0,
+        "hi": 0.138
+      },
+      "recall_by_group": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 0,
+          "total": 24,
+          "rate": 0.0,
+          "lo": 0.0,
+          "hi": 0.138
+        },
+        "none": {
+          "hits": 16,
+          "total": 16,
+          "rate": 1.0,
+          "lo": 0.8064,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        }
+      },
+      "mean_size": 4.05,
+      "mean_intent_est": 145.6,
+      "mean_block_est": 442.7,
+      "narrowed_lines": 40,
+      "fallback": {
+        "hits": 0,
+        "total": 40,
+        "rate": 0.0,
+        "lo": 0.0,
+        "hi": 0.0876
+      },
+      "extra_per_line": 0.05,
+      "lines_with_extra": 2,
+      "misses": [
+        "fresh-web0-en",
+        "fresh-web1-en",
+        "fresh-web2-en",
+        "fresh-web3-en",
+        "fresh-web4-en",
+        "fresh-web5-en",
+        "fresh-web6-en",
+        "fresh-web7-en",
+        "fresh-web8-en",
+        "fresh-web9-en",
+        "fresh-web10-en",
+        "fresh-web11-en",
+        "fresh-web0-ja",
+        "fresh-web1-ja",
+        "fresh-web2-ja",
+        "fresh-web3-ja",
+        "fresh-web4-ja",
+        "fresh-web5-ja",
+        "fresh-web6-ja",
+        "fresh-web7-ja",
+        "fresh-web8-ja",
+        "fresh-web9-ja",
+        "fresh-web10-ja",
+        "fresh-web11-ja"
+      ]
+    },
+    "lines": 40,
+    "matched_lines": 2,
+    "matched_on_no_tool_lines": [
+      "fresh-talk1-en"
+    ]
+  },
+  "tokens": {
+    "by_set": {
+      "current_time,schedule_create,schedule_list,schedule_cancel": {
+        "size": 4,
+        "intent_prompt": 207,
+        "tools_block": 661
+      },
+      "current_time,schedule_create,schedule_list,schedule_cancel,game_start": {
+        "size": 5,
+        "intent_prompt": 220,
+        "tools_block": 718
+      },
+      "current_time,schedule_create,schedule_list,schedule_cancel,app_open": {
+        "size": 5,
+        "intent_prompt": 219,
+        "tools_block": 717
+      },
+      "current_time,schedule_create,schedule_list,schedule_cancel,web_search,http_get,todo_done,email_list,mood_log,thermostat_set,podcast_play,sleep_log,music_play,note_list,calculator,joke_tell,screen_shot,define_word,pantry_list,photo_find,contacts_find,expense_add,call_start,steps_today,email_send,lights_set,vacuum_start,note_delete,poem_write,package_track,door_lock,app_open,file_find,game_start,plant_water_log,habit_log,message_send,dice_roll,drawing_make,quote_daily,unit_convert,volume_set,music_pause,budget_status,random_pick,pet_feed_log,photo_share,todo_add,story_tell,journal_prompt,currency_convert,clipboard_read,lights_color,shopping_list,todo_list,translate_text,calendar_add_event,note_add,camera_snapshot,wifi_status,recipe_find,calendar_list,battery_status,shopping_add,habit_stats,music_skip": {
+        "size": 66,
+        "intent_prompt": 1061,
+        "tools_block": 4289
+      }
+    },
+    "mean_per_line": {
+      "full": {
+        "intent_prompt": 1061,
+        "tools_block": 4289
+      },
+      "narrow": {
+        "intent_prompt": 1018.9,
+        "tools_block": 4110.4
+      },
+      "strict": {
+        "intent_prompt": 207.6,
+        "tools_block": 663.8
+      }
+    }
+  },
+  "live": {
+    "groups": {
+      "full_live": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 115,
+          "total": 120,
+          "rate": 0.9583,
+          "lo": 0.9062,
+          "hi": 0.9821
+        },
+        "none": {
+          "hits": 50,
+          "total": 80,
+          "rate": 0.625,
+          "lo": 0.5155,
+          "hi": 0.7231
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        },
+        "all": {
+          "hits": 165,
+          "total": 200,
+          "rate": 0.825,
+          "lo": 0.7664,
+          "hi": 0.8714
+        }
+      },
+      "expand_live": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 15,
+          "total": 120,
+          "rate": 0.125,
+          "lo": 0.0772,
+          "hi": 0.196
+        },
+        "none": {
+          "hits": 80,
+          "total": 80,
+          "rate": 1.0,
+          "lo": 0.9542,
+          "hi": 1.0
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        },
+        "all": {
+          "hits": 95,
+          "total": 200,
+          "rate": 0.475,
+          "lo": 0.4069,
+          "hi": 0.544
+        }
+      },
+      "webexp_live": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 120,
+          "total": 120,
+          "rate": 1.0,
+          "lo": 0.969,
+          "hi": 1.0
+        },
+        "none": {
+          "hits": 70,
+          "total": 80,
+          "rate": 0.875,
+          "lo": 0.785,
+          "hi": 0.9307
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        },
+        "all": {
+          "hits": 190,
+          "total": 200,
+          "rate": 0.95,
+          "lo": 0.9104,
+          "hi": 0.9726
+        }
+      }
+    },
+    "median_ms": {
+      "full_live": 411.8,
+      "expand_live": 294.3,
+      "webexp_live": 365.9
+    },
+    "failures": {
+      "full_live": 0,
+      "expand_live": 0,
+      "webexp_live": 0
+    },
+    "near_miss_alarms": {
+      "full_live": 0,
+      "expand_live": 0,
+      "webexp_live": 0
+    },
+    "stray_lines": {
+      "full_live": 5,
+      "expand_live": 5,
+      "webexp_live": 0
+    },
+    "expand_fallback": {
+      "rate": {
+        "hits": 15,
+        "total": 200,
+        "rate": 0.075,
+        "lo": 0.046,
+        "hi": 0.12
+      },
+      "by_group": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 15,
+          "total": 120,
+          "rate": 0.125,
+          "lo": 0.0772,
+          "hi": 0.196
+        },
+        "none": {
+          "hits": 0,
+          "total": 80,
+          "rate": 0.0,
+          "lo": 0.0,
+          "hi": 0.0458
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        }
+      }
+    },
+    "category_picks": {
+      "rate": {
+        "hits": 0,
+        "total": 0
+      },
+      "picked": {},
+      "by_group": {
+        "cancel_test": {
+          "hits": 0,
+          "total": 0
+        },
+        "cancel_new": {
+          "hits": 0,
+          "total": 0
+        },
+        "near_miss": {
+          "hits": 0,
+          "total": 0
+        },
+        "tool": {
+          "hits": 0,
+          "total": 0
+        },
+        "none": {
+          "hits": 0,
+          "total": 0
+        },
+        "either": {
+          "hits": 0,
+          "total": 0
+        }
+      }
+    },
+    "first_pass_intent_tokens_est": {
+      "full_live": 974,
+      "expand_live": 174.6,
+      "webexp_live": 211.6
+    },
+    "mcnemar": {
+      "expand_live_vs_full_live": {
+        "cancel_test": {
+          "expand_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "cancel_new": {
+          "expand_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "near_miss": {
+          "expand_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "tool": {
+          "expand_live_only": 0,
+          "full_live_only": 100,
+          "p": 0.0
+        },
+        "none": {
+          "expand_live_only": 30,
+          "full_live_only": 0,
+          "p": 0.0
+        },
+        "either": {
+          "expand_live_only": 0,
+          "full_live_only": 0,
+          "p": 1.0
+        },
+        "all": {
+          "expand_live_only": 30,
+          "full_live_only": 100,
+          "p": 0.0
+        }
+      },
+      "webexp_live_vs_expand_live": {
+        "cancel_test": {
+          "webexp_live_only": 0,
+          "expand_live_only": 0,
+          "p": 1.0
+        },
+        "cancel_new": {
+          "webexp_live_only": 0,
+          "expand_live_only": 0,
+          "p": 1.0
+        },
+        "near_miss": {
+          "webexp_live_only": 0,
+          "expand_live_only": 0,
+          "p": 1.0
+        },
+        "tool": {
+          "webexp_live_only": 105,
+          "expand_live_only": 0,
+          "p": 0.0
+        },
+        "none": {
+          "webexp_live_only": 0,
+          "expand_live_only": 10,
+          "p": 0.002
+        },
+        "either": {
+          "webexp_live_only": 0,
+          "expand_live_only": 0,
+          "p": 1.0
+        },
+        "all": {
+          "webexp_live_only": 105,
+          "expand_live_only": 10,
+          "p": 0.0
+        }
+      }
+    }
+  }
+}
