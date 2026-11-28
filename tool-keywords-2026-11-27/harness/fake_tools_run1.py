@@ -1,4 +1,4 @@
-"""Fake tools for scaling the tool keyword bench (#154). The intent check reads only a tool's name and description,
+"""Fake tools for scaling the tool keyword bench. The intent check reads only a tool's name and description,
 so these never run. They stand in for module tools a companion could have.
 
 None of them does what a bench line asks: no clock, reminder, timer, web search or page fetch. A few sit near

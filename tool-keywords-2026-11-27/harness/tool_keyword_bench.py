@@ -1,10 +1,10 @@
-"""Tool keyword bench (#154): does narrowing the tool list by keywords keep the line's tool, how much does it save,
+"""Tool keyword bench: does narrowing the tool list by keywords keep the line's tool, how much does it save,
 and does the intent check still pick right on the smaller list?
 
 Lines are intent_bench.all_lines(): the prompt-order cases plus the held-out cancel lines and near misses. Tools
 are intent_bench.LIVE_TOOLS (the four Timer tools plus web_search and http_get). Four tool sets per line:
   full    every tool, as today
-  narrow  cetimind.core.tool_filter.narrow: core tools plus keyword matches, full list when nothing matches
+  narrow  tool_filter.narrow (the copy in this folder): core tools plus keyword matches, full list when nothing matches
   strict  core tools plus keyword matches, never the full list
   expand  strict plus a model-visible more_tools option. When the check picks it, the check runs again on the
           full list, and that answer stands (the issue's expand step before the full list)
@@ -42,12 +42,13 @@ import fake_tools  # noqa: E402
 import heavy  # noqa: E402
 import intent_bench  # noqa: E402
 from intent_bench import CAPS, GROUPS, LIVE_TOOLS, MODEL, Line, all_lines, right  # noqa: E402
+from tool_filter import matched, narrow, norm  # noqa: E402
+from tool_keywords import CORE_TOOLS, TOOL_KEYWORDS  # noqa: E402
 
 from cetimind.app.intent import _intent_data  # noqa: E402
 from cetimind.app.router import FailedRoute, RouteTurn  # noqa: E402
 from cetimind.core.calls import task_messages, text_tokens, wire_messages  # noqa: E402
-from cetimind.core.instructions import CORE_TOOLS, INTENT_INSTRUCTION, TOOL_KEYWORDS  # noqa: E402
-from cetimind.core.tool_filter import matched, narrow, norm  # noqa: E402
+from cetimind.core.instructions import INTENT_INSTRUCTION  # noqa: E402
 from cetimind.core.tools import ToolSpec  # noqa: E402
 from cetimind.llm.client import _function_tool  # noqa: E402
 

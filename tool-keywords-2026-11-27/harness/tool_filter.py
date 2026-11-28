@@ -1,4 +1,4 @@
-"""Keyword narrowing of a typed turn's tool list (#154). No I/O.
+"""Keyword narrowing of a typed turn's tool list. No I/O.
 
 The core tools always stay. Any other offered tool stays only when one of its keywords is a substring of the line.
 Both sides are normalized with Unicode NFKC plus casefold, so full-width and half-width forms, case, and scripts
@@ -11,7 +11,8 @@ from __future__ import annotations
 import unicodedata
 from collections.abc import Mapping, Sequence
 
-from cetimind.core.instructions import CORE_TOOLS, TOOL_KEYWORDS
+from tool_keywords import CORE_TOOLS, TOOL_KEYWORDS
+
 from cetimind.core.tools import ToolSpec
 
 

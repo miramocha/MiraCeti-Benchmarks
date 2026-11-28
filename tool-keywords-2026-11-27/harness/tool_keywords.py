@@ -1,6 +1,6 @@
-"""Excerpt of src/cetimind/core/instructions.py: the keyword lists the bench used."""
+"""The core tools and keyword lists the bench used. The bench imports them from here."""
 
-# Keyword narrowing of a typed turn's tool list (#154). The core tools are always offered. Any other tool joins
+# Keyword narrowing of a typed turn's tool list. The core tools are always offered. Any other tool joins
 # the list only when one of its keywords is a substring of the line, after NFKC and casefold on both sides.
 # Keywords have no language field: a keyword in any language or script matches the same way. Never copy a bench
 # line into these lists, so the bench measures matching, not copying.

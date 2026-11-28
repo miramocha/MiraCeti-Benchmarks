@@ -2,7 +2,7 @@
 
 ## Question
 
-[CetiMind #154](https://github.com/miramocha/CetiMind/issues/154) proposes narrowing a typed turn's tool list per line. The four Timer tools always stay, and every other tool joins only when one of its keywords is in the line. The intent check and the tool rounds would then see a shorter list.
+This run tests narrowing a typed turn's tool list per line. The four core tools (`current_time` and the three schedule tools, the Timer group) always stay, and every other tool joins only when one of its keywords is in the line. The intent check and the tool rounds would then see a shorter list.
 
 Does a keyword-narrowed list keep the tool each line needs? How many prompt tokens does it save? Does the intent check still pick right on the shorter list, including when modules add many more tools?
 
@@ -11,8 +11,9 @@ Does a keyword-narrowed list keep the tool each line needs? How many prompt toke
 - **Date:** 2026-11-27 and 2026-11-28.
 - **Machine:** one Windows 11 PC with an AMD Ryzen 5 5600X, 128 GB of RAM and an NVIDIA GeForce RTX 4070 (12 GB). LM Studio and the bench ran on this PC. OBS was running during the expand runs only.
 - **Model:** `qwen3.5-4b`, loaded at a 6,144-token context with K/V cache `q8_0`.
-- **Call:** CetiMind's `IntentRouter` alone, as in the [intent-check bench](../intent-cancel-example-2026-11-26/README.md): thinking off, temperature 0, the live `INTENT_INSTRUCTION` and intent examples. This matches the live turn when the Tools thinking row is not On.
-- **CetiMind:** a local branch with the keyword matcher and this bench (commits `f9726e8`, `282f39b`, `9ceae4a`, part of #154, not yet merged). The matcher is not wired into turns yet; the bench calls it directly. A copy of the harness is in [`harness/`](harness/).
+- **Call:** CetiMind's `IntentRouter` alone, as in the [intent-check bench](../intent-cancel-example-2026-11-26/README.md): thinking off, temperature 0, the live `INTENT_INSTRUCTION` and intent examples. This matches the live turn when the Tools row isn't On, so the intent check doesn't think.
+- **CetiMind:** the keyword matcher isn't merged into CetiMind yet, and it isn't wired into turns; the bench calls it directly. The bench uses the copy of the matcher and keyword lists in [`harness/`](harness/) ([`tool_filter.py`](harness/tool_filter.py), [`tool_keywords.py`](harness/tool_keywords.py)). The live runs used an unmerged build from 2026-11-27. The offline pass reruns from a plain CetiMind `main` checkout and gives the same rows as `run-offline/`.
+- **Model setup not recorded:** the model's quantization and the LM Studio version weren't written down, and no seed went to the server (the seed below only shuffles variant order).
 - **Lines:** the 78 intent-bench lines, 39 English and 39 Japanese: the 58 prompt-order cases plus the held-out cancel lines and near misses from `intent_lines.py`. 48 lines need a tool.
 - **Repeats:** 5 per line and variant, seed `20261126`, variants shuffled per line.
 
@@ -20,16 +21,16 @@ Does a keyword-narrowed list keep the tool each line needs? How many prompt toke
 
 ### Matching
 
-Each non-core tool has one flat keyword list with no language field ([`harness/tool_keywords.py`](harness/tool_keywords.py)). The line and each keyword are normalized with Unicode NFKC plus `casefold()`, and a keyword matches when it is a substring of the line ([`harness/tool_filter.py`](harness/tool_filter.py)). The keywords were written from each tool's description before the bench lines were read, and were not tuned on the results. The bench refuses to run when a keyword is a whole bench line.
+Each non-core tool has one flat keyword list with no language field ([`harness/tool_keywords.py`](harness/tool_keywords.py)). The line and each keyword are normalized with Unicode NFKC plus `casefold()`, and a keyword matches when it's a substring of the line ([`harness/tool_filter.py`](harness/tool_filter.py)). The keywords were written from each tool's description before the bench lines were read, and weren't tuned on the results. This repo can't show that. The bench refuses to run when a keyword is a whole bench line.
 
 ### Variants
 
 | Variant | Tools offered |
 | --- | --- |
 | Full | Every tool, as today |
-| Narrow | The four Timer tools plus keyword matches; the full list when nothing beyond the Timer tools matches. This is the issue's sketch. |
-| Strict | The four Timer tools plus keyword matches, never the full list |
-| Expand | Strict, plus a `more_tools` option in the intent check: "Pick this when the user's message needs a tool that is not in this list." Picking it reruns the check on the full list. This is the issue's expand step. |
+| Narrow | The four core tools plus keyword matches; the full list when nothing beyond the core tools matches. This is the original fallback design. |
+| Strict | The four core tools plus keyword matches, never the full list |
+| Expand | Strict, plus a `more_tools` option in the intent check: "Pick this when the user's message needs a tool that is not in this list." Picking it reruns the check on the full list. This is the original expand step. |
 | Bare | Full or narrow with every tool's intent examples removed |
 
 ### Scaling
@@ -43,10 +44,10 @@ The first scaling run had a fake `water_log` tool, which is a fair pick for "I'm
 - **Right:** the check's pick matches the line, as in `intent_bench.right()`. A tool line must pick its tool and nothing outside it (the clock aside). A no-tool line must pick nothing. A cancel line must pick `schedule_cancel`.
 - **Recall:** every expected tool is in the offered list (no model call).
 - **Fallback:** narrow offered the full list because no keyword matched.
-- **Extra tools:** offered non-core tools the line does not need.
+- **Extra tools:** offered non-core tools the line doesn't need.
 - **Near-miss alarm:** a tool picked on a line that mentions reminders but asks for nothing.
 - **Tokens:** LM Studio's `usage.prompt_tokens` with `max_tokens` 1. The intent prompt is counted as sent. The tool-round tools block is the same one-word chat with and without the `tools` field.
-- **Tests:** exact two-sided McNemar on paired results against the full list. At temperature 0 every line gave the same answer on all 5 repeats of a run (the one exception is narrow on `lol-ja` at 66 tools, 4 of 5), so the repeats are not independent. The tables give both counts, but the line-level test is the one to trust.
+- **Tests:** exact two-sided McNemar on paired results against the full list. At temperature 0 every line gave the same answer on all 5 repeats of a run (the one exception is narrow on `lol-ja` at 66 tools, 4 of 5), so the repeats aren't independent. The tables give both counts, but the line-level test is the one to trust. A line counts as right for a variant when most of its repeats were right ([`harness/paired_lines.py`](harness/paired_lines.py) prints the line-level counts). No correction for multiple comparisons was applied; about a dozen tests are in the tables, and none would survive one.
 
 ## Results
 
@@ -58,7 +59,7 @@ The first scaling run had a fake `water_log` tool, which is a fair pick for "I'm
 | Narrow | 48/48 | 63/78 (81%) | 1.63 | 5.8 |
 | Strict | 47/48 | 0 | **0.03** | **4.2** |
 
-Strict's one miss is `f1-ja`, 直近のF1レースで勝ったのは誰？ ("Who won the most recent F1 race?"), which matches no Japanese keyword. Narrow falls back on most lines because time and reminder lines match no keyword, and the four Timer tools are all a turn needs for them.
+Strict's one miss is `f1-ja`, 直近のF1レースで勝ったのは誰？ ("Who won the most recent F1 race?"), which matches no Japanese keyword. Narrow falls back on most lines because time and reminder lines match no keyword, and the four core tools are all a turn needs for them.
 
 ### Intent check, six tools
 
@@ -71,7 +72,7 @@ Strict's one miss is `f1-ja`, 直近のF1レースで勝ったのは誰？ ("Who
 | Full, bare | 345 | 323 | — | — |
 | Narrow, bare | 345 | 321 | — | — |
 
-Tokens are means per line. Bold marks the single best value in a column; ties are not bold. Expand's intent prompt is strict's plus 28 tokens for the `more_tools` line, and its tools block is strict's.
+Tokens are means per line. Median ms is the median of wall-clock time around each non-streaming call, with no p90 recorded. Bold marks the single highest value in a column; ties aren't bold. Expand's intent prompt and tools block are estimates, not measurements: strict's counts plus 28 tokens for the `more_tools` line (`tokens.json` in the expand runs has only full, narrow and strict).
 
 - **Narrow matched full on every pair.** Strict lost `f1-ja` and `cnew4-ja`, 今日は水のことリマインドしなくていいよ ("No need to remind me about water today"), and won one line. Expand tied full: it also lost `f1-ja`, and got `time-stretch-ja` right where every other variant picked only `schedule_create`.
 - **Expand picked `more_tools` 0 times in 390 checks.**
@@ -86,9 +87,9 @@ Tokens are means per line. Bold marks the single best value in a column; ties ar
 | 36 | 355 | 350 | 370 | **380** |
 | 66 | 355 | 351 | 365 | **380** |
 
-Right of 390. Bold marks the single best value in a row or column; ties are not bold. Expand at 16 to 66 tools comes from its own run, where full scored 365, 355 and 355 as in the table.
+Right of 390. Bold marks the single highest value in a row or column; ties aren't bold. Expand at 16 to 66 tools comes from its own run, where full scored 365, 355 and 355 as in the table.
 
-Lines: full (grey), narrow (orange), strict (blue), expand (green). The x-axis is the tool count, evenly spaced, not to scale.
+Lines: full (gray), narrow (orange), strict (blue), expand (green). The x-axis is the tool count, evenly spaced, not to scale.
 
 ```mermaid
 %%{init: {"themeVariables": {"xyChart": {"plotColorPalette": "#8a8f98, #d08a3a, #3a7bd5, #2e9d5b"}}}}%%
@@ -116,29 +117,42 @@ xychart-beta
 
 Strict and expand share the same tools block, so their lines overlap in the second chart.
 
-| Tools | Set | Near-miss alarms | Intent prompt tokens | Tools block tokens | Median ms |
+| Tools | Set | Near-miss alarms (checks) | Intent prompt tokens | Tools block tokens | Median ms |
 | --- | --- | --- | --- | --- | --- |
 | 16 | Full | 10 | 400 | 1,425 | 307 |
 | 16 | Strict | 0 | **216** | 686 | 299 |
-| 16 | Expand | 0 | 244 | 686 | **292** |
+| 16 | Expand | 0 | 244 | 686 | 292 |
 | 36 | Full | 10 | 665 | 2,573 | 344 |
-| 36 | Strict | 0 | **216** | 686 | **307** |
+| 36 | Strict | 0 | **216** | 686 | 307 |
 | 36 | Expand | 0 | 244 | 686 | 317 |
 | 66 | Full | 10 | 1,061 | 4,289 | 364 |
 | 66 | Narrow | 10 | 873 | 3,477 | 323 |
-| 66 | Strict | 0 | **216** | 686 | **284** |
+| 66 | Strict | 0 | **216** | 686 | 284 |
 | 66 | Expand | 0 | 244 | 686 | 340 |
 
-Paired against the full list, by line (lines only the variant got right / lines only full got right):
+Near-miss alarms count checks. The 10 at each size for the full list are 2 lines, `near3-en` and `near0-ja`, picked on all 5 repeats. Median ms is the median wall-clock time around each non-streaming call, with no p90 recorded, and it varies across runs: strict and full come from the second scaling run and expand from its own run, which OBS overlapped, so compare times only within a run. The full list's median at 66 tools was 332, 364 and 452 ms in three runs (at 36 tools 344 and 371, at 16 tools 306 and 313), so bold isn't used in this column.
+
+Paired against the full list, by line (lines only the variant got right / lines only full got right). Strict's cells are from the second scaling run; its cells in the expand run are 3 / 2, 5 / 3 and 5 / 3 at 16, 36 and 66 tools:
 
 | Tools | Narrow | Strict | Expand |
 | --- | --- | --- | --- |
 | 6 | 0 / 0 | 1 / 2 | 1 / 1 |
 | 16 | 0 / 1 | 3 / 2 | 3 / 1, p 0.63 |
 | 36 | 0 / 1 | 5 / 2 | 6 / 1, p 0.13 |
-| 66 | 1 / 1 | 5 / 3 | 6 / 1, p 0.13 |
+| 66 | 0 / 1 | 5 / 3 | 6 / 1, p 0.13 |
 
 By check, expand against full was 30 / 5 at 36 tools (p < 0.001), but that counts each line five times.
+
+Expand against strict, from the main run (6 tools) and the expand runs (lines only expand got right / lines only strict got right):
+
+| Tools | Expand / strict | p |
+| --- | --- | --- |
+| 6 | 1 / 0 (`cnew4-ja`) | 1.0 |
+| 16 | 1 / 0 (`feel-en`) | 1.0 |
+| 36 | 3 / 0 (`feel-en`, `cnew2-ja`, `cnew4-ja`) | 0.25 |
+| 66 | 3 / 0 (`feel-en`, `cnew2-ja`, `cnew4-ja`) | 0.25 |
+
+The same few lines carry every size: the expand-over-full lead is `drink-en`, `drink-ja`, `near3-en` and `near0-ja` at 36 and 66 tools, and `near3-en` and `near0-ja` plus `cnew4-en` at 16. The 16, 36 and 66 results use the same 78 lines and the same model, so they aren't three independent confirmations. `more_tools` was picked in 0 of 1,560 expand checks (390 in each of the four expand runs), so the expand path that reruns the full list never ran.
 
 What the full list got wrong at 66 tools, on all 5 repeats:
 
@@ -148,7 +162,7 @@ What the full list got wrong at 66 tools, on all 5 repeats:
 | `drink-ja` 今から水を飲むね。 | `mood_log` |
 | `feel-ja` 今日の気分はどう？ ("How are you feeling today?") | `mood_log` |
 | `near3-en` "I forgot to drink water again, oops." | `habit_log`, `mood_log` |
-| `near0-ja` 今日ジムの会員を解約したよ。 ("I cancelled my gym membership today.") | `habit_log` |
+| `near0-ja` 今日ジムの会員を解約したよ。 ("I canceled my gym membership today.") | `habit_log` |
 | `lol-ja` | `joke_tell` |
 | `cnew4-ja` 今日は水のことリマインドしなくていいよ。 | `plant_water_log` |
 
@@ -158,33 +172,36 @@ By language, at 66 tools: English full 185, strict 190, expand 195 of 195; Japan
 
 ## Reading
 
-- **Narrow as sketched in the issue is not worth building.** It keeps every tool, but it falls back to the full list on 81% of lines, so it saves 2% of the tools block at six tools and 19% at 66. It never beat the full list.
-- **Strict and expand keep the list small however many tools exist.** The tools block stays at about 686 tokens, against 4,289 for the full list at 66 tools (84% less), and the intent prompt at 216 to 244 tokens against 1,061.
-- **A longer full list makes the check pick near-topic module tools.** From 16 tools on, the full list picked `mood_log`, `habit_log` and similar tools on small-talk lines, with 10 near-miss alarms at every size. Length itself was not the problem: the full list scored the same at 36 and 66 tools. The tools that sit close to a line's topic are.
-- **Expand scored best from 16 tools on, but not because it rescued anything.** The model never picked `more_tools`. Listing it seems to make the check more careful: expand avoided the near-topic picks and kept the Japanese cancel lines that strict dropped. By line the lead is 6 to 1 at 36 and 66 tools (p = 0.13), so it is a consistent pattern, not a significant one.
-- **Keywords miss paraphrases, and can also add harm.** `f1-ja` never gets `web_search` in strict or expand, and the expand step did not catch it on this model. "feeling" and 気分 put `mood_log` in the list on the feel lines, and the model picks it.
-- **Recommendation:** build strict narrowing with the expand option, not the issue's narrow fallback. Keep the core tools first in the list and add matches after them, so the start of the prompt stays the same. Test a real fallback for keyword misses next, such as a group-widening second pass, or `more_tools` on a larger model, since `qwen3.5-4b` never used it.
+- **Narrow as first sketched isn't worth building.** It keeps every tool, but it falls back to the full list on 81% of lines, so it saves 2% of the tools block at six tools and 19% at 66. It never beat the full list.
+- **Strict and expand keep the list small however many tools exist.** The tools block stays at about 686 tokens, against 4,289 for the full list at 66 tools (84% less), and the intent prompt at 216 to 244 tokens against 1,061. Treat 686 as a best-case floor: it's the four core tools alone, because no bench line needs a fake tool and the fake keywords fire on only 3 lines. A real module set would add tools whenever its keywords match.
+- **A longer full list makes the check pick near-topic module tools.** From 16 tools on, the full list picked `mood_log`, `habit_log` and similar tools on small-talk lines, with 2 near-miss lines picked on all 5 repeats at every size. Length itself wasn't the problem: the full list scored the same at 36 and 66 tools. The tools that sit close to a line's topic are. The labels matter here: the bench scores any fake-tool pick as wrong, though `mood_log` on "How are you feeling today?" is arguably a fair pick for a real module.
+- **Expand had the highest score from 16 tools on, but not because it rescued anything.** The model never picked `more_tools`, so expand is strict plus one extra line in the intent prompt, and the lead can't come from the expand step. By line the lead over the full list is 6 to 1 at 36 and 66 tools (p = 0.13, not significant), and the same few lines carry every size. Against strict it's 3 to 0 (p = 0.25), on `feel-en`, `cnew2-ja` and `cnew4-ja`, and `cnew2-ja` is a line that flipped for strict between two runs with no prompt change. With no control arm that adds a dummy line, this run can't separate the `more_tools` option from any other change to the prompt.
+- **Keywords miss paraphrases, and can also add harm.** `f1-ja` never gets `web_search` in strict or expand, and the expand step didn't catch it on this model. "feeling" and 気分 put `mood_log` in the list on the feel lines, and the model picks it.
+- **Recommendation:** strict narrowing is the supported choice. Expand is untested as a mechanism: `more_tools` was never picked, and its lead over strict isn't significant. Test it with a model that picks `more_tools`, and with a control arm that adds a dummy line. Keep the core tools first in the list and add matches after them, so the start of the prompt stays the same. Test a real fallback for keyword misses next, such as a group-widening second pass.
 
 ## Limits
 
 - One model, one machine. The bench lines are synthetic, the Japanese lines are machine-translated, and only 48 of the 78 lines need a tool.
+- Two languages only, English and Japanese. No third language, accented line or other CJK language is in the bench, so the language-agnostic claim is tested on two.
+- The outing tools have keywords in `harness/tool_keywords.py` but aren't offered or tested here, so their recall is untested.
 - The fake tools are invented, and their keywords fire on only 3 bench lines, all small talk. No bench line needs a fake tool, so this doesn't test recall for module tools.
 - The gaps rest on a handful of lines. More distinct lines would firm them up more than more repeats.
-- `cnew2-ja` flipped for strict between two runs with no prompt change (right in the second scaling run, wrong in the expand run). It is likely LM Studio's prompt cache with the `q8_0` K/V cache.
+- `cnew2-ja` flipped for strict between two runs with no prompt change (right in the second scaling run, wrong in the expand run). It's likely LM Studio's prompt cache with the `q8_0` K/V cache.
 - A list that changes per line breaks the prompt cache at the tools block. This run counted tokens, not cache hits or time to first token.
 - The intent check only. No full turns, tool rounds or replies were run.
-- **Timing:** wall clock around non-streaming calls, so the medians include the client. Run-to-run spread for the same setup was 15 to 55 ms, larger than most gaps between variants.
+- **Timing:** wall clock around non-streaming calls, so the medians include the client, with no time to first token and no p90. The full list's median at 66 tools was 332, 364 and 452 ms in three runs, so run-to-run spread for the same setup can top 100 ms, larger than most gaps between variants. Compare times only within a run.
+- **Temperature 0 isn't fully deterministic here.** Narrow on `lol-ja` at 66 tools offered the same 66 tools as the full list and still gave one different answer in 5.
 
 ## Files
 
-- [`harness/`](harness/): `tool_keyword_bench.py` (the bench), `fake_tools.py` (second fake set) and `fake_tools_run1.py` (first, with `water_log`), `tool_filter.py` and `tool_keywords.py` (the matcher and keyword lists from CetiMind), and the line sets `intent_bench.py`, `intent_lines.py`, `heavy.py`, `lines.py`.
+- [`harness/`](harness/): `tool_keyword_bench.py` (the bench), `fake_tools.py` (second fake set) and `fake_tools_run1.py` (first, with `water_log`), `tool_filter.py` and `tool_keywords.py` (the matcher and keyword lists the bench imports), `paired_lines.py` (line-level counts from `calls.jsonl`), and the line sets `intent_bench.py`, `intent_lines.py`, `heavy.py`, `lines.py`.
 - `run-offline/`: the keyword pass with no model (`offline.jsonl`, one row per line).
 - `run-main/`: six tools, all six variants. `calls.jsonl` has one row per check, `tokens.json` the server counts, `summary.json` the tables.
 - `run-scale-1/tools-16|36|66/`: the first scaling run, with `water_log`.
 - `run-scale-2/tools-16|36|66/`: the second scaling run, full, narrow and strict.
 - `run-expand/tools-16|36|66/`: full, strict and expand on the second fake set.
 
-To run it again, copy `harness/` into `bench/prompt_order/` of a CetiMind checkout that has `tool_filter.py` and the keyword lists, then:
+To run it again, copy the files in `harness/` into `bench/prompt_order/` of a CetiMind `main` checkout. The bench imports the matcher and keyword lists from the copies in `harness/`, and the rest from CetiMind. The offline pass needs no model. Then:
 
 ```bash
 uv run python bench/prompt_order/tool_keyword_bench.py --out run-offline
