@@ -1,0 +1,612 @@
+{
+  "16": {
+    "full_live": {
+      "label": "Full",
+      "web_right": 120,
+      "web_total": 120,
+      "web_lines_right": 24,
+      "talk_right": 25,
+      "talk_total": 80,
+      "talk_web_search": 0,
+      "failed": 0,
+      "second_checks": 0,
+      "second_check_lines": 0,
+      "intent_est": 329,
+      "median_ms": 379.5,
+      "wrong": [
+        [
+          "fresh-talk0-en: mood_log",
+          5
+        ],
+        [
+          "fresh-talk3-en: mood_log",
+          5
+        ],
+        [
+          "fresh-talk5-en: mood_log",
+          5
+        ],
+        [
+          "fresh-talk6-en: mood_log",
+          5
+        ],
+        [
+          "fresh-talk0-ja: mood_log",
+          5
+        ],
+        [
+          "fresh-talk2-ja: mood_log",
+          5
+        ],
+        [
+          "fresh-talk3-ja: mood_log",
+          5
+        ],
+        [
+          "fresh-talk4-ja: mood_log",
+          5
+        ],
+        [
+          "fresh-talk5-ja: mood_log",
+          5
+        ],
+        [
+          "fresh-talk6-ja: mood_log",
+          5
+        ],
+        [
+          "fresh-talk7-ja: mood_log",
+          5
+        ]
+      ],
+      "vs_expand_live": {
+        "only_this": 21,
+        "only_other": 11,
+        "p": 0.1102
+      }
+    },
+    "expand_live": {
+      "label": "Expand",
+      "web_right": 15,
+      "web_total": 120,
+      "web_lines_right": 3,
+      "talk_right": 80,
+      "talk_total": 80,
+      "talk_web_search": 0,
+      "failed": 0,
+      "second_checks": 15,
+      "second_check_lines": 3,
+      "intent_est": 174,
+      "median_ms": 353.8,
+      "wrong": [
+        [
+          "fresh-web0-en: no tool",
+          5
+        ],
+        [
+          "fresh-web3-en: no tool",
+          5
+        ],
+        [
+          "fresh-web4-en: no tool",
+          5
+        ],
+        [
+          "fresh-web5-en: no tool",
+          5
+        ],
+        [
+          "fresh-web6-en: no tool",
+          5
+        ],
+        [
+          "fresh-web8-en: no tool",
+          5
+        ],
+        [
+          "fresh-web9-en: no tool",
+          5
+        ],
+        [
+          "fresh-web10-en: no tool",
+          5
+        ],
+        [
+          "fresh-web11-en: no tool",
+          5
+        ],
+        [
+          "fresh-web0-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web1-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web2-ja: current_time",
+          5
+        ],
+        [
+          "fresh-web3-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web4-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web5-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web6-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web7-ja: schedule_create",
+          5
+        ],
+        [
+          "fresh-web8-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web9-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web10-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web11-ja: no tool",
+          5
+        ]
+      ],
+      "vs_full_live": {
+        "only_this": 11,
+        "only_other": 21,
+        "p": 0.1102
+      }
+    },
+    "webexp_live": {
+      "label": "Web core + expand",
+      "web_right": 120,
+      "web_total": 120,
+      "web_lines_right": 24,
+      "talk_right": 60,
+      "talk_total": 80,
+      "talk_web_search": 20,
+      "failed": 0,
+      "second_checks": 0,
+      "second_check_lines": 0,
+      "intent_est": 211,
+      "median_ms": 409.6,
+      "wrong": [
+        [
+          "fresh-talk2-en: web_search",
+          5
+        ],
+        [
+          "fresh-talk6-en: web_search",
+          5
+        ],
+        [
+          "fresh-talk2-ja: web_search",
+          5
+        ],
+        [
+          "fresh-talk6-ja: web_search",
+          5
+        ]
+      ],
+      "vs_expand_live": {
+        "only_this": 21,
+        "only_other": 4,
+        "p": 0.0009
+      },
+      "vs_full_live": {
+        "only_this": 8,
+        "only_other": 1,
+        "p": 0.0391
+      }
+    }
+  },
+  "36": {
+    "full_live": {
+      "label": "Full",
+      "web_right": 120,
+      "web_total": 120,
+      "web_lines_right": 24,
+      "talk_right": 30,
+      "talk_total": 80,
+      "talk_web_search": 0,
+      "failed": 0,
+      "second_checks": 0,
+      "second_check_lines": 0,
+      "intent_est": 581,
+      "median_ms": 356.6,
+      "wrong": [
+        [
+          "fresh-talk0-en: habit_log",
+          5
+        ],
+        [
+          "fresh-talk3-en: mood_log",
+          5
+        ],
+        [
+          "fresh-talk4-en: mood_log",
+          5
+        ],
+        [
+          "fresh-talk6-en: mood_log",
+          5
+        ],
+        [
+          "fresh-talk7-en: mood_log",
+          5
+        ],
+        [
+          "fresh-talk0-ja: habit_log",
+          5
+        ],
+        [
+          "fresh-talk3-ja: mood_log",
+          5
+        ],
+        [
+          "fresh-talk4-ja: mood_log",
+          5
+        ],
+        [
+          "fresh-talk6-ja: mood_log",
+          5
+        ],
+        [
+          "fresh-talk7-ja: mood_log",
+          5
+        ]
+      ],
+      "vs_expand_live": {
+        "only_this": 21,
+        "only_other": 10,
+        "p": 0.0708
+      }
+    },
+    "expand_live": {
+      "label": "Expand",
+      "web_right": 16,
+      "web_total": 120,
+      "web_lines_right": 3,
+      "talk_right": 80,
+      "talk_total": 80,
+      "talk_web_search": 0,
+      "failed": 0,
+      "second_checks": 16,
+      "second_check_lines": 4,
+      "intent_est": 174.6,
+      "median_ms": 290.5,
+      "wrong": [
+        [
+          "fresh-web0-en: no tool",
+          5
+        ],
+        [
+          "fresh-web3-en: no tool",
+          5
+        ],
+        [
+          "fresh-web4-en: no tool",
+          5
+        ],
+        [
+          "fresh-web5-en: no tool",
+          5
+        ],
+        [
+          "fresh-web6-en: no tool",
+          5
+        ],
+        [
+          "fresh-web8-en: no tool",
+          5
+        ],
+        [
+          "fresh-web9-en: no tool",
+          5
+        ],
+        [
+          "fresh-web10-en: no tool",
+          5
+        ],
+        [
+          "fresh-web11-en: no tool",
+          5
+        ],
+        [
+          "fresh-web0-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web1-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web2-ja: current_time",
+          5
+        ],
+        [
+          "fresh-web3-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web4-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web6-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web7-ja: schedule_list",
+          5
+        ],
+        [
+          "fresh-web8-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web9-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web10-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web11-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web5-ja: no tool",
+          4
+        ]
+      ],
+      "vs_full_live": {
+        "only_this": 10,
+        "only_other": 21,
+        "p": 0.0708
+      }
+    },
+    "webexp_live": {
+      "label": "Web core + expand",
+      "web_right": 120,
+      "web_total": 120,
+      "web_lines_right": 24,
+      "talk_right": 74,
+      "talk_total": 80,
+      "talk_web_search": 6,
+      "failed": 0,
+      "second_checks": 0,
+      "second_check_lines": 0,
+      "intent_est": 211.6,
+      "median_ms": 359.4,
+      "wrong": [
+        [
+          "fresh-talk6-en: web_search",
+          5
+        ],
+        [
+          "fresh-talk2-en: web_search",
+          1
+        ]
+      ],
+      "vs_expand_live": {
+        "only_this": 21,
+        "only_other": 1,
+        "p": 0.0
+      },
+      "vs_full_live": {
+        "only_this": 9,
+        "only_other": 0,
+        "p": 0.0039
+      }
+    }
+  },
+  "66": {
+    "full_live": {
+      "label": "Full",
+      "web_right": 115,
+      "web_total": 120,
+      "web_lines_right": 23,
+      "talk_right": 50,
+      "talk_total": 80,
+      "talk_web_search": 0,
+      "failed": 0,
+      "second_checks": 0,
+      "second_check_lines": 0,
+      "intent_est": 974,
+      "median_ms": 411.8,
+      "wrong": [
+        [
+          "fresh-talk4-en: mood_log",
+          5
+        ],
+        [
+          "fresh-talk6-en: mood_log",
+          5
+        ],
+        [
+          "fresh-web7-ja: calendar_list",
+          5
+        ],
+        [
+          "fresh-talk0-ja: habit_log",
+          5
+        ],
+        [
+          "fresh-talk4-ja: mood_log",
+          5
+        ],
+        [
+          "fresh-talk6-ja: mood_log",
+          5
+        ],
+        [
+          "fresh-talk0-en: habit_log, mood_log",
+          4
+        ],
+        [
+          "fresh-talk0-en: habit_log",
+          1
+        ]
+      ],
+      "vs_expand_live": {
+        "only_this": 20,
+        "only_other": 6,
+        "p": 0.0094
+      }
+    },
+    "expand_live": {
+      "label": "Expand",
+      "web_right": 15,
+      "web_total": 120,
+      "web_lines_right": 3,
+      "talk_right": 80,
+      "talk_total": 80,
+      "talk_web_search": 0,
+      "failed": 0,
+      "second_checks": 15,
+      "second_check_lines": 3,
+      "intent_est": 174.6,
+      "median_ms": 294.3,
+      "wrong": [
+        [
+          "fresh-web0-en: no tool",
+          5
+        ],
+        [
+          "fresh-web3-en: no tool",
+          5
+        ],
+        [
+          "fresh-web4-en: no tool",
+          5
+        ],
+        [
+          "fresh-web5-en: no tool",
+          5
+        ],
+        [
+          "fresh-web6-en: no tool",
+          5
+        ],
+        [
+          "fresh-web8-en: no tool",
+          5
+        ],
+        [
+          "fresh-web9-en: no tool",
+          5
+        ],
+        [
+          "fresh-web10-en: no tool",
+          5
+        ],
+        [
+          "fresh-web11-en: no tool",
+          5
+        ],
+        [
+          "fresh-web0-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web1-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web2-ja: current_time",
+          5
+        ],
+        [
+          "fresh-web3-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web4-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web5-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web6-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web7-ja: schedule_list",
+          5
+        ],
+        [
+          "fresh-web8-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web9-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web10-ja: no tool",
+          5
+        ],
+        [
+          "fresh-web11-ja: no tool",
+          5
+        ]
+      ],
+      "vs_full_live": {
+        "only_this": 6,
+        "only_other": 20,
+        "p": 0.0094
+      }
+    },
+    "webexp_live": {
+      "label": "Web core + expand",
+      "web_right": 120,
+      "web_total": 120,
+      "web_lines_right": 24,
+      "talk_right": 70,
+      "talk_total": 80,
+      "talk_web_search": 10,
+      "failed": 0,
+      "second_checks": 0,
+      "second_check_lines": 0,
+      "intent_est": 211.6,
+      "median_ms": 365.9,
+      "wrong": [
+        [
+          "fresh-talk2-en: web_search",
+          5
+        ],
+        [
+          "fresh-talk6-en: web_search",
+          5
+        ]
+      ],
+      "vs_expand_live": {
+        "only_this": 21,
+        "only_other": 2,
+        "p": 0.0001
+      },
+      "vs_full_live": {
+        "only_this": 6,
+        "only_other": 1,
+        "p": 0.125
+      }
+    }
+  }
+}

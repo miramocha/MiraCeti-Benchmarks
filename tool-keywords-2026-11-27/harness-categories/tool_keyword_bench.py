@@ -46,8 +46,10 @@ from intent_bench import CAPS, GROUPS, LIVE_TOOLS, MODEL, Line, all_lines, right
 from cetimind.app.intent import _intent_data  # noqa: E402
 from cetimind.app.router import FailedRoute, RouteTurn  # noqa: E402
 from cetimind.core.calls import task_messages, text_tokens, wire_messages  # noqa: E402
-from cetimind.core.instructions import CORE_TOOLS, INTENT_INSTRUCTION, TOOL_KEYWORDS  # noqa: E402
-from cetimind.core.tool_filter import MORE_TOOLS, matched, narrow, norm  # noqa: E402
+from tool_filter import MORE_TOOLS, matched, narrow, norm  # noqa: E402
+from tool_keywords import CORE_TOOLS, TOOL_KEYWORDS  # noqa: E402
+
+from cetimind.core.instructions import INTENT_INSTRUCTION  # noqa: E402
 from cetimind.core.tools import ToolSpec  # noqa: E402
 from cetimind.llm.client import _function_tool  # noqa: E402
 

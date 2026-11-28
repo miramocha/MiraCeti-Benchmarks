@@ -41,20 +41,38 @@ def count(rows: list[dict], key: str, where=lambda r: True) -> str:
     return wilson(sum(bool(r[key]) for r in picked), len(picked))
 
 
-def mcnemar(turns: list[dict], key: str, other: str = "B") -> str:
-    """Exact two-sided McNemar on paired (case, repeat) results, A against other."""
+def _exact(a_only: int, b_only: int, base: str, other: str) -> str:
+    """Exact two-sided McNemar from the two discordant counts."""
+    n = a_only + b_only
+    p = 1.0 if n == 0 else min(1.0, 2 * sum(math.comb(n, i) for i in range(min(a_only, b_only) + 1)) / 2**n)
+    return f"{base}-only {a_only}, {other}-only {b_only}, p = {p:.3f}"
+
+
+def mcnemar(turns: list[dict], key: str, other: str = "B", base: str = "A") -> str:
+    """Exact two-sided McNemar on paired (case, repeat) results, base against other."""
     by = defaultdict(dict)
     for r in turns:
         if r.get(key) is not None and "error" not in r:
             by[(r["case"], r["repeat"])][r["arm"]] = bool(r[key])
-    a_only = sum(1 for v in by.values() if v.get("A") is True and v.get(other) is False)
-    b_only = sum(1 for v in by.values() if v.get("A") is False and v.get(other) is True)
-    n = a_only + b_only
-    if n == 0:
-        return "A-only 0, B-only 0, p = 1"
-    k = min(a_only, b_only)
-    p = min(1.0, 2 * sum(math.comb(n, i) for i in range(k + 1)) / 2**n)
-    return f"A-only {a_only}, B-only {b_only}, p = {p:.3f}"
+    a_only = sum(1 for v in by.values() if v.get(base) is True and v.get(other) is False)
+    b_only = sum(1 for v in by.values() if v.get(base) is False and v.get(other) is True)
+    return _exact(a_only, b_only, base, other)
+
+
+def mcnemar_lines(turns: list[dict], key: str, other: str, base: str) -> str:
+    """Exact McNemar by line: a line is right for an arm when most of its repeats were right."""
+    votes = defaultdict(lambda: defaultdict(list))
+    for r in turns:
+        if r.get(key) is not None and "error" not in r:
+            votes[r["case"]][r["arm"]].append(bool(r[key]))
+
+    def majority(values: list[bool]) -> bool | None:
+        return None if not values else sum(values) * 2 > len(values)
+
+    pairs = [(majority(v[base]), majority(v[other])) for v in votes.values()]
+    a_only = sum(1 for a, b in pairs if a is True and b is False)
+    b_only = sum(1 for a, b in pairs if a is False and b is True)
+    return _exact(a_only, b_only, base, other)
 
 
 def main() -> None:
@@ -108,10 +126,12 @@ def main() -> None:
         for label, fn in metrics:
             print(f"| {label} | " + " | ".join(fn([r for r in subset if r["arm"] == a]) for a in arms) + " |")
     print()
-    for other in [a for a in arms if a != "A"]:
-        print(f"Paired, A vs {other} (exact McNemar; A-only = A right, {other} wrong):")
+    base = "A" if "A" in arms else arms[0]
+    for other in [a for a in arms if a != base]:
+        print(f"Paired, {base} vs {other} (exact McNemar; {base}-only = {base} right, {other} wrong):")
         for key in ("ok", "ok_final", "false_claim"):
-            print(f"- {key}: {mcnemar(turns, key, other).replace('B-only', other + '-only')}")
+            print(f"- {key}, by turn: {mcnemar(turns, key, other, base)}")
+            print(f"- {key}, by line (majority of repeats): {mcnemar_lines(turns, key, other, base)}")
     print()
 
     print("## Time per turn (ms, median / p90)\n")

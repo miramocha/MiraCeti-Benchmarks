@@ -59,14 +59,13 @@
 | Sound tag | 0/87 (0%, 0–4) | 1/87 (1%, 0–6) |
 | Tool name or JSON in the reply | 0/87 (0%, 0–4) | 1/87 (1%, 0–6) |
 
-Paired, A vs L (exact McNemar; A-only = A right, L wrong):
-- ok: A-only 0, L-only 0, p = 1
-- ok_final: A-only 0, L-only 0, p = 1
-- false_claim: A-only 0, L-only 0, p = 1
-Paired, A vs LWIDE (exact McNemar; A-only = A right, LWIDE wrong):
-- ok: A-only 0, LWIDE-only 0, p = 1
-- ok_final: A-only 0, LWIDE-only 0, p = 1
-- false_claim: A-only 0, LWIDE-only 0, p = 1
+Paired, L vs LWIDE (exact McNemar; L-only = L right, LWIDE wrong):
+- ok, by turn: L-only 3, LWIDE-only 9, p = 0.146
+- ok, by line (majority of repeats): L-only 0, LWIDE-only 3, p = 0.250
+- ok_final, by turn: L-only 5, LWIDE-only 9, p = 0.424
+- ok_final, by line (majority of repeats): L-only 0, LWIDE-only 3, p = 0.250
+- false_claim, by turn: L-only 0, LWIDE-only 0, p = 1.000
+- false_claim, by line (majority of repeats): L-only 0, LWIDE-only 0, p = 1.000
 
 ## Time per turn (ms, median / p90)
 

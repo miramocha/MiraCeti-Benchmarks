@@ -46,8 +46,10 @@ from intent_bench import CAPS, GROUPS, LIVE_TOOLS, MODEL, Line, all_lines, right
 from cetimind.app.intent import _intent_data  # noqa: E402
 from cetimind.app.router import FailedRoute, RouteTurn  # noqa: E402
 from cetimind.core.calls import task_messages, text_tokens, wire_messages  # noqa: E402
-from cetimind.core.instructions import CORE_TOOLS, INTENT_INSTRUCTION, TOOL_KEYWORDS  # noqa: E402
-from cetimind.core.tool_filter import MORE_TOOLS, matched, narrow, norm  # noqa: E402
+from tool_filter import MORE_TOOLS, matched, narrow, norm  # noqa: E402
+from tool_keywords import CORE_TOOLS, TOOL_KEYWORDS  # noqa: E402
+
+from cetimind.core.instructions import INTENT_INSTRUCTION  # noqa: E402
 from cetimind.core.tools import ToolSpec  # noqa: E402
 from cetimind.llm.client import _function_tool  # noqa: E402
 
@@ -479,16 +481,17 @@ def run_live(client, lines: list[Line], out: Path, repeats: int, seed: int) -> l
     return rows
 
 
-def holdout() -> list[Line]:
-    """Held-out lines: web lines join the tool group, small talk the none group. Ids start with hold-."""
-    import holdout_lines
+def holdout(module_name: str = "holdout_lines", prefix: str = "hold") -> list[Line]:
+    """Held-out lines: web lines join the tool group, small talk the none group. Ids start with the prefix."""
+    import importlib
 
+    module = importlib.import_module(module_name)
     out = []
     for lang in ("en", "ja"):
-        for i, text in enumerate(holdout_lines.WEB[lang]):
-            out.append(Line(f"hold-web{i}-{lang}", lang, text, "tool", frozenset({"web_search"}), "any"))
-        for i, text in enumerate(holdout_lines.SMALL_TALK[lang]):
-            out.append(Line(f"hold-talk{i}-{lang}", lang, text, "none", frozenset(), "none"))
+        for i, text in enumerate(module.WEB[lang]):
+            out.append(Line(f"{prefix}-web{i}-{lang}", lang, text, "tool", frozenset({"web_search"}), "any"))
+        for i, text in enumerate(module.SMALL_TALK[lang]):
+            out.append(Line(f"{prefix}-talk{i}-{lang}", lang, text, "none", frozenset(), "none"))
     return out
 
 
@@ -502,15 +505,19 @@ def main() -> None:
     parser.add_argument("--fakes", type=int, default=0, help="fake tools added after the real ones")
     parser.add_argument("--variants", default=",".join(LIVE_VARIANTS), help="comma-separated live variants")
     parser.add_argument("--holdout", action="store_true", help="add the held-out lines in holdout_lines.py")
+    parser.add_argument("--fresh", action="store_true", help="add the second held-out set in holdout_lines_2.py")
+    parser.add_argument("--only-holdout", action="store_true", help="drop the 78 bench lines, keep held-out ones")
     args = parser.parse_args()
     if args.fakes:
         OFFERED = (*LIVE_TOOLS, *fake_tools.fake_tools(args.fakes))
         KEYWORDS.update({spec.name: fake_tools.FAKE_KEYWORDS[spec.name] for spec in OFFERED[len(LIVE_TOOLS) :]})
     LIVE_VARIANTS = tuple(name for name in args.variants.split(",") if name)
     sys.stdout.reconfigure(encoding="utf-8")
-    lines = all_lines()
+    lines = [] if args.only_holdout else all_lines()
     if args.holdout:
         lines += holdout()
+    if args.fresh:
+        lines += holdout("holdout_lines_2", "fresh")
     try:
         intent_bench.check_wording(lines)
         check_keywords(lines)

@@ -1,0 +1,82 @@
+"""The core tools, keyword lists and more_tools text the categories and web-core runs used.
+
+The bench imports them from here, not from CetiMind, so a rerun repeats these runs whatever CetiMind's own core set
+is. CORE_TOOLS is the four Timer tools: the web-core arms add web_search themselves (WEB_CORE in the bench).
+"""
+
+# Keyword narrowing of a typed turn's tool list. The core tools are always offered, and so is any tool with no
+# keyword list. Any other tool joins the list only when one of its keywords is a substring of the line, after NFKC
+# and casefold on both sides. Keywords have no language field. Never copy a bench line into these lists.
+CORE_TOOLS: tuple[str, ...] = ("current_time", "schedule_create", "schedule_list", "schedule_cancel")
+
+# The intent check's extra option beside a narrowed list, as worded in these runs.
+MORE_TOOLS_DESCRIPTION = (
+    "Pick this when the user's message needs a tool that is not in this list. More tools are offered next."
+)
+
+TOOL_KEYWORDS: dict[str, tuple[str, ...]] = {
+    "web_search": (
+        "search",
+        "look up",
+        "look it up",
+        "google",
+        "online",
+        "internet",
+        "on the web",
+        "news",
+        "headline",
+        "latest",
+        "price",
+        "how much",
+        "weather",
+        "forecast",
+        "score",
+        "who won",
+        "stock",
+        "exchange rate",
+        "調べて",
+        "検索",
+        "ググ",
+        "ネット",
+        "ニュース",
+        "最新",
+        "値段",
+        "価格",
+        "いくら",
+        "天気",
+        "予報",
+        "株価",
+        "為替",
+        "スコア",
+        "試合結果",
+    ),
+    "http_get": (
+        "http",
+        "www.",
+        ".com",
+        ".org",
+        ".net",
+        ".io",
+        ".jp",
+        "url",
+        "link",
+        "website",
+        "web page",
+        "webpage",
+        "fetch",
+        "open this page",
+        "リンク",
+        "サイト",
+        "ページ",
+        "ホームページ",
+    ),
+    "where_now": ("where are you", "where you are", "どこにいる", "今どこ"),
+    "list_places": ("places", "where can you go", "行ける場所", "場所"),
+    "suggest_place": ("where should", "suggest a place", "おすすめの場所", "どこに行こう"),
+    "visit": ("go to", "visit", "go out", "head to", "行こう", "行って", "出かけ", "お出かけ"),
+    "come_home": ("come home", "come back", "帰って", "戻って"),
+    "wallet_get": ("wallet", "money", "allowance", "お財布", "財布", "お金", "おこづかい"),
+    "diary_write": ("diary", "journal", "write down", "日記"),
+    "diary_list": ("diary", "journal", "日記"),
+    "buy_pretend": ("buy", "purchase", "shop", "買って", "買い物", "購入"),
+}
