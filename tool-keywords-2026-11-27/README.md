@@ -204,6 +204,43 @@ Paired against `LWIDE` (only L right / only LWIDE right, exact McNemar):
 - **`more_tools` was never picked in a full turn either:** no turn in either run made a second intent call.
 - **After the miss check the gap shrinks** at 36 tools (156 against 150 of 174). The miss check works on the narrowed list too, and it added a late tool on 4 Japanese no-tool turns.
 
+### Categories instead of more_tools (2026-11-28)
+
+`more_tools` never fired, so a later run tested a more concrete prompt for the expand step. The `cat` variant offers strict narrowing plus one line for each category whose tools narrowing dropped, such as "web: Search the web and read web pages: news, prices, weather, scores, and anything live or at a URL." Picking a category reruns the check with that category's tools added. The 60 fake tools were grouped into 10 categories by domain before the run ([`harness-categories/fake_tools.py`](harness-categories/fake_tools.py), `FAKE_CATEGORIES`), and the two web tools form an 11th. The four Timer tools are core, so they're never a category.
+
+Full, strict, expand and categories ran interleaved on the 78 intent lines, 5 repeats, on the second fake set, at 16, 36 and 66 tools ([`harness-categories/tool_keyword_bench.py`](harness-categories/tool_keyword_bench.py)). Intent tokens are the app's estimate of the first check's tool lines.
+
+| Tools | Variant | Right of 390 | Near-miss alarms | Second checks | Intent tokens (est.) | Median ms |
+| --- | --- | --- | --- | --- | --- | --- |
+| 16 | Full | 370 | 10 | 0 | 329 | 310 |
+| 16 | Strict | 370 | **0** | 0 | **153** | **276** |
+| 16 | Expand | **375** | **0** | 0 | 182 | 283 |
+| 16 | Categories | 370 | 10 | 15 | 435 | 336 |
+| 36 | Full | 355 | 10 | 0 | 581 | 341 |
+| 36 | Strict | 365 | **0** | 0 | **153** | **276** |
+| 36 | Expand | **380** | **0** | 0 | 182 | 287 |
+| 36 | Categories | 365 | 10 | 30 | 512 | 341 |
+| 66 | Full | 355 | 10 | 0 | 974 | 376 |
+| 66 | Strict | 365 | **0** | 0 | **153** | **271** |
+| 66 | Expand | **380** | **0** | 0 | 182 | 280 |
+| 66 | Categories | 370 | 10 | 30 | 547 | 333 |
+
+Bold marks the best value at each size, counting a tie for best as best. The full, strict and expand counts match the earlier runs at 36 and 66 tools.
+
+Paired by line (lines only the first right / only the second right, exact McNemar):
+
+| Tools | Categories vs full | Categories vs strict | Categories vs expand |
+| --- | --- | --- | --- |
+| 16 | 0 / 0 | 2 / 2 | 1 / 2, p 1.0 |
+| 36 | 3 / 1, p 0.63 | 2 / 2 | 1 / 4, p 0.38 |
+| 66 | 3 / 0, p 0.25 | 3 / 2, p 1.0 | 1 / 3, p 0.63 |
+
+- **The web category fixed the keyword miss.** The check picked `category_web` on `f1-ja` on every repeat at every size, then picked `web_search`. No other narrowed variant gets that line.
+- **The wellness category brought the near-topic picks back.** `category_wellness` was picked 10 times at each size, on `near0-ja` (the gym-cancel line) and `near3-en` ("I forgot to drink water again"), and the second check then picked `habit_log` or `mood_log`. That's 10 near-miss alarms at every size, the same as the full list.
+- **Other categories cost a second check and changed nothing.** `category_home` at 36 tools and `category_calendar` at 66 were each picked 10 times, with a right answer each time. 15 to 30 of 390 checks ran the check twice.
+- **Categories cost more than expand.** The category lines take two to three times expand's intent tokens, and at 16 tools more than the full list. The median check is about 50 ms slower than expand's.
+- **Expand still scored highest at every size,** though by line its lead over categories isn't significant.
+
 ## Reading
 
 - **Narrow as first sketched isn't worth building.** It keeps every tool, but it falls back to the full list on 81% of lines, so it saves 2% of the tools block at six tools and 19% at 66. It never beat the full list.
@@ -212,6 +249,7 @@ Paired against `LWIDE` (only L right / only LWIDE right, exact McNemar):
 - **Expand had the highest score from 16 tools on, but not because it rescued anything.** The model never picked `more_tools`, so expand is strict plus one extra line in the intent prompt, and the lead can't come from the expand step. By line the lead over the full list is 6 to 1 at 36 and 66 tools (p = 0.13, not significant), and the same few lines carry every size. Against strict it's 3 to 0 (p = 0.25), on `feel-en`, `cnew2-ja` and `cnew4-ja`, and `cnew2-ja` is a line that flipped for strict between two runs with no prompt change. With no control arm that adds a dummy line, this run can't separate the `more_tools` option from any other change to the prompt.
 - **Keywords miss paraphrases, and can also add harm.** `f1-ja` never gets `web_search` in strict or expand, and the expand step didn't catch it on this model. "feeling" and 気分 put `mood_log` in the list on the feel lines, and the model picks it.
 - **The full-turn runs agree.** At six tools narrowing and the full list are about level. At 36 tools the full list's tool rounds call near-topic fake tools, and narrowing scores higher with half the prompt tokens and the same time (17 turns to 6, p = 0.035; by line 8 to 3, p = 0.23).
+- **Categories didn't beat expand.** Concrete category lines fixed the keyword miss on `f1-ja`, but a wellness category pulled small-talk lines into near-topic tools, and they cost two to three times expand's intent tokens. Category descriptions would need the same care as tool descriptions, and this run tuned none of them.
 - **Recommendation:** strict narrowing is the supported choice. Expand is untested as a mechanism: `more_tools` was never picked, and its lead over strict isn't significant. Test it with a model that picks `more_tools`, and with a control arm that adds a dummy line. Keep the core tools first in the list and add matches after them, so the start of the prompt stays the same. Test a real fallback for keyword misses next, such as a group-widening second pass.
 
 ## Limits
@@ -236,6 +274,8 @@ Paired against `LWIDE` (only L right / only LWIDE right, exact McNemar):
 - `run-scale-2/tools-16|36|66/`: the second scaling run, full, narrow and strict.
 - `run-expand/tools-16|36|66/`: full, strict and expand on the second fake set.
 - `run-turn-6/` and `run-turn-36/`: the full-turn runs. `turns.jsonl` has one row per turn, `steps.jsonl` one row per model call, `summary.md` the tables from `summarize.py`.
+- `run-categories/tools-16|36|66/`: full, strict, expand and categories, with `calls.jsonl` rows that name the categories picked and the second check's list.
+- [`harness-categories/`](harness-categories/): the bench with the `cat` variant and the fake tools with `FAKE_CATEGORIES`.
 - [`harness-turn/`](harness-turn/): the turn bench (`bench.py` with the `LWIDE` arm and `--fakes`, `heavy.py`, `lines.py`, `long_results.py`, `summarize.py`), `fake_tools.py`, the branch's `tool_filter.py` (no full-list fallback, tools with no keywords stay), and `turn-wiring.diff`, the change to CetiMind's turn code.
 
 To run it again, copy the files in `harness/` into `bench/prompt_order/` of a CetiMind `main` checkout. The bench imports the matcher and keyword lists from the copies in `harness/`, and the rest from CetiMind. The offline pass needs no model. Then:
@@ -248,6 +288,12 @@ uv run python bench/prompt_order/tool_keyword_bench.py --base-url http://HOST:PO
 ```
 
 Use `--fakes 10` and `--fakes 30` for the 16- and 36-tool sizes.
+
+The categories run uses the files in `harness-categories/`:
+
+```bash
+uv run python bench/prompt_order/tool_keyword_bench.py --base-url http://HOST:PORT/v1 --out run-categories/tools-66 --fakes 60 --variants full_live,strict_live,expand_live,cat_live --repeats 5
+```
 
 The full-turn runs need a CetiMind checkout with the turn wiring in `harness-turn/turn-wiring.diff` and the files in `harness-turn/`:
 
