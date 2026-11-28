@@ -8,7 +8,7 @@ Does a keyword-narrowed list keep the tool each line needs? How many prompt toke
 
 ## Setup
 
-- **Date:** 2026-11-27 and 2026-11-28.
+- **Date:** 2026-11-27 and 2026-11-28. The full-turn runs are from 2026-11-28.
 - **Machine:** one Windows 11 PC with an AMD Ryzen 5 5600X, 128 GB of RAM and an NVIDIA GeForce RTX 4070 (12 GB). LM Studio and the bench ran on this PC. OBS was running during the expand runs only.
 - **Model:** `qwen3.5-4b`, loaded at a 6,144-token context with K/V cache `q8_0`.
 - **Call:** CetiMind's `IntentRouter` alone, as in the [intent-check bench](../intent-cancel-example-2026-11-26/README.md): thinking off, temperature 0, the live `INTENT_INSTRUCTION` and intent examples. This matches the live turn when the Tools row isn't On, so the intent check doesn't think.
@@ -170,6 +170,40 @@ Expand missed only `f1-ja` (no tool; `web_search` is never offered) and `feel-ja
 
 By language, at 66 tools: English full 185, strict 190, expand 195 of 195; Japanese full 170, strict 175, expand 185 of 195.
 
+### Full turns (2026-11-28)
+
+The runs above call the intent check alone. To test narrowing in a whole turn, a CetiMind branch wires it in ([`harness-turn/turn-wiring.diff`](harness-turn/turn-wiring.diff)). The intent check sees the narrowed list, plus `more_tools` when narrowing dropped a tool, and the tool rounds and the miss check get the same list. A tool with no keyword list always stays. This branch isn't merged.
+
+- **Bench:** CetiMind's turn bench ([`harness-turn/bench.py`](harness-turn/bench.py)), `--profile heavy`, the same 58 heavy-profile lines as the [heavy prompt-order run](../prompt-order-heavy-2026-11-26/README.md) and its scoring. 3 repeats, arms interleaved per line, 348 turns per run. OBS was running.
+- **Arms:** `L` is the live turn (thinking-off intent check and replies) with narrowing on. `LWIDE` is the same turn with narrowing off (`narrow_tools=False`), so every tool is sent, as before.
+- **Tools:** the six real tools, then the six plus 30 fakes (`--fakes 30`, the second fake set), for 36. A fake tool that gets called answers "Done." and counts as a stray tool. 66 tools wasn't run, because the full list's tool rounds would get close to the 6,144-token context.
+
+| | 6 tools, L | 6 tools, LWIDE | 36 tools, L | 36 tools, LWIDE |
+| --- | --- | --- | --- | --- |
+| Right tools in the turn | 157/174 (90%) | **163/174 (94%)** | **160/174 (92%)** | 149/174 (86%) |
+| Stray tool call | 8/174 | **4/174** | **7/174** | 19/174 |
+| Turns that called a fake tool | — | — | **3** | 14 |
+| False claims | 0 | 0 | 0 | 0 |
+| Partial claims (of 12) | **3** | 7 | 5 | **2** |
+| Prompt tokens per turn (mean) | **3,938** | 4,244 | **4,078** | 8,183 |
+| First line, median ms | **998** | 1,048 | **952** | 959 |
+| Done, median ms | 5,349 | **5,287** | 5,346 | **5,281** |
+
+Bold marks the better value of each pair; ties aren't bold. Full tables, with Wilson 95% intervals and times per step: [`run-turn-6/summary.md`](run-turn-6/summary.md) and [`run-turn-36/summary.md`](run-turn-36/summary.md).
+
+Paired against `LWIDE` (only L right / only LWIDE right, exact McNemar):
+
+| Tools | By turn | By line |
+| --- | --- | --- |
+| 6 | 3 / 9, p 0.15 | 3 / 6, p 0.51 |
+| 36 | 17 / 6, p 0.035 | 8 / 3, p 0.23 |
+
+- **At six tools the two are about level.** Narrowing loses `f1-ja` on all 3 repeats (the keyword miss) and some `time-stretch` repeats, which are Timer lines with no tool removed. It saves about 300 prompt tokens per turn.
+- **At 36 tools narrowing is ahead,** significantly by turn but not by line. With every tool sent, the tool rounds called fake tools on 14 turns: `mood_log` 6 times, `lights_set` 5 times (on reminder lines, beside or instead of `schedule_create` and `schedule_cancel`), `habit_log` twice and `note_list` once. The check had often picked the right tool; the round then called a near-topic one. With narrowing, the rounds never see those tools, and its 3 fake calls were all `mood_log` on `feel-ja`, where the 気分 keyword puts it in the list. By language the gap is all Japanese: 77 against 67 of 87, with English 83 against 82.
+- **Narrowing halves the prompt at 36 tools** (4,078 against 8,183 tokens per turn) **without changing the time.** The GPU reads a long prompt quickly, so the medians differ by under 100 ms.
+- **`more_tools` was never picked in a full turn either:** no turn in either run made a second intent call.
+- **After the miss check the gap shrinks** at 36 tools (156 against 150 of 174). The miss check works on the narrowed list too, and it added a late tool on 4 Japanese no-tool turns.
+
 ## Reading
 
 - **Narrow as first sketched isn't worth building.** It keeps every tool, but it falls back to the full list on 81% of lines, so it saves 2% of the tools block at six tools and 19% at 66. It never beat the full list.
@@ -177,6 +211,7 @@ By language, at 66 tools: English full 185, strict 190, expand 195 of 195; Japan
 - **A longer full list makes the check pick near-topic module tools.** From 16 tools on, the full list picked `mood_log`, `habit_log` and similar tools on small-talk lines, with 2 near-miss lines picked on all 5 repeats at every size. Length itself wasn't the problem: the full list scored the same at 36 and 66 tools. The tools that sit close to a line's topic are. The labels matter here: the bench scores any fake-tool pick as wrong, though `mood_log` on "How are you feeling today?" is arguably a fair pick for a real module.
 - **Expand had the highest score from 16 tools on, but not because it rescued anything.** The model never picked `more_tools`, so expand is strict plus one extra line in the intent prompt, and the lead can't come from the expand step. By line the lead over the full list is 6 to 1 at 36 and 66 tools (p = 0.13, not significant), and the same few lines carry every size. Against strict it's 3 to 0 (p = 0.25), on `feel-en`, `cnew2-ja` and `cnew4-ja`, and `cnew2-ja` is a line that flipped for strict between two runs with no prompt change. With no control arm that adds a dummy line, this run can't separate the `more_tools` option from any other change to the prompt.
 - **Keywords miss paraphrases, and can also add harm.** `f1-ja` never gets `web_search` in strict or expand, and the expand step didn't catch it on this model. "feeling" and 気分 put `mood_log` in the list on the feel lines, and the model picks it.
+- **The full-turn runs agree.** At six tools narrowing and the full list are about level. At 36 tools the full list's tool rounds call near-topic fake tools, and narrowing scores higher with half the prompt tokens and the same time (17 turns to 6, p = 0.035; by line 8 to 3, p = 0.23).
 - **Recommendation:** strict narrowing is the supported choice. Expand is untested as a mechanism: `more_tools` was never picked, and its lead over strict isn't significant. Test it with a model that picks `more_tools`, and with a control arm that adds a dummy line. Keep the core tools first in the list and add matches after them, so the start of the prompt stays the same. Test a real fallback for keyword misses next, such as a group-widening second pass.
 
 ## Limits
@@ -188,7 +223,7 @@ By language, at 66 tools: English full 185, strict 190, expand 195 of 195; Japan
 - The gaps rest on a handful of lines. More distinct lines would firm them up more than more repeats.
 - `cnew2-ja` flipped for strict between two runs with no prompt change (right in the second scaling run, wrong in the expand run). It's likely LM Studio's prompt cache with the `q8_0` K/V cache.
 - A list that changes per line breaks the prompt cache at the tools block. This run counted tokens, not cache hits or time to first token.
-- The intent check only. No full turns, tool rounds or replies were run.
+- The scaling and expand runs call the intent check alone. The full-turn runs cover 6 and 36 tools on the heavy profile only, with 3 repeats.
 - **Timing:** wall clock around non-streaming calls, so the medians include the client, with no time to first token and no p90. The full list's median at 66 tools was 332, 364 and 452 ms in three runs, so run-to-run spread for the same setup can top 100 ms, larger than most gaps between variants. Compare times only within a run.
 - **Temperature 0 isn't fully deterministic here.** Narrow on `lol-ja` at 66 tools offered the same 66 tools as the full list and still gave one different answer in 5.
 
@@ -200,6 +235,8 @@ By language, at 66 tools: English full 185, strict 190, expand 195 of 195; Japan
 - `run-scale-1/tools-16|36|66/`: the first scaling run, with `water_log`.
 - `run-scale-2/tools-16|36|66/`: the second scaling run, full, narrow and strict.
 - `run-expand/tools-16|36|66/`: full, strict and expand on the second fake set.
+- `run-turn-6/` and `run-turn-36/`: the full-turn runs. `turns.jsonl` has one row per turn, `steps.jsonl` one row per model call, `summary.md` the tables from `summarize.py`.
+- [`harness-turn/`](harness-turn/): the turn bench (`bench.py` with the `LWIDE` arm and `--fakes`, `heavy.py`, `lines.py`, `long_results.py`, `summarize.py`), `fake_tools.py`, the branch's `tool_filter.py` (no full-list fallback, tools with no keywords stay), and `turn-wiring.diff`, the change to CetiMind's turn code.
 
 To run it again, copy the files in `harness/` into `bench/prompt_order/` of a CetiMind `main` checkout. The bench imports the matcher and keyword lists from the copies in `harness/`, and the rest from CetiMind. The offline pass needs no model. Then:
 
@@ -211,3 +248,10 @@ uv run python bench/prompt_order/tool_keyword_bench.py --base-url http://HOST:PO
 ```
 
 Use `--fakes 10` and `--fakes 30` for the 16- and 36-tool sizes.
+
+The full-turn runs need a CetiMind checkout with the turn wiring in `harness-turn/turn-wiring.diff` and the files in `harness-turn/`:
+
+```bash
+uv run python bench/prompt_order/bench.py --base-url http://HOST:PORT/v1 --out run-turn-36 --profile heavy --arms L,LWIDE --repeats 3 --fakes 30
+uv run python bench/prompt_order/summarize.py run-turn-36
+```
