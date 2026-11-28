@@ -241,6 +241,58 @@ Paired by line (lines only the first right / only the second right, exact McNema
 - **Categories cost more than expand.** The category lines take two to three times expand's intent tokens, and at 16 tools more than the full list. The median check is about 50 ms slower than expand's.
 - **Expand still scored highest at every size,** though by line its lead over categories isn't significant.
 
+### Web search as a core tool (2026-11-28)
+
+Every narrowed variant above loses `f1-ja` because no web keyword matches, and the bench had only one such line. This run added 20 held-out lines, written before it ([`harness-web-core/holdout_lines.py`](harness-web-core/holdout_lines.py)):
+- **12 web questions** that need `web_search` but avoid the web keywords, such as "Has the typhoon reached Okinawa?" and 台風はもう沖縄に来た？
+- **8 small-talk lines** close to a category's topic, such as "I slept so badly last night." or "I love that song you mentioned."
+
+It compares five lists, interleaved, 5 repeats, on the 78 bench lines plus the 20 held-out lines ([`harness-web-core/tool_keyword_bench.py`](harness-web-core/tool_keyword_bench.py)):
+
+| Variant | First list |
+| --- | --- |
+| Full | Every tool |
+| Expand | The four Timer tools, keyword matches and `more_tools` |
+| Web core + expand | Expand with `web_search` always in the list |
+| Keyword categories | Expand plus a line for each category whose broad keywords match (picking one reruns the check with its tools) |
+| Web core + keyword categories | Keyword categories with `web_search` always in the list; a category with a tool already listed gets no line |
+
+The category keywords are in `CATEGORY_KEYWORDS` (`fake_tools.py`) and `REAL_CATEGORY_KEYWORDS` (the bench). The web category's keywords are time words such as "today", "this week", 昨夜 and 最新. They were written after the held-out lines, so some overlap them, and they also match `f1-ja`. A run of keyword categories without web core started before this one and was stopped and discarded.
+
+| Tools | Variant | Bench lines (of 390) | Held-out web (of 60) | Held-out small talk (of 40) | Near-miss alarms | Second checks | Intent tokens (est.) | Median ms |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 16 | Full | 365 | **60** | 15 | 10 | 0 | 329 | 287 |
+| 16 | Expand | 375 | 5 | 35 | **0** | 5 | **180** | **250** |
+| 16 | Web core + expand | 380 | **60** | 35 | **0** | 0 | 213 | 276 |
+| 16 | Keyword categories | **385** | 30 | **40** | **0** | 50 | 196 | 268 |
+| 16 | Web core + keyword categories | 380 | **60** | **40** | **0** | 10 | 215 | 280 |
+| 36 | Full | 355 | 55 | 15 | 10 | 0 | 581 | 326 |
+| 36 | Expand | 380 | 10 | **25** | **0** | 15 | **181** | **261** |
+| 36 | Web core + expand | 380 | **60** | **25** | **0** | 0 | 214 | 287 |
+| 36 | Keyword categories | **385** | 30 | **25** | **0** | 50 | 198 | 278 |
+| 36 | Web core + keyword categories | 380 | **60** | **25** | **0** | 0 | 215 | 294 |
+| 66 | Full | 360 | 55 | 10 | 10 | 0 | 974 | 369 |
+| 66 | Expand | 375 | 10 | **25** | **0** | 15 | **181** | **250** |
+| 66 | Web core + expand | 380 | **60** | **25** | **0** | 0 | 214 | 287 |
+| 66 | Keyword categories | **385** | 30 | **25** | **0** | 50 | 198 | 270 |
+| 66 | Web core + keyword categories | 380 | **60** | **25** | **0** | 0 | 215 | 284 |
+
+Bold marks the best value at each size, counting a tie for best as best.
+
+Against expand, by line (lines only this variant got right more often / lines only expand did, exact McNemar):
+
+| Tools | Full | Web core + expand | Keyword categories | Web core + keyword categories |
+| --- | --- | --- | --- | --- |
+| 16 | 12 / 7, p 0.36 | **12 / 0, p < 0.001** | 8 / 0, p 0.008 | **13 / 0, p < 0.001** |
+| 36 | 10 / 8, p 0.81 | **11 / 1, p 0.006** | 5 / 0, p 0.06 | **11 / 1, p 0.006** |
+| 66 | 10 / 7, p 0.63 | **11 / 0, p 0.001** | 6 / 0, p 0.03 | **11 / 0, p 0.001** |
+
+- **Web core is the clear win.** Both web-core variants got every held-out web check at every size, against 5 to 10 of 60 for expand, and beat expand by line at every size. The cost is about 33 intent tokens and 25 to 35 ms on the median check. No small-talk line picked `web_search`, and no web-core variant had a near-miss alarm.
+- **Keyword categories add little once web search is core.** At 36 and 66 tools the two web-core variants scored the same, with no second checks, since no other category keyword matched these lines. At 16 tools the categories fixed one small-talk line, もっと母に電話しなきゃな ("I should really call my mom more"), where expand and web core + expand picked `schedule_create`.
+- **Keyword categories alone** scored highest on the bench lines (385 at every size) and fixed `f1-ja`, but reached only the 6 held-out web lines whose words list the web category. They also asked for a second check 50 times per size.
+- **Some misses no fallback fixes.** At 36 and 66 tools every narrowed variant lost the same small-talk lines, because tool keywords over-match: "call" adds `call_start` and "plant" adds `plant_water_log`, and the model picks them. `feel-ja` (`mood_log` through 気分) and `cnew4-ja` stay wrong too. Word-edge matching for short Latin keywords is the likely fix for the first kind.
+- **Expand scored 375 at 66 tools here,** against 380 in the categories run, with no prompt change.
+
 ## Reading
 
 - **Narrow as first sketched isn't worth building.** It keeps every tool, but it falls back to the full list on 81% of lines, so it saves 2% of the tools block at six tools and 19% at 66. It never beat the full list.
@@ -250,7 +302,8 @@ Paired by line (lines only the first right / only the second right, exact McNema
 - **Keywords miss paraphrases, and can also add harm.** `f1-ja` never gets `web_search` in strict or expand, and the expand step didn't catch it on this model. "feeling" and 気分 put `mood_log` in the list on the feel lines, and the model picks it.
 - **The full-turn runs agree.** At six tools narrowing and the full list are about level. At 36 tools the full list's tool rounds call near-topic fake tools, and narrowing scores higher with half the prompt tokens and the same time (17 turns to 6, p = 0.035; by line 8 to 3, p = 0.23).
 - **Categories didn't beat expand.** Concrete category lines fixed the keyword miss on `f1-ja`, but a wellness category pulled small-talk lines into near-topic tools, and they cost two to three times expand's intent tokens. Category descriptions would need the same care as tool descriptions, and this run tuned none of them.
-- **Recommendation:** strict narrowing is the supported choice. Expand is untested as a mechanism: `more_tools` was never picked, and its lead over strict isn't significant. Test it with a model that picks `more_tools`, and with a control arm that adds a dummy line. Keep the core tools first in the list and add matches after them, so the start of the prompt stays the same. Test a real fallback for keyword misses next, such as a group-widening second pass.
+- **Web search belongs in the core set.** Making `web_search` core fixed every held-out web question at 16, 36 and 66 tools, beat expand by line at every size, and added no near-miss alarms, for about 33 intent tokens. Keyword categories added little on top.
+- **Recommendation:** strict narrowing is the supported choice, with `web_search` as a core tool beside the Timer tools and `more_tools` as the catch-all. CetiMind [#159](https://github.com/miramocha/CetiMind/pull/159) does this. Expand is untested as a mechanism: `more_tools` was never picked, and its lead over strict isn't significant. Test it with a model that picks `more_tools`, and with a control arm that adds a dummy line. Keep the core tools first in the list and add matches after them, so the start of the prompt stays the same. Test a real fallback for keyword misses next, such as a group-widening second pass.
 
 ## Limits
 
@@ -275,6 +328,8 @@ Paired by line (lines only the first right / only the second right, exact McNema
 - `run-expand/tools-16|36|66/`: full, strict and expand on the second fake set.
 - `run-turn-6/` and `run-turn-36/`: the full-turn runs. `turns.jsonl` has one row per turn, `steps.jsonl` one row per model call, `summary.md` the tables from `summarize.py`.
 - `run-categories/tools-16|36|66/`: full, strict, expand and categories, with `calls.jsonl` rows that name the categories picked and the second check's list.
+- `run-web-core/tools-16|36|66/`: the web-core run, five variants, with the held-out lines. `run-web-core/*.json` are the tables from `summarize_web_core.py`.
+- [`harness-web-core/`](harness-web-core/): the bench with the `webexp`, `catkw` and `webcat` variants and `--holdout`, `fake_tools.py` with `CATEGORY_KEYWORDS`, `holdout_lines.py`, and `summarize_web_core.py`.
 - [`harness-categories/`](harness-categories/): the bench with the `cat` variant and the fake tools with `FAKE_CATEGORIES`.
 - [`harness-turn/`](harness-turn/): the turn bench (`bench.py` with the `LWIDE` arm and `--fakes`, `heavy.py`, `lines.py`, `long_results.py`, `summarize.py`), `fake_tools.py`, the branch's `tool_filter.py` (no full-list fallback, tools with no keywords stay), and `turn-wiring.diff`, the change to CetiMind's turn code.
 
@@ -293,6 +348,13 @@ The categories run uses the files in `harness-categories/`:
 
 ```bash
 uv run python bench/prompt_order/tool_keyword_bench.py --base-url http://HOST:PORT/v1 --out run-categories/tools-66 --fakes 60 --variants full_live,strict_live,expand_live,cat_live --repeats 5
+```
+
+The web-core run uses the files in `harness-web-core/`:
+
+```bash
+uv run python bench/prompt_order/tool_keyword_bench.py --base-url http://HOST:PORT/v1 --out run-web-core/tools-66 --fakes 60 --holdout --variants full_live,expand_live,webexp_live,catkw_live,webcat_live --repeats 5
+python harness-web-core/summarize_web_core.py .
 ```
 
 The full-turn runs need a CetiMind checkout with the turn wiring in `harness-turn/turn-wiring.diff` and the files in `harness-turn/`:
